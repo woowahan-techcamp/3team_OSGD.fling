@@ -2,4 +2,4 @@
 
 오상굉떙의 그라운드룰
 
-https://osgd.slack.com/files/asfaca/F6GJSRKRC/_______________
+https://osgd.slack.com/files/asfaca/F6GJSRKRC/
