@@ -1,3 +1,5 @@
 # 3team_osgd
 
-안녕하세요.
+오상굉떙의 그라운드룰
+
+https://osgd.slack.com/files/asfaca/F6GJSRKRC/_______________
