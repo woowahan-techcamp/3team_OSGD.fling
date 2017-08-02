@@ -54,4 +54,8 @@
 * TDD로 하기
 * https://github.com/linkedin/swift-style-guide
 
+
+## Git hub branch 전략
+### 리포지토리
+
 ## 서비스 기획서
