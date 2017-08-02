@@ -64,4 +64,4 @@
 ## 백로그
 * https://docs.google.com/spreadsheets/d/1dyxzR9sf1DLQt7YwmyywFFr-AN6VCsFfpu50yRHVUy0/edit#gid=0
 
-<img src="https://osgd.slack.com/archives/C6GQY6CM8/p1501663665021052">
+https://osgd.slack.com/archives/C6GQY6CM8/p1501663665021052
