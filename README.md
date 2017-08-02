@@ -59,7 +59,7 @@
 ### 리포지토리
 
 ## 서비스 기획서
-* 
+* https://files.slack.com/files-pri/T6F62L0DP-F6H19E1N0/download/osgd_ppt_proposal.pptx
 
 ## 백로그
 * https://docs.google.com/spreadsheets/d/1dyxzR9sf1DLQt7YwmyywFFr-AN6VCsFfpu50yRHVUy0/edit#gid=0
