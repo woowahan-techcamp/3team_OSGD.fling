@@ -66,5 +66,3 @@
 
 ## DB
 https://slack-files.com/T6F62L0DP-F6H30CHAR-98efbbbacd
-
-![Alt text](https://slack-files.com/T6F62L0DP-F6H30CHAR-98efbbbacd)
