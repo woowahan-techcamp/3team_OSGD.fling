@@ -65,4 +65,4 @@
 * https://docs.google.com/spreadsheets/d/1dyxzR9sf1DLQt7YwmyywFFr-AN6VCsFfpu50yRHVUy0/edit#gid=0
 
 ## DB
-<img src="https://slack-files.com/T6F62L0DP-F6H30CHAR-98efbbbacd"></img>
+https://slack-files.com/T6F62L0DP-F6H30CHAR-98efbbbacd
