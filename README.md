@@ -63,3 +63,5 @@
 
 ## 백로그
 * https://docs.google.com/spreadsheets/d/1dyxzR9sf1DLQt7YwmyywFFr-AN6VCsFfpu50yRHVUy0/edit#gid=0
+
+* https://osgd.slack.com/files/donguk/F6H30CHAR/_______________________________2017-08-02______________5.20.23.png
