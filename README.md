@@ -39,13 +39,13 @@
 * 팀장의 권한으로 팀원이 결정
 
 ## 팀 코딩 스타일
-###웹
+### 웹
 * 마크업 : 레진 스타일
 * https://github.com/lezhin/markup-guide
 * 자바스크립트 : Air bnb 스타일
 * https://github.com/airbnb/javascript
 
-###IOS
+### IOS
 * 스위프트 : LinkedIn 스타일, 새로운 객체를 만들기보다 extension을 적극적으로 활용.
 * https://github.com/linkedin/swift-style-guide
 
