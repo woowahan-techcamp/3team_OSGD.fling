@@ -39,4 +39,3 @@
 
 
 ## 서비스 기획서
-https://slack-files.com/T6F62L0DP-F6F802HEV-8750f801c6
