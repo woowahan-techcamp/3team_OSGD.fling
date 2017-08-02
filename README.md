@@ -47,6 +47,9 @@
 
 ### IOS
 * 스위프트 : LinkedIn 스타일, 새로운 객체를 만들기보다 extension을 적극적으로 활용.
+* 강제 형변환 제로
+* 객체는 기능별로 세세하게 구분하기
+* TDD로 하기
 * https://github.com/linkedin/swift-style-guide
 
 ## 서비스 기획서
