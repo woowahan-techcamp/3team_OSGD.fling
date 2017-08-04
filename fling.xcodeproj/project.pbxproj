@@ -1,0 +1,721 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B3EF89ACE4C5B6CE8EF347B /* Pods_flingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */; };
+		984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843151F33F3AF007AD753 /* AppDelegate.swift */; };
+		984843181F33F3AF007AD753 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843171F33F3AF007AD753 /* ViewController.swift */; };
+		9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984843191F33F3B0007AD753 /* Main.storyboard */; };
+		9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9848431C1F33F3B0007AD753 /* Assets.xcassets */; };
+		984843201F33F3B0007AD753 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9848431E1F33F3B0007AD753 /* LaunchScreen.storyboard */; };
+		9848432B1F33F3B0007AD753 /* flingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9848432A1F33F3B0007AD753 /* flingTests.swift */; };
+		984843361F33F3B0007AD753 /* flingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843351F33F3B0007AD753 /* flingUITests.swift */; };
+		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
+		BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		984843271F33F3B0007AD753 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9848430A1F33F3AF007AD753 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 984843111F33F3AF007AD753;
+			remoteInfo = fling;
+		};
+		984843321F33F3B0007AD753 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9848430A1F33F3AF007AD753 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 984843111F33F3AF007AD753;
+			remoteInfo = fling;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4AEB35D54FD3269A577CAA02 /* Pods-flingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-flingTests/Pods-flingTests.release.xcconfig"; sourceTree = "<group>"; };
+		545486631460994A9253BD43 /* Pods-fling.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fling.release.xcconfig"; path = "Pods/Target Support Files/Pods-fling/Pods-fling.release.xcconfig"; sourceTree = "<group>"; };
+		64475B6E4C95440D347A3803 /* Pods-flingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flingUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-flingUITests/Pods-flingUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fling.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F47268F3BA38F7DF133EF43 /* Pods-fling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fling.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fling/Pods-fling.debug.xcconfig"; sourceTree = "<group>"; };
+		8895CC03629EAB39B7B5A222 /* Pods-flingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-flingUITests/Pods-flingUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8FC13065F143A7DBE4B44525 /* Pods-flingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-flingTests/Pods-flingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		984843121F33F3AF007AD753 /* fling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fling.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		984843151F33F3AF007AD753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		984843171F33F3AF007AD753 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9848431A1F33F3B0007AD753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9848431C1F33F3B0007AD753 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9848431F1F33F3B0007AD753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		984843211F33F3B0007AD753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		984843261F33F3B0007AD753 /* flingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = flingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9848432A1F33F3B0007AD753 /* flingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flingTests.swift; sourceTree = "<group>"; };
+		9848432C1F33F3B0007AD753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		984843311F33F3B0007AD753 /* flingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = flingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		984843351F33F3B0007AD753 /* flingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flingUITests.swift; sourceTree = "<group>"; };
+		984843371F33F3B0007AD753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9848430F1F33F3AF007AD753 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		984843231F33F3B0007AD753 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9848432E1F33F3B0007AD753 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B3EF89ACE4C5B6CE8EF347B /* Pods_flingUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46116A025867F2B72F6F7F0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */,
+				C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */,
+				DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		984843091F33F3AF007AD753 = {
+			isa = PBXGroup;
+			children = (
+				984843141F33F3AF007AD753 /* fling */,
+				984843291F33F3B0007AD753 /* flingTests */,
+				984843341F33F3B0007AD753 /* flingUITests */,
+				984843131F33F3AF007AD753 /* Products */,
+				B764C48263162E37533C0D90 /* Pods */,
+				46116A025867F2B72F6F7F0A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		984843131F33F3AF007AD753 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				984843121F33F3AF007AD753 /* fling.app */,
+				984843261F33F3B0007AD753 /* flingTests.xctest */,
+				984843311F33F3B0007AD753 /* flingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		984843141F33F3AF007AD753 /* fling */ = {
+			isa = PBXGroup;
+			children = (
+				984843151F33F3AF007AD753 /* AppDelegate.swift */,
+				984843171F33F3AF007AD753 /* ViewController.swift */,
+				984843191F33F3B0007AD753 /* Main.storyboard */,
+				9848431C1F33F3B0007AD753 /* Assets.xcassets */,
+				9848431E1F33F3B0007AD753 /* LaunchScreen.storyboard */,
+				984843211F33F3B0007AD753 /* Info.plist */,
+			);
+			path = fling;
+			sourceTree = "<group>";
+		};
+		984843291F33F3B0007AD753 /* flingTests */ = {
+			isa = PBXGroup;
+			children = (
+				9848432A1F33F3B0007AD753 /* flingTests.swift */,
+				9848432C1F33F3B0007AD753 /* Info.plist */,
+			);
+			path = flingTests;
+			sourceTree = "<group>";
+		};
+		984843341F33F3B0007AD753 /* flingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				984843351F33F3B0007AD753 /* flingUITests.swift */,
+				984843371F33F3B0007AD753 /* Info.plist */,
+			);
+			path = flingUITests;
+			sourceTree = "<group>";
+		};
+		B764C48263162E37533C0D90 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F47268F3BA38F7DF133EF43 /* Pods-fling.debug.xcconfig */,
+				545486631460994A9253BD43 /* Pods-fling.release.xcconfig */,
+				8FC13065F143A7DBE4B44525 /* Pods-flingTests.debug.xcconfig */,
+				4AEB35D54FD3269A577CAA02 /* Pods-flingTests.release.xcconfig */,
+				8895CC03629EAB39B7B5A222 /* Pods-flingUITests.debug.xcconfig */,
+				64475B6E4C95440D347A3803 /* Pods-flingUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		984843111F33F3AF007AD753 /* fling */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9848433A1F33F3B0007AD753 /* Build configuration list for PBXNativeTarget "fling" */;
+			buildPhases = (
+				C7BC2F5DD9A1AA34E185726E /* [CP] Check Pods Manifest.lock */,
+				9848430E1F33F3AF007AD753 /* Sources */,
+				9848430F1F33F3AF007AD753 /* Frameworks */,
+				984843101F33F3AF007AD753 /* Resources */,
+				D4D0BE6E3982E5A03BBE0E93 /* [CP] Embed Pods Frameworks */,
+				BC53AC68E9BC618C5B12C3BD /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fling;
+			productName = fling;
+			productReference = 984843121F33F3AF007AD753 /* fling.app */;
+			productType = "com.apple.product-type.application";
+		};
+		984843251F33F3B0007AD753 /* flingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9848433D1F33F3B0007AD753 /* Build configuration list for PBXNativeTarget "flingTests" */;
+			buildPhases = (
+				D677320498FC1AB34FFD9024 /* [CP] Check Pods Manifest.lock */,
+				984843221F33F3B0007AD753 /* Sources */,
+				984843231F33F3B0007AD753 /* Frameworks */,
+				984843241F33F3B0007AD753 /* Resources */,
+				4CE5A2C2644A4BD94762823A /* [CP] Embed Pods Frameworks */,
+				8270E92D4F1A148AF6C3EBA2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				984843281F33F3B0007AD753 /* PBXTargetDependency */,
+			);
+			name = flingTests;
+			productName = flingTests;
+			productReference = 984843261F33F3B0007AD753 /* flingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		984843301F33F3B0007AD753 /* flingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 984843401F33F3B0007AD753 /* Build configuration list for PBXNativeTarget "flingUITests" */;
+			buildPhases = (
+				37E761610B0C77346DEDD7C0 /* [CP] Check Pods Manifest.lock */,
+				9848432D1F33F3B0007AD753 /* Sources */,
+				9848432E1F33F3B0007AD753 /* Frameworks */,
+				9848432F1F33F3B0007AD753 /* Resources */,
+				7A6CFE69EBC16A4E4F7EB4BA /* [CP] Embed Pods Frameworks */,
+				B0A152CFCA34573124212A47 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				984843331F33F3B0007AD753 /* PBXTargetDependency */,
+			);
+			name = flingUITests;
+			productName = flingUITests;
+			productReference = 984843311F33F3B0007AD753 /* flingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9848430A1F33F3AF007AD753 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = osgd;
+				TargetAttributes = {
+					984843111F33F3AF007AD753 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					984843251F33F3B0007AD753 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 984843111F33F3AF007AD753;
+					};
+					984843301F33F3B0007AD753 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 984843111F33F3AF007AD753;
+					};
+				};
+			};
+			buildConfigurationList = 9848430D1F33F3AF007AD753 /* Build configuration list for PBXProject "fling" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 984843091F33F3AF007AD753;
+			productRefGroup = 984843131F33F3AF007AD753 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				984843111F33F3AF007AD753 /* fling */,
+				984843251F33F3B0007AD753 /* flingTests */,
+				984843301F33F3B0007AD753 /* flingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		984843101F33F3AF007AD753 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				984843201F33F3B0007AD753 /* LaunchScreen.storyboard in Resources */,
+				9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */,
+				9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		984843241F33F3B0007AD753 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9848432F1F33F3B0007AD753 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		37E761610B0C77346DEDD7C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4CE5A2C2644A4BD94762823A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-flingTests/Pods-flingTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A6CFE69EBC16A4E4F7EB4BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-flingUITests/Pods-flingUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8270E92D4F1A148AF6C3EBA2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-flingTests/Pods-flingTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0A152CFCA34573124212A47 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-flingUITests/Pods-flingUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC53AC68E9BC618C5B12C3BD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fling/Pods-fling-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7BC2F5DD9A1AA34E185726E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D4D0BE6E3982E5A03BBE0E93 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fling/Pods-fling-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D677320498FC1AB34FFD9024 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9848430E1F33F3AF007AD753 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				984843181F33F3AF007AD753 /* ViewController.swift in Sources */,
+				984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		984843221F33F3B0007AD753 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9848432B1F33F3B0007AD753 /* flingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9848432D1F33F3B0007AD753 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				984843361F33F3B0007AD753 /* flingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		984843281F33F3B0007AD753 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 984843111F33F3AF007AD753 /* fling */;
+			targetProxy = 984843271F33F3B0007AD753 /* PBXContainerItemProxy */;
+		};
+		984843331F33F3B0007AD753 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 984843111F33F3AF007AD753 /* fling */;
+			targetProxy = 984843321F33F3B0007AD753 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		984843191F33F3B0007AD753 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9848431A1F33F3B0007AD753 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9848431E1F33F3B0007AD753 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9848431F1F33F3B0007AD753 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		984843381F33F3B0007AD753 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		984843391F33F3B0007AD753 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9848433B1F33F3B0007AD753 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F47268F3BA38F7DF133EF43 /* Pods-fling.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = fling/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		9848433C1F33F3B0007AD753 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 545486631460994A9253BD43 /* Pods-fling.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = fling/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		9848433E1F33F3B0007AD753 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FC13065F143A7DBE4B44525 /* Pods-flingTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = flingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.flingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fling.app/fling";
+			};
+			name = Debug;
+		};
+		9848433F1F33F3B0007AD753 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AEB35D54FD3269A577CAA02 /* Pods-flingTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = flingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.flingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fling.app/fling";
+			};
+			name = Release;
+		};
+		984843411F33F3B0007AD753 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8895CC03629EAB39B7B5A222 /* Pods-flingUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = flingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.flingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = fling;
+			};
+			name = Debug;
+		};
+		984843421F33F3B0007AD753 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64475B6E4C95440D347A3803 /* Pods-flingUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = flingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.flingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = fling;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9848430D1F33F3AF007AD753 /* Build configuration list for PBXProject "fling" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				984843381F33F3B0007AD753 /* Debug */,
+				984843391F33F3B0007AD753 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9848433A1F33F3B0007AD753 /* Build configuration list for PBXNativeTarget "fling" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9848433B1F33F3B0007AD753 /* Debug */,
+				9848433C1F33F3B0007AD753 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9848433D1F33F3B0007AD753 /* Build configuration list for PBXNativeTarget "flingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9848433E1F33F3B0007AD753 /* Debug */,
+				9848433F1F33F3B0007AD753 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		984843401F33F3B0007AD753 /* Build configuration list for PBXNativeTarget "flingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				984843411F33F3B0007AD753 /* Debug */,
+				984843421F33F3B0007AD753 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9848430A1F33F3AF007AD753 /* Project object */;
+}

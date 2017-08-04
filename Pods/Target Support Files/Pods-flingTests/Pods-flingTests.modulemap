@@ -1,0 +1,6 @@
+framework module Pods_flingTests {
+  umbrella header "Pods-flingTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
