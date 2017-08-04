@@ -421,7 +421,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fling/Pods-fling-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fling/Pods-fling-frameworks.sh\"\n\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D677320498FC1AB34FFD9024 /* [CP] Check Pods Manifest.lock */ = {
@@ -698,6 +698,7 @@
 				9848433C1F33F3B0007AD753 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9848433D1F33F3B0007AD753 /* Build configuration list for PBXNativeTarget "flingTests" */ = {
 			isa = XCConfigurationList;
@@ -706,6 +707,7 @@
 				9848433F1F33F3B0007AD753 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		984843401F33F3B0007AD753 /* Build configuration list for PBXNativeTarget "flingUITests" */ = {
 			isa = XCConfigurationList;
@@ -714,6 +716,7 @@
 				984843421F33F3B0007AD753 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
