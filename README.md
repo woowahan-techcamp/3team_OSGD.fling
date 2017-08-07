@@ -22,6 +22,8 @@
 * [Service Proposal](https://slack-files.com/T6F62L0DP-F6GST664B-6f92e7275d)
 * [Backlog](https://docs.google.com/a/woowahan.com/spreadsheets/d/1dyxzR9sf1DLQt7YwmyywFFr-AN6VCsFfpu50yRHVUy0/edit)
 * [Database Model](https://slack-files.com/T6F62L0DP-F6H30CHAR-98efbbbacd)
+* [디자이너기획서](https://slack-files.com/T6F62L0DP-F6K28T89J-768ec1cae6)
+* [Database Model](https://slack-files.com/T6F62L0DP-F6H30CHAR-98efbbbacd)
 
  
 
