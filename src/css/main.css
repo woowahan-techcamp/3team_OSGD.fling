@@ -4,13 +4,21 @@
     margin: 0 auto;
 }
 
-.headmenu {
+.head_menu {
     height: 50px;
 }
 
-.logo {
+.logo_wrap {
     padding-left: 50px;
     float: left;
+}
+
+.fling_logo {
+    background-image: url(../img/temp_logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
 }
 
 .navi_wrap {
