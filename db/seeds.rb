@@ -10,83 +10,99 @@
 require 'nokogiri'
 require 'open-uri'
 require 'json'
+require 'uri'
 
-def get_material(input)
-  material = Hash.new()
-  case1 = input.css('div.ready_ingre3 ul').count
-  case2 = input.css('div.cont_ingre').count
-  if case1 > 0
-    material = case1(input)
-  elsif case2 > 0
-    material = case2(input)
-  end
-  return material
-end
+#for product
 
-## 1 ul li 형식일때
-def case1(input)
-  material = Hash.new()
-  input.css('div.ready_ingre3 ul').each do |u|
-    title = u.css('b').text
-    if title == "[재료]" || title == "[양념]" || title == "[소스]"
-      u.css('li').each do |li|
-        name = li.text.split("  ")[0]
-        unit = li.css('span.ingre_unit').text
-        material[name] = unit
-      end
-    end
-  end
-  return material
+#def make_ourform(product_title)
+  #result = Hash.new
+  #name = ""
+  #weight = ""
+  #bundle = ""
+  #product_title.split(", ").each_with_index do |p, index|
+    #if index == 0
+      #name = p.strip
+    #elsif p.length > 5
+      #name = name + p.strip
+    #elsif p.include?("g") && p.exclude?("개")
+      #weight = p.strip
+    #else
+      #bundle = p.strip
+    #end
+  #end
+  #result["name"] = name
+  #result["weight"] = weight
+  #result["bundle"] = bundle
+  #return result
+#end
 
-end
-## 2 ul li가 아니라 dl일때 !! 문제점이 있다!
-def case2(input)
-  material = Hash.new()
-  input.css('div.cont_ingre dl').each do |dl|
-    dl.css('dd').text.split(',').each do |m|
-      title = m.split(' ').first
-      unit = m.split(' ').last
-      material[title] = unit
-    end
-  end
-  return material
-end
+#Material.last(540).each do |m|
+  #keyword = m.name
+  #url = "http://www.coupang.com/np/search?component=194176&q=" + URI.encode(keyword)
+  #data = Nokogiri::HTML(open(url))
+  #if data.nil?
+    #product = data.css('li.search-product a dl').first
+    #if product.css('dd.descriptions div.price-area strong.price-value').first.nil?
+      #product = data.css('li.search-product a dl').second
+    #end
+    #name = product.css('dd.descriptions div.name').text
+    #description =  make_ourform(name)
+    #price = product.css('dd.descriptions div.price-area strong.price-value').first.text
+    #image = product.css('dt.image img').attr('src').text.delete('//')
+    #product = Product.new(price: price, image: image, name: description["name"],
+                          #weight: description["weight"], bundle: description["bundle"],
+                          #material_id: m.id)
+    #if product.save!
+      #puts "#{product.name} is created"
+    #end
+  #end
+#end
 
-(6855697..6874288).each do |index|
-  url = "http://www.10000recipe.com/recipe/" + index.to_s
+
+# for recipe crawilng
+=begin
+(37..70).each do |index|
+  url = "http://haemukja.com/recipes/" + index.to_s
   input = Nokogiri::HTML(open(url))
-  material = get_material(input)
-  material.each do |key, value|
+  title = input.css('div.aside h1 strong').text
+  input.css("div.btm li").each do |li|
+    name = li.css('span').text.delete(' ')
+    un_unit = li.css('em').text.delete(' ')
+      unit = un_unit.split(/(?<=\d)(?=[ㄱ-ㅎ|가-힣|a-z|A-Z|])/).last
+    if !un_unit.nil? && !unit.nil?
+      name = name.split("(").first
+      unit = unit.split("(").first
+      puts "#{title} #{name} >> #{unit}"
+    end
+  end
+end
+=end
 
-    ## material create
-    if Material.where(name: key).count == 0 && key != "" && key != " "
-      name = key
+=begin
+def validate(string)
+  validate_string = ["말린것", "마른것", "삶은것", "찐것", "볶은것", "각종", "익힌것", "데친것"]
+  result = string
+  validate_string.each do |word|
+    if string.include? word
+      result = string.delete(word).delete(" ")
+    end
+  end
+  return result
+end
+(1..19).each do |index|
+  url = "http://haemukja.com/get_bf_group_items.json?bf_group_id=" + index.to_s
+  input = JSON.load(open(url))
+  input.each do |material|
+    name = validate(material["name"])
+    if name == "소멘"
+      name = "소면"
+    end
+    if Material.where(name: name).count == 0
       material = Material.new(name: name)
       if material.save!
-        puts "#{name}is created"
+        puts "#{material.name} is created"
       end
     end
-
-    ## unit create
-    unit = value.split(/(?<=\d)(?=[ㄱ-ㅎ|가-힣|a-z|A-Z|])/).last
-    if Unit.where(name: unit).count == 0 && unit != "" && unit != " "
-      unit = Unit.new(name: unit)
-      if unit.save!
-        puts "#{name}is created"
-      end
-    end
-
-    if Unit.where(name: unit).count > 0 && Material.where(name: key).count > 0
-      unit = Unit.where(name: unit).first
-      material = Material.where(name: key).first
-      if MaterialUnit.where(material_id: material.id, unit_id: unit.id).count == 0
-         MaterialUnit.create(material_id: material.id, unit_id: unit.id)
-         puts "unit materail relation created"
-      end
-    end
-
   end
 end
-
-
-
+=end
