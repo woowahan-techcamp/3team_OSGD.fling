@@ -25,10 +25,15 @@
 .navi li {
     padding-right: 15px;
     padding-left: 15px;
-    border-right: 1px solid;
+    border-right: 1px solid #666666;
     display: inline-block;
 }
 
 .navi :nth-child(4) {
     border-right: 0px;
+}
+
+.navi li a {
+    font-size: 12px;
+    color:#666666;
 }
