@@ -1,0 +1,34 @@
+.wrap {
+    position: relative;
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.headmenu {
+    height: 50px;
+}
+
+.logo {
+    padding-left: 50px;
+    float: left;
+}
+
+.navi_wrap {
+    position: relative;
+    float: right;
+}
+
+.navi {
+    margin-right: 50px;
+}
+
+.navi li {
+    padding-right: 15px;
+    padding-left: 15px;
+    border-right: 1px solid;
+    display: inline-block;
+}
+
+.navi :nth-child(4) {
+    border-right: 0px;
+}
