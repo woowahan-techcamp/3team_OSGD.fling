@@ -1,3 +1,12 @@
+@font-face {
+    font-family: Notosanscjkkr;
+    src: url(../assets/font/NotoSansCJKkr-Light.woff);
+}
+
+body {
+    font-family: Notosanscjkkr;
+}
+
 .wrap {
     position: relative;
     width: 1080px;
