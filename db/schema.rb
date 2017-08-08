@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806123315) do
+ActiveRecord::Schema.define(version: 20170808012536) do
+
+  create_table "material_units", force: :cascade do |t|
+    t.integer  "material_id"
+    t.integer  "unit_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["material_id"], name: "index_material_units_on_material_id"
+    t.index ["unit_id"], name: "index_material_units_on_unit_id"
+  end
 
   create_table "materials", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_materials_on_name"
   end
 
   create_table "recipe_materials", force: :cascade do |t|
@@ -34,6 +44,12 @@ ActiveRecord::Schema.define(version: 20170806123315) do
     t.string   "title"
     t.string   "url"
     t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

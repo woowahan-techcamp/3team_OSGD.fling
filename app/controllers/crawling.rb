@@ -1,12 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-#
-
 require 'nokogiri'
 require 'open-uri'
 require 'json'
@@ -52,14 +43,14 @@ def case2(input)
   return material
 end
 
-(6855697..6874288).each do |index|
+(6855677..6855697).each do |index|
   url = "http://www.10000recipe.com/recipe/" + index.to_s
   input = Nokogiri::HTML(open(url))
   material = get_material(input)
+  puts material
   material.each do |key, value|
 
-    ## material create
-    if Material.where(name: key).count == 0 && key != "" && key != " "
+    if Material.where(name: key).nil? && key != "" && key != " "
       name = key
       material = Material.new(name: name)
       if material.save!
@@ -67,26 +58,13 @@ end
       end
     end
 
-    ## unit create
     unit = value.split(/(?<=\d)(?=[ㄱ-ㅎ|가-힣|a-z|A-Z|])/).last
-    if Unit.where(name: unit).count == 0 && unit != "" && unit != " "
+    if Unit.where(name: unit).nil? && unit != "" && unit != " "
       unit = Unit.new(name: unit)
       if unit.save!
         puts "#{name}is created"
       end
     end
 
-    if Unit.where(name: unit).count > 0 && Material.where(name: key).count > 0
-      unit = Unit.where(name: unit).first
-      material = Material.where(name: key).first
-      if MaterialUnit.where(material_id: material.id, unit_id: unit.id).count == 0
-         MaterialUnit.create(material_id: material.id, unit_id: unit.id)
-         puts "unit materail relation created"
-      end
-    end
-
   end
 end
-
-
-
