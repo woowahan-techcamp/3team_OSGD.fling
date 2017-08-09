@@ -13,7 +13,7 @@ section {
     font-weight: 500;
 }
 
-html, body, ul {
+html, body, ul, dt, dd {
     margin: 0;
     padding: 0;
 }
@@ -187,7 +187,6 @@ section {
     font-weight: 100;
     color: #888;
     float: left;
-    margin: 0;
     margin-left: 3px;
 }
 
