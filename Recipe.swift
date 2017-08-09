@@ -10,7 +10,7 @@ import Foundation
 
 class Recipe {
 
-    let id: String
+    let rid: String
     let title: String
     let url: String
     let image: String
@@ -18,11 +18,29 @@ class Recipe {
     typealias ListProduct = [(product: Product, number: Int)]
 
     init(rid: String, title: String, url: String, image: String, products: [Product]) {
-        self.id = rid
+        self.rid = rid
         self.title = title
         self.url = url
         self.image = image
         self.products = products
+    }
+
+    init?(data: [String:Any]) {
+        guard let id = data["id"]! as? String,
+            let title = data["title"]! as? String,
+            let url = data["url"]! as? String,
+            let image = data["image"]! as? String else {
+                return nil
+        }
+//        guard let products = data["products"]! as? String else {
+//            return
+//        }
+
+        self.rid = id
+        self.title = title
+        self.url = url
+        self.image = image
+        self.products = []
     }
 
     func numberOf(product: Product) -> Int {
