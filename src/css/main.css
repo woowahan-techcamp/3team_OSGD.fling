@@ -87,6 +87,15 @@ a:hover {
     position: relative;
 }
 
+.search_caret {
+    background-color: white;
+    height: 50px;
+    width: 4px;
+    position: relative;
+    top: 270px;
+    left: 195px;
+}
+
 .search_window {
     border-bottom: 3px solid white;
     width: 700px;
