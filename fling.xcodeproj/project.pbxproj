@@ -23,6 +23,8 @@
 		98AD7CA11F3ACCBA00500BD9 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C31F3A989800E4EA96 /* Recipe.swift */; };
 		98AD7CA21F3ACCBD00500BD9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C51F3A98A200E4EA96 /* Product.swift */; };
 		98AD7CA81F3AEB0D00500BD9 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AD7CA71F3AEB0D00500BD9 /* logo.png */; };
+		98AD7CAA1F3AEF0200500BD9 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD7CA91F3AEF0200500BD9 /* AlamofireImage.framework */; };
+		98AD7CAC1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */; };
 		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
 		BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,8 @@
 		98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = fling/HomeViewController.swift; sourceTree = "<group>"; };
 		98AD7CA71F3AEB0D00500BD9 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../logo.png; sourceTree = "<group>"; };
+		98AD7CA91F3AEF0200500BD9 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
+		98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -79,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98AD7CAA1F3AEF0200500BD9 /* AlamofireImage.framework in Frameworks */,
 				98AD7C9C1F3ACA0000500BD9 /* Alamofire.framework in Frameworks */,
 				9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */,
 			);
@@ -106,6 +111,7 @@
 		46116A025867F2B72F6F7F0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98AD7CA91F3AEF0200500BD9 /* AlamofireImage.framework */,
 				98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */,
 				7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */,
 				C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */,
@@ -192,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */,
+				98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -469,7 +476,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fling/Pods-fling-frameworks.sh\"\n\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fling/Pods-fling-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D677320498FC1AB34FFD9024 /* [CP] Check Pods Manifest.lock */ = {
@@ -497,6 +504,7 @@
 				984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */,
 				98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */,
 				98AD7CA21F3ACCBD00500BD9 /* Product.swift in Sources */,
+				98AD7CAC1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift in Sources */,
 				98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */,
 				98AD7CA11F3ACCBA00500BD9 /* Recipe.swift in Sources */,
 			);
