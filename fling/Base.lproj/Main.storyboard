@@ -12,7 +12,7 @@
         <!--홈-->
         <scene sceneID="7jI-9w-HHX">
             <objects>
-                <viewController id="ef4-uR-PkL" sceneMemberID="viewController">
+                <viewController id="ef4-uR-PkL" customClass="HomeViewController" customModule="fling" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JiZ-N9-WnK"/>
                         <viewControllerLayoutGuide type="bottom" id="LuR-DK-IFg"/>
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmc-3a-pk4">
-                                <rect key="frame" x="309" y="208" width="30" height="30"/>
+                                <rect key="frame" x="309" y="247" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="검색"/>
                                 <connections>
@@ -46,16 +46,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5vE-Cc-2dM">
-                                <rect key="frame" x="43" y="208" width="258" height="30"/>
+                                <rect key="frame" x="43" y="247" width="258" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sGI-xy-CDR">
-                                <rect key="frame" x="113" y="90" width="149" height="102"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WYK-4L-NE7">
                                 <rect key="frame" x="22" y="294" width="337" height="223"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -77,10 +73,17 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="sGI-xy-CDR">
+                                <rect key="frame" x="113" y="80" width="149" height="151"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="홈" id="dZ9-fG-JV3"/>
+                    <connections>
+                        <outlet property="homeView" destination="bx7-rk-2iM" id="HzI-yw-HpH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmZ-4g-OyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -506,9 +509,12 @@
             <point key="canvasLocation" x="-1042.4000000000001" y="-368.36581709145429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo.png" width="640" height="716"/>
+    </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ZXJ-sD-cUC"/>
         <segue reference="DT1-wf-wUI"/>
         <segue reference="9MT-od-Umb"/>
-        <segue reference="mGC-vg-vpT"/>
     </inferredMetricsTieBreakers>
 </document>
