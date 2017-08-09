@@ -13,16 +13,18 @@ section {
     font-weight: 500;
 }
 
-html, body, ul, dt, dd {
+html, body, ul, dt, dd, p {
     margin: 0;
     padding: 0;
 }
 
 a {
     color: inherit;
+    text-decoration: none;
+    opacity: 0.8;
 }
 
-a :hover {
+a:hover {
     opacity: 1;
 }
 
@@ -127,7 +129,6 @@ a :hover {
     position: absolute;
     right: 35px;
     bottom: 20px;
-    opacity: 0.8;
 }
 
 .heamuk_link:after {
@@ -210,4 +211,139 @@ section {
     width: 31px;
     height: 62px;
     display: inline-block;
+}
+footer.main_footer {
+    margin-top: 80px;
+    border-top: 1px solid #eee;
+}
+
+.footer_nav {
+    padding: 18px 0 18px 0;
+    text-align: center;
+    font-size: 10pt;
+    color: #666;
+    border-bottom: 1px solid #eee;
+    background: #f5f5f5;
+}
+
+.footer_nav > ul {
+    list-style-type: none;
+}
+
+.footer_nav > ul > li {
+    display: inline-block;
+}
+
+.footer_nav > ul > li:not(:last-child) {
+    padding-right: 10px;
+}
+
+.footer_nav > ul > li:not(:last-child):after {
+    content: '';
+    border-right: 1px solid #ccc;
+    margin-top: 2px;
+    padding-left: 10px;
+    font-size: 8pt;
+}
+
+.footer_main {
+    width: 1080px;
+    margin: 0 auto;
+    padding: 40px 0 40px 0;
+}
+
+.footer_left {
+    float: left;
+}
+
+.company_logo {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    background: url(../assets/img/team_logo.png);
+    background-size: cover;
+}
+
+.company_info {
+    float: left;
+    color: #666;
+    font-weight: 300;
+    font-size: 10pt;
+    margin-bottom: 30px;
+}
+
+.company_copyright {
+    clear: both;
+    color: #333;
+    font-size: 10pt;
+    font-weight: 300;
+}
+
+.company_design_cr {
+    font-size: 10pt;
+    font-weight: 300;
+    color: #777;
+}
+
+.footer_right {
+    color: #666;
+    text-align: right;
+    padding-bottom: 10px;
+}
+
+.cs_title {
+    font-size: 18pt;
+    font-weight: 700;
+    line-height: 1rem;
+}
+
+.cs_number {
+    font-size: 35pt;
+    font-weight: 700;
+}
+
+.cs_open_time {
+    font-size: 14pt;
+}
+
+.cs_time_week > dt {
+    display: inline-block;
+    padding-right: 20px;
+    font-weight: 500;
+}
+
+.cs_time_week > dd {
+    display: inline-block;
+    font-weight: 300;
+}
+
+.footer_sns {
+    height: 40px;
+}
+
+.footer_sns > div {
+    width: 40px;
+    height: 40px;
+    float: right;
+    margin: 10px;
+}
+
+.sns_instagram {
+    background: url(../assets/img/insta_logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.sns_facebook {
+    background: url(../assets/img/facebook_logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.sns_twitter {
+    background: url(../assets/img/twitter_logo.png);
+    background-position-y: 4px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
