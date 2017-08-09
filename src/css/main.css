@@ -1,15 +1,29 @@
-@font-face {
-    font-family: Notosanscjkkr;
-    src: url(../assets/font/NotoSansCJKkr-Light.woff);
-}
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 body {
-    font-family: Notosanscjkkr;
+    font-family: 'Noto Sans KR';
+    -webkit-font-smoothing: antialiased;
+}
+
+header, nav {
+    font-weight: 300;
+}
+
+section {
+    font-weight: 500;
 }
 
 html, body {
     margin: 0;
     padding: 0;
+}
+
+a {
+    color: inherit;
+}
+
+a :hover {
+    opacity: 1;
 }
 
 .wrap {
@@ -19,7 +33,7 @@ html, body {
 }
 
 .head_menu {
-    height: 50px;
+    height: 60px;
 }
 
 .logo_wrap {
@@ -31,8 +45,8 @@ html, body {
     background-image: url(../assets/img/temp_logo.png);
     background-repeat: no-repeat;
     background-size: contain;
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
 }
 
 .navi_wrap {
@@ -41,13 +55,12 @@ html, body {
 }
 
 .navi {
-    margin-right: 50px;
+    margin-right: 30px;
 }
 
 .navi li {
     padding-right: 15px;
     padding-left: 15px;
-    border-right: 1px solid #666666;
     display: inline-block;
 }
 
@@ -56,8 +69,8 @@ html, body {
 }
 
 .navi li a {
-    font-size: 12px;
-    color:#666666;
+    font-size: 16px;
+    color:#333;
 }
 
 .main_header {
@@ -66,4 +79,56 @@ html, body {
     background-size: cover;
     width: 100%;
     height: 480px;
+    color: white;
+    text-align: center;
 }
+
+.search_window {
+    border-bottom: 3px solid white;
+    width: 700px;
+    margin: 0 auto;
+    padding: 210px 10px 0 10px;
+}
+
+.search_text {
+    width: 640px;
+    height: 70px;
+    font-size: 28pt;
+    font-weight: 100;
+    background: transparent;
+    color: white;
+    border: 0;
+}
+
+.search_icon_wrap {
+    float: right;
+    padding-top: 16px;
+}
+
+.search_icon {
+    background-image: url(../assets/img/search_icon3x.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+}
+
+.search_desc {
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.heamuk_link {
+    font-weight: 400;
+    letter-spacing: -0.8pt;
+    position: absolute;
+    right: 35px;
+    bottom: 20px;
+    opacity: 0.8;
+}
+
+.heamuk_link:after {
+    padding-left: 12px;
+    content: url(../assets/img/arrow_icon.png);
+}
+
