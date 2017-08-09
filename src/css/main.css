@@ -13,7 +13,7 @@ section {
     font-weight: 500;
 }
 
-html, body {
+html, body, ul {
     margin: 0;
     padding: 0;
 }
@@ -52,6 +52,7 @@ a :hover {
 .navi_wrap {
     position: relative;
     float: right;
+    margin-top: 16px;
 }
 
 .navi {
@@ -81,6 +82,7 @@ a :hover {
     height: 480px;
     color: white;
     text-align: center;
+    position: relative;
 }
 
 .search_window {
@@ -98,6 +100,7 @@ a :hover {
     background: transparent;
     color: white;
     border: 0;
+    outline: 0;
 }
 
 .search_icon_wrap {
@@ -132,3 +135,80 @@ a :hover {
     content: url(../assets/img/arrow_icon.png);
 }
 
+section {
+    text-align: center;
+}
+
+.section_title {
+    display: inline-block;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.recommend_content_wrap {
+    position: relative;
+}
+
+.recommend_content_list li {
+    display: inline-block;
+}
+
+.recommend_content_list_node {
+    width: 310px;
+    height: 162px;
+    background-color: #f9f9f9;
+}
+
+.recommend_number {
+    float: left;
+    width: 36px;
+    height: 36px;
+    background-color: #ffb742;
+    color: white;
+    font-weight: 700;
+}
+
+.recommend_number p {
+    margin-top: 4px;
+}
+
+.recommend_content_list > li:not(:last-child) {
+    padding-right: 20px;
+}
+
+.recommend_content_list dt {
+    margin-top: 20px;
+    font-weight: 400;
+}
+
+.recommend_content_list dd {
+    font-weight: 100;
+    color: #888;
+    float: left;
+    margin: 0;
+    margin-left: 3px;
+}
+
+.slide_arrow.prev {
+    background-image: url(../assets/img/left_arrow_icon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    left: 0;
+}
+
+.slide_arrow.next {
+    background-image: url(../assets/img/right_arrow_icon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    right: 0;
+}
+
+.slide_arrow {
+    position: absolute;
+    top: 50px;
+    width: 31px;
+    height: 62px;
+    display: inline-block;
+}
