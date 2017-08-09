@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class HomeViewController: UIViewController {
 
     let network = Network()
+    var recipes = [Recipe]()
 
     @IBOutlet var homeView: UIView!
+    @IBOutlet weak var sampleRecipeCollection: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,11 @@ class HomeViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                                  action: #selector(HomeViewController.dismissKeyboard))
         homeView.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
+                                               name: Notification.Name.init(rawValue: "flingRecipe"), object: nil)
+        
+        network.getFlingRecipe()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,5 +37,36 @@ class HomeViewController: UIViewController {
 
     func dismissKeyboard() {
         homeView.endEditing(true)
+    }
+    
+    func recieveNotification(notification: Notification) {
+        guard let recipes = notification.userInfo?["data"] as? [Recipe] else {
+            return
+        }
+        
+        self.recipes = recipes
+        sampleRecipeCollection.reloadData()
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = sampleRecipeCollection.dequeueReusableCell(withReuseIdentifier: "mainRecipeCell",
+                                                              for: indexPath) as! HomeRecipeCollectionViewCell
+        if recipes.count > 0 {
+            cell.sampleRecipeImage?.af_setImage(withURL: URL(string: recipes[indexPath.row].image)!)
+            cell.sampleRecipeImage?.contentMode = UIViewContentMode.scaleAspectFit
+            cell.sampleRecipeLabel.text = recipes[indexPath.row].title
+        }
+
+        return cell
     }
 }

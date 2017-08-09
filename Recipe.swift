@@ -10,14 +10,14 @@ import Foundation
 
 class Recipe {
 
-    let rid: String
+    let rid: Int
     let title: String
     let url: String
     let image: String
     public private(set) var products: [Product]
     typealias ListProduct = [(product: Product, number: Int)]
 
-    init(rid: String, title: String, url: String, image: String, products: [Product]) {
+    init(rid: Int, title: String, url: String, image: String, products: [Product]) {
         self.rid = rid
         self.title = title
         self.url = url
@@ -26,7 +26,7 @@ class Recipe {
     }
 
     init?(data: [String:Any]) {
-        guard let id = data["id"]! as? String,
+        guard let id = data["id"]! as? Int,
             let title = data["title"]! as? String,
             let url = data["url"]! as? String,
             let image = data["image"]! as? String else {

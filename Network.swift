@@ -25,7 +25,7 @@ class Network {
                     recipes.append(recipe)
                 })
             }
-            NotificationCenter.default.post(name: Notification.Name.init(rawValue: ""),
+            NotificationCenter.default.post(name: Notification.Name.init(rawValue: "flingRecipe"),
                                             object: self, userInfo: ["data": recipes])
         }
     }
