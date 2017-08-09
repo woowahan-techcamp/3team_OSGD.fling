@@ -15,13 +15,17 @@ class Product {
     private let price: Decimal
     private let weight: String
 
-    init() {
+    init(pid: String, name: String, price: Decimal, weight: String) {
+        self.id = pid
+        self.name = name
+        self.price = price
+        self.weight = weight
     }
 
     func getId() -> String {
         return self.id
     }
-    
+
     func getPrice() -> Decimal {
         return self.price
     }
