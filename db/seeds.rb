@@ -12,6 +12,7 @@ require 'open-uri'
 require 'json'
 require 'uri'
 
+=begin
 #for product
 Material.create!([
   {name: "귀리"},
@@ -759,9 +760,9 @@ Material.create!([
   {name: "화이트와인"},
   {name: "흑맥주"}
 ])
+=end
 
 
-=begin
 def make_ourform(product_title)
   result = Hash.new
   name = ""
@@ -782,10 +783,14 @@ def make_ourform(product_title)
   result["weight"] = weight
   result["bundle"] = bundle
   return result
-end Material.last(545).each do |m| keyword = m.name
-  url = "http://www.coupang.com/np/search?component=194176&q=" + URI.encode(keyword)
+end
+
+Material.first(100).each do |m|
+  keyword = m.name
+  puts keyword
+  url = "http://www.coupang.com/np/search?component=194176&q=" + URI.encode(keyword) + "&channel=user"
   data = Nokogiri::HTML(open(url))
-  if data.nil?
+  if !data.nil?
     product = data.css('li.search-product a dl').first
     if product.css('dd.descriptions div.price-area strong.price-value').first.nil?
       product = data.css('li.search-product a dl').second
@@ -802,7 +807,6 @@ end Material.last(545).each do |m| keyword = m.name
     end
   end
 end
-=end
 
 
 # for recipe crawilng
