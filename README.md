@@ -1,2 +1,2 @@
-3Team Backend playground
-Node VS ROR
+## 3Team Backend playground
+Backend project using Ruby on Rails.
