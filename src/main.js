@@ -29,14 +29,52 @@ function fillContentRecommendSection(data, selector) {
         e.children[0].children[0].style.backgroundImage = "url('" + data[i].image  + "')";
 
         e.children[1].children[0].href = data[i].url;
-        ////
+        ////지울것
         e.children[1].children[0].innerHTML = data[i].title;
-        /*
+        /*추가할것
         e.children[1].children[0].innerHTML = data[i].subtitle;
         e.children[2].innerHTML = data[i].title + "  |  " + data[i].id;
         */
         i++;
     })
-    
-
 }
+
+
+
+document.querySelector(".slide_arrow.prev").addEventListener("click", (e) => {
+    const a = document.querySelector(".list_wrap");
+    a.style.transition = "1s";
+    a.style.transform = "translateX(990px)";
+    
+    //맨 뒤 떼서 앞에 붙이고 제자리
+    a.addEventListener("transitionend", avs, false);
+
+    function avs() {
+        a.removeEventListener("transitionend", avs);
+        const lastNode = a.children[2].cloneNode(true);
+        a.removeChild(a.children[2]);
+        a.insertBefore(lastNode, a.children[0]);
+        a.style.transition = "none";
+        a.style.transform = "translateX(0px)";
+    }
+    
+})
+
+
+document.querySelector(".slide_arrow.next").addEventListener("click", (e) => {
+    const a = document.querySelector(".list_wrap");
+    a.style.transition = "1s";
+    a.style.transform = "translateX(-990px)";
+    a.addEventListener("transitionend", avs, false);
+
+    function avs() {
+        a.removeEventListener("transitionend", avs);
+        const firstNode = a.children[0].cloneNode(true);
+        a.removeChild(a.children[0]);
+        a.insertBefore(firstNode, a.children[2]);
+        a.style.transition = "none";
+        a.style.transform = "translateX(0px)";
+        a.removeEventListener("transitionend", avs);
+    }
+
+})

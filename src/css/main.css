@@ -168,6 +168,7 @@ section {
 
 .recommend_content_wrap {
     position: relative;
+    overflow: hidden;
 }
 
 .recommend_content_list li {
@@ -263,6 +264,7 @@ section {
     width: 31px;
     height: 62px;
     display: inline-block;
+    z-index: 50;
 }
 footer.main_footer {
     margin-top: 80px;
@@ -416,4 +418,34 @@ footer.main_footer {
 
 ::-webkit-input-placeholder { 
       color: white;
+}
+
+.list_wrap {
+    width: 7000px;
+    position: relative;
+    height: 250px;
+    right: 940px;
+}
+
+.list_wrap li {
+    float: left;
+}
+
+.hidea {
+    background-color: white;
+    width: 50px;
+    height: 280px;
+    position: absolute;
+    z-index: 30;
+}
+
+
+.hideb {
+    background-color: white;
+    width: 50px;
+    height: 280px;
+    position: absolute;
+    z-index: 30;
+    left: 1042px;
+
 }
