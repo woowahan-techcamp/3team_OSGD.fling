@@ -200,6 +200,8 @@ section {
     height: 162px;
     background-color: #f9f9f9;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .recommend_number {
