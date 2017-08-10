@@ -89,11 +89,11 @@ a:hover {
 
 .search_caret {
     background-color: white;
-    height: 50px;
-    width: 4px;
+    height: 45px;
+    width: 0.5px;
     position: relative;
-    top: 270px;
-    left: 195px;
+    top: 269px;
+    left: 200px;
 }
 
 .search_window {
