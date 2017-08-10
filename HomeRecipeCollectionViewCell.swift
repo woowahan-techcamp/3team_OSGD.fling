@@ -12,6 +12,4 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var sampleRecipeImage: UIImageView!
     @IBOutlet weak var sampleRecipeLabel: UILabel!
-    
-
 }
