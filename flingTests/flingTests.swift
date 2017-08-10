@@ -33,4 +33,9 @@ class FlingTests: XCTestCase {
         }
     }
 
+    func testCheckUrl() {
+        let controller = HomeViewController()
+        
+        XCTAssertTrue(controller.checkRecipeUrl(url: "http://haemukja.com/recipes/49"))
+    }
 }
