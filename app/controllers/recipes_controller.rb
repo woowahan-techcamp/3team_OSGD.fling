@@ -18,17 +18,19 @@ class RecipesController < ApplicationController
     render json: @recipes.to_json(only: [:id, :title, :url, :image])
   end
 
+  def get_material
+    @products = Product.new
+    if Product.count > 5
+      @products = Product.last(4)
+    end
+    render json: @products.to_json(only: [:id, :name, :image, :weight, :bundle, :price])
+  end
+
   def create
     url = params[:url]
     if Recipe.where(url: url).present?
-      @products = Product.new
-      if Product.count > 5
-        @products = Product.last(4)
-      end
-      @recipe = Recipe.where(url: url).first
-      render json: {recipe: @recipe.to_json(only: [:id, :title, :url, :image]),
-                    materials: @products.to_json(only: [:id, :name, :image, :weight, :bundle, :price])
-      }
+            @recipe = Recipe.where(url: url).first
+      render json: @recipe.to_json(only: [:id, :title, :url, :image])
     else
       data = Nokogiri::HTML(open(url))
       if !data.nil?
@@ -49,13 +51,7 @@ class RecipesController < ApplicationController
 
         @recipe = Recipe.new(title: title, url: url, image: image)
         if @recipe.save!
-          @products = Product.new
-          if Product.count > 5
-             @products = Product.last(4)
-          end
-          render json: {recipe: @recipe.to_json(only: [:id, :title, :url, :image]),
-                        materials: @products.to_json(only: [:id, :name, :image, :weight, :bundle, :price])
-                        }
+          render json: @recipe.to_json(only: [:id, :title, :url, :image])
         else
           render status: "unpermitted url"
         end
