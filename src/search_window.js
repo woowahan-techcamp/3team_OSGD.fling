@@ -1,11 +1,10 @@
-class searchWindowClass {
-    constructor(caretSelector, searchTextSelector, clickIconSelector, searchWindowSelector) {
-        this.caret();
+class textBox {
+    constructor(caretSelector, searchTextSelector, clickIconSelector) {
         this.caretIcon = document.querySelector(caretSelector);
         this.searchText = document.querySelector(searchTextSelector);
         this.clickIcon = document.querySelector(clickIconSelector);
-        this.searchWindow = document.querySelector(searchWindowSelector);
         this.interval;
+        this.caret();
         this.eventInit();
     }
 
@@ -18,9 +17,6 @@ class searchWindowClass {
         });
     }
 
-    dropDownInit() {
-        
-    }
 
     caret() {
         let turn = 0;
