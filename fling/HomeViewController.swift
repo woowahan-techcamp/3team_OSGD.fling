@@ -18,10 +18,14 @@ class HomeViewController: UIViewController {
     @IBOutlet var homeView: UIView!
     @IBOutlet weak var sampleRecipeCollection: UICollectionView!
     @IBOutlet weak var urlField: UITextField!
+    @IBOutlet weak var urlWarningLabel: UILabel!
     @IBAction func searchButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "HomeToRecipe", sender: self.urlField.text!)
+        if checkRecipeUrl(url: self.urlField.text ?? "") {
+            self.performSegue(withIdentifier: "HomeToRecipe", sender: self.urlField.text!)
+        } else {
+            urlWarningLabel.isHidden = false
+        }
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,8 @@ class HomeViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
                                                name: Notification.Name.init(rawValue: "flingRecipe"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
+                                               name: NSNotification.Name.init(rawValue: "UIKeyboardWillShowNotification"), object: nil)
         
         network.getFlingRecipe()
     }
@@ -40,19 +46,26 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    func keyboardWillShow() {
+        urlWarningLabel.isHidden = true
+    }
+    
     func dismissKeyboard() {
         homeView.endEditing(true)
     }
-    
+
     func recieveNotification(notification: Notification) {
-        guard let recipes = notification.userInfo?["data"] as? [Recipe] else {
-            return
+        if notification.name == Notification.Name.init(rawValue: "flingRecipe") {
+            guard let recipes = notification.userInfo?["data"] as? [Recipe] else {
+                return
+            }
+            self.recipes = recipes
+            sampleRecipeCollection.reloadData()
+        } else if notification.name == Notification.Name.init(rawValue: "UIKeyboardWillShowNotification") {
+            keyboardWillShow()
         }
-        
-        self.recipes = recipes
-        sampleRecipeCollection.reloadData()
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "HomeToRecipe") {
             let secondViewController = segue.destination as! RecipeViewController
@@ -60,6 +73,14 @@ class HomeViewController: UIViewController {
             secondViewController.searchUrl = searchUrl
         }
     }
+
+    func checkRecipeUrl(url: String) -> Bool {
+        if !url.contains("haemukja.com/recipes/") {
+            return false
+        }
+        return true
+    }
+
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -78,7 +99,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.sampleRecipeImage?.af_setImage(withURL: URL(string: recipes[indexPath.row].image)!)
             cell.sampleRecipeImage.frame.size = CGSize(width: 180, height: 180)
 //            cell.sampleRecipeImage.bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
-            
+
             cell.sampleRecipeLabel.text = recipes[indexPath.row].title
         }
 
