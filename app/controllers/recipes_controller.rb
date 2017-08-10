@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
     render json: @recipes.to_json(only: [:id, :title, :url, :image])
   end
 
-  def get_material
+  def get_products
     @products = Product.new
     if Product.count > 5
       @products = Product.last(4)
