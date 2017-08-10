@@ -14,14 +14,12 @@ class HomeViewController: UIViewController {
 
     let network = Network()
     var recipes = [Recipe]()
-    var searchUrl = ""
 
     @IBOutlet var homeView: UIView!
     @IBOutlet weak var sampleRecipeCollection: UICollectionView!
     @IBOutlet weak var urlField: UITextField!
     @IBAction func searchButton(_ sender: Any) {
-        searchUrl = self.urlField.text!
-        print(self.urlField.text ?? "none")
+        self.performSegue(withIdentifier: "HomeToRecipe", sender: self.urlField.text!)
     }
     
 
@@ -55,11 +53,11 @@ class HomeViewController: UIViewController {
         sampleRecipeCollection.reloadData()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if (segue.identifier == "MainToTimer") {
-            let secondViewController = segue.destinationViewController as YourSecondViewController
-            let duration = sender as Double
-            secondViewController.duration = duration
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if (segue.identifier == "HomeToRecipe") {
+            let secondViewController = segue.destination as! RecipeViewController
+            let searchUrl = sender as! String
+            secondViewController.searchUrl = searchUrl
         }
     }
 }

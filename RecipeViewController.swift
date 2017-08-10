@@ -10,9 +10,10 @@ import UIKit
 
 class RecipeViewController: UIViewController {
 
+    var searchUrl = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 

@@ -12,6 +12,7 @@
         <!--홈-->
         <scene sceneID="7jI-9w-HHX">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmZ-4g-OyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ef4-uR-PkL" customClass="HomeViewController" customModule="fling" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JiZ-N9-WnK"/>
@@ -27,7 +28,6 @@
                                 <state key="normal" title="검색"/>
                                 <connections>
                                     <action selector="searchButton:" destination="ef4-uR-PkL" eventType="touchUpInside" id="IHl-48-E0V"/>
-                                    <segue destination="nM8-7V-YSK" kind="show" id="eg6-tH-X6D"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlT-l8-DWw">
@@ -111,9 +111,9 @@
                         <outlet property="homeView" destination="bx7-rk-2iM" id="HzI-yw-HpH"/>
                         <outlet property="sampleRecipeCollection" destination="WYK-4L-NE7" id="y1Z-33-MLU"/>
                         <outlet property="urlField" destination="5vE-Cc-2dM" id="kCC-iX-rdG"/>
+                        <segue destination="nM8-7V-YSK" kind="show" identifier="HomeToRecipe" id="Cg7-yO-T2W"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rmZ-4g-OyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-290.39999999999998" y="-368.36581709145429"/>
         </scene>
@@ -178,7 +178,7 @@
         <!--레시피-->
         <scene sceneID="gHy-Wo-oyo">
             <objects>
-                <viewController id="nM8-7V-YSK" sceneMemberID="viewController">
+                <viewController id="nM8-7V-YSK" customClass="RecipeViewController" customModule="fling" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RfQ-Uv-L5C"/>
                         <viewControllerLayoutGuide type="bottom" id="3E7-eL-iHx"/>
@@ -31146,8 +31146,8 @@ AAAAAAAAAAAAHALIA
         <image name="logo.png" width="640" height="716"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9MT-od-Umb"/>
         <segue reference="ZXJ-sD-cUC"/>
         <segue reference="DT1-wf-wUI"/>
+        <segue reference="9MT-od-Umb"/>
     </inferredMetricsTieBreakers>
 </document>
