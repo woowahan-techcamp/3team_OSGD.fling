@@ -30,12 +30,14 @@ a:hover {
 
 .wrap {
     position: relative;
-    width: 1080px;
-    margin: 0 auto;
 }
 
 .head_menu {
     height: 60px;
+    max-width: 1080px;
+    margin: 0 auto;
+    font-size: 14pt;
+    font-weight: 400;
 }
 
 .logo_wrap {
@@ -44,24 +46,25 @@ a:hover {
 }
 
 .fling_logo {
-    background-image: url(../assets/img/temp_logo.png);
+    /*background-image: url(../assets/img/temp_logo.png);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: contain;*/
     width: 65px;
     height: 65px;
 }
 
-.navi_wrap {
+.head_item {
     position: relative;
-    float: right;
-    margin-top: 16px;
+    padding-top: 16px;
+    text-align: right;
 }
 
-.navi {
+.head_item > ul {
     margin-right: 30px;
+    white-space: nowrap;
 }
 
-.navi li {
+.head_item > ul > li {
     padding-right: 15px;
     padding-left: 15px;
     display: inline-block;
@@ -100,7 +103,7 @@ a:hover {
     border-bottom: 3px solid white;
     width: 700px;
     margin: 0 auto;
-    padding: 210px 10px 0 10px;
+    padding: 150px 10px 0 10px;
 }
 
 .search_text {
