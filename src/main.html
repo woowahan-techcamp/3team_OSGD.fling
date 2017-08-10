@@ -6,9 +6,9 @@
         <link rel="stylesheet" href="./css/main.css">
         <script type="search_bar_template" id="search_bar_template">
             <div class="search_body">
-                <div class="search_caret"></div>
+                
                 <div class="search_window">
-                    <input id="query_url" name="query_url" class="search_text" placeholder="", type="text">
+                    <input id="query_url" name="query_url" class="search_text" placeholder="" autofocus="autofocus" autocomplete="off" type="text">
                     <div class="search_icon_wrap">
                         <button class="search_icon"  type="submit"></button>
                     </div>
@@ -33,11 +33,17 @@
                     </div>
                 </nav>
 
-                <form class="search_form" action="./recipe_page.html" method="get">
-                    <div class="search_bar">
-                        
+                <div class="search_body">
+                    <div class="search_window">
+                        <form class="search_form" action="./recipe_page.html" method="get">
+                            <input id="query_url" name="query_url" class="search_text" placeholder="레시피를 장바구니에 담아드립니다" autofocus="autofocus" autocomplete="off" type="text">
+                            <div class="search_icon_wrap">
+                                <button class="search_icon"  type="submit"></button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
+            
 
                 <div class="search_desc">
                     '해먹남녀'에서 원하는 레시피를 복사, 붙여넣기 해주세요.

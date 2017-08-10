@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", (e) => {
-    const a = new textBox(".search_form", "#search_bar_template", "레시피를 장바구니에 담아드립니다");
+    
 })
 
 class textBox {
