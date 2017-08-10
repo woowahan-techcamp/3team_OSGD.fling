@@ -295,11 +295,14 @@ footer.main_footer {
     font-size: 8pt;
 }
 
-.footer_main {
+.footer_wrap {
     overflow: hidden;
     min-width: 860px;
     max-width: 1080px;
     margin: 0 auto;
+}
+
+.footer_main {
     padding: 40px;
 }
 
