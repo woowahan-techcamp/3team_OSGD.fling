@@ -1,7 +1,4 @@
-
-console.log(1);
-console.log(2);
-
-const a = 1;
-let b = 2;
+document.addEventListener("DOMContentLoaded", (e) => {
+    const a = new searchWindowClass(".search_caret", ".search_text", ".search_icon", ".search_window")
+})
 

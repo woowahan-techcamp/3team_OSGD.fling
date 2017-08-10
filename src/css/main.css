@@ -123,6 +123,8 @@ a:hover {
     background-image: url(../assets/img/search_icon3x.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: Transparent;
+    border: none;
     width: 40px;
     height: 40px;
 }
@@ -355,4 +357,8 @@ footer.main_footer {
     background-position-y: 4px;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+::-webkit-input-placeholder { 
+      color: white;
 }

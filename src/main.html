@@ -23,13 +23,13 @@
 
             <header class="main_header">
                 <div class="search_bar">
-                    <form class="search_form" action="" method="">
+                    <form class="search_form" action="./recipe_page.html" method="get">
                         <div class="search_body">
                             <div class="search_caret"></div>
                             <div class="search_window">
-                                <input id="query" name="query" class="search_text" value="레시피를 장바구니에 담아드립니다" type="text">
+                                <input id="query_url" name="query_url" class="search_text" placeholder="레시피를 장바구니에 담아드립니다", type="text">
                                 <div class="search_icon_wrap">
-                                    <div class="search_icon"></div>
+                                    <button class="search_icon"  type="submit"></button>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                     '해먹남녀'에서 원하는 레시피를 복사, 붙여넣기 해주세요.
                 </div>
                 <div class="recipe_site_link">
-                    <a href="http://haemukja.com/">
+                    <a target="_blank" href="http://haemukja.com/">
                         <div class="heamuk_link">
                             해먹남녀 바로가기
                         </div>
@@ -160,6 +160,6 @@
                 </div>
             </div>
         </footer>
-        <script src="./main.js"></script>
+        <script src="dist/bundle.js"></script>
     </body>
 </html>
