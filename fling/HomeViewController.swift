@@ -78,7 +78,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                                                               for: indexPath) as! HomeRecipeCollectionViewCell
         if recipes.count > 0 {
             cell.sampleRecipeImage?.af_setImage(withURL: URL(string: recipes[indexPath.row].image)!)
-            cell.sampleRecipeImage?.contentMode = UIViewContentMode.scaleAspectFit
+            cell.sampleRecipeImage.frame.size = CGSize(width: 180, height: 180)
+//            cell.sampleRecipeImage.bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
+            
             cell.sampleRecipeLabel.text = recipes[indexPath.row].title
         }
 
