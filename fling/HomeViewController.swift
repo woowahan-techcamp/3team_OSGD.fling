@@ -34,6 +34,7 @@ class HomeViewController: UIViewController {
                                                name: Notification.Name.init(rawValue: "flingRecipe"), object: nil)
         
         network.getFlingRecipe()
+        network.getRecipeWith(url: "http://haemukja.com/recipes/340")
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,11 +10,13 @@ import UIKit
 
 class RecipeViewController: UIViewController {
 
+    let network = Network.init()
     var searchUrl = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        network.getRecipeWith(url: "http://haemukja.com/recipes/340")
     }
 
     override func didReceiveMemoryWarning() {
