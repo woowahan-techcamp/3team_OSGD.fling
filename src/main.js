@@ -51,9 +51,10 @@ document.querySelector(".slide_arrow.prev").addEventListener("click", (e) => {
 
     function avs() {
         a.removeEventListener("transitionend", avs);
-        const lastNode = a.children[2].cloneNode(true);
-        a.removeChild(a.children[2]);
-        a.insertBefore(lastNode, a.children[0]);
+        console.log(a);
+        //const lastNode = a.children[2].cloneNode(true);
+        //a.removeChild(a.children[2]);
+        //a.insertBefore(lastNode, a.children[0]);
         a.style.transition = "none";
         a.style.transform = "translateX(0px)";
     }
@@ -69,6 +70,11 @@ document.querySelector(".slide_arrow.next").addEventListener("click", (e) => {
 
     function avs() {
         a.removeEventListener("transitionend", avs);
+        let slide_list = Array.from(a.querySelectorAll('li'));
+        console.info(slide_list.slice(0, 3));
+        a.style.transition = "none";
+        a.style.transform = "translateX(0px)";
+        return;
         const firstNode = a.children[0].cloneNode(true);
         a.removeChild(a.children[0]);
         a.insertBefore(firstNode, a.children[2]);
