@@ -43,6 +43,8 @@ class HomeViewController: UIViewController {
 
         network.getFlingRecipe()
         network.getRecipeWith(url: "http://haemukja.com/recipes/340")
+
+        urlWarningLabel.layer.cornerRadius = 5
     }
 
     override func viewWillDisappear(_ animated: Bool) {
