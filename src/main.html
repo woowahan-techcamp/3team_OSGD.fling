@@ -7,39 +7,38 @@
     </head>
     <body>
         <div class="wrap">
-            <nav class="head_menu">
-                <div class="logo_wrap">
-                    <div class="fling_logo"></div>
-                </div>
-                <div class="navi_wrap">
-                    <ul class="navi">
-                        <li><a>플링이란?</a></li>
-                        <li><a>장바구니</a></li>
-                        <li><a>회원가입</a></li>
-                        <li><a>로그인</a></li>
-                    </ul>
-                </div>
-            </nav>
-
             <header class="main_header">
-                <div class="search_bar">
-                    <form class="search_form" action="" method="">
-                        <div class="search_body">
-                            <div class="search_caret"></div>
-                            <div class="search_window">
-                                <input id="query" name="query" class="search_text" value="레시피를 장바구니에 담아드립니다" type="text">
-                                <div class="search_icon_wrap">
-                                    <div class="search_icon"></div>
-                                </div>
+                <nav class="head_menu">
+                    <div class="logo_wrap">
+                        <div class="fling_logo"></div>
+                    </div>
+                    <div class="head_item">
+                        <ul>
+                            <li><a>플링이란?</a></li>
+                            <li><a>장바구니</a></li>
+                            <li><a>회원가입</a></li>
+                            <li><a>로그인</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="search_body">
+                    <div class="search_window">
+                        <form class="search_form" action="./recipe_page.html" method="get">
+                            <input id="query_url" name="query_url" class="search_text" placeholder="레시피를 장바구니에 담아드립니다" autofocus="autofocus" autocomplete="off" type="text">
+                            <div class="search_icon_wrap">
+                                <button class="search_icon"  type="submit"></button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
+            
+
                 <div class="search_desc">
-                    '해먹남녀'에서 원하는 레시피를 복사, 붙여넣기 해주세요.
+                    '해먹남녀'에서 원하는 레시피링크를 복사, 붙여넣기 해주세요.
                 </div>
                 <div class="recipe_site_link">
-                    <a href="http://haemukja.com/">
+                    <a target="_blank" href="http://haemukja.com/">
                         <div class="heamuk_link">
                             해먹남녀 바로가기
                         </div>
@@ -49,29 +48,35 @@
 
             <div class="container">    
                 <section class="main_section recommend">
-                    <div class="section_title">플링이 추천드려요</div>
+                    <div class="section_title">플링 인기 차트</div>
                     <div class="recommend_content_wrap">
                         <ul class="recommend_content_list">
                             <li>
-                                <div class="recommend_content_list_node">
-                                    <div class="recommend_number"><p>1</p></div>
-                                </div>
-                                <dt>백종원의 칠리소스 활용요리 5종 집밥백선생...</dt>
-                                <dd>집밥백선생 | 해먹남녀</dd>
+                                <a target="_blank" href="">
+                                    <div class="recommend_content_list_node">
+                                        <div class="recommend_number"><p>1</p></div>
+                                    </div>
+                                </a>
+                                <dt><a target="_blank" href=""></a></dt>
+                                <dd>집밥백선생 | 해먹남녀</dd>    
                             </li>
                             <li>
-                                <div class="recommend_content_list_node">
-                                    <div class="recommend_number"><p>2</p></div>
-                                </div>
-                                <dt>오세득X민경훈의 쌈꼬막 - 오늘뭐먹지?딜리버...</dt>
-                                <dd>오늘뭐먹지 | 해먹남녀</dd>
+                                <a target="_blank" href="">
+                                    <div class="recommend_content_list_node">
+                                        <div class="recommend_number"><p>2</p></div>
+                                    </div>
+                                </a>
+                                <dt><a target="_blank" href=""></a></dt>
+                                <dd>오늘 뭐먹지 | 해먹남녀</dd>    
                             </li>
                             <li>
-                                <div class="recommend_content_list_node">
-                                    <div class="recommend_number"><p>3</p></div>
-                                </div>
-                                <dt>이거 된장으로 만든거 맞음?존맛ㅠㅠ된장삼겹...</dt>
-                                <dd>만개의 노하우 | 해먹남녀</dd>
+                                <a target="_blank" href="">
+                                    <div class="recommend_content_list_node">
+                                        <div class="recommend_number"><p>3</p></div>
+                                    </div>
+                                </a>
+                                <dt><a target="_blank" href=""></a></dt>
+                                <dd>만개의 노하우 | 해먹남녀</dd>    
                             </li>
                         </ul>
                     </div>
@@ -82,84 +87,131 @@
                     <div class="recommend_content_wrap">
                         <div class="slide_arrow prev"></div>
                         <div class="slide_arrow next"></div>
-                        <ul class="recommend_content_list">
-                            <li>
-                                <div class="recommend_content_list_node">
-                                    
-                                </div>
-                                <dt>백종원의 칠리소스 활용요리 5종 집밥백선생...</dt>
-                                <dd>집밥백선생 | 해먹남녀</dd>
-                            </li>
-                            <li>
-                                <div class="recommend_content_list_node">
-                                    
-                                </div>
-                                <dt>오세득X민경훈의 쌈꼬막 - 오늘뭐먹지?딜리버...</dt>
-                                <dd>오늘뭐먹지 | 해먹남녀</dd>
-                            </li>
-                            <li>
-                                <div class="recommend_content_list_node">
-                                    
-                                </div>
-                                <dt>이거 된장으로 만든거 맞음?존맛ㅠㅠ된장삼겹...</dt>
-                                <dd>만개의 노하우 | 해먹남녀</dd>
-                            </li>
-                        </ul>
+                        <div class="list_wrap">
+                            <ul class="recommend_content_list">
+                                <li>
+                                    <div class="recommend_content_list_node">
+                                        
+                                    </div>
+                                    <dt>1백종원의 칠리소스 활용요리 5종 집밥백선생...</dt>
+                                    <dd>집밥백선생 | 해먹남녀</dd>
+                                </li><!--
+                                --><li>
+                                    <div class="recommend_content_list_node">
+                                        
+                                    </div>
+                                    <dt>2오세득X민경훈의 쌈꼬막 - 오늘뭐먹지?딜리버...</dt>
+                                    <dd>오늘뭐먹지 | 해먹남녀</dd>
+                                </li><!--
+                                --><li>
+                                    <div class="recommend_content_list_node">
+                                        
+                                    </div>
+                                    <dt>3이거 된장으로 만든거 맞음?존맛ㅠㅠ된장삼겹...</dt>
+                                    <dd>만개의 노하우 | 해먹남녀</dd>
+                                </li><!--
+                                --><li>
+                                    <div class="recommend_content_list_node">
+                                        
+                                    </div>
+                                    <dt>4백종원의 칠리소스 활용요리 5종 집밥백선생...</dt>
+                                    <dd>집밥백선생 | 해먹남녀</dd>
+                                </li><!--
+                                --><li>
+                                    <div class="recommend_content_list_node">
+                                        
+                                    </div>
+                                    <dt>5오세득X민경훈의 쌈꼬막 - 오늘뭐먹지?딜리버...</dt>
+                                    <dd>오늘뭐먹지 | 해먹남녀</dd>
+                                </li><!--
+                                --><li>
+                                    <div class="recommend_content_list_node">
+                                        
+                                    </div>
+                                    <dt>6이거 된장으로 만든거 맞음?존맛ㅠㅠ된장삼겹...</dt>
+                                    <dd>만개의 노하우 | 해먹남녀</dd>
+                                </li><!--
+                                --><li>
+                                    <div class="recommend_content_list_node">
+                                        
+                                    </div>
+                                    <dt>7백종원의 칠리소스 활용요리 5종 집밥백선생...</dt>
+                                    <dd>집밥백선생 | 해먹남녀</dd>
+                                </li><!--
+                                --><li>
+                                    <div class="recommend_content_list_node">
+                                        
+                                    </div>
+                                    <dt>8오세득X민경훈의 쌈꼬막 - 오늘뭐먹지?딜리버...</dt>
+                                    <dd>오늘뭐먹지 | 해먹남녀</dd>
+                                </li><!--
+                                --><li>
+                                    <div class="recommend_content_list_node">
+                                        
+                                    </div>
+                                    <dt>9이거 된장으로 만든거 맞음?존맛ㅠㅠ된장삼겹...</dt>
+                                    <dd>만개의 노하우 | 해먹남녀</dd>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </section>
+
+                <footer class="main_footer">
+                    <div class="footer_nav">
+                        <ul>
+                            <li><a href="javascript:void(0)">회사소개</a></li>
+                            <li><a href="javascript:void(0)">인재채용</a></li>
+                            <li><a href="javascript:void(0)">이용안내</a></li>
+                            <li><a href="javascript:void(0)">서비스이용약관</a></li>
+                            <li><a href="javascript:void(0)">전자금융거래 기본약관</a></li>
+                            <li><a href="javascript:void(0)">개인정보처리방침</a></li>
+                            <li><a href="javascript:void(0)">사업자 정보확인</a></li>
+                            <li><a href="javascript:void(0)">제휴문의</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer_wrap">
+                        <div class="footer_main">
+                            <div class="footer_left">
+                                <div class="company_logo"></div>
+                                <div class="company_info">
+                                    <span>
+                                        <p>오삼굉땡(주) | 대표이사 : 황예린 | 사업자등록번호 : 777-777-7777</p>
+                                        <p>통신판매업신고 : 제2015-서울송파-1733호 | 개인정보담당자 : 김수완</p>
+                                        <p>주소 : 서울시 송파구 위례성대로 2, 4층 (방이동, 장은빌딩)</p>
+                                        <p>고객센터 : 1234-5678 | 이메일 : fling@osgd.com</p>
+                                    </span>
+                                </div>
+                                <div class="company_copyright">(c) OSGD Corporation.</div>
+                                <div class="company_design_cr">Designed by Woowahan Bros.</div>
+                            </div>
+
+                            <div class="footer_right">
+                                <div class="cs_title">고객센터</div>
+                                <div class="cs_number">1234-5678</div>
+                                <div class="cs_open_time">
+                                    <div class="cs_time_week">
+                                        <dt>평&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일</dt>
+                                        <dd>06:30 ~ 18:00</dd>
+                                    </div>
+                                    <div class="cs_time_week">
+                                        <dt>공 휴 일</dt>
+                                        <dd>06:30 ~ 13:00</dd>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer_sns">
+                                <div class="sns_twitter"></div>
+                                <div class="sns_facebook"></div>
+                                <div class="sns_instagram"></div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
-
-        <footer class="main_footer">
-            <div class="footer_nav">
-                <ul>
-                    <li><a href="javascript:void(0)">회사소개</a></li>
-                    <li><a href="javascript:void(0)">인재채용</a></li>
-                    <li><a href="javascript:void(0)">이용안내</a></li>
-                    <li><a href="javascript:void(0)">서비스이용약관</a></li>
-                    <li><a href="javascript:void(0)">전자금융거래 기본약관</a></li>
-                    <li><a href="javascript:void(0)">개인정보처리방침</a></li>
-                    <li><a href="javascript:void(0)">사업자 정보확인</a></li>
-                    <li><a href="javascript:void(0)">제휴문의</a></li>
-                </ul>
-            </div>
-
-            <div class="footer_main">
-                <div class="footer_left">
-                    <div class="company_logo"></div>
-                    <div class="company_info">
-                        <span>
-                            <p>오삼굉땡(주) | 대표이사 : 황예린 | 사업자등록번호 : 777-777-7777</p>
-                            <p>통신판매업신고 : 제2015-서울송파-1733호 | 개인정보담당자 : 김수완</p>
-                            <p>주소 : 서울시 송파구 위례성대로 2, 4층 (방이동, 장은빌딩)</p>
-                            <p>고객센터 : 1234-5678 | 이메일 : fling@osgd.com</p>
-                        </span>
-                    </div>
-                    <div class="company_copyright">(c) OSGD Corporation.</div>
-                    <div class="company_design_cr">Designed by Woowahan Bros.</div>
-                </div>
-
-                <div class="footer_right">
-                    <div class="cs_title">고객센터</div>
-                    <div class="cs_number">1234-5678</div>
-                    <div class="cs_open_time">
-                        <div class="cs_time_week">
-                            <dt>평&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일</dt>
-                            <dd>06:30 ~ 18:00</dd>
-                        </div>
-                        <div class="cs_time_week">
-                            <dt>공 휴 일</dt>
-                            <dd>06:30 ~ 13:00</dd>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer_sns">
-                    <div class="sns_twitter"></div>
-                    <div class="sns_facebook"></div>
-                    <div class="sns_instagram"></div>
-                </div>
-            </div>
-        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
         <script src="./main.js"></script>
     </body>
 </html>
