@@ -14,8 +14,7 @@ class RecipeViewController: UIViewController {
 
     let network = Network.init()
     var searchUrl = ""
-
-
+    var recipe = Recipe.init()
     var products = [Product]()
 
     @IBOutlet weak var recipeImage: UIImageView!
@@ -27,19 +26,39 @@ class RecipeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //temp
-        let temp = [
-            ["id": 11, "material_id": 1, "name": "삼원농산 영양듬뿍 잡곡 귀리", "price": "5700", "weight": "5kg", "bundle": "1개", "image": "t5a.coupangcdn.comthumbnailsremote292x292eximageproductimagevendoritem201604193000580651036da747-80bb-40d8-9285-0f78f3dcaf50.jpg"],
-            ["id": 22, "material_id": 2, "name": "순수담 귀리볶음가루", "price": "10000", "weight": "1kg", "bundle": "1개", "image": "t1c.coupangcdn.comthumbnailsremote292x292eximageretailimages20160422182aab0317e-1cee-422b-bd46-9661393d3e17.JPG"],
-            ["id": 33, "material_id": 3, "name": "오뚜기 옛날 구수한 누룽지", "price": "14900", "weight": "3kg", "bundle": "1개", "image": "t2a.coupangcdn.comthumbnailsremote292x292eximageproductimagevendoritem201605173011864835d34b6acd-6756-4838-bee5-1094f3843f46.jpg"]
-        ]
-        products.append(Product(data: temp[0])!)
-        products.append(Product(data: temp[1])!)
-        products.append(Product(data: temp[2])!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(drawRecipeDetail),
+                                               name: Notification.Name.init(rawValue: "flingRecipeDetail"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(makeProductList),
+                                               name: NSNotification.Name.init(rawValue: "flingProductsForRecipe"), object: nil)
+
+        network.getRecipeWith(url: searchUrl)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    func drawRecipeDetail(notification: Notification) {
+        guard let data = notification.userInfo?["data"] as? Recipe else {
+            return
+        }
+        recipe = data
+        
+        recipeImage.af_setImage(withURL: URL(string: recipe.image)!)
+        recipeTitleLabel.text = recipe.title
+        recipeSubTitleLabel.text = recipe.title.appending("sub")    //TODO
+    }
+    
+    func makeProductList(notification: Notification) {
+        guard let data = notification.userInfo?["data"] as? [[String: Any]] else {
+            return
+        }
+        data.forEach { object in
+            products.append(Product.init(data: object)!)
+        }
+
+        productTable.reloadData()
     }
 }
 
@@ -57,10 +76,12 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath)
             as! RecipeTableViewCell
 
-        cell.textLabel?.text = products[indexPath.row].getName() as? String
-
-        let price = String(describing: products[indexPath.row].getPrice())
-        cell.detailTextLabel?.text = price
+        if products.count > 0 {
+            cell.textLabel?.text = products[indexPath.row].getName()
+            
+            let price = String(describing: products[indexPath.row].getPrice())
+            cell.detailTextLabel?.text = price
+        }
 
         return cell
     }

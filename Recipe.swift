@@ -16,6 +16,14 @@ class Recipe {
     let image: String
     public private(set) var products: [Product]
     typealias ListProduct = [(product: Product, number: Int)]
+    
+    init() {
+        self.rid = 0
+        self.title = ""
+        self.url = ""
+        self.image = ""
+        self.products = [Product]()
+    }
 
     init(rid: Int, title: String, url: String, image: String, products: [Product]) {
         self.rid = rid
