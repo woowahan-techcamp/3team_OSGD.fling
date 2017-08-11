@@ -11,7 +11,7 @@
 그라운드룰과 코딩 컨벤션 등의 개발 문서들을 정리해둔 **master** branch가 있으며, 개발 타겟 플랫폼인 **web**, **ios**, **backend** branch로 각각 나누어 관리합니다.
 
 * Web : https://github.com/woowahan-techcamp/3team_osgd/tree/web
-  * [웹 메인화면 보기](http://rawgit.com/woowahan-techcamp/3team_OSGD.fling/web/src/main.html)
+  * [웹 메인화면 보기](http://rawgit.com/woowahan-techcamp/3team_OSGD.fling/web/src/main.html)
 * iOS : https://github.com/woowahan-techcamp/3team_osgd/tree/ios
 * Backend : https://github.com/woowahan-techcamp/3team_osgd/tree/backend
 
