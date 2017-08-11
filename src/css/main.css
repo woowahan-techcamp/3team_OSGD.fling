@@ -84,14 +84,51 @@ a:hover {
 }
 
 .main_header {
-    background-image: url(../assets/img/main_image.png);
+    /*background-image: url(../assets/img/main_image.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
     width: 100%;
     height: 480px;
     color: white;
     text-align: center;
     position: relative;
+}
+
+.main_header_fade_in {
+    background-image: url(../assets/img/main_image2.png);
+    width: 100%;
+    height: 480px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -100;
+    opacity: 1;
+    transition: 2s;
+    filter: blur(1px);
+}
+
+.main_header_fade_out {
+    background-image: url(../assets/img/main_image.png);  
+    width: 100%;
+    height: 480px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -100;
+    opacity: 1;
+    transition: 2s;
+    filter: blur(1px);
+}
+
+.main_header_dimmed {
+    background-color: black;
+    width: 100%;
+    height: 480px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -50;
+    opacity: 0.4;
 }
 
 .search_caret {
