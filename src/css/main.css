@@ -209,7 +209,7 @@ section {
 }
 
 .recommend_content_list {
-    transition: 1s;
+    /* transition: 1s; */
     transform: translateX(calc(100% * -1 * var(--slide-number)));
 }
 
