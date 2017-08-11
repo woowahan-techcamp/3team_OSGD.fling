@@ -120,6 +120,20 @@ a:hover {
     filter: blur(1px);
 }
 
+.main_header_fade_middle {
+    background-image: url(../assets/img/main_image3.png);  
+    width: 100%;
+    height: 480px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -100;
+    opacity: 1;
+    transition: 2s;
+    filter: blur(1px);
+    background-position-y: -100px;
+}
+
 .main_header_dimmed {
     background-color: black;
     width: 100%;
@@ -209,8 +223,8 @@ section {
 }
 
 .recommend_content_list {
-    transition: 1s;
-    transform: translateX(calc((100% + 25px) * -1 * var(--slide-number)));
+    /* transition: 1s; */
+    transform: translateX(calc(100% * -1 * var(--slide-number)));
 }
 
 .recommend_content_list li {
@@ -278,6 +292,7 @@ section {
     margin-top: 10px;
     font-weight: 400;
     text-align: left;
+    width: 310px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
