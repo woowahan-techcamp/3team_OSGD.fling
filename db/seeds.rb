@@ -12,16 +12,6 @@ require 'open-uri'
 require 'json'
 require 'uri'
 
-data = Nokogiri::HTML(open("http://haemukja.com/recipes/137"))
-if !data.nil?
-  title = data.css('div.aside h1 strong').text
-  subtitle = data.css('div.aside h1').text.strip
-  image = data.css('ul.slides li img').first.attr('src')
-  user = data.css('strong.best a').text
-  puts subtitle
-end
-
-
 # for recipe crawilng
 =begin
 (37..70).each do |index|

@@ -4,7 +4,7 @@ require 'json'
 require 'open-uri'
 class RecipesController < ApplicationController
 
-  after_filter :cors_set_access_control_headers
+  after_action :cors_set_access_control_headers
 
   def cors_set_access_control_headers
     headers['Access-Control-Allow-Origin'] = '*'
@@ -19,6 +19,7 @@ class RecipesController < ApplicationController
   end
 
   def get_products
+    #recipe_id = params[:id]
     @products = Product.new
     if Product.count > 5
       @products = Product.last(4)
@@ -26,32 +27,39 @@ class RecipesController < ApplicationController
     render json: @products.to_json(only: [:id, :name, :image, :weight, :bundle, :price])
   end
 
+  #search and create Recipe
   def create
     url = params[:url]
     if Recipe.where(url: url).present?
-            @recipe = Recipe.where(url: url).first
-      render json: @recipe.to_json(only: [:id, :title, :url, :image])
+      @recipe = Recipe.where(url: url).first
+      render json: @recipe.to_json(only: [:id, :subtitle, :writer, :title, :url, :image])
     else
       data = Nokogiri::HTML(open(url))
       if !data.nil?
-        title = data.css('div.aside h1 strong').text
-        image = data.css('ul.slides li img').first.attr('src')
-
-        # for material
-        #data.css("div.btm li").each do |li|
-          #name = li.css('span').text.delete(' ')
-          #un_unit = li.css('em').text.delete(' ')
-          #unit = un_unit.split(/(?<=\d)(?=[ㄱ-ㅎ|가-힣|a-z|A-Z|])/).last
-          #if !un_unit.nil? && !unit.nil?
-            #name = name.split("(").first
-            #unit = unit.split("(").first
-            ##puts "#{title} #{name} >> #{unit}"
-          #end
-        #end
-
-        @recipe = Recipe.new(title: title, url: url, image: image)
-        if @recipe.save!
-          render json: @recipe.to_json(only: [:id, :title, :url, :image])
+        if data.css('div.aside h1 strong').present?
+          title = data.css('div.aside h1 strong').text
+        else
+          title = ""
+        end
+        if data.css('ul.slides li img').first.present?
+          image = data.css('ul.slides li img').first.attr('src')
+        else
+          image = ""
+        end
+        if data.css('div.aside h1').present?
+          subtitle = data.css('div.aside h1').text.gsub(title, "").strip + " " + title
+        else
+          subtitle = ""
+        end
+        if data.css('strong.best a').present?
+          writer = data.css('strong.best a').text
+        else
+          writer = ""
+        end
+        if title.length != 0
+          @recipe = Recipe.create(title: title, subtitle: subtitle,
+                                  url: url, image: image, writer: writer)
+          render json: @recipe.to_json(only: [:id, :subtitle, :writer, :title, :url, :image])
         else
           render status: "unpermitted url"
         end
@@ -61,4 +69,11 @@ class RecipesController < ApplicationController
     end
   end
 
+  private
+  def render_json_recipe(recipe)
+    render json: recipe.to_json(only: [:id, :subtitle, :writer, :title, :url, :image])
+  end
+  def render_unpermitted_url
+    render status: "unpermitted url"
+  end
 end
