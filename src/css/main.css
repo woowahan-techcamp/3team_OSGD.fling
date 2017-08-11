@@ -278,6 +278,7 @@ section {
     margin-top: 10px;
     font-weight: 400;
     text-align: left;
+    width: 310px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
