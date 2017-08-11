@@ -26,11 +26,12 @@ class RecipeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        //swiftlint:disable line_length
         NotificationCenter.default.addObserver(self, selector: #selector(drawRecipeDetail),
                                                name: Notification.Name.init(rawValue: "flingRecipeDetail"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(makeProductList),
-                                               name: NSNotification.Name.init(rawValue: "flingProductsForRecipe"), object: nil)
+                                               name: NSNotification.Name.init(rawValue: "flingProductList"), object: nil)
 
         network.getRecipeWith(url: searchUrl)
     }
@@ -44,12 +45,12 @@ class RecipeViewController: UIViewController {
             return
         }
         recipe = data
-        
+
         recipeImage.af_setImage(withURL: URL(string: recipe.image)!)
         recipeTitleLabel.text = recipe.title
-        recipeSubTitleLabel.text = recipe.title.appending("sub")    //TODO
+        recipeSubTitleLabel.text = recipe.title.appending("sub")    //temp
     }
-    
+
     func makeProductList(notification: Notification) {
         guard let data = notification.userInfo?["data"] as? [[String: Any]] else {
             return
@@ -73,12 +74,15 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath)
-            as! RecipeTableViewCell
+        guard let cell =
+            tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath)
+                as? RecipeTableViewCell else {
+                    return RecipeTableViewCell()
+        }
 
         if products.count > 0 {
             cell.textLabel?.text = products[indexPath.row].getName()
-            
+
             let price = String(describing: products[indexPath.row].getPrice())
             cell.detailTextLabel?.text = price
         }

@@ -30,7 +30,7 @@ class Network {
                                             object: self, userInfo: ["data": recipes])
         }
     }
-    
+
     func getRecipeWith(url: String) {
         let parameters: Parameters = ["url": url]
         // All three of these calls are equivalent
@@ -42,7 +42,7 @@ class Network {
 
                 Alamofire.request(self.productUrl).responseJSON(completionHandler: { response in
                     if let products = response.result.value as? [[String: Any]] {
-                        NotificationCenter.default.post(name: Notification.Name.init(rawValue: "flingProductsForRecipe"),
+                        NotificationCenter.default.post(name: Notification.Name.init(rawValue: "flingProductList"),
                                                         object: self, userInfo: ["data": products])
                     }
                 })

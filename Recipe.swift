@@ -16,7 +16,7 @@ class Recipe {
     let image: String
     public private(set) var products: [Product]
     typealias ListProduct = [(product: Product, number: Int)]
-    
+
     init() {
         self.rid = 0
         self.title = ""

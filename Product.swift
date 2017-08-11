@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Product {    
-    
+class Product {
+
     private let pid: Int //상품 아이디
     private let mid: Int //재료 아이디(참조)
     private let name: String
@@ -37,7 +37,7 @@ class Product {
             let image = data["image"]! as? String else {
                 return nil
         }
-        
+
 //        guard let mid = data["material_id"]! as? Int else {
 //            return nil
 //        }
