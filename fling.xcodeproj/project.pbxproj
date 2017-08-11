@@ -27,6 +27,7 @@
 		98AD7CAA1F3AEF0200500BD9 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD7CA91F3AEF0200500BD9 /* AlamofireImage.framework */; };
 		98AD7CAC1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */; };
 		98E6F3851F3C64A3007E3441 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */; };
+		98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */; };
 		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
 		BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		98AD7CA91F3AEF0200500BD9 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -205,6 +207,7 @@
 				98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */,
 				984843431F3C324D007AD753 /* RecipeViewController.swift */,
 				98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */,
+				98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				98AD7CA21F3ACCBD00500BD9 /* Product.swift in Sources */,
 				98AD7CAC1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift in Sources */,
 				98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */,
+				98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */,
 				98AD7CA11F3ACCBA00500BD9 /* Recipe.swift in Sources */,
 				98E6F3851F3C64A3007E3441 /* RecipeTableViewCell.swift in Sources */,
 			);

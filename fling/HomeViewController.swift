@@ -45,6 +45,10 @@ class HomeViewController: UIViewController {
         network.getRecipeWith(url: "http://haemukja.com/recipes/340")
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        homeView.endEditing(true)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

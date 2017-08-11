@@ -26,6 +26,7 @@ class RecipeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        productTable.tableFooterView = UIView()
 
         //swiftlint:disable line_length
         NotificationCenter.default.addObserver(self, selector: #selector(drawRecipeDetail),
@@ -61,6 +62,18 @@ class RecipeViewController: UIViewController {
 
         productTable.reloadData()
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == "RecipeToProduct" {
+            guard let secondViewController = segue.destination as? ProductViewController else {
+                return
+            }
+            guard let pid = sender as? Int else {
+                return
+            }
+            secondViewController.pid = pid
+        }
+    }
 }
 
 extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -75,8 +88,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =
-            tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath)
-                as? RecipeTableViewCell else {
+            tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as? RecipeTableViewCell else {
                     return RecipeTableViewCell()
         }
 
@@ -88,5 +100,9 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "RecipeToProduct", sender: products[indexPath.row].getId())
     }
 }

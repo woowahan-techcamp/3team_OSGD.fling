@@ -38,10 +38,13 @@ class Product {
                 return nil
         }
 
-//        guard let mid = data["material_id"]! as? Int else {
-//            return nil
-//        }
-        let mid = 0
+        var mid = 0
+        if data["material_id"] != nil {
+            guard let material_id = data["material_id"]! as? Int else {
+                return nil
+            }
+            mid = material_id
+        }
 
         let decimalPrice = NSDecimalNumber.init(string: price)
 
