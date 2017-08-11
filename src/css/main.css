@@ -3,7 +3,7 @@
 body {
     font-family: 'Noto Sans KR';
     -webkit-font-smoothing: antialiased;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 header, nav {
