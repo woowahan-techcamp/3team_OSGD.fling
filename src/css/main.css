@@ -131,7 +131,6 @@ a:hover {
     opacity: 1;
     transition: 2s;
     filter: blur(1px);
-    background-position-y: -100px;
 }
 
 .main_header_dimmed {
