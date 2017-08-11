@@ -427,27 +427,11 @@ footer.main_footer {
     /* right: 940px; */
 
     white-space: nowrap;
+    margin-left: 45px;
+    margin-right: 40px;
+    overflow: hidden;
 }
 
 .list_wrap li {
     display: inline-block;
-}
-
-.hidea {
-    background-color: white;
-    width: 50px;
-    height: 280px;
-    position: absolute;
-    z-index: 30;
-}
-
-
-.hideb {
-    background-color: white;
-    width: 50px;
-    height: 280px;
-    position: absolute;
-    z-index: 30;
-    left: 1042px;
-
 }

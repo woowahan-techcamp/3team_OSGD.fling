@@ -63,7 +63,7 @@ document.querySelector(".slide_arrow.prev").addEventListener("click", (e) => {
 
 
 document.querySelector(".slide_arrow.next").addEventListener("click", (e) => {
-    const a = document.querySelector(".list_wrap");
+    const a = document.querySelector(".list_wrap").firstElementChild;
     a.style.transition = "1s";
     a.style.transform = "translateX(-990px)";
     a.addEventListener("transitionend", avs, false);
