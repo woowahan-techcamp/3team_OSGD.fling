@@ -49,7 +49,7 @@ class RecipeViewController: UIViewController {
 
         recipeImage.af_setImage(withURL: URL(string: recipe.image)!)
         recipeTitleLabel.text = recipe.title
-        recipeSubTitleLabel.text = recipe.title.appending("sub")    //temp
+        recipeSubTitleLabel.text = recipe.subtitle
     }
 
     func makeProductList(notification: Notification) {

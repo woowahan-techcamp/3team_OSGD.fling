@@ -12,32 +12,40 @@ class Recipe {
 
     let rid: Int
     let title: String
+    let subtitle: String
     let url: String
     let image: String
+    let writer: String
     public private(set) var products: [Product]
     typealias ListProduct = [(product: Product, number: Int)]
 
     init() {
         self.rid = 0
         self.title = ""
+        self.subtitle = ""
         self.url = ""
         self.image = ""
+        self.writer = ""
         self.products = [Product]()
     }
 
-    init(rid: Int, title: String, url: String, image: String, products: [Product]) {
+    init(rid: Int, title: String, subtitle: String, url: String, image: String, writer: String, products: [Product]) {
         self.rid = rid
         self.title = title
+        self.subtitle = subtitle
         self.url = url
         self.image = image
+        self.writer = writer
         self.products = products
     }
 
     init?(data: [String:Any]) {
         guard let id = data["id"]! as? Int,
             let title = data["title"]! as? String,
+            let subtitle = data["subtitle"]! as? String,
             let url = data["url"]! as? String,
-            let image = data["image"]! as? String else {
+            let image = data["image"]! as? String,
+            let writer = data["writer"]! as? String else {
                 return nil
         }
 //        guard let products = data["products"]! as? String else {
@@ -46,8 +54,10 @@ class Recipe {
 
         self.rid = id
         self.title = title
+        self.subtitle = subtitle
         self.url = url
         self.image = image
+        self.writer = writer
         self.products = []
     }
 
