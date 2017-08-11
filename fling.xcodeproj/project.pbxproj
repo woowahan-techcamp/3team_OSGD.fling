@@ -30,6 +30,7 @@
 		98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */; };
 		98F821F21F3D695A006B0288 /* main_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F821F11F3D695A006B0288 /* main_image.png */; };
 		98F821F41F3D6BB3006B0288 /* search_icon1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F821F31F3D6BB3006B0288 /* search_icon1x.png */; };
+		98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F821F61F3D7347006B0288 /* CheckboxButton.swift */; };
 		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
 		BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */; };
 /* End PBXBuildFile section */
@@ -84,6 +85,7 @@
 		98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		98F821F11F3D695A006B0288 /* main_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_image.png; sourceTree = "<group>"; };
 		98F821F31F3D6BB3006B0288 /* search_icon1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_icon1x.png; sourceTree = "<group>"; };
+		98F821F61F3D7347006B0288 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -154,6 +156,7 @@
 		984843091F33F3AF007AD753 = {
 			isa = PBXGroup;
 			children = (
+				98F821F51F3D732F006B0288 /* view component */,
 				980749C21F3A986700E4EA96 /* model */,
 				98AD7C9F1F3ACB6700500BD9 /* controller */,
 				984843141F33F3AF007AD753 /* fling */,
@@ -216,6 +219,14 @@
 				98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */,
 			);
 			name = controller;
+			sourceTree = "<group>";
+		};
+		98F821F51F3D732F006B0288 /* view component */ = {
+			isa = PBXGroup;
+			children = (
+				98F821F61F3D7347006B0288 /* CheckboxButton.swift */,
+			);
+			name = "view component";
 			sourceTree = "<group>";
 		};
 		B764C48263162E37533C0D90 /* Pods */ = {
@@ -519,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */,
 				984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */,
 				98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */,
 				984843441F3C324D007AD753 /* RecipeViewController.swift in Sources */,
