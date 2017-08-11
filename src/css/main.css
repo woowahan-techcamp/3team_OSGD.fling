@@ -210,7 +210,7 @@ section {
 
 .recommend_content_list {
     transition: 1s;
-    transform: translateX(calc((100% + 25px) * -1 * var(--slide-number)));
+    transform: translateX(calc(100% * -1 * var(--slide-number)));
 }
 
 .recommend_content_list li {
