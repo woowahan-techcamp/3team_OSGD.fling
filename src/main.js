@@ -1,7 +1,3 @@
-import fillContentRecommendSection from './lib/main_fill_contents.js';
-import fadeInOutMain from './lib/main_header_fade_inout.js';
-import _ from './lib/util.js';
-
 document.addEventListener("DOMContentLoaded", (e) => {
     _.ajaxFunc("http://52.78.41.124/recipes", fillContentRecommendSection, ".recommend_content_list");
     const interval = window.setInterval(fadeInOutMain.bind(this,".main_header_fade_in", ".main_header_fade_out"),7000);
@@ -10,6 +6,61 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 
 
+
+///////////////////////////////////////////// util
+const _ = {
+    ajaxFunc : function ajax(url, exeFunc, selector) {
+    const oReq = new XMLHttpRequest(); 
+        oReq.addEventListener("load", (e) => {
+            const data = JSON.parse(oReq.responseText);
+            exeFunc(data, selector);
+        }); 
+        oReq.open("GET", url); 
+        oReq.send();
+    }
+}
+
+
+//////////////////////////////////////////////////
+function fadeInOutMain(selector1, selector2) {
+    const fadeIn = document.querySelector(selector1);
+    const fadeOut = document.querySelector(selector2);
+    
+    if (fadeIn.style.opacity == "1") {
+        fadeIn.style.opacity = "0";
+        fadeOut.style.opacity = "1";
+    }
+    else {
+        fadeIn.style.opacity = "1";
+        fadeOut.style.opacity = "0";
+    }
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+function fillContentRecommendSection(data, selector) {
+    const li =document.querySelector(selector).children;
+
+    const liArr = Array.from(li);
+    let i = 0;
+    
+    liArr.forEach((e) => {
+        e.children[0].href = data[i].url;
+        e.children[0].children[0].style.backgroundImage = "url('" + data[i].image  + "')";
+
+        e.children[1].children[0].href = data[i].url;
+        e.children[1].children[0].innerHTML = data[i].subtitle;
+        e.children[2].innerHTML = data[i].title + "  |  " + data[i].writer;
+        
+        i++;
+    })
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////화살표//////////
 
 document.querySelector(".slide_arrow.prev").addEventListener("click", (e) => {
     const a = document.querySelector(".list_wrap").firstElementChild;
