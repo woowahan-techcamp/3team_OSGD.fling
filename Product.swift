@@ -46,7 +46,7 @@ class Product {
             mid = material_id
         }
 
-        let decimalPrice = NSDecimalNumber.init(string: price)
+        let decimalPrice = NSDecimalNumber.init(string: price.replacingOccurrences(of: ",", with: ""))
 
         self.pid = pid
         self.mid = mid

@@ -10,6 +10,11 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
 
+    @IBAction func didToggleCheckboxButton(_ sender: CheckboxButton) {
+        let state = sender.on ? "ON" : "OFF"
+        print("checkbox button : \(state)")
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

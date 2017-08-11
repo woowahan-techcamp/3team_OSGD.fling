@@ -93,10 +93,23 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         if products.count > 0 {
-            cell.textLabel?.text = products[indexPath.row].getName()
+            //checkbox
+            let positionX = 10
+            let checkbox = CheckboxButton.init(frame: CGRect(x: positionX, y: 15, width: 20, height: 20))
+            checkbox.on = true
+            cell.contentView.addSubview(checkbox)
 
-            let price = String(describing: products[indexPath.row].getPrice())
-            cell.detailTextLabel?.text = price
+            //product title
+            let productLabel = UILabel.init(frame: CGRect(x: positionX + 30, y: 5, width: 200, height: 24))
+            productLabel.text = products[indexPath.row].getName()
+            cell.contentView.addSubview(productLabel)
+
+            //product price
+            let priceLabel = UILabel.init(frame: CGRect(x: positionX + 30, y: 25, width: 100, height: 24))
+            priceLabel.text = String(describing: products[indexPath.row].getPrice()).appending(" 원")
+            priceLabel.font = UIFont.systemFont(ofSize: 12)
+            priceLabel.textColor = UIColor.gray
+            cell.contentView.addSubview(priceLabel)
         }
 
         return cell
