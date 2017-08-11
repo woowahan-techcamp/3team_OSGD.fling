@@ -235,7 +235,7 @@ section {
 .recommend_content_list dd {
     font-weight: 100;
     color: #888;
-    float: left;
+    text-align: left;
     margin-left: 3px;
 }
 
@@ -421,14 +421,16 @@ footer.main_footer {
 }
 
 .list_wrap {
-    width: 7000px;
+    /* width: 7000px; */
     position: relative;
     height: 250px;
-    right: 940px;
+    /* right: 940px; */
+
+    white-space: nowrap;
 }
 
 .list_wrap li {
-    float: left;
+    display: inline-block;
 }
 
 .hidea {
