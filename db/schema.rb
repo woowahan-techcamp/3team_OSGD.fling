@@ -53,13 +53,14 @@ ActiveRecord::Schema.define(version: 20170808081934) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",      null: false
     t.string   "url"
     t.string   "image"
     t.string   "writer"
     t.string   "subtitle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["url"], name: "index_recipes_on_url"
   end
 
   create_table "units", force: :cascade do |t|
