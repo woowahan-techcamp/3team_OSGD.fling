@@ -42,9 +42,9 @@ function fillContentRecommendSection(data, selector) {
 
 
 document.querySelector(".slide_arrow.prev").addEventListener("click", (e) => {
-    const a = document.querySelector(".list_wrap");
-    a.style.transition = "1s";
-    a.style.transform = "translateX(990px)";
+    const a = document.querySelector(".list_wrap").firstElementChild;
+    let slide_num = a.style.getPropertyValue('--slide-number') * 1;
+    a.style.setProperty('--slide-number', --slide_num);
     
     //맨 뒤 떼서 앞에 붙이고 제자리
     a.addEventListener("transitionend", avs, false);
@@ -55,8 +55,6 @@ document.querySelector(".slide_arrow.prev").addEventListener("click", (e) => {
         //const lastNode = a.children[2].cloneNode(true);
         //a.removeChild(a.children[2]);
         //a.insertBefore(lastNode, a.children[0]);
-        a.style.transition = "none";
-        a.style.transform = "translateX(0px)";
     }
     
 })
@@ -64,16 +62,14 @@ document.querySelector(".slide_arrow.prev").addEventListener("click", (e) => {
 
 document.querySelector(".slide_arrow.next").addEventListener("click", (e) => {
     const a = document.querySelector(".list_wrap").firstElementChild;
-    a.style.transition = "1s";
-    a.style.transform = "translateX(-990px)";
+    let slide_num = a.style.getPropertyValue('--slide-number') * 1;
+    a.style.setProperty('--slide-number', ++slide_num);
     a.addEventListener("transitionend", avs, false);
 
     function avs() {
         a.removeEventListener("transitionend", avs);
         let slide_list = Array.from(a.querySelectorAll('li'));
         console.info(slide_list.slice(0, 3));
-        a.style.transition = "none";
-        a.style.transform = "translateX(0px)";
         return;
         const firstNode = a.children[0].cloneNode(true);
         a.removeChild(a.children[0]);
