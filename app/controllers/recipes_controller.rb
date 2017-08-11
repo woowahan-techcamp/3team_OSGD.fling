@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
     if Recipe.all.count < 9
       render status: :no_content
     else
-      @recipes = Recipe.last(9)
+      @recipes = Recipe.first(9)
       render json: @recipes.to_json(only: [:id, :subtitle, :writer, :title, :url, :image])
     end
 
