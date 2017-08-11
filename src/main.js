@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", (e) => {
     _.ajaxFunc("http://52.78.41.124/recipes", fillContentRecommendSection, ".recommend_content_list");
     _.ajaxFunc("http://52.78.41.124/season", fillContentRecommendSection, ".main_section.season_event .recommend_content_list");
-    const interval = window.setInterval(fadeInOutMain.bind(this,".main_header_fade_in", ".main_header_fade_out"),7000);
+    const interval = window.setInterval(fadeInOutMain.bind(this,".main_header_fade_in", ".main_header_fade_out", ".main_header_fade_middle"),6000);
 })
 
 
@@ -22,17 +22,25 @@ const _ = {
 
 
 //////////////////////////////////////////////////
-function fadeInOutMain(selector1, selector2) {
+function fadeInOutMain(selector1, selector2, selector3) {
     const fadeIn = document.querySelector(selector1);
     const fadeOut = document.querySelector(selector2);
+    const fadeMid = document.querySelector(selector3);
     
     if (fadeIn.style.opacity == "1") {
         fadeIn.style.opacity = "0";
         fadeOut.style.opacity = "1";
+        fadeMid.style.opacity = "0";
+    }
+    else if (fadeOut.style.opacity == "1") {
+        fadeIn.style.opacity = "0";
+        fadeOut.style.opacity = "0";
+        fadeMid.style.opacity = "1";
     }
     else {
         fadeIn.style.opacity = "1";
         fadeOut.style.opacity = "0";
+        fadeMid.style.opacity = "0";
     }
 }
 
