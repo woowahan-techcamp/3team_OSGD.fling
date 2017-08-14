@@ -93,13 +93,15 @@ class Recipe {
         return result
     }
 
-    func totalPrice() -> Decimal {
+    func totalPrice() -> String {
         var total = Decimal()
         products.forEach { object in
             total += object.getPrice()
         }
-
-        return total
+        let head = "총액 : "
+        let tail = " 원"
+        let price = total.description
+        return head.appending(price).appending(tail)
     }
 
     func add(product: Product, number: Int) {

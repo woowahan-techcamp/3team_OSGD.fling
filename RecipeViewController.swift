@@ -22,6 +22,7 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var recipeSubTitleLabel: UILabel!
     @IBOutlet weak var recipeExcept: UILabel!
 
+    @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var productTable: UITableView!
 
     override func viewDidLoad() {
@@ -40,6 +41,8 @@ class RecipeViewController: UIViewController {
         recipeImage.af_setImage(withURL: URL(string: searchRecipe.image)!)
         recipeTitleLabel.text = searchRecipe.title
         recipeSubTitleLabel.text = searchRecipe.subtitle
+//        totalPriceLabel.text = NumberFormatter.localizedString(from: NSNumber(searchRecipe.totalPrice()), number: nil)
+        totalPriceLabel.text = searchRecipe.totalPrice()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
@@ -80,7 +83,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentView.addSubview(checkbox)
 
         //product title
-        let productLabel = UILabel.init(frame: CGRect(x: positionX + 30, y: 5, width: 200, height: 24))
+        let productLabel = UILabel.init(frame: CGRect(x: 40, y: 5, width: 200, height: 24))
         productLabel.text = product.getName()
         cell.contentView.addSubview(productLabel)
 

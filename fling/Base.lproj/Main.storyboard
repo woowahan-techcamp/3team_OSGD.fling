@@ -279,7 +279,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="총액" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OC9-px-A8S">
-                                <rect key="frame" x="153" y="581" width="68" height="50"/>
+                                <rect key="frame" x="0.0" y="581" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -319,6 +319,7 @@
                         <outlet property="recipeImage" destination="s6l-DD-ncZ" id="T0N-g9-iCC"/>
                         <outlet property="recipeSubTitleLabel" destination="wsi-LF-S6p" id="Eb2-iV-zK1"/>
                         <outlet property="recipeTitleLabel" destination="1aY-kw-NGX" id="HPA-T1-oOp"/>
+                        <outlet property="totalPriceLabel" destination="OC9-px-A8S" id="Pdx-A4-4Vv"/>
                         <segue destination="TrP-d4-eat" kind="show" identifier="RecipeToProduct" id="3T6-s5-SBO"/>
                     </connections>
                 </viewController>
