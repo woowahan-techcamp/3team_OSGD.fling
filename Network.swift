@@ -11,8 +11,11 @@ import Alamofire
 
 class Network {
 
-    let mainUrl = "http://52.78.41.124/recipes"
-    let productUrl = "http://52.78.41.124/get_products/1"
+    private let mainUrl = "http://52.78.41.124/recipes"
+    private let productUrl = "http://52.78.41.124/get_products/1"
+    private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
+    private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
+    private let failFlingRecipe = Notification.Name.init(rawValue: "FailFlingRecipe")
 
     func getFlingRecipe() {
         Alamofire.request(mainUrl).responseJSON { response in
@@ -26,7 +29,7 @@ class Network {
                     recipes.append(recipe)
                 })
             }
-            NotificationCenter.default.post(name: Notification.Name.init(rawValue: "flingRecipe"),
+            NotificationCenter.default.post(name: self.sampleRecipe,
                                             object: self, userInfo: ["data": recipes])
         }
     }
@@ -37,15 +40,18 @@ class Network {
         Alamofire.request(mainUrl, method: .post, parameters: parameters).responseJSON { response in
             if let recipeData = response.result.value as? [String: Any] {
                 let recipe = Recipe.init(data: recipeData)
-                NotificationCenter.default.post(name: Notification.Name.init(rawValue: "flingRecipeDetail"),
-                                                object: self, userInfo: ["data": recipe ?? []])
-
                 Alamofire.request(self.productUrl).responseJSON(completionHandler: { response in
                     if let products = response.result.value as? [[String: Any]] {
-                        NotificationCenter.default.post(name: Notification.Name.init(rawValue: "flingProductList"),
-                                                        object: self, userInfo: ["data": products])
+                        products.forEach({ object in
+                            recipe?.add(product: Product.init(data: object)!, number: 1)
+                        })
+                        NotificationCenter.default.post(name: self.flingRecipe,
+                                                        object: self, userInfo: ["data": recipe ?? ""])
                     }
                 })
+            } else {
+                NotificationCenter.default.post(name: self.failFlingRecipe,
+                                                object: self, userInfo: [:])
             }
         }
     }

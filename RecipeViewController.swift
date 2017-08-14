@@ -14,8 +14,8 @@ class RecipeViewController: UIViewController {
 
     let network = Network.init()
     var searchUrl = ""
-    var recipe = Recipe.init()
-    var products = [Product]()
+    var searchRecipe = Recipe.init()
+    var products = Recipe.ListProduct()
 
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
@@ -28,39 +28,18 @@ class RecipeViewController: UIViewController {
         super.viewDidLoad()
         productTable.tableFooterView = UIView()
 
-        //swiftlint:disable line_length
-        NotificationCenter.default.addObserver(self, selector: #selector(drawRecipeDetail),
-                                               name: Notification.Name.init(rawValue: "flingRecipeDetail"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(makeProductList),
-                                               name: NSNotification.Name.init(rawValue: "flingProductList"), object: nil)
-
-        network.getRecipeWith(url: searchUrl)
+        drawRecipeDetail()
+        products = searchRecipe.listOfProducts()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    func drawRecipeDetail(notification: Notification) {
-        guard let data = notification.userInfo?["data"] as? Recipe else {
-            return
-        }
-        recipe = data
-
-        recipeImage.af_setImage(withURL: URL(string: recipe.image)!)
-        recipeTitleLabel.text = recipe.title
-        recipeSubTitleLabel.text = recipe.subtitle
-    }
-
-    func makeProductList(notification: Notification) {
-        guard let data = notification.userInfo?["data"] as? [[String: Any]] else {
-            return
-        }
-        data.forEach { object in
-            products.append(Product.init(data: object)!)
-        }
-
-        productTable.reloadData()
+    func drawRecipeDetail() {
+        recipeImage.af_setImage(withURL: URL(string: searchRecipe.image)!)
+        recipeTitleLabel.text = searchRecipe.title
+        recipeSubTitleLabel.text = searchRecipe.subtitle
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
@@ -83,7 +62,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.searchRecipe.listOfProducts().count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,30 +71,30 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                     return RecipeTableViewCell()
         }
 
-        if products.count > 0 {
-            //checkbox
-            let positionX = 10
-            let checkbox = CheckboxButton.init(frame: CGRect(x: positionX, y: 15, width: 20, height: 20))
-            checkbox.on = true
-            cell.contentView.addSubview(checkbox)
+        let product = products[indexPath.row].product
 
-            //product title
-            let productLabel = UILabel.init(frame: CGRect(x: positionX + 30, y: 5, width: 200, height: 24))
-            productLabel.text = products[indexPath.row].getName()
-            cell.contentView.addSubview(productLabel)
+        //checkbox
+        let positionX = 10
+        let checkbox = CheckboxButton.init(frame: CGRect(x: positionX, y: 15, width: 20, height: 20))
+        checkbox.on = true
+        cell.contentView.addSubview(checkbox)
 
-            //product price
-            let priceLabel = UILabel.init(frame: CGRect(x: positionX + 30, y: 25, width: 100, height: 24))
-            priceLabel.text = String(describing: products[indexPath.row].getPrice()).appending(" 원")
-            priceLabel.font = UIFont.systemFont(ofSize: 12)
-            priceLabel.textColor = UIColor.gray
-            cell.contentView.addSubview(priceLabel)
-        }
+        //product title
+        let productLabel = UILabel.init(frame: CGRect(x: positionX + 30, y: 5, width: 200, height: 24))
+        productLabel.text = product.getName()
+        cell.contentView.addSubview(productLabel)
+
+        //product price
+        let priceLabel = UILabel.init(frame: CGRect(x: positionX + 30, y: 25, width: 100, height: 24))
+        priceLabel.text = String(describing: product.getPrice()).appending(" 원")
+        priceLabel.font = UIFont.systemFont(ofSize: 12)
+        priceLabel.textColor = UIColor.gray
+        cell.contentView.addSubview(priceLabel)
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "RecipeToProduct", sender: products[indexPath.row].getId())
+        self.performSegue(withIdentifier: "RecipeToProduct", sender: products[indexPath.row].product.getId())
     }
 }

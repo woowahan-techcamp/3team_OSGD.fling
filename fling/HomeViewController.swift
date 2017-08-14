@@ -13,7 +13,13 @@ import AlamofireImage
 class HomeViewController: UIViewController {
 
     let network = Network()
+    let alertController = UIAlertController(title: nil, message: "Please wait\n\n", preferredStyle: .alert)
     var recipes = [Recipe]()
+    var searchRecipe = Recipe.init()
+
+    private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
+    private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
+    private let failFlingRecipe = Notification.Name.init(rawValue: "FailFlingRecipe")
 
     @IBOutlet var homeView: UIView!
     @IBOutlet weak var sampleRecipeCollection: UICollectionView!
@@ -21,7 +27,14 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var urlWarningLabel: UILabel!
     @IBAction func searchButton(_ sender: Any) {
         if checkRecipeUrl(url: self.urlField.text ?? "") {
-            self.performSegue(withIdentifier: "HomeToRecipe", sender: self.urlField.text!)
+            network.getRecipeWith(url: self.urlField.text ?? "")
+            // 팝업 켜기
+//            let spinnerIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+//            spinnerIndicator.center = CGPoint(x: 135.0, y: 65.5)
+//            spinnerIndicator.color = UIColor.black
+//            spinnerIndicator.startAnimating()
+//            alertController.view.addSubview(spinnerIndicator)
+//            self.present(alertController, animated: false, completion: nil)
         } else {
             urlWarningLabel.isHidden = false
         }
@@ -35,15 +48,15 @@ class HomeViewController: UIViewController {
         homeView.addGestureRecognizer(tap)
 
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
-                                               name: Notification.Name.init(rawValue: "flingRecipe"), object: nil)
+                                               name: self.sampleRecipe, object: nil)
         //swiftlint:disable line_length
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
-                                               name: NSNotification.Name.init(rawValue: "UIKeyboardWillShowNotification"),
+                                               name: Notification.Name.init(rawValue: "UIKeyboardWillShowNotification"),
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: flingRecipe, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: failFlingRecipe, object: nil)
 
         network.getFlingRecipe()
-        network.getRecipeWith(url: "http://haemukja.com/recipes/340")
-
         urlWarningLabel.layer.cornerRadius = 5
     }
 
@@ -62,9 +75,17 @@ class HomeViewController: UIViewController {
     func dismissKeyboard() {
         homeView.endEditing(true)
     }
+    func reciveNotification(moveNoti: Notification) {
+        if moveNoti.name == Notification.Name.init("moveToRecipe") {
+            self.performSegue(withIdentifier: "HomeToRecipe", sender: self.urlField.text!)
+                   } else {
+            // 올바르지 않은 url??
+        }
+        // 팝업 끄기
+    }
 
     func recieveNotification(notification: Notification) {
-        if notification.name == Notification.Name.init(rawValue: "flingRecipe") {
+        if notification.name == sampleRecipe {
             guard let recipes = notification.userInfo?["data"] as? [Recipe] else {
                 return
             }
@@ -72,6 +93,16 @@ class HomeViewController: UIViewController {
             sampleRecipeCollection.reloadData()
         } else if notification.name == Notification.Name.init(rawValue: "UIKeyboardWillShowNotification") {
             keyboardWillShow()
+        } else if notification.name == flingRecipe {
+//            alertController.dismiss(animated: true, completion: nil)
+            guard let recipe = notification.userInfo?["data"] as? Recipe else {
+                return
+            }
+            self.searchRecipe = recipe
+            self.performSegue(withIdentifier: "HomeToRecipe", sender: self.searchRecipe)
+
+        } else if notification.name == failFlingRecipe {
+//            alertController.dismiss(animated: true, completion: nil)
         }
     }
 
@@ -80,10 +111,10 @@ class HomeViewController: UIViewController {
             guard let secondViewController = segue.destination as? RecipeViewController else {
                 return
             }
-            guard let searchUrl = sender as? String else {
+            guard let searchRecipe = sender as? Recipe else {
                 return
             }
-            secondViewController.searchUrl = searchUrl
+            secondViewController.searchRecipe = searchRecipe
         }
     }
 

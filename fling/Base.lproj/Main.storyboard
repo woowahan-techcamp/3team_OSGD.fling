@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nId-NT-Pi0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nId-NT-Pi0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -149,7 +149,7 @@
                         <outlet property="sampleRecipeCollection" destination="WYK-4L-NE7" id="y1Z-33-MLU"/>
                         <outlet property="urlField" destination="5vE-Cc-2dM" id="kCC-iX-rdG"/>
                         <outlet property="urlWarningLabel" destination="3kb-Hj-O1h" id="kZh-Xf-uBd"/>
-                        <segue destination="nM8-7V-YSK" kind="show" identifier="HomeToRecipe" id="Cg7-yO-T2W"/>
+                        <segue destination="nM8-7V-YSK" kind="show" identifier="HomeToRecipe" animates="NO" id="Cg7-yO-T2W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmZ-4g-OyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
