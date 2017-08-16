@@ -45,3 +45,39 @@
     padding-left: 15px;
     display: inline-block;
 }
+
+.recipe_button {
+    margin-top: 50px;
+}
+
+.btn_primary {
+    cursor: pointer;
+
+    width: 240px;
+    height: 75px;
+
+    border: 1px solid #ddd;
+    font-size: 22pt;
+    font-weight: 600;
+    background: white;
+    
+    opacity: 1;
+}
+
+.btn_primary:hover {
+    opacity: 0.85;
+}
+
+.btn_primary:focus {
+    outline: 4px solid rgba(220, 220, 220, 0.55);
+}
+
+.btn_cart {
+    margin-right: 24px;
+}
+
+.btn_rightnow {
+    color: white;
+    background: #ffb847;
+    border: 0;
+}
