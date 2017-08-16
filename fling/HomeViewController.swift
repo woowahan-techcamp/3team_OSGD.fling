@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     var recipes = [Recipe]()
     var searchRecipe = Recipe.init()
 
+    //notification name
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
     private let failFlingRecipe = Notification.Name.init(rawValue: "FailFlingRecipe")
@@ -47,17 +48,19 @@ class HomeViewController: UIViewController {
                                                                  action: #selector(HomeViewController.dismissKeyboard))
         homeView.addGestureRecognizer(tap)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
-                                               name: self.sampleRecipe, object: nil)
         //swiftlint:disable line_length
-        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
-                                               name: Notification.Name.init(rawValue: "UIKeyboardWillShowNotification"),
-                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: sampleRecipe, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: flingRecipe, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: failFlingRecipe, object: nil)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
+                                               name: Notification.Name.init(rawValue: "UIKeyboardWillShowNotification"),
+                                               object: nil)
+
         network.getFlingRecipe()
+
         urlWarningLabel.layer.cornerRadius = 5
+//        urlField.delegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,6 +78,7 @@ class HomeViewController: UIViewController {
     func dismissKeyboard() {
         homeView.endEditing(true)
     }
+
     func reciveNotification(moveNoti: Notification) {
         if moveNoti.name == Notification.Name.init("moveToRecipe") {
             self.performSegue(withIdentifier: "HomeToRecipe", sender: self.urlField.text!)
@@ -126,6 +130,16 @@ class HomeViewController: UIViewController {
     }
 
 }
+
+//return으로 검색하게
+//extension HomeViewController: UITextFieldDelegate {
+//
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
+//
+//}
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
