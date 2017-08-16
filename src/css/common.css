@@ -39,14 +39,17 @@ a:hover {
 
 .head_menu {
     height: 60px;
-    max-width: 1080px;
-    margin: 0 auto;
     font-size: 14pt;
     font-weight: 400;
 }
 
 section {
     text-align: center;
+}
+
+.content {
+    max-width: 1080px;
+    margin: 0 auto;
 }
 
 .section_title {
@@ -143,11 +146,6 @@ section {
     margin-left: 3px;
 }
 
-.main_section {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
 .slide_arrow:hover {
     opacity: 0.6;
     cursor: pointer;
@@ -212,8 +210,6 @@ footer.main_footer {
 .footer_wrap {
     overflow: hidden;
     min-width: 860px;
-    max-width: 1080px;
-    margin: 0 auto;
 }
 
 .footer_main {

@@ -27,7 +27,6 @@
 }
 
 .main_header .head_item > ul {
-    margin-right: 30px;
     white-space: nowrap;
 }
 
@@ -35,6 +34,10 @@
     padding-right: 15px;
     padding-left: 15px;
     display: inline-block;
+}
+
+.main_header .head_item > ul > li:last-child {
+    padding-right: 0;
 }
 
 .main_header_fade_in {

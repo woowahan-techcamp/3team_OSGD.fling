@@ -9,7 +9,7 @@
     <body>
         <div class="wrap">
             <header class="recipe_header">
-                <nav class="head_menu">
+                <nav class="head_menu content">
                     <div class="logo_wrap">
                         <div class="fling_logo"></div>
                     </div>
@@ -26,18 +26,37 @@
             </header>
 
             <div class="container">
+                <section class="recipe_section content recipe_info">
+                    <div class="recipe_detail">
+                        <div class="circle_img"></div>
+                        <div class="description">
+                            <div class="title">양념불고기</div>
+                            <div class="subtitle">배가 고플 때 밥도둑! 밥과 함께라면 뭐든지 먹어치울 수 있는 한국인의 밥상에서 빠뜨릴 수 없는 그 음식! 궁중 양념 불고기. 드셔보시지 않을라우?</div>
+                            <div class="detail_link"><a href="">레시피 자세히 보기</a></div>
+                        </div>
+                    </div>
+                    <div class="super_delivery">
+                        <div class="delivery_img"></div>
+                        <div class="title">
+                            <span>플링</span>
+                            <span>슈퍼배송</span>
+                        </div>
+                        <div class="desc">
+                            <p>플링은 매일 새벽 주문한 재료를 슈퍼배송 해드립니다.</p>
+                            <p>이제 장보러 나가기 마세요!</p>
+                        </div>
 
-                <section class="recipe_section recipe_info">
-                    <div class="recipe_detail"></div>
-                    <div class="super_delivery"></div>
+                    </div>
                 </section>
+
                 <section class="recipe_section recipe_cart"></section>
+                
                 <section class="recipe_section recipe_product_search">
                     <div class="section_title">찾으시는 재료가 없으신가요?</div>
                     <div class="search_body">
                         <div class="search_window">
-                            <form class="search_form" action="./recipe_page.html" method="get">
-                                <input id="query_url" name="query_url" class="search_text" placeholder="레시피를 장바구니에 담아드립니다" autofocus="autofocus" autocomplete="off" type="text">
+                            <form class="search_form" action="" method="">
+                                <input id="query_url" name="query_url" class="search_text" placeholder="추가할 재료를 입력해주세요." autocomplete="off" type="text">
                                 <div class="search_icon_wrap">
                                     <button class="search_icon"  type="submit"></button>
                                 </div>
@@ -45,10 +64,13 @@
                         </div>
                     </div>
                 </section>
+                
                 <section class="recipe_section recipe_additional_info">
-                    <div class="missed_material"></div>
+                    <div class="missed_material">
+                    </div>
                     <div class="price_info"></div>
                 </section>
+                
                 <section class="recipe_section recipe_button">
                     <button class="btn_primary btn_cart">장바구니</button>
                     <button class="btn_primary btn_rightnow">구매하기</button>
@@ -68,7 +90,7 @@
                             </ul>
                         </div>
     
-                        <div class="footer_wrap">
+                        <div class="footer_wrap content">
                             <div class="footer_main">
                                 <div class="footer_left">
                                     <div class="company_logo"></div>
