@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
     render json: @recipe.to_json(only: [:id, :subtitle, :writer,
                                         :title, :url, :image,
                                         :missed_material,
-                                        :recipe_material])
+                                        :recipe_material, :serving])
   end
 
   #search and create Recipe
@@ -51,7 +51,7 @@ class RecipesController < ApplicationController
         render json: @recipe.to_json(only: [:id, :subtitle, :writer,
                                             :title, :url, :image,
                                             :missed_material,
-                                            :recipe_material])
+                                            :recipe_material, :serving])
       else
         data = Nokogiri::HTML(open(url))
         if !data.nil?
@@ -103,7 +103,7 @@ class RecipesController < ApplicationController
             render json: @recipe.to_json(only: [:id, :subtitle, :writer,
                                                 :title, :url, :image,
                                                 :missed_material,
-                                                :recipe_material])
+                                                :recipe_material, :serving])
           else
             render status: :no_content
           end
