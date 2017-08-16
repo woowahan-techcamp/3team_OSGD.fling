@@ -27,17 +27,29 @@
 
             <div class="container">
 
-                <section class="recipe_info">
+                <section class="recipe_section recipe_info">
                     <div class="recipe_detail"></div>
                     <div class="super_delivery"></div>
                 </section>
-                <section class="recipe_cart"></section>
-                <section class="recipe_product_search"></section>
-                <section class="recipe_additional_info">
+                <section class="recipe_section recipe_cart"></section>
+                <section class="recipe_section recipe_product_search">
+                    <div class="section_title">찾으시는 재료가 없으신가요?</div>
+                    <div class="search_body">
+                        <div class="search_window">
+                            <form class="search_form" action="./recipe_page.html" method="get">
+                                <input id="query_url" name="query_url" class="search_text" placeholder="레시피를 장바구니에 담아드립니다" autofocus="autofocus" autocomplete="off" type="text">
+                                <div class="search_icon_wrap">
+                                    <button class="search_icon"  type="submit"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+                <section class="recipe_section recipe_additional_info">
                     <div class="missed_material"></div>
                     <div class="price_info"></div>
                 </section>
-                <section class="recipe_button">
+                <section class="recipe_section recipe_button">
                     <button class="btn_primary btn_cart">장바구니</button>
                     <button class="btn_primary btn_rightnow">구매하기</button>
                 </section>

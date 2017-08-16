@@ -46,6 +46,26 @@
     display: inline-block;
 }
 
+.recipe_info {
+    height: 210px;
+    background: #ddd;
+}
+
+.recipe_cart {
+    height: 600px;
+    background: #ccc;
+}
+
+.recipe_product_search {
+    height: 230px;
+    background: #f9f3dd;
+}
+
+.recipe_additional_info {
+    height: 330px;
+    background: #aaa;
+}
+
 .recipe_button {
     margin-top: 50px;
 }
@@ -72,6 +92,48 @@
     outline: 4px solid rgba(220, 220, 220, 0.55);
 }
 
+.search_window {
+    border-bottom: 3px solid #ffb847;
+    width: 700px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.search_text {
+    width: 640px;
+    height: 70px;
+    font-size: 28pt;
+    background: transparent;
+    color: #ffb847;
+    font-weight: 300;
+    border: 0;
+    outline: 0;
+}
+
+.search_icon_wrap {
+    float: right;
+    padding-top: 16px;
+}
+
+.search_icon {
+    background-image: url(../assets/img/search_icon3x_yellow.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: Transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+.search_desc {
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.search_window ::-webkit-input-placeholder { 
+    color: #ffb847;
+}
+
 .btn_cart {
     margin-right: 24px;
 }
@@ -80,4 +142,9 @@
     color: white;
     background: #ffb847;
     border: 0;
+}
+
+.recipe_section .section_title {
+    margin-top: 26px;
+    margin-bottom: 20px;
 }

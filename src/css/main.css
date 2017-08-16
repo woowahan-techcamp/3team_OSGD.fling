@@ -87,15 +87,6 @@
     opacity: 0.4;
 }
 
-.search_caret {
-    background-color: white;
-    height: 45px;
-    width: 0.5px;
-    position: relative;
-    top: 269px;
-    left: 200px;
-}
-
 .search_window {
     border-bottom: 3px solid white;
     width: 700px;
@@ -134,6 +125,10 @@
     margin-top: 18px;
 }
 
+.search_window ::-webkit-input-placeholder { 
+    color: white;
+}
+
 .heamuk_link {
     font-weight: 400;
     letter-spacing: -0.8pt;
@@ -145,4 +140,9 @@
 .heamuk_link:after {
     padding-left: 12px;
     content: url(../assets/img/arrow_icon.png);
+}
+
+.main_section .section_title {
+    margin-top: 50px;
+    margin-bottom: 20px;
 }

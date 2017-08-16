@@ -51,8 +51,6 @@ section {
 
 .section_title {
     display: inline-block;
-    margin-top: 50px;
-    margin-bottom: 20px;
     font-size: 30px;
     font-weight: 300;
 }
@@ -325,10 +323,6 @@ footer.main_footer {
     background-position-y: 4px;
     background-size: contain;
     background-repeat: no-repeat;
-}
-
-::-webkit-input-placeholder { 
-      color: white;
 }
 
 .list_wrap {
