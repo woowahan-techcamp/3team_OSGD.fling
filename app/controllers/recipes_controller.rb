@@ -29,11 +29,8 @@ class RecipesController < ApplicationController
   end
 
   def get_products
-    #recipe_id = params[:id]
-    @products = Product.new
-    if Product.count > 5
-      @products = Product.last(4)
-    end
+    recipe_id = params[:id]
+    @products = Recipe.find(recipe_id).products
     render json: @products.to_json(only: [:id, :name, :image, :weight, :bundle, :price])
   end
 
