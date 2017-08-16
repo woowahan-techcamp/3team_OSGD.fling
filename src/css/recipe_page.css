@@ -141,8 +141,134 @@
 }
 
 .recipe_cart {
-    height: 600px;
-    background: #ccc;
+    margin-bottom: 50px;
+}
+
+.recipe_cart .title {
+    font-size: 24pt;
+    font-weight: 300;
+    border-top: 1px solid #aaa;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.recipe_cart .subtitle {
+    background-color: #faf3dd;   
+    height: 45px;
+    border-top: 2px solid #ffb742;
+    font-size: 15pt;
+}
+
+.recipe_cart .subtitle > div {
+    padding-top: 7px;
+    float: left;
+}
+
+.recipe_cart .subtitle :nth-child(1) {
+    padding-left: 330px;
+}
+
+.recipe_cart .subtitle :nth-child(2) {
+    padding-left: 300px;
+}
+
+.recipe_cart .subtitle :nth-child(3) {
+    padding-left: 180px;
+}
+
+.recipe_cart .cart_list {
+    height: 160px;
+    border-top: 1px solid #ffb742;
+}
+
+.recipe_cart .cart_list .left {
+    float: left;
+    border-top: 0;
+}
+
+.recipe_cart .cart_list .right {
+    float: right;
+    border-top: 0;
+}
+
+.recipe_cart .recipe_checkbox {
+    float: left;
+    margin: 40px;
+}
+
+.recipe_cart .product_img {
+    float: left;
+    background: url("../assets/img/main_image.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    margin: 30px 10px 0px 0px;
+}
+
+.recipe_cart .product_info {
+    float: left;
+    text-align: left;
+    margin: 40px 0px 0px 20px;
+}
+
+.recipe_cart .name {
+    font-size: 14pt;
+    font-weight: 500;
+}
+
+.recipe_cart .origin {
+    font-size: 12pt;
+    font-weight: 300;
+}
+
+
+
+
+.recipe_cart .volume_box {
+    border: 1px solid #aaa;
+    height: 47px;
+    width: 93px;
+}
+
+.recipe_cart .button {
+    float: right;
+}
+
+.recipe_cart .volume_box p {
+    display: inline-block;
+    padding-top: 10px;
+}
+
+.recipe_cart .button .up_button_wrap {
+    border-bottom: 1px solid #aaa;
+}
+
+.recipe_cart .button div {
+    width: 24px;
+    height: 23.5px;
+    border-left: 1px solid #aaa;
+}
+
+.recipe_cart .up_button {
+    background-image: url("../assets/img/up_button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    border: 0;
+}
+
+.recipe_cart .down_button {
+    background-image: url("../assets/img/down_button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    border: 0;
+}
+
+.recipe_cart button {
+    background: transparent;
+    border: 0px;
 }
 
 .recipe_product_search {
@@ -150,120 +276,6 @@
     background: #f9f3dd;
 }
 
-.recipe_additional_info {
-    height: 300px;
-    padding: 60px 0px;
-}
-
-.missed_material {
-    float: left;
-}
-
-.missed_material .title {
-    font-size: 26px;
-    font-weight: 400;
-    border-bottom: 1px solid #aaa;
-    width: 420px;
-    text-align: left;
-    padding-bottom: 4px;
-}
-
-.missed_material .notation {
-    text-align: right;
-    font-weight: 300;
-    font-size: 10pt;
-    padding-top: 4px;
-}
-
-.missed_material .subtitle {
-    text-align: left;
-    font-size: 14pt;
-    font-weight: 300;
-    padding-top: 10px;
-}
-
-.price_info {
-    float: right;
-    width: 420px;
-    border: 3px solid #FFB94B;
-    font-size: 14pt;
-    font-weight: 300;
-}
-
-.price_info dl {
-    display: flow-root;
-}
-
-.price_info dt {
-    float: left;
-    padding-left: 20px;
-}
-
-.price_info dd {
-    float: right;
-    padding-right: 20px;
-    margin-top: -4px;
-    font-size: 16pt;
-    font-weight: 500;
-}
-
-.price_info dd span {
-    font-size: 12pt;
-    font-weight: 300;
-}
-
-.price_title {
-    text-align: left;
-    background: #ffb94b;
-    font-size: 18pt;
-    font-weight: 500;
-    color: white;
-    padding: 6px 0px 10px 20px;
-}
-
-.total_price {
-    color: #0941ca;
-    font-size: 24pt;
-    font-weight: 500;
-    text-align: right;
-    padding: 0 20px 20px 0;
-}
-
-.total_price span {
-    font-size: 16pt;
-    font-weight: 300;
-}
-
-.recipe_button {
-    clear: both;
-    padding-top: 50px;
-}
-
-.btn_primary {
-    cursor: pointer;
-
-    width: 240px;
-    height: 75px;
-
-    border: 1px solid #ddd;
-    font-size: 22pt;
-    font-weight: 600;
-    background: white;
-    
-    opacity: 1;
-}
-
-.btn_primary:hover {
-    opacity: 0.85;
-}
-
-.btn_cart:hover {
-    background: #eee;
-}
-
-.btn_primary:focus {
-    outline: 4px solid rgba(220, 220, 220, 0.55);
-}
 
 .search_window {
     border-bottom: 3px solid #ffb847;
@@ -306,6 +318,122 @@
 .search_window ::-webkit-input-placeholder { 
     color: #ffb847;
 }
+
+.recipe_additional_info {
+    height: 300px;
+    padding: 60px 0px;
+}
+
+.missed_material {
+    float: left;
+}
+
+.missed_material .title {
+    font-size: 26px;
+    font-weight: 400;
+    border-bottom: 1px solid #aaa;
+    width: 420px;
+    text-align: left;
+    padding-bottom: 4px;
+}
+
+.missed_material .notation {
+    text-align: right;
+    font-weight: 300;
+    font-size: 10pt;
+    padding-top: 4px;
+}
+
+.missed_material .subtitle {
+    text-align: left;
+    font-size: 14pt;
+    font-weight: 300;
+    padding-top: 10px;
+}
+
+.recipe_additional_info .price_info {
+    float: right;
+    width: 420px;
+    border: 3px solid #FFB94B;
+    font-size: 14pt;
+    font-weight: 300;
+}
+
+.recipe_additional_info .price_info dl {
+    display: flow-root;
+}
+
+.recipe_additional_info .price_info dt {
+    float: left;
+    padding-left: 20px;
+}
+
+.recipe_additional_info .price_info dd {
+    float: right;
+    padding-right: 20px;
+    margin-top: -4px;
+    font-size: 16pt;
+    font-weight: 500;
+}
+
+.recipe_additional_info .price_info dd span {
+    font-size: 12pt;
+    font-weight: 300;
+}
+
+.recipe_additional_info .price_title {
+    text-align: left;
+    background: #ffb94b;
+    font-size: 18pt;
+    font-weight: 500;
+    color: white;
+    padding: 6px 0px 10px 20px;
+}
+
+.recipe_additional_info .total_price {
+    color: #0941ca;
+    font-size: 24pt;
+    font-weight: 500;
+    text-align: right;
+    padding: 0 20px 20px 0;
+}
+
+.recipe_additional_info .total_price span {
+    font-size: 16pt;
+    font-weight: 300;
+}
+
+.recipe_button {
+    clear: both;
+    padding-top: 50px;
+}
+
+.btn_primary {
+    cursor: pointer;
+
+    width: 240px;
+    height: 75px;
+
+    border: 1px solid #ddd;
+    font-size: 22pt;
+    font-weight: 600;
+    background: white;
+    
+    opacity: 1;
+}
+
+.btn_primary:hover {
+    opacity: 0.85;
+}
+
+.btn_cart:hover {
+    background: #eee;
+}
+
+.btn_primary:focus {
+    outline: 4px solid rgba(220, 220, 220, 0.55);
+}
+
 
 .btn_cart {
     margin-right: 24px;

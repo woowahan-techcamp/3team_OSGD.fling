@@ -5,6 +5,25 @@
         <title>플링</title>
         <link rel="stylesheet" href="./css/common.css">
         <link rel="stylesheet" href="./css/recipe_page.css">
+        <script type="" id="">
+            <div class="cart_list">
+                    <div class="cart_list left">
+                        <input type="checkbox" class="recipe_checkbox">
+                        <div class="product_img"></div>
+                        <div class="product_info">
+                            <div class="name">{{name}}</div>
+                            <div class="origin">국내산</div>
+                        </div>    
+                    </div>
+                    <div class="cart_list right">
+                        <div class="volum_box"></div>
+                        <div class="price_info">
+                            <div class="price"></div>
+                            <div class="per_price">{{weight}}당 {{price}}원</div>
+                        </div>    
+                    </div>
+                </div>
+        </script>
     </head>
     <body>
         <div class="wrap">
@@ -45,11 +64,47 @@
                             <p>플링은 매일 새벽 주문한 재료를 슈퍼배송 해드립니다.</p>
                             <p>이제 장보러 나가기 마세요!</p>
                         </div>
-
                     </div>
                 </section>
 
-                <section class="recipe_section recipe_cart"></section>
+                <section class="recipe_section recipe_cart content">
+                    <div class="title">'<span>양념불고기<span>' 레시피 재료 담기</div>
+                    <div class="subtitle">
+                        <div>상품</div>
+                        <div>수량</div>
+                        <div>가격</div>
+                    </div>
+                    <!--템플릿 스크립트 시작-->
+                    <div class="cart_list">
+                        <div class="cart_list left">
+                            <input type="checkbox" class="recipe_checkbox" id="check1">
+                            <label for="check1"></label>
+                            <div class="product_img"></div>
+                            <div class="product_info">
+                                <div class="name">돼지고기 안심 1kg</div>
+                                <div class="origin">국내산</div>
+                            </div>    
+                        </div>
+                        <div class="cart_list right">
+                            <div class="volume_box">
+                                <p>1</p>
+                                <div class="button">
+                                    <div class="up_button_wrap">
+                                        <button class="up_button"></button>
+                                    </div>
+                                    <div class="down_button_wrap">
+                                        <button class="down_button"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="price_info">
+                                <div class="price">130,000원</div>
+                                <div class="per_price">100g당 13,000원</div>
+                            </div>    
+                        </div>
+                    </div>
+                    <!--템플릿 스크립트 끝-->
+                </section>
                 
                 <section class="recipe_section recipe_product_search">
                     <div class="section_title">찾으시는 재료가 없으신가요?</div>
