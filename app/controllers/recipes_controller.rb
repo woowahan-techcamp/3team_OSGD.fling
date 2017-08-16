@@ -34,6 +34,11 @@ class RecipesController < ApplicationController
     render json: @products.to_json(only: [:id, :name, :image, :weight, :bundle, :price])
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+    render json: @recipe.to_json(only: [:id, :subtitle, :writer, :title, :url, :image])
+  end
+
   #search and create Recipe
   def create
     url = params[:url]
