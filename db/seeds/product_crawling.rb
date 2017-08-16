@@ -39,7 +39,10 @@ Material.all.each do |m|
       puts "#{make_ourform(name)["name"]} is founded!"
       description =  make_ourform(name)
       price = product.css('dd.descriptions div.price-area strong.price-value').first.text
-      image = product.css('dt.image img').attr('src').text.delete('//')
+      image = product.css('dt.image img').attr('src').text
+      image[0] = ""
+      image[0] = ""
+      puts image
       product = Product.new(price: price, image: image,
                             name: description["name"],
                             weight: description["weight"],
