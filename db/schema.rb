@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808081934) do
+ActiveRecord::Schema.define(version: 20170816053549) do
 
   create_table "material_units", force: :cascade do |t|
     t.integer  "material_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170808081934) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["material_id"], name: "index_products_on_material_id"
+    t.index ["name"], name: "index_products_on_name"
   end
 
   create_table "recipe_materials", force: :cascade do |t|
@@ -52,14 +53,26 @@ ActiveRecord::Schema.define(version: 20170808081934) do
     t.index ["unit_id"], name: "index_recipe_materials_on_unit_id"
   end
 
+  create_table "recipe_products", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_recipe_products_on_product_id"
+    t.index ["recipe_id"], name: "index_recipe_products_on_recipe_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
-    t.string   "title",      null: false
+    t.string   "title",           null: false
     t.string   "url"
     t.string   "image"
     t.string   "writer"
     t.string   "subtitle"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "serving"
+    t.string   "recipe_material"
+    t.string   "missed_material"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["url"], name: "index_recipes_on_url"
   end
 
