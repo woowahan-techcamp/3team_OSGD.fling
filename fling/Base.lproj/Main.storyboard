@@ -231,7 +231,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="recipeCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeCell" id="uUU-JY-4LH" customClass="RecipeTableViewCell" customModule="fling" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="recipeCell" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeCell" id="uUU-JY-4LH" customClass="RecipeTableViewCell" customModule="fling" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uUU-JY-4LH" id="8PN-hg-YQT">
@@ -301,14 +301,6 @@
                                     <segue destination="CI6-wJ-KtW" kind="show" id="mGC-vg-vpT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CA3-TD-GCh">
-                                <rect key="frame" x="16" y="579" width="99" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="추가 버튼 (임시)"/>
-                                <connections>
-                                    <segue destination="adW-DK-IUK" kind="show" id="geE-fC-R23"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -321,6 +313,7 @@
                         <outlet property="recipeTitleLabel" destination="1aY-kw-NGX" id="HPA-T1-oOp"/>
                         <outlet property="totalPriceLabel" destination="OC9-px-A8S" id="Pdx-A4-4Vv"/>
                         <segue destination="TrP-d4-eat" kind="show" identifier="RecipeToProduct" id="3T6-s5-SBO"/>
+                        <segue destination="adW-DK-IUK" kind="show" identifier="RecipeToSearchProduct" id="4Il-4k-CGS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMB-rM-w5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -645,8 +638,8 @@
         <image name="search_icon1x.png" width="42" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZXJ-sD-cUC"/>
+        <segue reference="3T6-s5-SBO"/>
+        <segue reference="mGC-vg-vpT"/>
         <segue reference="DT1-wf-wUI"/>
-        <segue reference="CJV-8K-kvI"/>
     </inferredMetricsTieBreakers>
 </document>

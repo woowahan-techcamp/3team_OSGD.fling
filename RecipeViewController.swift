@@ -81,30 +81,45 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.searchRecipe.products.count
+        return self.searchRecipe.products.count+1   //add row
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         guard let cell =
             tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as? RecipeTableViewCell else {
-                    return RecipeTableViewCell()
+                return RecipeTableViewCell()
         }
 
-        let productCell = searchRecipe.products[indexPath.row]
+        if indexPath.row < self.searchRecipe.products.count {
+            let productCell = searchRecipe.products[indexPath.row]
 
-        cell.checkboxHandler = { () -> Void in
-            self.searchRecipe.toggleCheck(product: productCell.product)
-        }
+            cell.checkboxHandler = { () -> Void in
+                self.searchRecipe.toggleCheck(product: productCell.product)
+            }
 
-        cell.checkbox.on = productCell.on
-        cell.productLabel.text = productCell.product.getName()
-        let price = productCell.product.getPrice() * Decimal.init(productCell.number)
-        cell.priceLabel.text = String(describing: price).appending(" 원")
-        cell.eaLabel.text = productCell.number.description.appending(" 개")
+            cell.checkbox.on = productCell.on
+            cell.productLabel.text = productCell.product.getName()
+            let price = productCell.product.getPrice() * Decimal.init(productCell.number)
+            cell.priceLabel.text = String(describing: price).appending(" 원")
+            cell.eaLabel.text = productCell.number.description.appending(" 개")
 
-        cell.disclosureHandler = { () -> Void in
-            if self.searchRecipe.products[indexPath.row].on {
-                self.performSegue(withIdentifier: "RecipeToProduct", sender: productCell)
+            cell.disclosureHandler = { () -> Void in
+                if self.searchRecipe.products[indexPath.row].on {
+                    self.performSegue(withIdentifier: "RecipeToProduct", sender: productCell)
+                }
+            }
+        } else {
+            cell.checkbox.isHidden = true
+
+            let addButton = UIImageView.init(frame: CGRect(x: 10, y: 15, width: 20, height: 20))
+            addButton.image = UIImage.init(named: "logo.png")
+            cell.addSubview(addButton)
+
+            cell.productLabel.text = "추가하기"
+
+            cell.disclosureHandler = { () -> Void in
+                self.performSegue(withIdentifier: "RecipeToSearchProduct", sender: nil)
             }
         }
 
