@@ -141,12 +141,92 @@
 }
 
 .recipe_additional_info {
-    height: 330px;
-    background: #aaa;
+    height: 300px;
+    padding: 60px 0px;
+}
+
+.missed_material {
+    float: left;
+}
+
+.missed_material .title {
+    font-size: 26px;
+    font-weight: 400;
+    border-bottom: 1px solid #aaa;
+    width: 420px;
+    text-align: left;
+    padding-bottom: 4px;
+}
+
+.missed_material .notation {
+    text-align: right;
+    font-weight: 300;
+    font-size: 10pt;
+    padding-top: 4px;
+}
+
+.missed_material .subtitle {
+    text-align: left;
+    font-size: 14pt;
+    font-weight: 300;
+    padding-top: 10px;
+}
+
+.price_info {
+    float: right;
+    width: 420px;
+    border: 3px solid #FFB94B;
+    font-size: 14pt;
+    font-weight: 300;
+}
+
+.price_info dl {
+    display: flow-root;
+}
+
+.price_info dt {
+    float: left;
+    padding-left: 20px;
+}
+
+.price_info dd {
+    float: right;
+    padding-right: 20px;
+    margin-top: -4px;
+    font-size: 16pt;
+    font-weight: 500;
+}
+
+.price_info dd span {
+    font-size: 12pt;
+    font-weight: 300;
+}
+
+.price_title {
+    text-align: left;
+    background: #ffb94b;
+    font-size: 18pt;
+    font-weight: 500;
+    color: white;
+    padding: 6px 0px 10px 20px;
+}
+
+.total_price {
+    color: #0941ca;
+    font-size: 24pt;
+    font-weight: 500;
+    text-align: right;
+    padding: 0 20px 20px 0;
+}
+
+.total_price span {
+    font-size: 16pt;
+    font-weight: 300;
 }
 
 .recipe_button {
-    margin-top: 50px;
+    clear: both;
+    padding-top: 50px;
 }
 
 .btn_primary {
@@ -165,6 +245,10 @@
 
 .btn_primary:hover {
     opacity: 0.85;
+}
+
+.btn_cart:hover {
+    background: #eee;
 }
 
 .btn_primary:focus {
