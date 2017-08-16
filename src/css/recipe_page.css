@@ -1,0 +1,47 @@
+.recipe_header {
+    width: 100%;
+    height: 60px;
+    color: black;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+.recipe_header .logo_wrap {
+    float: left;
+    padding-left: 10px;
+    padding-top: 16px;
+}
+
+.recipe_header .fling_logo {
+    background-image: url(../assets/img/fling_logo_black.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 65px;
+    height: 40px;
+}
+
+.recipe_header .page_title {
+    float: left;
+    padding-top: 12px;
+    margin-left: 35px;
+    font-size: 18pt;
+    font-weight: 300;
+}
+
+.recipe_header .head_item {
+    position: relative;
+    padding-top: 16px;
+    text-align: right;
+}
+
+.recipe_header .head_item > ul {
+    margin-right: 30px;
+    white-space: nowrap;
+}
+
+.recipe_header .head_item > ul > li {
+    padding-right: 15px;
+    padding-left: 15px;
+    display: inline-block;
+}
