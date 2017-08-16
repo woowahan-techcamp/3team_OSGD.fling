@@ -46,16 +46,17 @@ a:hover {
 }
 
 .logo_wrap {
-    padding-left: 10px;
     float: left;
+    padding-left: 10px;
+    padding-top: 16px;
 }
 
 .fling_logo {
-    /*background-image: url(../assets/img/temp_logo.png);
+    background-image: url(../assets/img/fling_logo_white.png);
     background-repeat: no-repeat;
-    background-size: contain;*/
+    background-size: contain;
     width: 65px;
-    height: 65px;
+    height: 40px;
 }
 
 .head_item {
