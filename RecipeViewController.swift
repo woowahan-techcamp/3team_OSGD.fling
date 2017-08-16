@@ -15,6 +15,7 @@ class RecipeViewController: UIViewController {
     let network = Network.init()
     var searchUrl = ""
     var searchRecipe = Recipe.init()
+    var editedProduct = (product: Product(), number: 0, on: true)
 
     private let priceModified = Notification.Name.init(rawValue: "PriceModified")
 
@@ -25,6 +26,14 @@ class RecipeViewController: UIViewController {
 
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var productTable: UITableView!
+
+    @IBAction func unwindToRecipe(segue: UIStoryboardSegue) {
+        let index = searchRecipe.indexOf(product: editedProduct.product)
+        searchRecipe.setNumber(index: index, number: editedProduct.number)
+
+        self.productTable.reloadData()
+        self.updatePrice()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +54,6 @@ class RecipeViewController: UIViewController {
         recipeImage.af_setImage(withURL: URL(string: searchRecipe.image)!)
         recipeTitleLabel.text = searchRecipe.title
         recipeSubTitleLabel.text = searchRecipe.subtitle
-//        totalPriceLabel.text = NumberFormatter.localizedString(from: NSNumber(searchRecipe.totalPrice()), number: nil)
         self.updatePrice()
     }
 
@@ -58,10 +66,10 @@ class RecipeViewController: UIViewController {
             guard let secondViewController = segue.destination as? ProductViewController else {
                 return
             }
-            guard let pid = sender as? Int else {
+            guard let product = sender as? (product: Product, number: Int, on: Bool) else {
                 return
             }
-            secondViewController.pid = pid
+            secondViewController.data = product
         }
     }
 }
@@ -90,14 +98,16 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
 
         cell.checkbox.on = productCell.on
         cell.productLabel.text = productCell.product.getName()
-        cell.priceLabel.text = String(describing: productCell.product.getPrice()).appending(" 원")
-        cell.eaLabel.text = productCell.number.description
+        let price = productCell.product.getPrice() * Decimal.init(productCell.number)
+        cell.priceLabel.text = String(describing: price).appending(" 원")
+        cell.eaLabel.text = productCell.number.description.appending(" 개")
+
+        cell.disclosureHandler = { () -> Void in
+            if self.searchRecipe.products[indexPath.row].on {
+                self.performSegue(withIdentifier: "RecipeToProduct", sender: productCell)
+            }
+        }
 
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        //swiftlint:disable line_length
-        self.performSegue(withIdentifier: "RecipeToProduct", sender: self.searchRecipe.products[indexPath.row].product.getId())
     }
 }

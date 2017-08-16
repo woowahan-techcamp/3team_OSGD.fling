@@ -18,6 +18,16 @@ class Product {
     private let bundle: String
     private let image: String
 
+    init() {
+        self.pid = 0
+        self.mid = 0
+        self.name = ""
+        self.price = 0
+        self.weight = ""
+        self.bundle = ""
+        self.image = ""
+    }
+
     init(pid: Int, mid: Int, name: String, price: Decimal, weight: String, bundle: String, image: String) {
         self.pid = pid
         self.mid = mid

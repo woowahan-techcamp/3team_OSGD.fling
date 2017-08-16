@@ -226,7 +226,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6aA-aY-yFw">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6aA-aY-yFw">
                                 <rect key="frame" x="0.0" y="188" width="375" height="390"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -581,23 +581,44 @@
                             <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7vV-WR-KF1">
                                 <rect key="frame" x="0.0" y="502" width="375" height="165"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="TrP-d4-eat" id="TxB-L7-8sd"/>
+                                    <outlet property="delegate" destination="TrP-d4-eat" id="xkm-rd-EvP"/>
+                                </connections>
                             </pickerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sg-8x-2i3">
                                 <rect key="frame" x="0.0" y="64" width="375" height="210"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="타이틀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oY-Hy-app">
+                                <rect key="frame" x="16" y="282" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="상품 상세" id="7KE-es-CPl"/>
+                    <navigationItem key="navigationItem" title="상품 상세" id="7KE-es-CPl">
+                        <barButtonItem key="rightBarButtonItem" title="완료" id="Hlw-PS-1HC">
+                            <connections>
+                                <action selector="touchConfirmButton:" destination="TrP-d4-eat" id="scn-bg-oI9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="confirmButton" destination="Hlw-PS-1HC" id="D8L-c3-xDv"/>
                         <outlet property="productBundlePicker" destination="7vV-WR-KF1" id="s8c-gZ-Fbc"/>
                         <outlet property="productImage" destination="1sg-8x-2i3" id="1dY-mq-Vfr"/>
+                        <outlet property="titleLabel" destination="8oY-Hy-app" id="WpP-4F-Lzq"/>
+                        <segue destination="Vay-3f-pLA" kind="unwind" identifier="unwindToRecipe" unwindAction="unwindToRecipeWithSegue:" id="BwX-Y0-VQG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aj0-dX-wSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Vay-3f-pLA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="-368"/>
+            <point key="canvasLocation" x="1660" y="-368.36581709145429"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6G1-sP-hl4">
@@ -624,8 +645,8 @@
         <image name="search_icon1x.png" width="42" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ZXJ-sD-cUC"/>
         <segue reference="DT1-wf-wUI"/>
-        <segue reference="3T6-s5-SBO"/>
-        <segue reference="mGC-vg-vpT"/>
+        <segue reference="CJV-8K-kvI"/>
     </inferredMetricsTieBreakers>
 </document>
