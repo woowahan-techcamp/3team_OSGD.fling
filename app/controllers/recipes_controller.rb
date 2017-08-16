@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'json'
-
 require 'open-uri'
+
 class RecipesController < ApplicationController
 
   after_action :cors_set_access_control_headers
@@ -58,7 +58,7 @@ class RecipesController < ApplicationController
             image = ""
           end
           if data.css('div.aside h1').present?
-            subtitle = data.css('div.aside h1').text.gsub(title, "").strip + " " + title
+            subtitle = input.css('div.aside h1').text.strip.chomp(title).strip
           else
             subtitle = ""
           end
