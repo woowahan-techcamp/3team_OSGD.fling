@@ -10,13 +10,36 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
 
+    let checkbox = CheckboxButton.init(frame: CGRect(x: 10, y: 15, width: 20, height: 20))
+    let productLabel = UILabel.init(frame: CGRect(x: 40, y: 5, width: 200, height: 24))
+    let priceLabel = UILabel.init(frame: CGRect(x: 40, y: 25, width: 100, height: 24))
+    let eaLabel = UILabel.init(frame: CGRect(x: 320, y: 12, width: 20, height: 24))
+
+    var checkboxHandler:(() -> Void)!
+
     @IBAction func didToggleCheckboxButton(_ sender: CheckboxButton) {
-        let state = sender.on ? "ON" : "OFF"
-        print("checkbox button : \(state)")
+        self.checkboxHandler()
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        //checkbox
+        self.contentView.addSubview(checkbox)
+        self.checkbox.addTarget(self, action: #selector(didToggleCheckboxButton), for: .touchUpInside)
+
+        //product title
+        self.contentView.addSubview(productLabel)
+
+        //product price
+        priceLabel.font = UIFont.systemFont(ofSize: 12)
+        priceLabel.textColor = UIColor.gray
+        self.contentView.addSubview(priceLabel)
+
+        //ea
+        eaLabel.textColor = UIColor.gray
+        eaLabel.textAlignment = NSTextAlignment.right
+        self.contentView.addSubview(eaLabel)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

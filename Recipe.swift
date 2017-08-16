@@ -19,6 +19,8 @@ class Recipe {
     typealias ListProduct = [(product: Product, number: Int, on: Bool)]
     public private(set) var products: ListProduct
 
+    private let priceModified = Notification.Name.init(rawValue: "PriceModified")
+
     init() {
         self.rid = 0
         self.title = ""
@@ -69,20 +71,23 @@ class Recipe {
     func totalPrice() -> String {
         var total = Decimal()
         products.forEach { object in
-            let ea = Decimal.init(object.number)
-            total += (object.product.getPrice() * ea)
+            if object.on == true {
+                let ea = Decimal.init(object.number)
+                total += (object.product.getPrice() * ea)
+            }
         }
         let head = "총액 : "
         let tail = " 원"
         let price = total.description
         return head.appending(price).appending(tail)
     }
-    
+
     func toggleCheck(product: Product) {
         let index = indexOf(product: product)
-        
+
         if index >= 0 {
             products[index].on = !products[index].on
+            NotificationCenter.default.post(name: self.priceModified, object: self, userInfo: [:])
         }
     }
 }

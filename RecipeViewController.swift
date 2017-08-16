@@ -16,6 +16,8 @@ class RecipeViewController: UIViewController {
     var searchUrl = ""
     var searchRecipe = Recipe.init()
 
+    private let priceModified = Notification.Name.init(rawValue: "PriceModified")
+
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeSubTitleLabel: UILabel!
@@ -26,6 +28,10 @@ class RecipeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //swiftlint:disable line_length
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePrice), name: self.priceModified, object: nil)
+
         productTable.tableFooterView = UIView()
 
         drawRecipeDetail()
@@ -40,6 +46,10 @@ class RecipeViewController: UIViewController {
         recipeTitleLabel.text = searchRecipe.title
         recipeSubTitleLabel.text = searchRecipe.subtitle
 //        totalPriceLabel.text = NumberFormatter.localizedString(from: NSNumber(searchRecipe.totalPrice()), number: nil)
+        self.updatePrice()
+    }
+
+    func updatePrice() {
         totalPriceLabel.text = searchRecipe.totalPrice()
     }
 
@@ -72,25 +82,16 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                     return RecipeTableViewCell()
         }
 
-        let product = self.searchRecipe.products[indexPath.row].product
+        let productCell = searchRecipe.products[indexPath.row]
 
-        //checkbox
-        let positionX = 10
-        let checkbox = CheckboxButton.init(frame: CGRect(x: positionX, y: 15, width: 20, height: 20))
-        checkbox.on = true
-        cell.contentView.addSubview(checkbox)
+        cell.checkboxHandler = { () -> Void in
+            self.searchRecipe.toggleCheck(product: productCell.product)
+        }
 
-        //product title
-        let productLabel = UILabel.init(frame: CGRect(x: 40, y: 5, width: 200, height: 24))
-        productLabel.text = product.getName()
-        cell.contentView.addSubview(productLabel)
-
-        //product price
-        let priceLabel = UILabel.init(frame: CGRect(x: positionX + 30, y: 25, width: 100, height: 24))
-        priceLabel.text = String(describing: product.getPrice()).appending(" 원")
-        priceLabel.font = UIFont.systemFont(ofSize: 12)
-        priceLabel.textColor = UIColor.gray
-        cell.contentView.addSubview(priceLabel)
+        cell.checkbox.on = productCell.on
+        cell.productLabel.text = productCell.product.getName()
+        cell.priceLabel.text = String(describing: productCell.product.getPrice()).appending(" 원")
+        cell.eaLabel.text = productCell.number.description
 
         return cell
     }
