@@ -15,7 +15,6 @@ class RecipeViewController: UIViewController {
     let network = Network.init()
     var searchUrl = ""
     var searchRecipe = Recipe.init()
-    var products = Recipe.ListProduct()
 
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
@@ -30,7 +29,6 @@ class RecipeViewController: UIViewController {
         productTable.tableFooterView = UIView()
 
         drawRecipeDetail()
-        products = searchRecipe.listOfProducts()
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +63,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.searchRecipe.listOfProducts().count
+        return self.searchRecipe.products.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,7 +72,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                     return RecipeTableViewCell()
         }
 
-        let product = products[indexPath.row].product
+        let product = self.searchRecipe.products[indexPath.row].product
 
         //checkbox
         let positionX = 10
@@ -98,6 +96,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "RecipeToProduct", sender: products[indexPath.row].product.getId())
+        //swiftlint:disable line_length
+        self.performSegue(withIdentifier: "RecipeToProduct", sender: self.searchRecipe.products[indexPath.row].product.getId())
     }
 }
