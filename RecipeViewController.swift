@@ -22,7 +22,8 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeSubTitleLabel: UILabel!
-    @IBOutlet weak var recipeExcept: UILabel!
+    @IBOutlet weak var recipeServeLabel: UILabel!
+    @IBOutlet weak var recipeMissed: UILabel!
 
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var productTable: UITableView!
@@ -54,6 +55,9 @@ class RecipeViewController: UIViewController {
         recipeImage.af_setImage(withURL: URL(string: searchRecipe.image)!)
         recipeTitleLabel.text = searchRecipe.title
         recipeSubTitleLabel.text = searchRecipe.subtitle
+        recipeServeLabel.text = searchRecipe.serving
+        recipeMissed.text = searchRecipe.missed//.appending("은(는) 찾지 못했어요.")
+
         self.updatePrice()
     }
 

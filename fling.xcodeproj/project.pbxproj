@@ -11,6 +11,7 @@
 		980749C41F3A989800E4EA96 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C31F3A989800E4EA96 /* Recipe.swift */; };
 		980749C61F3A98A200E4EA96 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C51F3A98A200E4EA96 /* Product.swift */; };
 		980749C81F3A98B100E4EA96 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C71F3A98B100E4EA96 /* Network.swift */; };
+		98227E421F44366900DE96C5 /* ProductSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E411F44366900DE96C5 /* ProductSearchViewController.swift */; };
 		984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843151F33F3AF007AD753 /* AppDelegate.swift */; };
 		9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984843191F33F3B0007AD753 /* Main.storyboard */; settings = {ASSET_TAGS = (Main, ); }; };
 		9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9848431C1F33F3B0007AD753 /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		980749C31F3A989800E4EA96 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		980749C51F3A98A200E4EA96 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		980749C71F3A98B100E4EA96 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		98227E411F44366900DE96C5 /* ProductSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchViewController.swift; sourceTree = "<group>"; };
 		984843121F33F3AF007AD753 /* fling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984843151F33F3AF007AD753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9848431A1F33F3B0007AD753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				984843431F3C324D007AD753 /* RecipeViewController.swift */,
 				98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */,
 				98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */,
+				98227E411F44366900DE96C5 /* ProductSearchViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */,
 				984843441F3C324D007AD753 /* RecipeViewController.swift in Sources */,
 				98AD7CA21F3ACCBD00500BD9 /* Product.swift in Sources */,
+				98227E421F44366900DE96C5 /* ProductSearchViewController.swift in Sources */,
 				98AD7CAC1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift in Sources */,
 				98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */,
 				98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */,

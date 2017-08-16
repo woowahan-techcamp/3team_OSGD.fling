@@ -255,7 +255,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="레시피 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aY-kw-NGX">
-                                        <rect key="frame" x="129" y="8" width="238" height="21"/>
+                                        <rect key="frame" x="129" y="8" width="194" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -273,6 +273,13 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.8004243338" green="0.0062561263189999999" blue="0.16477385359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50인 기준" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOZ-3I-Ymd">
+                                        <rect key="frame" x="325" y="8" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -307,8 +314,9 @@
                     <navigationItem key="navigationItem" title="레시피" id="97o-yX-gUa"/>
                     <connections>
                         <outlet property="productTable" destination="6aA-aY-yFw" id="DWe-DQ-D5q"/>
-                        <outlet property="recipeExcept" destination="Dai-XD-q1w" id="UYE-gt-0mg"/>
                         <outlet property="recipeImage" destination="s6l-DD-ncZ" id="T0N-g9-iCC"/>
+                        <outlet property="recipeMissed" destination="Dai-XD-q1w" id="SBC-5t-hfL"/>
+                        <outlet property="recipeServeLabel" destination="YOZ-3I-Ymd" id="0Hs-cL-xeV"/>
                         <outlet property="recipeSubTitleLabel" destination="wsi-LF-S6p" id="Eb2-iV-zK1"/>
                         <outlet property="recipeTitleLabel" destination="1aY-kw-NGX" id="HPA-T1-oOp"/>
                         <outlet property="totalPriceLabel" destination="OC9-px-A8S" id="Pdx-A4-4Vv"/>
@@ -491,7 +499,7 @@
         <!--상품 검색-->
         <scene sceneID="6tU-o8-5xu">
             <objects>
-                <viewController id="adW-DK-IUK" sceneMemberID="viewController">
+                <viewController id="adW-DK-IUK" customClass="ProductSearchViewController" customModule="fling" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="93W-hl-bqW"/>
                         <viewControllerLayoutGuide type="bottom" id="V6m-fo-2zR"/>
@@ -554,6 +562,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="상품 검색" id="gfz-x7-tzh"/>
+                    <connections>
+                        <outlet property="searchBar" destination="3Zc-Xi-DUz" id="UPT-5c-ADy"/>
+                        <outlet property="searchTable" destination="2MW-Lz-gXR" id="GrU-tg-OWp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0I6-C7-PVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
