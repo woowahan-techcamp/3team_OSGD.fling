@@ -77,4 +77,12 @@ class Recipe {
         let price = total.description
         return head.appending(price).appending(tail)
     }
+    
+    func toggleCheck(product: Product) {
+        let index = indexOf(product: product)
+        
+        if index >= 0 {
+            products[index].on = !products[index].on
+        }
+    }
 }
