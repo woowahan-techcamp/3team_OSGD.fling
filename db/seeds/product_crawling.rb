@@ -25,27 +25,36 @@ def make_ourform(product_title)
   return result
 end
 
-Material.first(100).each do |m|
+missed_material = []
+
+Material.all.each do |m|
   keyword = m.name
-  puts keyword
   url = "http://www.coupang.com/np/search?component=194176&q=" + URI.encode(keyword) + "&channel=user"
   data = Nokogiri::HTML(open(url))
   if !data.nil?
     product = data.css('li.search-product a dl').first
-    if product.css('dd.descriptions div.price-area strong.price-value').first.nil?
-      # 에러 있는 부분. Fix 할것
-      product = data.css('li.search-product a dl').second
-    end
-    name = product.css('dd.descriptions div.name').text
-    description =  make_ourform(name)
-    price = product.css('dd.descriptions div.price-area strong.price-value').first.text
-    image = product.css('dt.image img').attr('src').text.delete('//')
-    product = Product.new(price: price, image: image, name: description["name"],
-                          weight: description["weight"], bundle: description["bundle"],
-                          material_id: m.id)
-    if product.save!
-      puts "#{product.name} is created"
+    if product.respond_to?(:css) &&
+        !product.css('dd.descriptions div.price-area strong.price-value').first.nil?
+      name = product.css('dd.descriptions div.name').text
+      puts "#{make_ourform(name)["name"]} is founded!"
+      description =  make_ourform(name)
+      price = product.css('dd.descriptions div.price-area strong.price-value').first.text
+      image = product.css('dt.image img').attr('src').text.delete('//')
+      product = Product.new(price: price, image: image,
+                            name: description["name"],
+                            weight: description["weight"],
+                            bundle: description["bundle"],
+                            material_id: m.id)
+      if product.save!
+        puts "#{product.name} is created"
+      end
+    else
+      missed_material << m.name
+      puts "I cannot find #{m.name}"
     end
   end
 end
 
+puts "I did create #{Product.all.count} products"
+puts "but I cannot find these materials..."
+puts missed_material
