@@ -189,6 +189,9 @@
 .recipe_cart .cart_list .right {
     float: right;
     border-top: 0;
+    margin-top: 40px;
+    margin-right: 120px;
+    height: 60px;
 }
 
 .recipe_cart .recipe_checkbox {
@@ -229,10 +232,14 @@
     border: 1px solid #aaa;
     height: 47px;
     width: 93px;
+    float: left;
+    margin-right: 120px;
+    margin-top: 5px;
 }
 
 .recipe_cart .button {
     float: right;
+    display: inline-grid;
 }
 
 .recipe_cart .volume_box p {
@@ -240,35 +247,55 @@
     padding-top: 10px;
 }
 
-.recipe_cart .button .up_button_wrap {
-    border-bottom: 1px solid #aaa;
-}
-
-.recipe_cart .button div {
-    width: 24px;
-    height: 23.5px;
-    border-left: 1px solid #aaa;
-}
-
 .recipe_cart .up_button {
-    background-image: url("../assets/img/up_button.png");
-    background-size: contain;
+    background-color: white;
+    background-image: url(../assets/img/up_button.png);
+    background-size: 15px;
     background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    border-left: 1px solid #aaa;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
     background-position-y: center;
-    border: 0;
+    background-position-x: center;
 }
+
 
 .recipe_cart .down_button {
-    background-image: url("../assets/img/down_button.png");
-    background-size: contain;
+    background-color: white;
+    background-image: url(../assets/img/down_button.png);
+    background-size: 15px;
     background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    border-left: 1px solid #aaa;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
     background-position-y: center;
-    border: 0;
+    background-position-x: center;
 }
 
-.recipe_cart button {
-    background: transparent;
-    border: 0px;
+.recipe_cart .up_button:focus, .recipe_cart .down_button:focus {
+    outline: 0px;
+}
+
+.recipe_cart .price_info {
+    float: right;
+}
+
+.recipe_cart .total_price {
+    font-size: 18pt;
+    font-weight: 300;
+}
+
+.recipe_cart .per_price {
+    font-size: 10pt;
+    font-weight: 300;
 }
 
 .recipe_product_search {
