@@ -56,13 +56,14 @@ class Network {
             }
         }
     }
-    
-    func getRecipeWith(recipe_id: Int) {
-        let url = mainUrl.appending(recipe_id.description)
+
+    func getRecipeWith(recipeId: Int) {
+        let url = mainUrl.appending(recipeId.description)
         Alamofire.request(url).responseJSON { response in
             if let recipeData = response.result.value as? [String: Any] {
                 let recipe = Recipe.init(data: recipeData)
-                Alamofire.request(self.productUrl).responseJSON(completionHandler: { response in
+                let productUrl = self.productUrl.appending((recipe?.rid.description)!)
+                Alamofire.request(productUrl).responseJSON(completionHandler: { response in
                     if let products = response.result.value as? [[String: Any]] {
                         products.forEach({ object in
                             recipe?.add(product: Product.init(data: object)!)

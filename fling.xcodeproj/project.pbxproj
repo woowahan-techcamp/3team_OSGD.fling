@@ -10,7 +10,6 @@
 		8B3EF89ACE4C5B6CE8EF347B /* Pods_flingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */; };
 		980749C41F3A989800E4EA96 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C31F3A989800E4EA96 /* Recipe.swift */; };
 		980749C61F3A98A200E4EA96 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C51F3A98A200E4EA96 /* Product.swift */; };
-		980749C81F3A98B100E4EA96 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C71F3A98B100E4EA96 /* Network.swift */; };
 		98227E421F44366900DE96C5 /* ProductSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E411F44366900DE96C5 /* ProductSearchViewController.swift */; };
 		984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843151F33F3AF007AD753 /* AppDelegate.swift */; };
 		9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984843191F33F3B0007AD753 /* Main.storyboard */; settings = {ASSET_TAGS = (Main, ); }; };
@@ -553,7 +552,6 @@
 			files = (
 				9848432B1F33F3B0007AD753 /* flingTests.swift in Sources */,
 				980749C41F3A989800E4EA96 /* Recipe.swift in Sources */,
-				980749C81F3A98B100E4EA96 /* Network.swift in Sources */,
 				980749C61F3A98A200E4EA96 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
