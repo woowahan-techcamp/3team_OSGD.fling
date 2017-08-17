@@ -1,0 +1,9 @@
+[submodule "Web"]
+	path = Web
+	url = https://github.com/woowahan-techcamp/3team_OSGD.fling.git
+[submodule "Backend"]
+	path = Backend
+	url = https://github.com/woowahan-techcamp/3team_OSGD.fling.git
+[submodule "iOS"]
+	path = iOS
+	url = https://github.com/woowahan-techcamp/3team_OSGD.fling.git
