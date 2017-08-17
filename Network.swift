@@ -13,14 +13,15 @@ class Network {
 
     private let mainUrl = "http://52.78.41.124/recipes/"
     private let productUrl = "http://52.78.41.124/get_products/"
+    private let searchProductUrl = "http://52.78.41.124/search_product/"
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
-    private let failFlingRecipe = Notification.Name.init(rawValue: "FailFlingRecipe")
+    private let failFlingRecipe = Notification.Name.init(rawValue: "failFlingRecipe")
+    private let searchProduct = Notification.Name.init("searchProduct")
 
     func getFlingRecipe() {
         Alamofire.request(mainUrl).responseJSON { response in
             var recipes = [Recipe]()
-
             if let savedData = response.result.value as? [[String: Any]] {
                 savedData.forEach({ object in
                     guard let recipe = Recipe.init(data: object) else {
@@ -77,6 +78,16 @@ class Network {
                                                 object: self, userInfo: [:])
             }
         }
+    }
 
+    func searchProductsWith(keyword: String) {
+        let parameters: Parameters = ["keyword": keyword]
+        Alamofire.request(searchProductUrl, method: .post, parameters: parameters).responseJSON { response in
+            if let data = response.result.value as? [[String: Any]] {
+                let searchList = SearchList.init(data: data)
+                NotificationCenter.default.post(name: self.searchProduct, object: self, userInfo: ["data": searchList])
+            } else {
+            }
+        }
     }
 }
