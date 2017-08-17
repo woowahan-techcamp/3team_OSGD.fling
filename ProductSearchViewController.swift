@@ -55,7 +55,8 @@ extension ProductSearchViewController: UITableViewDelegate, UITableViewDataSourc
         return self.searchList.result.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //swiftlint:disable line_length
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductSearchTableViewCell else {
                 return ProductSearchTableViewCell()
         }

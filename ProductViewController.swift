@@ -10,38 +10,47 @@ import AlamofireImage
 import UIKit
 
 class ProductViewController: UIViewController {
-
+    
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-
+    
     @IBOutlet weak var priceLabel: UILabel!
-
+    
+    //bundle label and stepper
     @IBOutlet weak var bundleLabel: UILabel!
     @IBOutlet weak var bundleStepper: UIStepper!
     @IBAction func bundleStepperChanged(_ sender: Any) {
-        //개수, 가격 업데이트
+        let value = Int.init(bundleStepper.value)
+        let bundle = value.description.appending(bundleUnit)
+        bundleLabel.text = data.product.getBundleString(input: bundle)
+        
+        calcTotalPrice()
     }
-
+    
     @IBOutlet weak var totalPriceLabel: UILabel!
-
+    
+    //confirm button
     @IBOutlet weak var confirmButton: UIBarButtonItem!
     @IBAction func touchConfirmButton(_ sender: Any) {
+        data.product.setBundle(input: bundleLabel.text ?? "1 개")
         let edited = (product: data.product, number: Int.init(bundleStepper.value), on: true)
         self.performSegue(withIdentifier: "unwindToRecipe", sender: edited)
     }
-
+    
     var data = (product: Product.init(), number: 0, on: false)
-
+    var bundleUnit = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBundleStepper()
         productInfo()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if segue.identifier == "unwindToRecipe" {
             guard let secondViewController = segue.destination as? RecipeViewController else {
@@ -53,22 +62,34 @@ class ProductViewController: UIViewController {
             secondViewController.editedProduct = product
         }
     }
-
-    func productInfo() {
-        productImage.af_setImage(withURL: URL(string: data.product.getImage())!)
-
-        //~계속 추가하기~
-        titleLabel.text = data.product.getName()
-//        descriptionLabel.text = "상품 상세 설명~~~~~~"
-        bundleLabel.text = data.product.getBundle().appending(" 개")
-
-    }
-
+    
     func setBundleStepper() {
         bundleStepper.minimumValue = 1
-        bundleStepper.maximumValue = 10
+        bundleStepper.maximumValue = 30
         bundleStepper.stepValue = 1
         bundleStepper.autorepeat = true
-        bundleStepper.value = 1
+        bundleStepper.value = Double.init(data.product.getBundleTuple(input: "").number)
+    }
+    
+    func productInfo() {
+        let product = data.product
+        
+        productImage.af_setImage(withURL: URL(string: product.getImage())!)
+        
+        titleLabel.text = product.getName()
+        descriptionLabel.text = ""
+        
+        priceLabel.text = product.getPrice().description.appending(" 원")
+        
+        bundleUnit = product.getBundleTuple(input: "").unit
+        bundleLabel.text = product.getBundleString(input: "")
+        bundleStepper.value = Double(product.getBundleTuple(input: "").number)
+        
+        calcTotalPrice()
+    }
+    
+    func calcTotalPrice() {
+        let result = Decimal.init(bundleStepper.value) * data.product.getPrice()
+        totalPriceLabel.text = "총 ".appending(result.description).appending(" 원")
     }
 }
