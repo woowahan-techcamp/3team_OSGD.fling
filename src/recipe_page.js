@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
         let jsonData;
         try {
             jsonData = JSON.parse(e.target.responseText);
+            XHR.get(`http://52.78.41.124/get_products/${jsonData.id}`, (e) => {
+                let data = JSON.parse(e.target.responseText);
+                template(data);
+            })
         }
         catch (e) {
             // exception
@@ -44,3 +48,10 @@ function closeModal() {
     dimmed_black.classList.remove("apply_dimmed_black");
 }
 
+function template(data) {
+    const theTemplateScript = document.querySelector("#cart_list_template").innerHTML;
+    const theTemplate = Handlebars.compile(theTemplateScript);
+    const theCompiledHtml = theTemplate(data);
+    
+    document.querySelector(".cart_template").innerHTML = theCompiledHtml;
+}

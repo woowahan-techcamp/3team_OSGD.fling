@@ -9,11 +9,13 @@
         <script src="./js/XHR.js"></script>
         <script src="./js/Utils.js"></script>
         <script src="./recipe_page.js"></script>
-        <script type="Template" id="">
-            <div class="cart_list">
+        <script type="Template" id="cart_list_template">
+            {{#each this}}
+                <div class="cart_list">
                     <div class="cart_list left">
-                        <input type="checkbox" class="recipe_checkbox">
-                        <div class="product_img"></div>
+                        <input type="checkbox" class="recipe_checkbox" id="check1" checked>
+                        <label for="check1"></label>
+                        <div class="product_img" style="background-image: url(http://{{image}})"></div>
                         <div class="product_info">
                             <div class="name">{{name}}</div>
                             <div class="origin">국내산</div>
@@ -21,18 +23,19 @@
                     </div>
                     <div class="cart_list right">
                         <div class="volume_box">
-                            <p></p>
+                            <input type="text" value="1" maxlength="3">
                             <div class="button">
                                 <button class="up_button"></button>
                                 <button class="down_button"></button>
                             </div>
                         </div>
                         <div class="price_info">
-                            <div class="total_price"></div>
-                            <div class="per_price">{{weight}}당 {{price}}원</div>
+                            <div class="total_price">{{price}}원</div>
+                            {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
                         </div>    
                     </div>
                 </div>
+            {{/each}}
         </script>
     </head>
     <body>
@@ -124,32 +127,7 @@
                         <div>수량</div>
                         <div>가격</div>
                     </div>
-                    <!--템플릿 스크립트 시작-->
-                    <div class="cart_list">
-                        <div class="cart_list left">
-                            <input type="checkbox" class="recipe_checkbox" id="check1">
-                            <label for="check1"></label>
-                            <div class="product_img"></div>
-                            <div class="product_info">
-                                <div class="name">돼지고기 안심 1kg</div>
-                                <div class="origin">국내산</div>
-                            </div>    
-                        </div>
-                        <div class="cart_list right">
-                            <div class="volume_box">
-                                <input type="text" value="1" maxlength="3">
-                                <div class="button">
-                                    <button class="up_button"></button>
-                                    <button class="down_button"></button>
-                                </div>
-                            </div>
-                            <div class="price_info">
-                                <div class="total_price">130,000원</div>
-                                <div class="per_price">100g당 13,000원</div>
-                            </div>    
-                        </div>
-                    </div>
-                    <!--템플릿 스크립트 끝-->
+                    <div class="cart_template"></div>
                 </section>
                 
                 <section class="recipe_section recipe_product_search">
