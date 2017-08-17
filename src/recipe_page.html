@@ -5,6 +5,10 @@
         <title>플링</title>
         <link rel="stylesheet" href="./css/common.css">
         <link rel="stylesheet" href="./css/recipe_page.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+        <script src="./js/XHR.js"></script>
+        <script src="./js/Utils.js"></script>
+        <script src="./recipe_page.js"></script>
         <script type="Template" id="">
             <div class="cart_list">
                     <div class="cart_list left">
@@ -35,6 +39,7 @@
         <div class="wrap">
             <header class="recipe_header">
                 <nav class="head_menu content">
+                    <a href="./main.html" class="logo_link">Main Page</a>
                     <div class="logo_wrap">
                         <div class="fling_logo"></div>
                     </div>
@@ -53,11 +58,13 @@
             <div class="container">
                 <section class="recipe_section content recipe_info">
                     <div class="recipe_detail">
-                        <div class="circle_img"></div>
+                        <div class="circle_wrap">
+                            <div class="circle_img"></div>
+                        </div>
                         <div class="description">
                             <div class="title">양념불고기</div>
                             <div class="subtitle">배가 고플 때 밥도둑! 밥과 함께라면 뭐든지 먹어치울 수 있는 한국인의 밥상에서 빠뜨릴 수 없는 그 음식! 궁중 양념 불고기. 드셔보시지 않을라우?</div>
-                            <div class="detail_link"><a href="">레시피 자세히 보기</a></div>
+                            <div class="detail_link"><a href="" target="_blank">레시피 자세히 보기</a></div>
                         </div>
                     </div>
                     <div class="super_delivery">
@@ -74,7 +81,7 @@
                 </section>
 
                 <section class="recipe_section recipe_cart content">
-                    <div class="title">'<span>양념불고기<span>' 레시피 재료 담기</div>
+                    <div class="title">'<span class="title_main">양념불고기</span>' 레시피 재료 담기</div>
                     <div class="subtitle">
                         <div>상품</div>
                         <div>수량</div>
@@ -93,7 +100,7 @@
                         </div>
                         <div class="cart_list right">
                             <div class="volume_box">
-                                <p>1</p>
+                                <input type="text" value="1" maxlength="3">
                                 <div class="button">
                                     <button class="up_button"></button>
                                     <button class="down_button"></button>
