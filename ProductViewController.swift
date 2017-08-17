@@ -12,24 +12,29 @@ import UIKit
 class ProductViewController: UIViewController {
 
     @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var productBundlePicker: UIPickerView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+
+    @IBOutlet weak var priceLabel: UILabel!
+
+    @IBOutlet weak var bundleLabel: UILabel!
+    @IBOutlet weak var bundleStepper: UIStepper!
+    @IBAction func bundleStepperChanged(_ sender: Any) {
+        //개수, 가격 업데이트
+    }
+
+    @IBOutlet weak var totalPriceLabel: UILabel!
 
     @IBOutlet weak var confirmButton: UIBarButtonItem!
     @IBAction func touchConfirmButton(_ sender: Any) {
-        var edited = (product: data.product, number: 0, on: true)
-        edited.number = productBundlePicker.selectedRow(inComponent: 0) + 1
+        let edited = (product: data.product, number: Int.init(bundleStepper.value), on: true)
         self.performSegue(withIdentifier: "unwindToRecipe", sender: edited)
     }
 
-    let pickerData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]    //temp
     var data = (product: Product.init(), number: 0, on: false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        productBundlePicker.isHidden = false    //temp
-
         productInfo()
     }
 
@@ -54,22 +59,16 @@ class ProductViewController: UIViewController {
 
         //~계속 추가하기~
         titleLabel.text = data.product.getName()
+//        descriptionLabel.text = "상품 상세 설명~~~~~~"
+        bundleLabel.text = data.product.getBundle().appending(" 개")
 
-        productBundlePicker.selectRow(data.number-1, inComponent: 0, animated: false)
-    }
-}
-
-extension ProductViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
     }
 
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row].description
+    func setBundleStepper() {
+        bundleStepper.minimumValue = 1
+        bundleStepper.maximumValue = 10
+        bundleStepper.stepValue = 1
+        bundleStepper.autorepeat = true
+        bundleStepper.value = 1
     }
 }
