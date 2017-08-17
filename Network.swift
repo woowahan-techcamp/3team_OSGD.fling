@@ -12,7 +12,7 @@ import Alamofire
 class Network {
 
     private let mainUrl = "http://52.78.41.124/recipes/"
-    private let productUrl = "http://52.78.41.124/get_products/1"
+    private let productUrl = "http://52.78.41.124/get_products/"
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
     private let failFlingRecipe = Notification.Name.init(rawValue: "FailFlingRecipe")
@@ -40,7 +40,8 @@ class Network {
         Alamofire.request(mainUrl, method: .post, parameters: parameters).responseJSON { response in
             if let recipeData = response.result.value as? [String: Any] {
                 let recipe = Recipe.init(data: recipeData)
-                Alamofire.request(self.productUrl).responseJSON(completionHandler: { response in
+                let productUrl = self.productUrl.appending((recipe?.rid.description)!)
+                Alamofire.request(productUrl).responseJSON(completionHandler: { response in
                     if let products = response.result.value as? [[String: Any]] {
                         products.forEach({ object in
                             recipe?.add(product: Product.init(data: object)!)
