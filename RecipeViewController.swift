@@ -89,13 +89,21 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        let count = self.searchRecipe.products.count
+
+        var identifier = "recipeAddCell"
+
+        if row < count {
+            identifier = "recipeCell"
+        }
 
         guard let cell =
-            tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as? RecipeTableViewCell else {
+            tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? RecipeTableViewCell else {
                 return RecipeTableViewCell()
         }
 
-        if indexPath.row < self.searchRecipe.products.count {
+        if row < count {
             let productCell = searchRecipe.products[indexPath.row]
 
             cell.checkboxHandler = { () -> Void in
@@ -126,7 +134,6 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 self.performSegue(withIdentifier: "RecipeToSearchProduct", sender: nil)
             }
         }
-
         return cell
     }
 }
