@@ -9,7 +9,7 @@
 import Foundation
 
 class Product {
-    
+
     private let pid: Int //상품 아이디
     private let mid: Int //재료 아이디(참조)
     private let name: String
@@ -17,7 +17,7 @@ class Product {
     private let weight: String
     private var bundle: String
     private let image: String
-    
+
     init() {
         self.pid = 0
         self.mid = 0
@@ -27,7 +27,7 @@ class Product {
         self.bundle = ""
         self.image = ""
     }
-    
+
     init(pid: Int, mid: Int, name: String, price: Decimal, weight: String, bundle: String, image: String) {
         self.pid = pid
         self.mid = mid
@@ -37,7 +37,7 @@ class Product {
         self.bundle = bundle
         self.image = image
     }
-    
+
     init?(data: [String:Any]) {
         guard let pid = data["id"]! as? Int,
             let name = data["name"]! as? String,
@@ -47,7 +47,7 @@ class Product {
             let image = data["image"]! as? String else {
                 return nil
         }
-        
+
         var mid = 0
         if data["material_id"] != nil {
             guard let material_id = data["material_id"]! as? Int else {
@@ -55,9 +55,9 @@ class Product {
             }
             mid = material_id
         }
-        
+
         let decimalPrice = NSDecimalNumber.init(string: price.replacingOccurrences(of: ",", with: ""))
-        
+
         self.pid = pid
         self.mid = mid
         self.name = name
@@ -66,11 +66,11 @@ class Product {
         self.bundle = bundle
         self.image = image
     }
-    
+
     func setBundle(input: String) {
         self.bundle = input
     }
-    
+
     func getId() -> Int {
         return self.pid
     }
@@ -96,16 +96,16 @@ class Product {
             return "http://" + self.image
         }
     }
-    
+
     func getBundleTuple(input: String) -> (number: Int, unit: String) {
         var bundle = input
         var number = ""
         var unit = ""
-        
+
         if input == "" {
             bundle = self.bundle
         }
-        
+
         for character in bundle.characters {
             if Int.init(character.description) != nil {
                 number.append(character)
@@ -115,27 +115,27 @@ class Product {
                 unit.append(character)
             }
         }
-        
+
         guard let converted = Int.init(number) else {
             return (number: 1, unit: "개")
         }
-        
+
         if unit == "" {
             unit = "개"
         }
-        
+
         return (number: converted, unit: unit)
     }
-    
+
     func getBundleString(input: String) -> String {
         var bundle = input
         var number = ""
         var unit = ""
-        
+
         if input == "" {
             bundle = self.bundle
         }
-        
+
         for character in bundle.characters {
             if Int.init(character.description) != nil {
                 number.append(character)
@@ -145,15 +145,15 @@ class Product {
                 unit.append(character)
             }
         }
-        
+
         guard let converted = Int.init(number) else {
             return "1 개"
         }
-        
+
         if unit == "" {
             unit = "개"
         }
-        
+
         return converted.description.appending(" ").appending(unit)
     }
 }
