@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     //notification name
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
-    private let failFlingRecipe = Notification.Name.init(rawValue: "FailFlingRecipe")
+    private let failFlingRecipe = Notification.Name.init(rawValue: "failFlingRecipe")
 
     @IBOutlet var homeView: UIView!
     @IBOutlet weak var sampleRecipeCollection: UICollectionView!

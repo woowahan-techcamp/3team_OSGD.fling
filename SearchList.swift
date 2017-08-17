@@ -15,7 +15,7 @@ class SearchList {
     init() {
         self.result = []
     }
-    
+
     init(data: [[String:Any]]) {
         data.forEach { object in
             guard let searchId = object["id"]! as? Int,

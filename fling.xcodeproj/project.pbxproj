@@ -26,6 +26,8 @@
 		98AD7CA81F3AEB0D00500BD9 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AD7CA71F3AEB0D00500BD9 /* logo.png */; };
 		98AD7CAA1F3AEF0200500BD9 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD7CA91F3AEF0200500BD9 /* AlamofireImage.framework */; };
 		98AD7CAC1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */; };
+		98B1EAD11F45527A0016DEA9 /* SearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1EAD01F45527A0016DEA9 /* SearchList.swift */; };
+		98B1EAD31F455D140016DEA9 /* ProductSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1EAD21F455D140016DEA9 /* ProductSearchTableViewCell.swift */; };
 		98E6F3851F3C64A3007E3441 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */; };
 		98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */; };
 		98F821F21F3D695A006B0288 /* main_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F821F11F3D695A006B0288 /* main_image.png */; };
@@ -82,6 +84,8 @@
 		98AD7CA71F3AEB0D00500BD9 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../logo.png; sourceTree = "<group>"; };
 		98AD7CA91F3AEF0200500BD9 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRecipeCollectionViewCell.swift; sourceTree = "<group>"; };
+		98B1EAD01F45527A0016DEA9 /* SearchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchList.swift; sourceTree = "<group>"; };
+		98B1EAD21F455D140016DEA9 /* ProductSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchTableViewCell.swift; sourceTree = "<group>"; };
 		98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		98F821F11F3D695A006B0288 /* main_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_image.png; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				980749C31F3A989800E4EA96 /* Recipe.swift */,
 				980749C51F3A98A200E4EA96 /* Product.swift */,
 				980749C71F3A98B100E4EA96 /* Network.swift */,
+				98B1EAD01F45527A0016DEA9 /* SearchList.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */,
 				98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */,
 				98227E411F44366900DE96C5 /* ProductSearchViewController.swift */,
+				98B1EAD21F455D140016DEA9 /* ProductSearchTableViewCell.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -532,11 +538,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B1EAD31F455D140016DEA9 /* ProductSearchTableViewCell.swift in Sources */,
 				98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */,
 				984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */,
 				98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */,
 				984843441F3C324D007AD753 /* RecipeViewController.swift in Sources */,
 				98AD7CA21F3ACCBD00500BD9 /* Product.swift in Sources */,
+				98B1EAD11F45527A0016DEA9 /* SearchList.swift in Sources */,
 				98227E421F44366900DE96C5 /* ProductSearchViewController.swift in Sources */,
 				98AD7CAC1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift in Sources */,
 				98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */,
