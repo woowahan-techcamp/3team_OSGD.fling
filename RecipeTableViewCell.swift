@@ -19,6 +19,7 @@ class RecipeTableViewCell: UITableViewCell {
     var disclosureHandler:(() -> Void)!
 
     @IBAction func didToggleCheckboxButton(_ sender: CheckboxButton) {
+        self.resignFirstResponder()
         self.checkboxHandler()
     }
 

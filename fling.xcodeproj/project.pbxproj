@@ -154,12 +154,22 @@
 			name = model;
 			sourceTree = "<group>";
 		};
+		98227E431F452B3E00DE96C5 /* view cell */ = {
+			isa = PBXGroup;
+			children = (
+				98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */,
+				98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */,
+			);
+			name = "view cell";
+			sourceTree = "<group>";
+		};
 		984843091F33F3AF007AD753 = {
 			isa = PBXGroup;
 			children = (
 				98F821F51F3D732F006B0288 /* view component */,
 				980749C21F3A986700E4EA96 /* model */,
-				98AD7C9F1F3ACB6700500BD9 /* controller */,
+				98AD7C9F1F3ACB6700500BD9 /* view controller */,
+				98227E431F452B3E00DE96C5 /* view cell */,
 				984843141F33F3AF007AD753 /* fling */,
 				984843291F33F3B0007AD753 /* flingTests */,
 				980749C11F398AF700E4EA96 /* images */,
@@ -210,17 +220,15 @@
 			path = flingUITests;
 			sourceTree = "<group>";
 		};
-		98AD7C9F1F3ACB6700500BD9 /* controller */ = {
+		98AD7C9F1F3ACB6700500BD9 /* view controller */ = {
 			isa = PBXGroup;
 			children = (
 				98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */,
-				98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */,
 				984843431F3C324D007AD753 /* RecipeViewController.swift */,
-				98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */,
 				98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */,
 				98227E411F44366900DE96C5 /* ProductSearchViewController.swift */,
 			);
-			name = controller;
+			name = "view controller";
 			sourceTree = "<group>";
 		};
 		98F821F51F3D732F006B0288 /* view component */ = {
