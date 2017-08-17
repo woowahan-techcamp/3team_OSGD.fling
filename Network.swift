@@ -57,8 +57,8 @@ class Network {
         }
     }
     
-    func getRecipeWith(id: Integer) {
-        let url = mainUrl.appending(id.description)
+    func getRecipeWith(recipe_id: Int) {
+        let url = mainUrl.appending(recipe_id.description)
         Alamofire.request(url).responseJSON { response in
             if let recipeData = response.result.value as? [String: Any] {
                 let recipe = Recipe.init(data: recipeData)
