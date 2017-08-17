@@ -18,4 +18,29 @@ document.addEventListener('DOMContentLoaded', (e) => {
     });
 
     console.info(Utils.getParameterByName('query_url'));
+    /////////////////////////////////////
+    document.querySelector(".product_img").addEventListener("click", modalHandler);
+    document.querySelector(".modal_close").addEventListener("click", closeModal);
 });
+
+
+function modalHandler() {
+    const dimmed = document.querySelector(".dimmed");
+    const modal = document.querySelector(".recipe_modal");
+    const dimmed_black = document.querySelector(".dimmed_black");
+
+    modal.classList.remove("display_none");
+    dimmed.classList.add("apply_dimmed");
+    dimmed_black.classList.add("apply_dimmed_black");
+}
+
+function closeModal() {
+    const dimmed = document.querySelector(".dimmed");
+    const modal = document.querySelector(".recipe_modal");
+    const dimmed_black = document.querySelector(".dimmed_black");
+
+    modal.classList.add("display_none");
+    dimmed.classList.remove("apply_dimmed");
+    dimmed_black.classList.remove("apply_dimmed_black");
+}
+
