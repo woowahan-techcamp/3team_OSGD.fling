@@ -86,7 +86,11 @@ class Product {
         return self.bundle
     }
     func getImage() -> String {
-        return self.image
+        if self.image.contains("http://"){
+            return self.image
+        } else {
+            return "http://" + self.image
+        }
     }
 }
 

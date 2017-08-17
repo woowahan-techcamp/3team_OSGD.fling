@@ -6,6 +6,7 @@
 //  Copyright © 2017년 osgd. All rights reserved.
 //
 
+import AlamofireImage
 import UIKit
 
 class ProductViewController: UIViewController {
