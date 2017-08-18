@@ -109,7 +109,7 @@ function calcTotalPrice() {
     subPrice.innerHTML = sum;
 
     const flingCash = document.querySelector(".pi_point");
-    flingCash.innerHTML = parseInt(sumNum * 0.01);
+    flingCash.innerHTML = numberWithCommas(parseInt(sumNum * 0.01));
 }
 
 
