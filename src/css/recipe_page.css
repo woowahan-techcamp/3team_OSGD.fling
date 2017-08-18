@@ -418,6 +418,7 @@
     margin: -3px auto;
     display: none;
     overflow: scroll;
+    position: relative;
 }
 
 .search_bar_list {
