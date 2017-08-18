@@ -33,8 +33,52 @@ function template(data) {
     const theCompiledHtml = theTemplate(data);
     
     document.querySelector(".cart_template").innerHTML = theCompiledHtml;
-
     calcTotalPrice();
+
+    document.querySelector(".cart_template").addEventListener('click', (e) => {
+        if (e.target.className == "up_button") {
+            if (e.target.parentElement.parentElement.children[0].value < 999)
+                e.target.parentElement.parentElement.children[0].value++;
+        } else if (e.target.className == "down_button") {
+            if (e.target.parentElement.parentElement.children[0].value > 1)
+                e.target.parentElement.parentElement.children[0].value--;
+        } else if (e.target.className == "recipe_checkbox") {
+        } else {
+            return;
+        }
+
+        let item_tp = e.target.parentElement.parentElement.parentElement.querySelector('.total_price');
+        let item_volume = e.target.parentElement.parentElement.parentElement.querySelector('#volume').value;
+        let item_unit_price = e.target.parentElement.parentElement.parentElement.querySelector('#per_price').value.replace(/,/g, '');
+
+        item_tp.innerText = numberWithCommas(item_volume * item_unit_price) + '원';
+
+        calcTotalPrice();
+    });
+
+    document.querySelector(".cart_template").addEventListener('keydown', (e) => {
+        if (e.target.id == 'volume') {
+            // 숫자와 특수키만 받는다
+            if (e.key >= '0' && e.key <= '9' || e.keyCode < 48) {
+                return;
+            }
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    });
+
+    document.querySelector(".cart_template").addEventListener('keyup', (e) => {
+        
+        let item_tp = e.target.parentElement.parentElement.parentElement.querySelector('.total_price');
+        let item_volume = e.target.parentElement.parentElement.parentElement.querySelector('#volume').value;
+        console.info(item_volume);
+        let item_unit_price = e.target.parentElement.parentElement.parentElement.querySelector('#per_price').value.replace(/,/g, '');
+
+        item_tp.innerText = numberWithCommas(item_volume * item_unit_price) + '원';
+
+        calcTotalPrice();
+    });
 }
 
 
@@ -52,7 +96,9 @@ function calcTotalPrice() {
         price = price.replace(",", "");
 
         price = parseInt(price);
-        sum += price;
+
+        if (isAvaliableItem(cartListsArr[i]))
+            sum += price;
     }
     
     sumNum = sum;
@@ -69,4 +115,8 @@ function calcTotalPrice() {
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function isAvaliableItem(el) {
+    return el.parentElement.parentElement.parentElement.querySelector('#check1').checked;
 }

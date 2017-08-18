@@ -23,7 +23,7 @@
                     </div>
                     <div class="cart_list right">
                         <div class="volume_box">
-                            <input type="text" value="1" maxlength="3">
+                            <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
                             <div class="button">
                                 <button class="up_button"></button>
                                 <button class="down_button"></button>
@@ -32,6 +32,7 @@
                         <div class="price_info">
                             <div class="total_price">{{price}}원</div>
                             {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
+                            <input type="hidden" id="per_price" value="{{price}}">
                         </div>    
                     </div>
                 </div>
@@ -156,23 +157,26 @@
                             <dt>· 상품가격</dt>
                             <dd>
                                 <span class="pi_prd">300,000</span>
-                                <span>&nbsp;원</span>
+                                <span class="won">원</span>
                             </dd>
                         </dl>
                         <dl>
                             <dt>· 배송비</dt>
-                            <dd><span><del>5,000</del></span>&nbsp;0<span>&nbsp;원</span></dd>
+                            <dd>
+                                <span class="del"><del>5,000</del></span>&nbsp;0
+                                <span class="won">원</span>
+                            </dd>
                         </dl>
                         <dl>
                             <dt>· 플링캐시</dt>
                             <dd>
                                 <span class="pi_point">370</span>
-                                <span>&nbsp;원 적립</span>
+                                <span class="won">원 적립</span>
                             </dd>
                         </dl>
                         <div class="total_price">
                             <span>337,000</span>
-                            <span>&nbsp;원</span>
+                            <span>원</span>
                         </div>
                     </div>
                 </section>

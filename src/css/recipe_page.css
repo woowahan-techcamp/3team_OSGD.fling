@@ -456,7 +456,14 @@
     font-weight: 500;
 }
 
-.recipe_additional_info .price_info dd span {
+.recipe_additional_info .price_info dd span.del {
+    font-size: 14pt;
+    font-weight: 300;
+    color: #666;
+    padding-right: 6px;
+}
+
+.recipe_additional_info .price_info dd span.won {
     font-size: 12pt;
     font-weight: 300;
 }
@@ -480,8 +487,6 @@
     color: #0941ca;
     font-size: 24pt;
     font-weight: 500;
-    /*text-align: right;*/
-    /*padding: 0 20px 20px 0;*/
 }
 
 .recipe_additional_info .total_price :nth-child(2) {
