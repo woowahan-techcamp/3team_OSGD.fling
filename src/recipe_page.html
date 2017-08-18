@@ -3,21 +3,229 @@
     <head>
         <meta charset="utf-8">
         <title>플링</title>
-        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/common.css">
         <link rel="stylesheet" href="./css/recipe_page.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+        <script src="./js/XHR.js"></script>
+        <script src="./js/Utils.js"></script>
+        <script src="./recipe_page.js"></script>
+        <script type="Template" id="cart_list_template">
+            {{#each this}}
+                <div class="cart_list">
+                    <div class="cart_list left">
+                        <input type="checkbox" class="recipe_checkbox" id="check1" checked>
+                        <label for="check1"></label>
+                        <div class="product_img" style="background-image: url({{image}})"></div>
+                        <div class="product_info">
+                            <div class="name">{{name}}</div>
+                            <div class="origin">국내산</div>
+                        </div>    
+                    </div>
+                    <div class="cart_list right">
+                        <div class="volume_box">
+                            <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
+                            <div class="button">
+                                <button class="up_button"></button>
+                                <button class="down_button"></button>
+                            </div>
+                        </div>
+                        <div class="price_info">
+                            <div class="total_price">{{price}}원</div>
+                            {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
+                            <input type="hidden" id="per_price" value="{{price}}">
+                        </div>    
+                    </div>
+                </div>
+            {{/each}}
+        </script>
+        <script type="Template" id="cart_list_template_solo">               
+            <div class="cart_list">
+                <div class="cart_list left">
+                    <input type="checkbox" class="recipe_checkbox" id="check1" checked>
+                    <label for="check1"></label>
+                    <div class="product_img" style="background-image: url({{image}})"></div>
+                    <div class="product_info">
+                        <div class="name">{{name}}</div>
+                        <div class="origin">국내산</div>
+                    </div>    
+                </div>
+                <div class="cart_list right">
+                    <div class="volume_box">
+                        <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
+                        <div class="button">
+                            <button class="up_button"></button>
+                            <button class="down_button"></button>
+                        </div>
+                    </div>
+                    <div class="price_info">
+                        <div class="total_price">{{price}}원</div>
+                        {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
+                        <input type="hidden" id="per_price" value="{{price}}">
+                    </div>    
+                </div>
+            </div>
+        </script>
+        <script type="Template" id="search_bar_template">
+            {{#each this}}
+                <div class="search_bar_list">
+                    <div class="search_bar_img" style="background-image: url({{image}})"></div>
+                    <div class="product_info">
+                        <div>{{name}}</div>
+                        {{#if weight}}<span>{{weight}}당</span>{{/if}}
+                        <span>{{price}}원</span>
+                    </div>
+                    <button class="search_bar_button" value="{{id}}">물품추가</button>
+                </div>
+            {{/each}}
+        </script>
     </head>
     <body>
+        <!--modal start-->
+        <div class="recipe_modal display_none">
+            <div class="modal_top">
+                <div class="material_img"></div>
+                <div class="material_title">
+                    <div class="material_name">돼지고기 안심</div>
+                    <div class="material_price">
+                        <span>판매가</span>
+                        <span>130,000원</span>
+                    </div>
+                </div>
+                <button class="modal_close"></button>
+            </div>
+            <div class="modal_bottom">
+                <ul class="material_subtitle">
+                    <li>
+                        <div>100g 당 판매가</div>
+                        <div>13,000원</div>
+                    </li>
+                    <li>
+                        <div>판매단위</div>
+                        <div>100g</div>
+                    </li>
+                    <li>
+                        <div>원산지</div>
+                        <div>국내산</div>
+                    </li>
+                    <li>
+                        <div>배송구분</div>
+                        <div>슈퍼배송</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--modal end-->    
         <div class="wrap">
+            <div class="dimmed">
+            <div class="dimmed_black"></div>
             <header class="recipe_header">
-
+                <nav class="head_menu content">
+                    <a href="./main.html" class="logo_link">Main Page</a>
+                    <div class="logo_wrap">
+                        <div class="fling_logo"></div>
+                    </div>
+                    <div class="page_title">레시피 담기</div>
+                    <div class="head_item">
+                        <ul>
+                            <li><a>플링이란?</a></li>
+                            <li><a>장바구니</a></li>
+                            <li><a>회원가입</a></li>
+                            <li><a>로그인</a></li>
+                        </ul>
+                    </div>
+                </nav>
             </header>
 
             <div class="container">
+                <section class="recipe_section content recipe_info">
+                    <div class="recipe_detail">
+                        <div class="circle_wrap">
+                            <div class="circle_img"></div>
+                        </div>
+                        <div class="description">
+                            <div class="title">양념불고기</div>
+                            <div class="subtitle">배가 고플 때 밥도둑! 밥과 함께라면 뭐든지 먹어치울 수 있는 한국인의 밥상에서 빠뜨릴 수 없는 그 음식! 궁중 양념 불고기. 드셔보시지 않을라우?</div>
+                            <div class="detail_link"><a href="" target="_blank">레시피 자세히 보기</a></div>
+                        </div>
+                    </div>
+                    <div class="super_delivery">
+                        <div class="delivery_img"></div>
+                        <div class="title">
+                            <span>플링</span>
+                            <span>슈퍼배송</span>
+                        </div>
+                        <div class="desc">
+                            <p>플링은 매일 새벽 주문한 재료를 슈퍼배송 해드립니다.</p>
+                            <p>이제 장보러 나가기 마세요!</p>
+                        </div>
+                    </div>
+                </section>
 
+                <section class="recipe_section recipe_cart content">
+                    <div class="title">'<span class="title_main">양념불고기</span>' 레시피 재료 담기</div>
+                    <div class="subtitle">
+                        <div>상품</div>
+                        <div>수량</div>
+                        <div>가격</div>
+                    </div>
+                    <div class="cart_template"></div>
+                </section>
+                
+                <section class="recipe_section recipe_product_search">
+                    <div class="section_title">찾으시는 재료가 없으신가요?</div>
+                    <div class="search_body">
+                        <div class="search_window">
+                            <input id="query_url" name="query_url" class="search_text" placeholder="추가할 재료를 입력해주세요." autocomplete="off" type="text">
+                            <div class="search_icon_wrap">
+                                <button class="search_icon"></button>
+                            </div>
+                        </div>
+                        <div class="search_bar">
 
-
-
-
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="recipe_section recipe_additional_info content">
+                    <div class="missed_material">
+                        <div class="title">이 재료는 플링에 없네요...</div>
+                        <div class="notation">※ 아래 재료는 배송이 불가능합니다.</div>
+                        <div class="subtitle">고추, 무말랭이, 오리기름</div>
+                    </div>
+                    <div class="price_info">
+                        <div class="price_title">결제 예정금액</div>
+                        <dl>
+                            <dt>· 상품가격</dt>
+                            <dd>
+                                <span class="pi_prd">300,000</span>
+                                <span class="won">원</span>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>· 배송비</dt>
+                            <dd>
+                                <span class="del"><del>5,000</del></span>&nbsp;0
+                                <span class="won">원</span>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>· 플링캐시</dt>
+                            <dd>
+                                <span class="pi_point">370</span>
+                                <span class="won">원 적립</span>
+                            </dd>
+                        </dl>
+                        <div class="total_price">
+                            <span>337,000</span>
+                            <span>원</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="recipe_section recipe_button">
+                    <button class="btn_primary btn_cart">장바구니</button>
+                    <button class="btn_primary btn_rightnow">구매하기</button>
+                </section>
                 
                 <footer class="main_footer">
                         <div class="footer_nav">
@@ -33,7 +241,7 @@
                             </ul>
                         </div>
     
-                        <div class="footer_wrap">
+                        <div class="footer_wrap content">
                             <div class="footer_main">
                                 <div class="footer_left">
                                     <div class="company_logo"></div>
@@ -72,6 +280,7 @@
                         </div>
                     </footer>
             </div>
+        </div>
         </div>
     </body>
 </html>
