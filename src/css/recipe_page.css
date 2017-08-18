@@ -417,7 +417,7 @@
     border: 3px solid #ffb847;
     margin: -3px auto;
     display: none;
-    overflow: scroll;
+    overflow-y: scroll;
     position: relative;
 }
 
@@ -436,12 +436,16 @@
 }
 
 .search_bar_list > .product_info > div {
-    max-width: 200px;
+    font-size: 14pt;
+    max-width: 400px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 } 
 
+.search_bar_list > .product_info > span {
+    color: #666;
+} 
 .product_info {
     display: inline-block;
     padding-top: 8px;
@@ -456,7 +460,8 @@
     margin: 16px;
     background-color: #ffb847;
     font-size: 14pt;
-    font-weight: 300;
+    font-weight: 500;
+    color: white;
 }
 
 .recipe_additional_info {
