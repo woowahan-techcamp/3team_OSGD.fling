@@ -99,6 +99,8 @@ function calcTotalPrice() {
     let sum = 0;
     let i = 0;
     let len = cartListsArr.length;
+    if (len > 50) 
+        len = 50;
 
     for (i=0; i < len - 1; i++) {
         let price = cartListsArr[i].innerHTML;
