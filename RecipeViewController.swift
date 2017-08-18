@@ -29,9 +29,7 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var productTable: UITableView!
 
     @IBAction func unwindToRecipe(segue: UIStoryboardSegue) {
-        let index = searchRecipe.indexOf(product: editedProduct.product)
-        searchRecipe.setNumber(index: index, number: editedProduct.number)
-
+        searchRecipe.add(product: editedProduct.product, number: editedProduct.number)
         self.productTable.reloadData()
         self.updatePrice()
     }
@@ -119,7 +117,8 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.productLabel.text = productCell.product.getName()
             let price = productCell.product.getPrice() * Decimal.init(productCell.product.getBundleTuple(input: "").number)
             cell.priceLabel.text = String(describing: price).appending(" 원")
-            cell.eaLabel.text = productCell.product.getBundleString(input: "")
+            let unit = " ".appending(productCell.product.getBundleTuple(input: "").unit)
+            cell.eaLabel.text = productCell.number.description.appending(unit)
 
             cell.disclosureHandler = { () -> Void in
                 if self.searchRecipe.products[indexPath.row].on {

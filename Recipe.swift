@@ -83,10 +83,6 @@ class Recipe {
         self.products = []
     }
 
-    func setNumber(index: Int, number: Int) {
-        products[index].number = number
-    }
-
     func indexOf(product: Product) -> Int {
         var result = -1
         for (index, object) in products.enumerated() where object.product == product {
@@ -95,13 +91,13 @@ class Recipe {
         return result
     }
 
-    func add(product: Product) {
+    func add(product: Product, number: Int) {
         let index = indexOf(product: product)
 
         if index == -1 {    //추가(생성)
-            products.append((product: product, number: 1, on: true))
+            products.append((product: product, number: number, on: true))
         } else {
-            products[index].number += 1
+            products[index].number = number
         }
     }
 
