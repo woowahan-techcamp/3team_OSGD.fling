@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', (e) => {
     let url = Utils.getParameterByName('query_url');
-    XHR.post(`http://52.78.41.124/recipes?url=${url}`, (e) => {
+    XHR.post(`http://52.79.119.41/recipes?url=${url}`, (e) => {
         let jsonData;
         try {
             jsonData = JSON.parse(e.target.responseText);
-            XHR.get(`http://52.78.41.124/get_products/${jsonData.id}`, (e) => {
+            XHR.get(`http://52.79.119.41/get_products/${jsonData.id}`, (e) => {
                 let data = JSON.parse(e.target.responseText);
                 template(data);
             })
@@ -99,7 +99,6 @@ function calcTotalPrice() {
     let sum = 0;
     let i = 0;
     let len = cartListsArr.length;
-    
 
     for (i=0; i < len - 1; i++) {
         let price = cartListsArr[i].innerHTML;
@@ -139,17 +138,18 @@ function searchHandler(e) {
     const searchBar = document.querySelector(".search_bar");
     let productInfo = [];
     
-    if(searchQuery == "") {
+    
+    if(searchQuery == "" || e.code == "Escape") {
         document.querySelector(".search_bar").style.display = "none";
         return;
     }
 
-    XHR.post(`http://52.78.41.124/search_product?keyword=${searchQuery}`, (e) => {
+    XHR.post(`http://52.79.119.41/search_product?keyword=${searchQuery}`, (e) => {
         let searchData = JSON.parse(e.target.responseText);
         document.querySelector(".search_bar").style.display = "block";  
 
         searchData.forEach((e) => {
-            XHR.get(`http://52.78.41.124/products/${e.id}`, (e) => {
+            XHR.get(`http://52.79.119.41/products/${e.id}`, (e) => {
                 let data = JSON.parse(e.target.responseText);
                 
                 // productInfo 갯수 제한. 50개까지만 상품을 찾는다
@@ -168,7 +168,7 @@ function searchHandler(e) {
 function Addproduct() {
     document.querySelector(".search_bar").addEventListener("click", (e) => {
         if(e.target.className == "search_bar_button") {
-            XHR.get(`http://52.78.41.124/products/${e.target.value}`, (e) => {
+            XHR.get(`http://52.79.119.41/products/${e.target.value}`, (e) => {
                 let product = JSON.parse(e.target.responseText);
                 
                 const theTemplateScript = document.querySelector("#cart_list_template_solo").innerHTML;
