@@ -43,6 +43,11 @@ function template(data) {
             if (e.target.parentElement.parentElement.children[0].value > 1)
                 e.target.parentElement.parentElement.children[0].value--;
         } else if (e.target.className == "recipe_checkbox") {
+            let parent_element = e.target.parentElement.parentElement;
+            if (!e.target.checked)
+                parent_element.classList.add('unchecked');
+            else
+                parent_element.classList.remove('unchecked');
         } else {
             return;
         }
@@ -97,8 +102,9 @@ function calcTotalPrice() {
 
         price = parseInt(price);
 
-        if (isAvaliableItem(cartListsArr[i]))
+        if (isAvaliableItem(cartListsArr[i])) {
             sum += price;
+        }
     }
     
     sumNum = sum;

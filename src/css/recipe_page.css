@@ -200,7 +200,7 @@
 
 .recipe_cart .cart_list {
     height: 160px;
-    border-top: 1px solid #ffb742;
+    border-top: 1px solid rgba(255, 183, 66, 0.5);
 }
 
 .recipe_cart .cart_list .left {
@@ -234,6 +234,10 @@
 .recipe_checkbox:checked:after {
     background: url(../assets/img/checkbox_set.png) left top no-repeat;
     background-position-x: -45px;
+}
+
+.unchecked > div {
+    filter: grayscale(1) opacity(0.5);
 }
 
 .recipe_cart .product_img {
