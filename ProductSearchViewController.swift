@@ -10,9 +10,9 @@ import UIKit
 
 class ProductSearchViewController: UIViewController, UISearchBarDelegate {
 
-    private let searchProduct = Notification.Name.init("searchProduct")
+    let searchProduct = Notification.Name.init("searchProduct")
+    let getProduct = Notification.Name.init("getProduct")
     var searchList = SearchList.init()
-
     let network = Network.init()
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -23,12 +23,20 @@ class ProductSearchViewController: UIViewController, UISearchBarDelegate {
         searchBar.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(drawSearchList),
                                                name: searchProduct, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(searchToProduct),
+                                               name: getProduct, object: nil)
     }
 
     func drawSearchList(noti: Notification) {
         if let data = noti.userInfo?["data"] as? SearchList {
             self.searchList = data
             self.searchTable.reloadData()}
+    }
+
+    func searchToProduct(noti: Notification) {
+        if let data = noti.userInfo?["data"] as? Product {
+            print(data.getName())
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,5 +70,9 @@ extension ProductSearchViewController: UITableViewDelegate, UITableViewDataSourc
         }
         cell.productLabel.text = self.searchList.result[indexPath.row].name
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.network.getProductWith(productId: self.searchList.result[indexPath.row].id)
     }
 }

@@ -11,13 +11,15 @@ import Alamofire
 
 class Network {
 
+    private let apiUrl = "http://52.78.41.124/"
     private let mainUrl = "http://52.78.41.124/recipes/"
     private let productUrl = "http://52.78.41.124/get_products/"
     private let searchProductUrl = "http://52.78.41.124/search_product/"
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
-    private let failFlingRecipe = Notification.Name.init(rawValue: "failFlingRecipe")
+    private let failNetwork = Notification.Name.init(rawValue: "failNetwork")
     private let searchProduct = Notification.Name.init("searchProduct")
+    private let getProduct = Notification.Name.init("getProduct")
 
     func getFlingRecipe() {
         Alamofire.request(mainUrl).responseJSON { response in
@@ -52,7 +54,7 @@ class Network {
                     }
                 })
             } else {
-                NotificationCenter.default.post(name: self.failFlingRecipe,
+                NotificationCenter.default.post(name: self.failNetwork,
                                                 object: self, userInfo: [:])
             }
         }
@@ -74,7 +76,7 @@ class Network {
                     }
                 })
             } else {
-                NotificationCenter.default.post(name: self.failFlingRecipe,
+                NotificationCenter.default.post(name: self.failNetwork,
                                                 object: self, userInfo: [:])
             }
         }
@@ -87,6 +89,19 @@ class Network {
                 let searchList = SearchList.init(data: data)
                 NotificationCenter.default.post(name: self.searchProduct, object: self, userInfo: ["data": searchList])
             } else {
+            }
+        }
+    }
+
+    func getProductWith(productId: Int) {
+        let url = apiUrl.appending("products/" + productId.description)
+        Alamofire.request(url).responseJSON { response in
+            if let productData = response.result.value as? [String: Any],
+                let product = Product.init(data: productData)  {
+                NotificationCenter.default.post(name: self.getProduct, object: self, userInfo: ["data": product])
+            } else {
+                NotificationCenter.default.post(name: self.failNetwork,
+                                                object: self, userInfo: [:])
             }
         }
     }

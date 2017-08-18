@@ -330,7 +330,7 @@
 				TargetAttributes = {
 					984843111F33F3AF007AD753 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = V8CB8C3DDX;
+						DevelopmentTeam = B3PWYBKFUK;
 						ProvisioningStyle = Automatic;
 					};
 					984843251F33F3B0007AD753 = {
@@ -705,7 +705,7 @@
 			baseConfigurationReference = 7F47268F3BA38F7DF133EF43 /* Pods-fling.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V8CB8C3DDX;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = fling/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling;
@@ -719,7 +719,7 @@
 			baseConfigurationReference = 545486631460994A9253BD43 /* Pods-fling.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V8CB8C3DDX;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = fling/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling;
