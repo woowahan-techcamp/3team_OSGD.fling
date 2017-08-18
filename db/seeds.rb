@@ -10,5 +10,4 @@
 
 load "#{Rails.root}/db/seeds/materials.rb"
 load "#{Rails.root}/db/seeds/products.rb"
-load "#{Rails.root}/db/seeds/seasons.rb"
 

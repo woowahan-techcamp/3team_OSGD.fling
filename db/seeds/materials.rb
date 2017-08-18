@@ -742,5 +742,8 @@ Material.create!([
   {name: "코코아가루"},
   {name: "콜라"},
   {name: "화이트와인"},
-  {name: "흑맥주"}
+  {name: "흑맥주"},
+  {name: "청양고추"},
+  {name: "식용유"},
+  {name: "참기름"},
 ])
