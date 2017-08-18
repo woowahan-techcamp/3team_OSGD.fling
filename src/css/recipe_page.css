@@ -417,13 +417,17 @@
     border: 3px solid #ffb847;
     margin: -3px auto;
     display: none;
-    overflow: scroll;
+    overflow-y: scroll;
     position: relative;
 }
 
 .search_bar_list {
     border-bottom: 1px solid #ddd;
     height: 73px;
+}
+
+.search_bar_list:hover {
+    background: #eee;
 }
 
 .search_bar_img {
