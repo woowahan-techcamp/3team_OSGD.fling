@@ -35,7 +35,7 @@ class ProductSearchViewController: UIViewController, UISearchBarDelegate {
 
     func searchToProduct(noti: Notification) {
         if let data = noti.userInfo?["data"] as? Product {
-            print(data.getName())
+            self.performSegue(withIdentifier: "ProductSearchToProduct", sender: data)
         }
     }
 
@@ -50,6 +50,18 @@ class ProductSearchViewController: UIViewController, UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchText \(String(describing: searchBar.text))")
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == "ProductSearchToProduct" {
+            guard let secondViewController = segue.destination as? ProductViewController else {
+                return
+            }
+            guard let product = sender as? Product else {
+                return
+            }
+            secondViewController.data = (product: product, number: 1, on: true)
+        }
     }
 }
 

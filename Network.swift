@@ -97,7 +97,7 @@ class Network {
         let url = apiUrl.appending("products/" + productId.description)
         Alamofire.request(url).responseJSON { response in
             if let productData = response.result.value as? [String: Any],
-                let product = Product.init(data: productData)  {
+                let product = Product.init(data: productData) {
                 NotificationCenter.default.post(name: self.getProduct, object: self, userInfo: ["data": product])
             } else {
                 NotificationCenter.default.post(name: self.failNetwork,
