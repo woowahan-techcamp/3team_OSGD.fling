@@ -99,6 +99,7 @@ function calcTotalPrice() {
     let sum = 0;
     let i = 0;
     let len = cartListsArr.length;
+    
 
     for (i=0; i < len - 1; i++) {
         let price = cartListsArr[i].innerHTML;
@@ -150,12 +151,15 @@ function searchHandler(e) {
         searchData.forEach((e) => {
             XHR.get(`http://52.78.41.124/products/${e.id}`, (e) => {
                 let data = JSON.parse(e.target.responseText);
-                productInfo.push(data);
-
-                const theTemplateScript = document.querySelector("#search_bar_template").innerHTML;
-                const theTemplate = Handlebars.compile(theTemplateScript);
-                const theCompiledHtml = theTemplate(productInfo);
-                searchBar.innerHTML = theCompiledHtml;
+                
+                // productInfo 갯수 제한. 50개까지만 상품을 찾는다
+                if (productInfo.length < 50) {
+                    productInfo.push(data);
+                    const theTemplateScript = document.querySelector("#search_bar_template").innerHTML;
+                    const theTemplate = Handlebars.compile(theTemplateScript);
+                    const theCompiledHtml = theTemplate(productInfo);
+                    searchBar.innerHTML = theCompiledHtml;
+                }
             })
         })
     });
