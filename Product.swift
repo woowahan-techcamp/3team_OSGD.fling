@@ -15,8 +15,18 @@ class Product {
     private let name: String
     private let price: Decimal
     private let weight: String
-    private let bundle: String
+    private var bundle: String
     private let image: String
+
+    init() {
+        self.pid = 0
+        self.mid = 0
+        self.name = ""
+        self.price = 0
+        self.weight = ""
+        self.bundle = ""
+        self.image = ""
+    }
 
     init(pid: Int, mid: Int, name: String, price: Decimal, weight: String, bundle: String, image: String) {
         self.pid = pid
@@ -57,6 +67,10 @@ class Product {
         self.image = image
     }
 
+    func setBundle(input: String) {
+        self.bundle = input
+    }
+
     func getId() -> Int {
         return self.pid
     }
@@ -76,7 +90,71 @@ class Product {
         return self.bundle
     }
     func getImage() -> String {
-        return self.image
+        if self.image.contains("http://") {
+            return self.image
+        } else {
+            return "http://" + self.image
+        }
+    }
+
+    func getBundleTuple(input: String) -> (number: Int, unit: String) {
+        var bundle = input
+        var number = ""
+        var unit = ""
+
+        if input == "" {
+            bundle = self.bundle
+        }
+
+        for character in bundle.characters {
+            if Int.init(character.description) != nil {
+                number.append(character)
+            } else if character.description == " " {
+                //pass
+            } else {
+                unit.append(character)
+            }
+        }
+
+        guard let converted = Int.init(number) else {
+            return (number: 1, unit: "개")
+        }
+
+        if unit == "" {
+            unit = "개"
+        }
+
+        return (number: converted, unit: unit)
+    }
+
+    func getBundleString(input: String) -> String {
+        var bundle = input
+        var number = ""
+        var unit = ""
+
+        if input == "" {
+            bundle = self.bundle
+        }
+
+        for character in bundle.characters {
+            if Int.init(character.description) != nil {
+                number.append(character)
+            } else if character.description == " " {
+                //pass
+            } else {
+                unit.append(character)
+            }
+        }
+
+        guard let converted = Int.init(number) else {
+            return "1 개"
+        }
+
+        if unit == "" {
+            unit = "개"
+        }
+
+        return converted.description.appending(" ").appending(unit)
     }
 }
 

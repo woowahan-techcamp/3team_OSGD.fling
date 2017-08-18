@@ -16,8 +16,13 @@ class Recipe {
     let url: String
     let image: String
     let writer: String
-    public private(set) var products: [Product]
-    typealias ListProduct = [(product: Product, number: Int)]
+    let serving: String
+    let original: String
+    let missed: String
+    typealias ListProduct = [(product: Product, number: Int, on: Bool)]
+    public private(set) var products: ListProduct
+
+    private let priceModified = Notification.Name.init(rawValue: "PriceModified")
 
     init() {
         self.rid = 0
@@ -26,17 +31,10 @@ class Recipe {
         self.url = ""
         self.image = ""
         self.writer = ""
-        self.products = [Product]()
-    }
-
-    init(rid: Int, title: String, subtitle: String, url: String, image: String, writer: String, products: [Product]) {
-        self.rid = rid
-        self.title = title
-        self.subtitle = subtitle
-        self.url = url
-        self.image = image
-        self.writer = writer
-        self.products = products
+        self.serving = ""
+        self.original = ""
+        self.missed = ""
+        self.products = ListProduct()
     }
 
     init?(data: [String:Any]) {
@@ -48,9 +46,30 @@ class Recipe {
             let writer = data["writer"]! as? String else {
                 return nil
         }
-//        guard let products = data["products"]! as? String else {
-//            return
-//        }
+
+        var serving = ""
+        if data["serving"] != nil {
+            guard let text = data["serving"]! as? String else {
+                return nil
+            }
+            serving = text
+        }
+
+        var missed = ""
+        if data["missed_material"] != nil {
+            guard let text = data["missed_material"]! as? String else {
+                return nil
+            }
+            missed = text
+        }
+
+        var original = ""
+        if data["recipe_material"] != nil {
+            guard let text = data["recipe_material"]! as? String else {
+                return nil
+            }
+            original = text
+        }
 
         self.rid = id
         self.title = title
@@ -58,77 +77,50 @@ class Recipe {
         self.url = url
         self.image = image
         self.writer = writer
+        self.serving = serving
+        self.original = original
+        self.missed = missed
         self.products = []
     }
 
-    func numberOf(product: Product) -> Int {
-        var result = 0
-        products.forEach { object in
-            if object == product {
-                result += 1
-            }
-        }
-
-        return result
-    }
-
-    func listOf(product: Product) -> ListProduct {
-        func indexOf(list: ListProduct, product: Product) -> Int {
-            var result = -1
-            for (index, object) in list.enumerated() where object.product == product {
-                result = index
-            }
-            return result
-        }
-
-        var result = ListProduct()
-        products.forEach { product in
-            let index = indexOf(list: result, product: product)
-            if index != -1 {
-                result[index].number += 1
-            } else {
-                result.append((product: product, number: 1))
-            }
+    func indexOf(product: Product) -> Int {
+        var result = -1
+        for (index, object) in products.enumerated() where object.product == product {
+            result = index
         }
         return result
-    }
-
-    func totalPrice() -> Decimal {
-        var total = Decimal()
-        products.forEach { object in
-            total += object.getPrice()
-        }
-
-        return total
     }
 
     func add(product: Product, number: Int) {
-        for _ in 1...number {
-            products.append(product)
-        }
-    }
+        let index = indexOf(product: product)
 
-    func update(product: Product, newNumber: Int) {
-        let number = numberOf(product: product)
-
-        if newNumber > number {
-            self.add(product: product, number: newNumber-number)
-        } else if newNumber < number {
-            for _ in 1...(newNumber-number) {
-                if let index = products.index(of: product) {
-                    products.remove(at: index)
-                }
-            }
+        if index == -1 {    //추가(생성)
+            products.append((product: product, number: number, on: true))
         } else {
-            //아무것도 안함
+            products[index].number = number
         }
     }
 
-    func checked(product: Product, number: Int) {
-
+    func totalPrice() -> String {
+        var total = Decimal()
+        products.forEach { object in
+            if object.on == true {
+                let ea = Decimal.init(object.number)
+                total += (object.product.getPrice() * ea)
+            }
+        }
+        let head = "총액 : "
+        let tail = " 원"
+        let price = total.description
+        return head.appending(price).appending(tail)
     }
 
-    func unchecked(proudct: Product) {
+    func toggleCheck(product: Product) {
+        let index = indexOf(product: product)
 
+        if index >= 0 {
+            products[index].on = !products[index].on
+            NotificationCenter.default.post(name: self.priceModified, object: self, userInfo: [:])
+        }
     }
 }

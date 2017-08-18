@@ -14,53 +14,58 @@ class RecipeViewController: UIViewController {
 
     let network = Network.init()
     var searchUrl = ""
-    var recipe = Recipe.init()
-    var products = [Product]()
+    var searchRecipe = Recipe.init()
+    var editedProduct = (product: Product(), number: 0, on: true)
+
+    private let priceModified = Notification.Name.init(rawValue: "PriceModified")
 
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeSubTitleLabel: UILabel!
-    @IBOutlet weak var recipeExcept: UILabel!
+    @IBOutlet weak var recipeServeLabel: UILabel!
+    @IBOutlet weak var recipeMissed: UILabel!
 
+    @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var productTable: UITableView!
+
+    @IBAction func unwindToRecipe(segue: UIStoryboardSegue) {
+        searchRecipe.add(product: editedProduct.product, number: editedProduct.number)
+        self.productTable.reloadData()
+        self.updatePrice()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        productTable.tableFooterView = UIView()
 
         //swiftlint:disable line_length
-        NotificationCenter.default.addObserver(self, selector: #selector(drawRecipeDetail),
-                                               name: Notification.Name.init(rawValue: "flingRecipeDetail"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(makeProductList),
-                                               name: NSNotification.Name.init(rawValue: "flingProductList"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePrice), name: self.priceModified, object: nil)
 
-        network.getRecipeWith(url: searchUrl)
+        productTable.tableFooterView = UIView()
+
+        drawRecipeDetail()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    func drawRecipeDetail(notification: Notification) {
-        guard let data = notification.userInfo?["data"] as? Recipe else {
-            return
+    func drawRecipeDetail() {
+        if searchRecipe.image != "" {
+            recipeImage.af_setImage(withURL: URL(string: searchRecipe.image)!)
+        } else {
+            //대체 이미지를 띄우던가
         }
-        recipe = data
 
-        recipeImage.af_setImage(withURL: URL(string: recipe.image)!)
-        recipeTitleLabel.text = recipe.title
-        recipeSubTitleLabel.text = recipe.subtitle
+        recipeTitleLabel.text = searchRecipe.title
+        recipeSubTitleLabel.text = searchRecipe.subtitle
+        recipeServeLabel.text = searchRecipe.serving
+        recipeMissed.text = searchRecipe.missed//.appending("은(는) 찾지 못했어요.")
+
+        self.updatePrice()
     }
 
-    func makeProductList(notification: Notification) {
-        guard let data = notification.userInfo?["data"] as? [[String: Any]] else {
-            return
-        }
-        data.forEach { object in
-            products.append(Product.init(data: object)!)
-        }
-
-        productTable.reloadData()
+    func updatePrice() {
+        totalPriceLabel.text = searchRecipe.totalPrice()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
@@ -68,10 +73,10 @@ class RecipeViewController: UIViewController {
             guard let secondViewController = segue.destination as? ProductViewController else {
                 return
             }
-            guard let pid = sender as? Int else {
+            guard let product = sender as? (product: Product, number: Int, on: Bool) else {
                 return
             }
-            secondViewController.pid = pid
+            secondViewController.data = product
         }
     }
 }
@@ -83,39 +88,56 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.searchRecipe.products.count+1   //add row
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        let count = self.searchRecipe.products.count
+
+        var identifier = "recipeAddCell"
+
+        if row < count {
+            identifier = "recipeCell"
+        }
+
         guard let cell =
-            tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as? RecipeTableViewCell else {
-                    return RecipeTableViewCell()
+            tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? RecipeTableViewCell else {
+                return RecipeTableViewCell()
         }
 
-        if products.count > 0 {
-            //checkbox
-            let positionX = 10
-            let checkbox = CheckboxButton.init(frame: CGRect(x: positionX, y: 15, width: 20, height: 20))
-            checkbox.on = true
-            cell.contentView.addSubview(checkbox)
+        if row < count {
+            let productCell = searchRecipe.products[indexPath.row]
 
-            //product title
-            let productLabel = UILabel.init(frame: CGRect(x: positionX + 30, y: 5, width: 200, height: 24))
-            productLabel.text = products[indexPath.row].getName()
-            cell.contentView.addSubview(productLabel)
+            cell.checkboxHandler = { () -> Void in
+                self.searchRecipe.toggleCheck(product: productCell.product)
+            }
 
-            //product price
-            let priceLabel = UILabel.init(frame: CGRect(x: positionX + 30, y: 25, width: 100, height: 24))
-            priceLabel.text = String(describing: products[indexPath.row].getPrice()).appending(" 원")
-            priceLabel.font = UIFont.systemFont(ofSize: 12)
-            priceLabel.textColor = UIColor.gray
-            cell.contentView.addSubview(priceLabel)
+            cell.checkbox.on = productCell.on
+            cell.productLabel.text = productCell.product.getName()
+            let price = productCell.product.getPrice() * Decimal.init(productCell.product.getBundleTuple(input: "").number)
+            cell.priceLabel.text = String(describing: price).appending(" 원")
+            let unit = " ".appending(productCell.product.getBundleTuple(input: "").unit)
+            cell.eaLabel.text = productCell.number.description.appending(unit)
+
+            cell.disclosureHandler = { () -> Void in
+                if self.searchRecipe.products[indexPath.row].on {
+                    self.performSegue(withIdentifier: "RecipeToProduct", sender: productCell)
+                }
+            }
+        } else {
+            cell.checkbox.isHidden = true
+
+            let addButton = UIImageView.init(frame: CGRect(x: 10, y: 15, width: 20, height: 20))
+            addButton.image = UIImage.init(named: "logo.png")
+            cell.addSubview(addButton)
+
+            cell.productLabel.text = "추가하기"
+
+            cell.disclosureHandler = { () -> Void in
+                self.performSegue(withIdentifier: "RecipeToSearchProduct", sender: nil)
+            }
         }
-
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "RecipeToProduct", sender: products[indexPath.row].getId())
     }
 }
