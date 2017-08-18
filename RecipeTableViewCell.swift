@@ -13,7 +13,7 @@ class RecipeTableViewCell: UITableViewCell {
     let checkbox = CheckboxButton.init(frame: CGRect(x: 10, y: 15, width: 20, height: 20))
     let productLabel = UILabel.init(frame: CGRect(x: 40, y: 5, width: 250, height: 24))
     let priceLabel = UILabel.init(frame: CGRect(x: 40, y: 25, width: 100, height: 24))
-    let eaLabel = UILabel.init(frame: CGRect(x: 310, y: 12, width: 30, height: 24)) //need to resize
+    let eaLabel = UILabel.init(frame: CGRect(x: 280, y: 12, width: 60, height: 24)) //need to resize
 
     var checkboxHandler:(() -> Void)!
     var disclosureHandler:(() -> Void)!

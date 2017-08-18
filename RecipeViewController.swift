@@ -52,7 +52,12 @@ class RecipeViewController: UIViewController {
     }
 
     func drawRecipeDetail() {
-        recipeImage.af_setImage(withURL: URL(string: searchRecipe.image)!)
+        if searchRecipe.image != "" {
+            recipeImage.af_setImage(withURL: URL(string: searchRecipe.image)!)
+        } else {
+            //대체 이미지를 띄우던가
+        }
+
         recipeTitleLabel.text = searchRecipe.title
         recipeSubTitleLabel.text = searchRecipe.subtitle
         recipeServeLabel.text = searchRecipe.serving
