@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
     });
 
     console.info(Utils.getParameterByName('query_url'));
+
+
+    const target = document.querySelector(".search_text");
+    target.addEventListener("keyup", searchHandler);
+    Addproduct();
 });
 
 
@@ -98,7 +103,7 @@ function calcTotalPrice() {
     for (i=0; i < len - 1; i++) {
         let price = cartListsArr[i].innerHTML;
         price = price.replace("원", "");
-        price = price.replace(",", "");
+        price = price.replace(/,/g, "");
 
         price = parseInt(price);
 
@@ -125,4 +130,50 @@ function numberWithCommas(x) {
 
 function isAvaliableItem(el) {
     return el.parentElement.parentElement.parentElement.querySelector('#check1').checked;
+}
+
+
+function searchHandler(e) {
+    const searchQuery = e.target.value;
+    const searchBar = document.querySelector(".search_bar");
+    let productInfo = [];
+    
+    if(searchQuery == "") {
+        document.querySelector(".search_bar").style.display = "none";
+        return;
+    }
+
+    XHR.post(`http://52.78.41.124/search_product?keyword=${searchQuery}`, (e) => {
+        let searchData = JSON.parse(e.target.responseText);
+        document.querySelector(".search_bar").style.display = "block";  
+
+        searchData.forEach((e) => {
+            XHR.get(`http://52.78.41.124/products/${e.id}`, (e) => {
+                let data = JSON.parse(e.target.responseText);
+                productInfo.push(data);
+
+                const theTemplateScript = document.querySelector("#search_bar_template").innerHTML;
+                const theTemplate = Handlebars.compile(theTemplateScript);
+                const theCompiledHtml = theTemplate(productInfo);
+                searchBar.innerHTML = theCompiledHtml;
+            })
+        })
+    });
+} 
+
+function Addproduct() {
+    document.querySelector(".search_bar").addEventListener("click", (e) => {
+        if(e.target.className == "search_bar_button") {
+            XHR.get(`http://52.78.41.124/products/${e.target.value}`, (e) => {
+                let product = JSON.parse(e.target.responseText);
+                
+                const theTemplateScript = document.querySelector("#cart_list_template_solo").innerHTML;
+                const theTemplate = Handlebars.compile(theTemplateScript);
+                const theCompiledHtml = theTemplate(product);
+
+                document.querySelector(".cart_template").insertAdjacentHTML("beforeend", theCompiledHtml);
+                calcTotalPrice();
+            })
+        }
+    })
 }

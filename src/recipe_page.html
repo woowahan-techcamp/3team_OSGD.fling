@@ -38,6 +38,46 @@
                 </div>
             {{/each}}
         </script>
+        <script type="Template" id="cart_list_template_solo">               
+            <div class="cart_list">
+                <div class="cart_list left">
+                    <input type="checkbox" class="recipe_checkbox" id="check1" checked>
+                    <label for="check1"></label>
+                    <div class="product_img" style="background-image: url(http://{{image}})"></div>
+                    <div class="product_info">
+                        <div class="name">{{name}}</div>
+                        <div class="origin">국내산</div>
+                    </div>    
+                </div>
+                <div class="cart_list right">
+                    <div class="volume_box">
+                        <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
+                        <div class="button">
+                            <button class="up_button"></button>
+                            <button class="down_button"></button>
+                        </div>
+                    </div>
+                    <div class="price_info">
+                        <div class="total_price">{{price}}원</div>
+                        {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
+                        <input type="hidden" id="per_price" value="{{price}}">
+                    </div>    
+                </div>
+            </div>
+        </script>
+        <script type="Template" id="search_bar_template">
+            {{#each this}}
+                <div class="search_bar_list">
+                    <div class="search_bar_img" style="background-image: url(http://{{image}})"></div>
+                    <div class="product_info">
+                        <div>{{name}}</div>
+                        {{#if weight}}<span>{{weight}}당</span>{{/if}}
+                        <span>{{price}}원</span>
+                    </div>
+                    <button class="search_bar_button" value="{{id}}">물품추가</button>
+                </div>
+            {{/each}}
+        </script>
     </head>
     <body>
         <!--modal start-->
@@ -135,12 +175,13 @@
                     <div class="section_title">찾으시는 재료가 없으신가요?</div>
                     <div class="search_body">
                         <div class="search_window">
-                            <form class="search_form" action="" method="">
-                                <input id="query_url" name="query_url" class="search_text" placeholder="추가할 재료를 입력해주세요." autocomplete="off" type="text">
-                                <div class="search_icon_wrap">
-                                    <button class="search_icon"  type="submit"></button>
-                                </div>
-                            </form>
+                            <input id="query_url" name="query_url" class="search_text" placeholder="추가할 재료를 입력해주세요." autocomplete="off" type="text">
+                            <div class="search_icon_wrap">
+                                <button class="search_icon"></button>
+                            </div>
+                        </div>
+                        <div class="search_bar">
+
                         </div>
                     </div>
                 </section>

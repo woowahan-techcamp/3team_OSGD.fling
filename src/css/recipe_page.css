@@ -403,6 +403,54 @@
     color: #ffb847;
 }
 
+.search_bar {
+    width: 694px;
+    height: 400px;
+    background-color: white;
+    border: 3px solid #ffb847;
+    margin: -3px auto;
+    display: none;
+    overflow: scroll;
+}
+
+.search_bar_list {
+    border-bottom: 1px solid #ddd;
+    height: 73px;
+}
+
+.search_bar_img {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+.search_bar_list > .product_info > div {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
+
+.product_info {
+    display: inline-block;
+    padding-top: 8px;
+}
+
+.search_bar_button {
+    float: right;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #ffb847;
+    border-radius: 10px;
+    margin: 16px;
+    background-color: #ffb847;
+    font-size: 14pt;
+    font-weight: 300;
+}
+
 .recipe_additional_info {
     height: 300px;
     padding: 60px 0px;
