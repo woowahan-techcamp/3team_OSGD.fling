@@ -48,6 +48,10 @@ function closeModal() {
     dimmed_black.classList.remove("apply_dimmed_black");
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function template(data) {
     const theTemplateScript = document.querySelector("#cart_list_template").innerHTML;
     const theTemplate = Handlebars.compile(theTemplateScript);
@@ -63,5 +67,14 @@ function template(data) {
             if (e.target.parentElement.parentElement.children[0].value > 1)
                 e.target.parentElement.parentElement.children[0].value--;
         }
+
+        let item_tp = e.target.parentElement.parentElement.parentElement.querySelector('.total_price');
+        let item_volume = e.target.parentElement.parentElement.parentElement.querySelector('#volume').value;
+        let item_unit_price = e.target.parentElement.parentElement.parentElement.querySelector('#per_price').value.replace(/,/g, '');
+
+        item_tp.innerText = numberWithCommas(item_volume * item_unit_price) + '원';
+
+        console.error(item_tp);
+        console.error(item_unit_price);
     });
 }

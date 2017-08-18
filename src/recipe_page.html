@@ -23,7 +23,7 @@
                     </div>
                     <div class="cart_list right">
                         <div class="volume_box">
-                            <input type="text" value="1" maxlength="3">
+                            <input id="volume" type="text" value="1" maxlength="3">
                             <div class="button">
                                 <button class="up_button"></button>
                                 <button class="down_button"></button>
@@ -32,6 +32,7 @@
                         <div class="price_info">
                             <div class="total_price">{{price}}원</div>
                             {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
+                            <input type="hidden" id="per_price" value="{{price}}">
                         </div>    
                     </div>
                 </div>
