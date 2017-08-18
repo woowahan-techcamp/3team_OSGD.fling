@@ -54,4 +54,14 @@ function template(data) {
     const theCompiledHtml = theTemplate(data);
     
     document.querySelector(".cart_template").innerHTML = theCompiledHtml;
+    document.querySelector(".cart_template").addEventListener('click', (e) => {
+        console.info(e);
+        if (e.target.className == "up_button") {
+            if (e.target.parentElement.parentElement.children[0].value < 999)
+                e.target.parentElement.parentElement.children[0].value++;
+        } else {
+            if (e.target.parentElement.parentElement.children[0].value > 1)
+                e.target.parentElement.parentElement.children[0].value--;
+        }
+    });
 }
