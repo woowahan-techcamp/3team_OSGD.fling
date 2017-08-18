@@ -426,6 +426,10 @@
     height: 73px;
 }
 
+.search_bar_list:hover {
+    background: #eee;
+}
+
 .search_bar_img {
     float: left;
     background-size: cover;
