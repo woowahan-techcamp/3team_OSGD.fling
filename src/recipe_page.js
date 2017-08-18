@@ -176,6 +176,8 @@ function Addproduct() {
                 const theCompiledHtml = theTemplate(product);
 
                 document.querySelector(".cart_template").insertAdjacentHTML("beforeend", theCompiledHtml);
+                document.querySelector(".search_bar").style.display = "none";
+                document.querySelector(".search_text").value = "";
                 calcTotalPrice();
             })
         }
