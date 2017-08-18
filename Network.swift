@@ -11,10 +11,10 @@ import Alamofire
 
 class Network {
 
-    private let apiUrl = "http://52.78.41.124/"
-    private let mainUrl = "http://52.78.41.124/recipes/"
-    private let productUrl = "http://52.78.41.124/get_products/"
-    private let searchProductUrl = "http://52.78.41.124/search_product/"
+    private let apiUrl = "http://52.79.119.41/"
+    private let mainUrl = "http://52.79.119.41/recipes/"
+    private let productUrl = "http://52.79.119.41/get_products/"
+    private let searchProductUrl = "http://52.79.119.41/search_product/"
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
     private let failNetwork = Notification.Name.init(rawValue: "failNetwork")
