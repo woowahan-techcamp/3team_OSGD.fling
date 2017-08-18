@@ -22,31 +22,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
     });
 
     console.info(Utils.getParameterByName('query_url'));
-    /////////////////////////////////////
-    document.querySelector(".product_img").addEventListener("click", modalHandler);
-    document.querySelector(".modal_close").addEventListener("click", closeModal);
 });
 
 
-function modalHandler() {
-    const dimmed = document.querySelector(".dimmed");
-    const modal = document.querySelector(".recipe_modal");
-    const dimmed_black = document.querySelector(".dimmed_black");
 
-    modal.classList.remove("display_none");
-    dimmed.classList.add("apply_dimmed");
-    dimmed_black.classList.add("apply_dimmed_black");
-}
-
-function closeModal() {
-    const dimmed = document.querySelector(".dimmed");
-    const modal = document.querySelector(".recipe_modal");
-    const dimmed_black = document.querySelector(".dimmed_black");
-
-    modal.classList.add("display_none");
-    dimmed.classList.remove("apply_dimmed");
-    dimmed_black.classList.remove("apply_dimmed_black");
-}
 
 function template(data) {
     const theTemplateScript = document.querySelector("#cart_list_template").innerHTML;
@@ -54,4 +33,40 @@ function template(data) {
     const theCompiledHtml = theTemplate(data);
     
     document.querySelector(".cart_template").innerHTML = theCompiledHtml;
+
+    calcTotalPrice();
+}
+
+
+function calcTotalPrice() {
+    const cartListsArr = document.getElementsByClassName("total_price");
+    
+    let sumNum = 0;
+    let sum = 0;
+    let i = 0;
+    let len = cartListsArr.length;
+
+    for (i=0; i < len - 1; i++) {
+        let price = cartListsArr[i].innerHTML;
+        price = price.replace("원", "");
+        price = price.replace(",", "");
+
+        price = parseInt(price);
+        sum += price;
+    }
+    
+    sumNum = sum;
+    sum = numberWithCommas(sum);
+    cartListsArr[len-1].children[0].innerHTML = sum;
+
+    const subPrice = document.querySelector(".pi_prd");
+    subPrice.innerHTML = sum;
+
+    const flingCash = document.querySelector(".pi_point");
+    flingCash.innerHTML = parseInt(sumNum * 0.01);
+}
+
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

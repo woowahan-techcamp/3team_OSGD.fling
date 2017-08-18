@@ -471,14 +471,21 @@
 }
 
 .recipe_additional_info .total_price {
+    text-align: right;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.recipe_additional_info .total_price :nth-child(1) {
     color: #0941ca;
     font-size: 24pt;
     font-weight: 500;
-    text-align: right;
-    padding: 0 20px 20px 0;
+    /*text-align: right;*/
+    /*padding: 0 20px 20px 0;*/
 }
 
-.recipe_additional_info .total_price span {
+.recipe_additional_info .total_price :nth-child(2) {
+    color: #0941ca;
     font-size: 16pt;
     font-weight: 300;
 }
