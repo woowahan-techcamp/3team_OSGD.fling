@@ -10,13 +10,13 @@ import Foundation
 
 class Product {
 
-    private let pid: Int //상품 아이디
-    private let mid: Int //재료 아이디(참조)
-    private let name: String
-    private let price: Decimal
-    private let weight: String
-    private var bundle: String
-    private let image: String
+    let pid: Int //상품 아이디
+    let mid: Int //재료 아이디(참조)
+    let name: String
+    let price: Decimal
+    let weight: String
+    var bundle: String
+    let image: String
 
     init() {
         self.pid = 0
@@ -66,37 +66,7 @@ class Product {
         self.bundle = bundle
         self.image = image
     }
-
-    func setBundle(input: String) {
-        self.bundle = input
-    }
-
-    func getId() -> Int {
-        return self.pid
-    }
-    func getMaterialId() -> Int {
-        return self.mid
-    }
-    func getName() -> String {
-        return self.name
-    }
-    func getPrice() -> Decimal {
-        return self.price
-    }
-    func getWeight() -> String {
-        return self.weight
-    }
-    func getBundle() -> String {
-        return self.bundle
-    }
-    func getImage() -> String {
-        if self.image.contains("http://") {
-            return self.image
-        } else {
-            return "http://" + self.image
-        }
-    }
-
+    
     func getBundleTuple(input: String) -> (number: Int, unit: String) {
         var bundle = input
         var number = ""
@@ -160,6 +130,6 @@ class Product {
 
 extension Product: Equatable {
     static func == (lhs: Product, rhs: Product) -> Bool {
-        return lhs.getId() == rhs.getId()
+        return lhs.pid == rhs.pid
     }
 }
