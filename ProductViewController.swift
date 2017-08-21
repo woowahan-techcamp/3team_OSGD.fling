@@ -33,7 +33,6 @@ class ProductViewController: UIViewController {
     //confirm button
     @IBOutlet weak var confirmButton: UIBarButtonItem!
     @IBAction func touchConfirmButton(_ sender: Any) {
-        data.product.setBundle(input: bundleLabel.text ?? "1 개")
         let edited = (product: data.product, number: Int.init(bundleStepper.value), on: true)
         self.performSegue(withIdentifier: "unwindToRecipe", sender: edited)
     }
@@ -74,12 +73,12 @@ class ProductViewController: UIViewController {
     func productInfo() {
         let product = data.product
 
-        productImage.af_setImage(withURL: URL(string: product.getImage())!)
+        productImage.af_setImage(withURL: URL(string: product.image)!)
 
-        titleLabel.text = product.getName()
+        titleLabel.text = product.name
         descriptionLabel.text = ""
 
-        priceLabel.text = product.getPrice().description.appending(" 원")
+        priceLabel.text = product.price.description.appending(" 원")
 
         bundleUnit = product.getBundleTuple(input: "").unit
         bundleLabel.text = product.getBundleString(input: "")
@@ -89,7 +88,7 @@ class ProductViewController: UIViewController {
     }
 
     func calcTotalPrice() {
-        let result = Decimal.init(bundleStepper.value) * data.product.getPrice()
+        let result = Decimal.init(bundleStepper.value) * data.product.price
         totalPriceLabel.text = "총 ".appending(result.description).appending(" 원")
     }
 }
