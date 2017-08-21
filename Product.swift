@@ -15,7 +15,7 @@ class Product {
     let name: String
     let price: Decimal
     let weight: String
-    var bundle: String
+    let bundle: String
     let image: String
 
     init() {
@@ -66,7 +66,7 @@ class Product {
         self.bundle = bundle
         self.image = image
     }
-    
+
     func getBundleTuple(input: String) -> (number: Int, unit: String) {
         var bundle = input
         var number = ""
