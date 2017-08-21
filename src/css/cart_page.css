@@ -821,14 +821,16 @@
 }
 
 .cart_lst_item {
-    height: 80px;
+    min-height: 80px;
     border: 1px solid #ddd;
     box-shadow: 2px 1px 1px 1px #ddd;
     padding: 20px;
     border-left: 5px solid #aaa;
-    margin-bottom: 30px;
     font-weight: 300;
     font-size: 14pt;
+    margin: 30px;
+    margin-top: 0;
+    overflow: hidden;
 }
 
 .cart_lst_item .pic_circle {
@@ -841,27 +843,44 @@
     background-size: cover;
 }
 .prd_name, .prd_class, .prd_etc {
-    padding: 10px 0 0 30px;
+    padding: 10px 0;
 }
 .prd_name {
-    width: 50%;
+    width: calc(60% - 70px);
     text-align: left;
+    padding-top: 0px;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 84px;
+    padding-left: 10px;
 }
 .prd_name span {
     font-weight: 500;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .prd_name p {
-
+    overflow: hidden;
+    word-break: keep-all;
+    color: #333;
 }
 .prd_class {
-    width: 20%;
+    width: calc(30% - 70px);
     margin-top: 10px;
     font-size: 20pt;
 }
 
+.prd_etc {
+    width: calc(10% - 30px);
+}
+
 .prd_etc button {
-    cursor: pointer;
     width: 80px;
+    cursor: pointer;
     height: 40px;
     border: 1px solid #ddd;
     font-size: 16pt;
@@ -898,4 +917,10 @@
     height: 100%;
     background-size: contain;
     transform: scale(1.5);
+}
+
+@media (max-width: 849px) {
+    .prd_name {
+        /* width: calc(100% - 120px); */
+    }
 }
