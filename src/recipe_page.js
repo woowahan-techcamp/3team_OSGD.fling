@@ -223,5 +223,14 @@ function sendToCartList() {
         cartListObj.productList.push(productList);
     })
 
-    window.localStorage.setItem("userCart", JSON.stringify(cartListObj));
+    if(!window.localStorage.getItem("userCart")) {
+        const arr = [];
+        window.localStorage.setItem("userCart", JSON.stringify(arr));
+    }
+
+    let userCart = window.localStorage.userCart;
+    userCart = JSON.parse(userCart);
+    userCart.push(cartListObj);
+
+    window.localStorage.setItem("userCart", JSON.stringify(userCart));
 }
