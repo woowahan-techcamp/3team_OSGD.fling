@@ -101,7 +101,7 @@ class Recipe {
         }
     }
 
-    func totalPrice() -> String {
+    func totalPrice() -> Decimal {
         var total = Decimal()
         products.forEach { object in
             if object.on == true {
@@ -109,10 +109,7 @@ class Recipe {
                 total += (object.product.getPrice() * ea)
             }
         }
-        let head = "총액 : "
-        let tail = " 원"
-        let price = total.description
-        return head.appending(price).appending(tail)
+        return total
     }
 
     func toggleCheck(product: Product) {

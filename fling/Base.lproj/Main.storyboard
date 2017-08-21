@@ -313,6 +313,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="장바구니"/>
                                 <connections>
+                                    <action selector="cartButtonTouched:" destination="nM8-7V-YSK" eventType="touchUpInside" id="O7i-gV-qwr"/>
                                     <segue destination="CI6-wJ-KtW" kind="show" id="mGC-vg-vpT"/>
                                 </connections>
                             </button>
@@ -321,6 +322,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="레시피" id="97o-yX-gUa"/>
                     <connections>
+                        <outlet property="cartButton" destination="poc-1A-jUU" id="Poi-di-nYU"/>
                         <outlet property="productTable" destination="6aA-aY-yFw" id="DWe-DQ-D5q"/>
                         <outlet property="recipeImage" destination="s6l-DD-ncZ" id="T0N-g9-iCC"/>
                         <outlet property="recipeMissed" destination="Dai-XD-q1w" id="SBC-5t-hfL"/>
@@ -670,7 +672,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nId-NT-Pi0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6b7-f7-Soi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6b7-f7-Soi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -691,8 +693,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DT1-wf-wUI"/>
-        <segue reference="ZXJ-sD-cUC"/>
-        <segue reference="4cY-xg-jc0"/>
+        <segue reference="3T6-s5-SBO"/>
+        <segue reference="mGC-vg-vpT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.5860016468" blue="0.1603889017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

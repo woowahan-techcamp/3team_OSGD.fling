@@ -12,6 +12,7 @@ import AlamofireImage
 
 class RecipeViewController: UIViewController {
 
+    var cart = Cart()
     let network = Network.init()
     var searchUrl = ""
     var searchRecipe = Recipe.init()
@@ -34,11 +35,21 @@ class RecipeViewController: UIViewController {
         self.updatePrice()
     }
 
+    @IBOutlet weak var cartButton: UIButton!
+    @IBAction func cartButtonTouched(_ sender: Any) {
+        cart.add(recipe: self.searchRecipe)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //swiftlint:disable line_length
         NotificationCenter.default.addObserver(self, selector: #selector(updatePrice), name: self.priceModified, object: nil)
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        cart = appDelegate.cart
 
         productTable.tableFooterView = UIView()
 
@@ -65,7 +76,8 @@ class RecipeViewController: UIViewController {
     }
 
     func updatePrice() {
-        totalPriceLabel.text = searchRecipe.totalPrice()
+        var price = searchRecipe.totalPrice()
+        totalPriceLabel.text = price.addPriceTag()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
@@ -79,6 +91,7 @@ class RecipeViewController: UIViewController {
             secondViewController.data = product
         }
     }
+
 }
 
 extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
