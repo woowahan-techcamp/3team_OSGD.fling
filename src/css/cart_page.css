@@ -1,0 +1,901 @@
+
+.recipe_header {
+    width: 100%;
+    height: 60px;
+    color: black;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+.recipe_header .logo_wrap {
+    float: left;
+    padding-left: 10px;
+    padding-top: 16px;
+}
+
+.recipe_header .logo_link {
+    cursor: pointer;
+    position: absolute;
+    float: left;
+    text-align: left;
+    display: block;
+    width: 85px;
+    height: 60px;
+    text-indent: -999em;
+    z-index: 3;
+}
+
+.recipe_header .fling_logo {
+    background-image: url(../assets/img/fling_logo_black.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 65px;
+    height: 40px;
+}
+
+.recipe_header .page_title {
+    float: left;
+    padding-top: 12px;
+    margin-left: 35px;
+    font-size: 18pt;
+    font-weight: 300;
+}
+
+.recipe_header .head_item {
+    position: relative;
+    padding-top: 16px;
+    text-align: right;
+}
+
+.recipe_header .head_item > ul {
+    white-space: nowrap;
+}
+
+.recipe_header .head_item > ul > li {
+    padding-right: 15px;
+    padding-left: 15px;
+    display: inline-block;
+}
+
+.recipe_header .head_item > ul > li:last-child {
+    padding-right: 0;
+}
+
+.recipe_detail {
+    float: left;
+    text-align: left;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.recipe_detail .circle_wrap {
+    float: left;
+    width: 140px;
+    height: 140px;
+    border-radius: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.recipe_detail .circle_img {
+    background: url(../assets/img/main_image.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    transform: scale(1.5);
+}
+
+
+.recipe_detail .description {
+    float: left;
+    margin-left: 30px;
+}
+
+.recipe_detail .title {
+    font-size: 18pt;
+    padding-bottom: 4px;
+}
+
+.recipe_detail .subtitle {
+    font-size: 14pt;
+    font-weight: 300;
+    max-height: 60px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.recipe_detail .detail_link {
+    cursor: pointer;
+    padding-top: 4px;
+}
+
+.recipe_detail .detail_link a {
+    color: #aaa;
+    border-bottom: 1px solid #aaa;
+}
+
+.super_delivery {
+    float: right;
+    width: 350px;
+    height: 140px;
+    padding: 10px;
+    margin-top: 28px;
+    text-align: center;
+    border: 3px solid #FFBA4F;
+}
+
+.super_delivery .delivery_img {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background: url("../assets/img/super_delivery.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.super_delivery .title {
+    font-size: 16pt;
+}
+
+.super_delivery .title span:nth-child(1) {
+    font-weight: 300;
+}
+
+.super_delivery .title span:nth-child(2) {
+    font-weight: 600;
+}
+
+.super_delivery .desc {
+    font-size: 10pt;
+    color: #aaa;
+    line-height: 1.4rem;
+    padding-top: 10px;
+}
+
+.recipe_info {
+    height: 220px;
+    padding: 0 20px 0 20px;
+}
+
+.cart_list {
+    margin-bottom: 50px;
+    padding: 0 20px 0 20px;
+}
+
+.recipe_cart .title {
+    font-size: 24pt;
+    font-weight: 300;
+    border-top: 1px solid #aaa;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.recipe_cart .subtitle {
+    background-color: #faf3dd;   
+    height: 45px;
+    border-top: 2px solid #ffb742;
+    font-size: 15pt;
+}
+
+.recipe_cart .subtitle > div {
+    padding-top: 7px;
+    float: left;
+}
+
+.recipe_cart .subtitle :nth-child(1) {
+    /* padding-left: 330px; */
+    width: 60%;
+}
+
+.recipe_cart .subtitle :nth-child(2) {
+    /* padding-left: 300px; */
+    width: 100px;
+}
+
+.recipe_cart .subtitle :nth-child(3) {
+    /* padding-left: 180px; */
+    width: calc(40% - 100px);
+}
+
+.recipe_cart .cart_list {
+    height: 160px;
+    border-top: 1px solid rgba(255, 183, 66, 0.5);
+}
+
+.recipe_cart .cart_list .left {
+    float: left;
+    border-top: 0;
+    width: 60%;
+}
+
+.recipe_cart .cart_list .right {
+    float: right;
+    border-top: 0;
+    margin-top: 40px;
+    height: 60px;
+    width: 40%;
+}
+
+.recipe_cart .recipe_checkbox {
+    float: left;
+    margin: 50px 60px 50px 30px;
+    visibility: hidden;
+}
+
+.recipe_checkbox:after {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    content: '';
+    display: block;
+    visibility: visible;
+    background: url(../assets/img/checkbox_set.png) left top no-repeat;
+}
+
+.recipe_checkbox:checked:after {
+    background: url(../assets/img/checkbox_set.png) left top no-repeat;
+    background-position-x: -45px;
+}
+
+.unchecked > div {
+    filter: grayscale(1) opacity(0.5);
+}
+
+.recipe_cart .product_img {
+    float: left;
+    background: url("../assets/img/main_image.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    margin: 30px 10px 0px 0px;
+}
+
+.recipe_cart .product_info {
+    float: left;
+    text-align: left;
+    margin: 40px 0px 0px 20px;
+    width: calc(100% - 240px);
+}
+
+.recipe_cart .name {
+    font-size: 14pt;
+    font-weight: 500;
+    background-color: white;
+    max-width: 350px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.recipe_cart .origin {
+    font-size: 12pt;
+    font-weight: 300;
+}
+
+
+
+
+.recipe_cart .volume_box {
+    border: 1px solid #aaa;
+    height: 47px;
+    width: 93px;
+    float: left;
+    margin-top: 5px;
+}
+
+.volume_box input {
+    width: 50px;
+    height: 44px;
+    text-align: center;
+    font-size: 14pt;
+    border: 0;
+}
+
+.recipe_cart .button {
+    float: right;
+    display: inline-grid;
+}
+
+.recipe_cart .volume_box p {
+    display: inline-block;
+    padding-top: 10px;
+}
+
+.recipe_cart .up_button {
+    background-color: white;
+    background-image: url(../assets/img/up_button.png);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    border-left: 1px solid #aaa;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
+    background-position-y: center;
+    background-position-x: center;
+}
+
+
+.recipe_cart .down_button {
+    background-color: white;
+    background-image: url(../assets/img/down_button.png);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    border-left: 1px solid #aaa;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
+    background-position-y: center;
+    background-position-x: center;
+}
+
+.recipe_cart .up_button:focus, .recipe_cart .down_button:focus {
+    outline: 0px;
+}
+
+.recipe_cart .price_info {
+    float: right;
+    width: 200px;
+    text-align: center;
+    width: calc(100% - 100px);
+}
+
+.recipe_cart .total_price {
+    font-size: 18pt;
+    font-weight: 300;
+}
+
+.recipe_cart .per_price {
+    font-size: 10pt;
+    font-weight: 300;
+}
+
+.recipe_product_search {
+    height: 230px;
+    background: #f9f3dd;
+}
+
+
+.search_window {
+    border-bottom: 3px solid #ffb847;
+    width: 700px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.search_text {
+    width: 640px;
+    height: 70px;
+    font-size: 28pt;
+    background: transparent;
+    color: #ffb847;
+    font-weight: 300;
+    border: 0;
+    outline: 0;
+}
+
+.search_icon_wrap {
+    float: right;
+    padding-top: 16px;
+}
+
+.search_icon {
+    background-image: url(../assets/img/search_icon3x_yellow.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: Transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+.search_desc {
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.search_window ::-webkit-input-placeholder { 
+    color: #ffb847;
+}
+
+.search_bar {
+    width: 694px;
+    height: 400px;
+    background-color: white;
+    border: 3px solid #ffb847;
+    margin: -3px auto;
+    display: none;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.search_bar_list {
+    border-bottom: 1px solid #ddd;
+    height: 73px;
+}
+
+.search_bar_list:hover {
+    background: #eee;
+}
+
+.search_bar_img {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+.search_bar_list > .product_info > div {
+    font-size: 14pt;
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
+
+.search_bar_list > .product_info > span {
+    color: #666;
+} 
+.product_info {
+    display: inline-block;
+    padding-top: 8px;
+}
+
+.search_bar_button {
+    float: right;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #ffb847;
+    border-radius: 10px;
+    margin: 16px;
+    background-color: #ffb847;
+    font-size: 14pt;
+    font-weight: 500;
+    color: white;
+}
+
+.recipe_additional_info {
+    height: 300px;
+    padding: 60px 0px;
+}
+.missed_material {
+    float: left;
+    width: 420px;
+    word-break: keep-all;
+}
+
+.missed_material .title {
+    font-size: 26px;
+    font-weight: 400;
+    border-bottom: 1px solid #aaa;
+    text-align: left;
+    padding-bottom: 4px;
+}
+
+.missed_material .notation {
+    text-align: right;
+    font-weight: 300;
+    font-size: 10pt;
+    padding-top: 4px;
+}
+
+.missed_material .subtitle {
+    text-align: left;
+    font-size: 14pt;
+    font-weight: 300;
+    padding-top: 10px;
+}
+
+.recipe_additional_info .price_info {
+    float: right;
+    width: 420px;
+    border: 3px solid #FFB94B;
+    font-size: 14pt;
+    font-weight: 300;
+}
+
+.recipe_additional_info .price_info dl {
+    display: flow-root;
+}
+
+.recipe_additional_info .price_info dt {
+    float: left;
+    padding-left: 20px;
+}
+
+.recipe_additional_info .price_info dd {
+    float: right;
+    padding-right: 20px;
+    margin-top: -4px;
+    font-size: 16pt;
+    font-weight: 500;
+}
+
+.recipe_additional_info .price_info dd span.del {
+    font-size: 14pt;
+    font-weight: 300;
+    color: #666;
+    padding-right: 6px;
+}
+
+.recipe_additional_info .price_info dd span.won {
+    font-size: 12pt;
+    font-weight: 300;
+}
+
+.recipe_additional_info .price_title {
+    text-align: left;
+    background: #ffb94b;
+    font-size: 18pt;
+    font-weight: 500;
+    color: white;
+    padding: 6px 0px 10px 20px;
+}
+
+.recipe_additional_info .total_price {
+    text-align: right;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.recipe_additional_info .total_price :nth-child(1) {
+    color: #0941ca;
+    font-size: 24pt;
+    font-weight: 500;
+}
+
+.recipe_additional_info .total_price :nth-child(2) {
+    color: #0941ca;
+    font-size: 16pt;
+    font-weight: 300;
+}
+
+.recipe_button {
+    clear: both;
+    padding-top: 50px;
+}
+
+.btn_primary {
+    cursor: pointer;
+
+    width: 240px;
+    height: 75px;
+
+    border: 1px solid #ddd;
+    font-size: 22pt;
+    font-weight: 600;
+    background: white;
+    
+    opacity: 1;
+}
+
+.btn_primary:hover {
+    opacity: 0.85;
+}
+
+.btn_cart:hover {
+    background: #eee;
+}
+
+.btn_primary:focus {
+    outline: 4px solid rgba(220, 220, 220, 0.55);
+}
+
+
+.btn_cart {
+    margin-right: 24px;
+}
+.btn_fling {
+    margin-right: 24px;
+    color: #666;
+}
+
+.btn_rightnow {
+    color: white;
+    background: #ffb847;
+    border: 0;
+}
+
+.cart_section .section_title {
+    margin-top: 26px;
+    margin-bottom: 20px;
+}
+
+.recipe_cart .title {
+    font-size: 24pt;
+    font-weight: 300;
+    border-top: 1px solid #aaa;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+
+
+/**/
+
+.dimmed {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+}
+
+.dimmed_black {
+    width: 100%;
+    height: 100%;
+}
+
+.apply_dimmed {
+    opacity: 0.7;
+    filter: blur(1px);
+    background-color: black;
+}
+
+.apply_dimmed_black {
+    position: fixed;
+    background-color: black;
+    z-index: 98;
+    opacity: 0.4;
+}
+
+
+.recipe_modal {
+    position: fixed;
+    z-index: 99;
+    width: 660px;
+    height: 420px;
+    border-radius: 8px;
+    top: 50%;
+    left: 50%;
+    margin-left: -330px;
+    margin-top: -210px;
+    background-color: white;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.display_none {
+    display: none;
+}
+
+
+.recipe_modal .modal_top {
+    height: 300px;
+}
+
+.recipe_modal .material_img {
+    background-color: #aaa;
+    width: 200px;
+    height: 230px;
+    margin-top: 30px;
+    margin-left: 30px;
+    float: left;
+}
+
+.recipe_modal .material_title {
+    display: inline-block;
+}
+
+.recipe_modal .material_name {
+    color: #888;
+    font-size: 20pt;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.recipe_modal .material_price {
+    margin-top: 50px;
+}
+
+.recipe_modal .material_price :nth-child(1) {
+    color: #888;
+    font-size: 18pt;
+    font-weight: 500;
+}
+
+.recipe_modal .material_price :nth-child(2) {
+    font-size: 26pt;
+    font-weight: 300;
+    margin-left: 50px;
+}
+
+.recipe_modal .modal_close {
+    float: right;
+}
+
+.material_subtitle {
+    margin-left: 35px;
+}
+
+.material_subtitle > li {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.material_subtitle > li :nth-child(1) {
+    font-size: 13pt;
+    color: #888;
+    font-weight: 500;
+}
+
+.material_subtitle > li :nth-child(2) {
+    font-weight: 300;
+    font-size: 11pt;
+    margin-top: 12px;
+}
+
+@media (max-width: 1100px) {
+    .super_delivery {
+        display: none;
+    }
+
+    .recipe_cart .product_info {
+        margin-top: 25px;
+    }
+
+    .recipe_cart .name {
+        white-space: normal;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
+    .recipe_additional_info {
+        height: initial;
+        padding: 60px 0px;
+    }
+
+    .missed_material {
+        clear: both;
+        float: unset;
+        width: initial;
+        word-break: keep-all;
+        margin-bottom: 100px;
+        padding: 20px;
+    }
+
+    .recipe_additional_info .price_info {
+        float: unset;
+        width: 420px;
+        border: 3px solid #FFB94B;
+        font-size: 14pt;
+        font-weight: 300;
+        margin: 0 auto;
+    }
+}
+
+.modal_close {
+    border: 0px;
+    background: url("../assets/img/x_button.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.modal_close:hover {
+    cursor: pointer;
+}
+
+.cart_section .section_title {
+    margin-top: 26px;
+    margin-bottom: 20px;
+}
+
+.cart_section .title {
+    font-size: 30pt;
+    font-weight: 500;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.cart_section .separate {   
+    height: 25px;
+    border-top: 1px solid #aaa;
+    font-size: 13pt;
+    width: 40px;
+    display: inline-block;
+}
+
+.cart_lst_item > div > div {
+    float: left;
+    margin-right: 10px
+}
+
+.cart_lst_item {
+    height: 80px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 1px 1px 1px #ddd;
+    padding: 20px;
+    border-left: 5px solid #aaa;
+    margin-bottom: 30px;
+    font-weight: 300;
+    font-size: 14pt;
+}
+
+.cart_lst_item .pic_circle {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ddd;
+    background: #eee;
+    border-radius: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.prd_name, .prd_class, .prd_etc {
+    padding: 10px 0 0 30px;
+}
+.prd_name {
+    width: 50%;
+    text-align: left;
+}
+.prd_name span {
+    font-weight: 500;
+}
+.prd_name p {
+
+}
+.prd_class {
+    width: 20%;
+    margin-top: 10px;
+    font-size: 20pt;
+}
+
+.prd_etc button {
+    cursor: pointer;
+    width: 80px;
+    height: 40px;
+    border: 1px solid #ddd;
+    font-size: 16pt;
+    font-weight: 400;
+    background: white;
+    opacity: 1;
+    display: block;
+    margin-top: 10px
+}
+
+.cart_section.price_info {
+    height: 200px;
+    background: #eee;
+}
+
+.price_info .section_body {
+    font-size: 32pt;
+}
+
+
+.cart_lst_item .circle_wrap {
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.cart_lst_item .circle_img {
+    background: url(../assets/img/main_image.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    transform: scale(1.5);
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>플링</title>
+        <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/cart_page.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+        <script src="./js/XHR.js"></script>
+        <script src="./js/Utils.js"></script>
+        <script src="./cart_page.js"></script>
+        <script type="Template" id="cart_list_template">
+            {{#each this}}
+                <div class="cart_list">
+                    <div class="cart_list left">
+                        <input type="checkbox" class="recipe_checkbox" id="check1" checked>
+                        <label for="check1"></label>
+                        <div class="product_img" style="background-image: url({{image}})"></div>
+                        <div class="product_info">
+                            <div class="name">{{name}}</div>
+                            <div class="origin">국내산</div>
+                        </div>    
+                    </div>
+                    <div class="cart_list right">
+                        <div class="volume_box">
+                            <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
+                            <div class="button">
+                                <button class="up_button"></button>
+                                <button class="down_button"></button>
+                            </div>
+                        </div>
+                        <div class="price_info">
+                            <div class="total_price">{{price}}원</div>
+                            {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
+                            <input type="hidden" id="per_price" value="{{price}}">
+                        </div>    
+                    </div>
+                </div>
+            {{/each}}
+        </script>
+        <script type="Template" id="cart_list_template_solo">               
+            <div class="cart_list">
+                <div class="cart_list left">
+                    <input type="checkbox" class="recipe_checkbox" id="check1" checked>
+                    <label for="check1"></label>
+                    <div class="product_img" style="background-image: url({{image}})"></div>
+                    <div class="product_info">
+                        <div class="name">{{name}}</div>
+                        <div class="origin">국내산</div>
+                    </div>    
+                </div>
+                <div class="cart_list right">
+                    <div class="volume_box">
+                        <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
+                        <div class="button">
+                            <button class="up_button"></button>
+                            <button class="down_button"></button>
+                        </div>
+                    </div>
+                    <div class="price_info">
+                        <div class="total_price">{{price}}원</div>
+                        {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
+                        <input type="hidden" id="per_price" value="{{price}}">
+                    </div>    
+                </div>
+            </div>
+        </script>
+        <script type="Template" id="search_bar_template">
+            {{#each this}}
+                <div class="search_bar_list">
+                    <div class="search_bar_img" style="background-image: url({{image}})"></div>
+                    <div class="product_info">
+                        <div>{{name}}</div>
+                        {{#if weight}}<span>{{weight}}당</span>{{/if}}
+                        <span>{{price}}원</span>
+                    </div>
+                    <button class="search_bar_button" value="{{id}}">물품추가</button>
+                </div>
+            {{/each}}
+        </script>
+    </head>
+    <body>
+        <!--modal start-->
+        <div class="recipe_modal display_none">
+            <div class="modal_top">
+                <div class="material_img"></div>
+                <div class="material_title">
+                    <div class="material_name">돼지고기 안심</div>
+                    <div class="material_price">
+                        <span>판매가</span>
+                        <span>130,000원</span>
+                    </div>
+                </div>
+                <button class="modal_close"></button>
+            </div>
+            <div class="modal_bottom">
+                <ul class="material_subtitle">
+                    <li>
+                        <div>100g 당 판매가</div>
+                        <div>13,000원</div>
+                    </li>
+                    <li>
+                        <div>판매단위</div>
+                        <div>100g</div>
+                    </li>
+                    <li>
+                        <div>원산지</div>
+                        <div>국내산</div>
+                    </li>
+                    <li>
+                        <div>배송구분</div>
+                        <div>슈퍼배송</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--modal end-->    
+        <div class="wrap">
+            <div class="dimmed">
+            <div class="dimmed_black"></div>
+            <header class="recipe_header">
+                <nav class="head_menu content">
+                    <a href="./main.html" class="logo_link">Main Page</a>
+                    <div class="logo_wrap">
+                        <div class="fling_logo"></div>
+                    </div>
+                    <div class="page_title">레시피 담기</div>
+                    <div class="head_item">
+                        <ul>
+                            <li><a>플링이란?</a></li>
+                            <li><a>장바구니</a></li>
+                            <li><a>회원가입</a></li>
+                            <li><a>로그인</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="container">
+                <section class="cart_section content">
+                    <div class="title"><span class="w300">플링&nbsp;</span>장바구니</div>
+                    <div class="separate"></div>
+                    <div class="cart_lst">
+                        <div class="cart_lst_item">
+                            <div>
+                                <div class="circle_wrap">
+                                    <div class="circle_img" style="background-image: url(http://cloudfront.haemukja.com/vh.php?url=http://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/58923/pad_thumb_0.JPG&convert=jpgmin&rt=600)">
+
+                                    </div>
+                                </div>
+                                <div class="prd_name"><span>주꾸미 에그 인 헬</span>
+                                    <p class="description">쭈꾸미x1, 토마토x1, 양파x1, 페퍼 슬라이스x1, 스파게티소스x1</p>
+                                </div>
+                                <div class="prd_class">33,600</div>
+                                <div class="prd_etc"><button>삭제</button></div>
+
+                            </div>
+                        </div>
+                        <div class="cart_lst_item">
+                            <div>
+                                <div class="pic_wrap">
+                                    <div class="pic_circle">
+
+                                    </div>
+                                </div>
+                                <div class="prd_name">product</div>
+                                <div class="prd_class">11,000</div>
+                                <div class="prd_etc"><button>삭제</button></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="cart_section price_info">
+                    <div class="section_title">구매 가격</div>
+                    <div class="section_body">123,456원</div>
+                </section>
+
+                <section class="recipe_section recipe_button">
+                    <button class="btn_primary btn_fling">계속 플링하기</button>
+                    <button class="btn_primary btn_rightnow">구매하기</button>
+                </section>
+                    <footer class="main_footer">
+                        <div class="footer_nav">
+                            <ul>
+                                <li><a href="javascript:void(0)">회사소개</a></li>
+                                <li><a href="javascript:void(0)">인재채용</a></li>
+                                <li><a href="javascript:void(0)">이용안내</a></li>
+                                <li><a href="javascript:void(0)">서비스이용약관</a></li>
+                                <li><a href="javascript:void(0)">전자금융거래 기본약관</a></li>
+                                <li><a href="javascript:void(0)">개인정보처리방침</a></li>
+                                <li><a href="javascript:void(0)">사업자 정보확인</a></li>
+                                <li><a href="javascript:void(0)">제휴문의</a></li>
+                            </ul>
+                        </div>
+    
+                        <div class="footer_wrap content">
+                            <div class="footer_main">
+                                <div class="footer_left">
+                                    <div class="company_logo"></div>
+                                    <div class="company_info">
+                                        <span>
+                                            <p>오삼굉땡(주) | 대표이사 : 황예린 | 사업자등록번호 : 777-777-7777</p>
+                                            <p>통신판매업신고 : 제2015-서울송파-1733호 | 개인정보담당자 : 김수완</p>
+                                            <p>주소 : 서울시 송파구 위례성대로 2, 4층 (방이동, 장은빌딩)</p>
+                                            <p>고객센터 : 1234-5678 | 이메일 : fling@osgd.com</p>
+                                        </span>
+                                    </div>
+                                    <div class="company_copyright">(c) OSGD Corporation.</div>
+                                    <div class="company_design_cr">Designed by Woowahan Bros.</div>
+                                </div>
+    
+                                <div class="footer_right">
+                                    <div class="cs_title">고객센터</div>
+                                    <div class="cs_number">1234-5678</div>
+                                    <div class="cs_open_time">
+                                        <div class="cs_time_week">
+                                            <dt>평&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일</dt>
+                                            <dd>06:30 ~ 18:00</dd>
+                                        </div>
+                                        <div class="cs_time_week">
+                                            <dt>공 휴 일</dt>
+                                            <dd>06:30 ~ 13:00</dd>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer_sns">
+                                    <div class="sns_twitter"></div>
+                                    <div class="sns_facebook"></div>
+                                    <div class="sns_instagram"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
