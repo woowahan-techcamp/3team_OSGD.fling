@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
         catch (e) {
             // exception
         }
-
+        
+        document.querySelector('.recipe_detail').dataId = jsonData.id;
         document.querySelector('.recipe_detail .title').innerText = jsonData.title;
         document.querySelector('.recipe_detail .subtitle').innerText = jsonData.subtitle;
         document.querySelector('.recipe_detail .circle_img').style.cssText = `background-image: url("${jsonData.image}")`;
@@ -27,6 +28,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
     const target = document.querySelector(".search_text");
     target.addEventListener("keyup", searchHandler);
     Addproduct();
+    document.querySelector(".btn_cart").addEventListener("click", () => {
+        sendToCartList();
+        window.location.href = "./cart_page.html";
+    });
 });
 
 
@@ -182,4 +187,41 @@ function Addproduct() {
             })
         }
     })
+}
+
+
+function sendToCartList() {
+    let cartListObj = {};
+    cartListObj.recipeId = document.querySelector(".recipe_detail").dataId;
+    cartListObj.recipeTitle = document.querySelector(".description > .title").innerHTML;
+    cartListObj.recipeImg = document.querySelector(".circle_img").style.backgroundImage;
+    cartListObj.recipeSubtitle = document.querySelector(".description > .subtitle").innerHTML;
+    cartListObj.recipeUrl = document.querySelector('.detail_link a').href;
+    cartListObj.productList = [];
+    
+    let productArr = document.getElementsByClassName("cart_list");
+    productArr = Array.from(productArr);
+
+    productArr.forEach((e) => {
+        let productList = {};
+        productList.id = e.dataset.id * 1;
+        
+        if (e.className.includes("unchecked")) {
+            productList.isChecked = false;
+        }
+        else {
+            productList.isChecked = true;
+        }
+
+        if (e.className.includes("added")) {
+            productList.isAdded = true;
+        }
+        else {
+            productList.isAdded = false;
+        }
+            
+        cartListObj.productList.push(productList);
+    })
+
+    window.localStorage.setItem("userCart", JSON.stringify(cartListObj));
 }
