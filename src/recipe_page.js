@@ -205,6 +205,7 @@ function sendToCartList() {
     productArr.forEach((e) => {
         let productList = {};
         productList.id = e.dataset.id * 1;
+        productList.volume = e.children[1].children[0].children[0].value;
         
         if (e.className.includes("unchecked")) {
             productList.isChecked = false;
