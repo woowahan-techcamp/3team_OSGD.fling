@@ -10,6 +10,7 @@
         <script src="./recipe_popup.js"></script>
         <script type="Template" id="product_list_template">
             {{#each this.productDetail}}
+                {{#if isChecked}}
                 <div class="product_list">
                     <div class="product_name">
                         <div class="product_img" style="background-image: url({{image}})"></div>
@@ -25,6 +26,7 @@
                         <span>{{price}}<span class="won">원</span></span>
                     </div>
                 </div>
+                {{/if}}
             {{/each}}
         </script>
     </head>
