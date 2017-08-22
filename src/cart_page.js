@@ -66,7 +66,9 @@ function sendDataToPopUp(e) {
     divArr.forEach((el, index) => {
         if (el == target) {
             
-            e.target.href = `./recipe_popup.html?data=${encodeURIComponent(JSON.stringify(data[index]))}`;
+            e.target.href = 'javascript:void(0)';
+            
+            const popup = window.open(`./recipe_popup.html?data=${Utils.encodeBase64(JSON.stringify(data[index]))}`, "recipeWindow", "width=700, height=800");
 
         }
     });
