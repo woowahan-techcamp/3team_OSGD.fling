@@ -44,9 +44,9 @@ database: sqlite (rails default)
 
 #### 6. 상품 상세정보
 
-| method | api url                | response data                          |
-| ------ | ---------------------- | -------------------------------------- |
-| GET    | /products/:id[상품의 아이디] | bundle, id, image, name, price, weight |
+| method | api url                | response data                            |
+| ------ | ---------------------- | ---------------------------------------- |
+| GET    | /products/:id[상품의 아이디] | bundle, id, image, name, price, weight, material_ids |
 
 #### 7. 레시피 상세정보 
 
@@ -70,7 +70,7 @@ database: sqlite (rails default)
 
 | method | apiurl        | request            | response                                 |
 | ------ | ------------- | ------------------ | ---------------------------------------- |
-| POST   | /get_products | products=[1,2,3,4] | [bundle, id, image, name, price, weight] |
+| POST   | /get_products | products=[1,2,3,4] | [bundle, id, image, name, price, weight, material_name] |
 
 #### 11. 재료 키워드 검색
 
