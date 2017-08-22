@@ -94,6 +94,15 @@ class RecipeViewController: UIViewController {
         }
     }
 
+    // prohibit from being selected  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let selectionIndexPath = self.productTable.indexPathForSelectedRow {
+            self.productTable.deselectRow(at: selectionIndexPath, animated: animated)
+        }
+    }
+
 }
 
 extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -155,4 +164,5 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+
 }
