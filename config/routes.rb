@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :recipes
   resources :products
+  resources :materials
   get '/get_products/:id', to: 'recipes#get_products'
   get '/season', to: 'recipes#season'
   post '/search_product', to: 'products#search'
