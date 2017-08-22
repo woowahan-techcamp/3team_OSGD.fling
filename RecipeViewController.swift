@@ -152,8 +152,8 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.checkbox.on = productCell.on
             cell.productLabel.text = productCell.product.name
-            let price = productCell.product.price * Decimal.init(productCell.product.getBundleTuple(input: "").number)
-            cell.priceLabel.text = String(describing: price).appending(" 원")
+            var price = productCell.product.price * Decimal.init(productCell.product.getBundleTuple(input: "").number)
+            cell.priceLabel.text = price.addUnitTag(unit: " 원")
             let unit = " ".appending(productCell.product.getBundleTuple(input: "").unit)
             cell.eaLabel.text = productCell.number.description.appending(unit)
 
