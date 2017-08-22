@@ -28,12 +28,17 @@ class ProductsController < ApplicationController
 
   def get_products
     product_array = params[:products]
-    @products = []
+    products = []
     result = JSON.parse(product_array)
     result.each do |x|
-      @products << Product.find(x)
+      products << Product.find(x)
     end
-    render json: @products.to_json(only: [:id, :name, :image, :weight, :bundle, :price])
+    @products = products.map do |p|
+      { :id => p.id, :name => p.name, :image => p.image, :weight => p.weight, :bundle => p.bundle,
+        :price => p.price, :material_name => p.material.name }
+    end
+
+    render json: @products
   end
 
 end
