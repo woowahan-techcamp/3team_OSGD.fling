@@ -10,12 +10,14 @@ import UIKit
 
 class CartTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var productLabel: UILabel!
+    @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var recipeTitleLabel: UILabel!
+    @IBOutlet weak var recipeSubtitleLabel: UILabel!
+    @IBOutlet weak var materialListLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        productLabel.textColor = UIColor.gray
-        productLabel.font = UIFont.systemFont(ofSize: 12)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
