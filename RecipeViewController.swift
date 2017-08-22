@@ -14,6 +14,7 @@ class RecipeViewController: UIViewController {
 
     var cart = Cart()
     let network = Network.init()
+    let myStoragy = Storage()
     var searchUrl = ""
     var searchRecipe = Recipe.init()
     var editedProduct = (product: Product(), number: 0, on: true)
@@ -39,6 +40,7 @@ class RecipeViewController: UIViewController {
     @IBAction func cartButtonTouched(_ sender: Any) {
         //이미 카트에 담긴 상품인지 고려해야 함.
         cart.add(recipe: self.searchRecipe)
+        myStoragy.saveCart(cart: cart)
     }
 
     override func viewDidLoad() {
@@ -93,6 +95,15 @@ class RecipeViewController: UIViewController {
         }
     }
 
+    // prohibit from being selected  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let selectionIndexPath = self.productTable.indexPathForSelectedRow {
+            self.productTable.deselectRow(at: selectionIndexPath, animated: animated)
+        }
+    }
+
 }
 
 extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -128,8 +139,8 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
             }
 
             cell.checkbox.on = productCell.on
-            cell.productLabel.text = productCell.product.getName()
-            let price = productCell.product.getPrice() * Decimal.init(productCell.product.getBundleTuple(input: "").number)
+            cell.productLabel.text = productCell.product.name
+            let price = productCell.product.price * Decimal.init(productCell.product.getBundleTuple(input: "").number)
             cell.priceLabel.text = String(describing: price).appending(" 원")
             let unit = " ".appending(productCell.product.getBundleTuple(input: "").unit)
             cell.eaLabel.text = productCell.number.description.appending(unit)
@@ -154,4 +165,5 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+
 }

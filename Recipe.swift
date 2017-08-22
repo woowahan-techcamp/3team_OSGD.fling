@@ -106,7 +106,7 @@ class Recipe {
         products.forEach { object in
             if object.on == true {
                 let ea = Decimal.init(object.number)
-                total += (object.product.getPrice() * ea)
+                total += (object.product.price * ea)
             }
         }
         return total
