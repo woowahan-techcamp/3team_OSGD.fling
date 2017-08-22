@@ -116,6 +116,13 @@ class RecipesController < ApplicationController
     end
   end
 
+
+  def search_recipe
+    keyword = params[:keyword]
+    @recipes = Recipe.where("title LIKE ?", "%#{keyword}%" )
+    render json: @recipes.to_json(only: [:id, :title])
+  end
+
   private
   def render_json_recipe(recipe)
     render json: recipe.to_json(only: [:id, :subtitle, :writer, :title, :url, :image])
