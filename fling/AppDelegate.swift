@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var cart = Cart()
+    var fridge = Refrigerator()
     let myStoragy = Storage()
 
     func application(_ application: UIApplication,

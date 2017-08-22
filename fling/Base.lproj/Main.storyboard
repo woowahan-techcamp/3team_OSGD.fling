@@ -159,7 +159,7 @@
         <!--재료 검색-->
         <scene sceneID="Q9y-qW-FeL">
             <objects>
-                <viewController id="DiZ-Ta-1KF" sceneMemberID="viewController">
+                <viewController id="DiZ-Ta-1KF" customClass="MaterialSearchViewController" customModule="fling" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hxo-VU-Lll"/>
                         <viewControllerLayoutGuide type="bottom" id="HXZ-TL-ViH"/>
@@ -168,17 +168,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UMf-Qg-nKo">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gny-Zs-w1V">
-                                <rect key="frame" x="0.0" y="108" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="562"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="materialCell" editingAccessoryType="checkmark" textLabel="UIj-tP-fd8" detailTextLabel="lxf-BX-62Q" style="IBUITableViewCellStyleSubtitle" id="80q-0F-u4K">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="materialCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="materialCell" editingAccessoryType="checkmark" textLabel="UIj-tP-fd8" style="IBUITableViewCellStyleDefault" id="80q-0F-u4K" customClass="MaterialSearchTableViewCell" customModule="fling" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="80q-0F-u4K" id="wuz-36-Cvy">
@@ -186,33 +181,42 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UIj-tP-fd8">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lxf-BX-62Q">
-                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="materialLabel" destination="UIj-tP-fd8" id="FIj-gG-VJh"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="DiZ-Ta-1KF" id="CBs-H3-4gG"/>
+                                    <outlet property="delegate" destination="DiZ-Ta-1KF" id="p3l-8i-MYc"/>
+                                </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" text="" placeholder="재료명을 입력하세요. 예) 우유" translatesAutoresizingMaskIntoConstraints="NO" id="UMf-Qg-nKo">
+                                <rect key="frame" x="0.0" y="63" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="재료 검색" id="rZ1-ic-6TI"/>
+                    <connections>
+                        <outlet property="searchBar" destination="UMf-Qg-nKo" id="1lu-60-x80"/>
+                        <outlet property="searchTable" destination="Gny-Zs-w1V" id="Gwh-eg-mct"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NgS-xr-61H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="-1102"/>
+            <point key="canvasLocation" x="765.60000000000002" y="-1102.3988005997003"/>
         </scene>
         <!--레시피-->
         <scene sceneID="gHy-Wo-oyo">
@@ -509,7 +513,7 @@
         <!--냉장고-->
         <scene sceneID="BFH-3J-E7b">
             <objects>
-                <viewController id="5dN-lk-vWg" sceneMemberID="viewController">
+                <viewController id="5dN-lk-vWg" customClass="RefrigeratorViewController" customModule="fling" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iVe-zg-LGh"/>
                         <viewControllerLayoutGuide type="bottom" id="P6l-J0-Ymg"/>
@@ -519,33 +523,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iY3-H5-c0Z">
-                                <rect key="frame" x="0.0" y="64" width="375" height="537"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="refreCell" id="2yd-ur-3H6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="fridgeCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="fridgeCell" textLabel="W9D-BX-ZKq" style="IBUITableViewCellStyleDefault" id="2yd-ur-3H6">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2yd-ur-3H6" id="7Ti-vS-FWv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W9D-BX-ZKq">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UT-ZO-4ED">
-                                <rect key="frame" x="256" y="629" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="추가 버튼 (임시)"/>
                                 <connections>
-                                    <segue destination="DiZ-Ta-1KF" kind="show" id="Dxm-jO-THX"/>
+                                    <outlet property="dataSource" destination="5dN-lk-vWg" id="M6d-Ad-xtu"/>
+                                    <outlet property="delegate" destination="5dN-lk-vWg" id="ygy-om-PQl"/>
                                 </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="냉장고" id="gN0-8e-l6y"/>
+                    <navigationItem key="navigationItem" title="냉장고" id="gN0-8e-l6y">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dyT-Il-1O7">
+                            <connections>
+                                <segue destination="DiZ-Ta-1KF" kind="show" identifier="unwindToRefrigerator" id="601-de-eGB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="iY3-H5-c0Z" id="sVm-9e-OiY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bp1-FZ-s5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -563,13 +581,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gFi-QM-kfV">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2MW-Lz-gXR">
-                                <rect key="frame" x="0.0" y="108" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="562"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -737,9 +750,9 @@
         <image name="search_icon1x.png" width="42" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DT1-wf-wUI"/>
         <segue reference="Nxj-bu-BRj"/>
         <segue reference="3T6-s5-SBO"/>
+        <segue reference="3KA-uK-DyB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.5860016468" blue="0.1603889017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
