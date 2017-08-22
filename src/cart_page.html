@@ -9,115 +9,30 @@
         <script src="./js/XHR.js"></script>
         <script src="./js/Utils.js"></script>
         <script src="./cart_page.js"></script>
-        <script type="Template" id="cart_list_template">
+        <script type="user_cart_list_template" id="user_cart_list_template">           
             {{#each this}}
-                <div class="cart_list">
-                    <div class="cart_list left">
-                        <input type="checkbox" class="recipe_checkbox" id="check1" checked>
-                        <label for="check1"></label>
-                        <div class="product_img" style="background-image: url({{image}})"></div>
-                        <div class="product_info">
-                            <div class="name">{{name}}</div>
-                            <div class="origin">국내산</div>
-                        </div>    
-                    </div>
-                    <div class="cart_list right">
-                        <div class="volume_box">
-                            <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
-                            <div class="button">
-                                <button class="up_button"></button>
-                                <button class="down_button"></button>
-                            </div>
+                <div class="cart_list_item">
+                    <div>
+                        <div class="circle_wrap">
+                            <div class="circle_img" style="background-image: {{recipeImg}}"></div>
                         </div>
-                        <div class="price_info">
-                            <div class="total_price">{{price}}원</div>
-                            {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
-                            <input type="hidden" id="per_price" value="{{price}}">
-                        </div>    
-                    </div>
-                </div>
-            {{/each}}
-        </script>
-        <script type="Template" id="cart_list_template_solo">               
-            <div class="cart_list">
-                <div class="cart_list left">
-                    <input type="checkbox" class="recipe_checkbox" id="check1" checked>
-                    <label for="check1"></label>
-                    <div class="product_img" style="background-image: url({{image}})"></div>
-                    <div class="product_info">
-                        <div class="name">{{name}}</div>
-                        <div class="origin">국내산</div>
-                    </div>    
-                </div>
-                <div class="cart_list right">
-                    <div class="volume_box">
-                        <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
-                        <div class="button">
-                            <button class="up_button"></button>
-                            <button class="down_button"></button>
+                        <div class="prd_name"><span><a href="">{{recipeTitle}}</a></span>
+                            <p class="description">
+                                {{#each productList}}
+                                    {{#if isChecked}} {{material_name}}x{{volume}}{{#if @last}} {{else}}, {{/if}} {{/if}}
+                                {{/each}}
+                            </p>
                         </div>
+                        <div class="prd_class">{{recipePrice}}</div>
+                        <div class="prd_etc"><button>삭제</button></div>
+
                     </div>
-                    <div class="price_info">
-                        <div class="total_price">{{price}}원</div>
-                        {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
-                        <input type="hidden" id="per_price" value="{{price}}">
-                    </div>    
-                </div>
-            </div>
-        </script>
-        <script type="Template" id="search_bar_template">
-            {{#each this}}
-                <div class="search_bar_list">
-                    <div class="search_bar_img" style="background-image: url({{image}})"></div>
-                    <div class="product_info">
-                        <div>{{name}}</div>
-                        {{#if weight}}<span>{{weight}}당</span>{{/if}}
-                        <span>{{price}}원</span>
-                    </div>
-                    <button class="search_bar_button" value="{{id}}">물품추가</button>
                 </div>
             {{/each}}
         </script>
     </head>
     <body>
-        <!--modal start-->
-        <div class="recipe_modal display_none">
-            <div class="modal_top">
-                <div class="material_img"></div>
-                <div class="material_title">
-                    <div class="material_name">돼지고기 안심</div>
-                    <div class="material_price">
-                        <span>판매가</span>
-                        <span>130,000원</span>
-                    </div>
-                </div>
-                <button class="modal_close"></button>
-            </div>
-            <div class="modal_bottom">
-                <ul class="material_subtitle">
-                    <li>
-                        <div>100g 당 판매가</div>
-                        <div>13,000원</div>
-                    </li>
-                    <li>
-                        <div>판매단위</div>
-                        <div>100g</div>
-                    </li>
-                    <li>
-                        <div>원산지</div>
-                        <div>국내산</div>
-                    </li>
-                    <li>
-                        <div>배송구분</div>
-                        <div>슈퍼배송</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!--modal end-->    
         <div class="wrap">
-            <div class="dimmed">
-            <div class="dimmed_black"></div>
             <header class="recipe_header">
                 <nav class="head_menu content">
                     <a href="./main.html" class="logo_link">Main Page</a>
@@ -140,35 +55,8 @@
                 <section class="cart_section content">
                     <div class="title"><span class="w300">플링&nbsp;</span>장바구니</div>
                     <div class="separate"></div>
-                    <div class="cart_lst">
-                        <div class="cart_lst_item">
-                            <div>
-                                <div class="circle_wrap">
-                                    <div class="circle_img" style="background-image: url(http://cloudfront.haemukja.com/vh.php?url=http://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/58923/pad_thumb_0.JPG&convert=jpgmin&rt=600)">
-
-                                    </div>
-                                </div>
-                                <div class="prd_name"><span>주꾸미 에그 인 헬</span>
-                                    <p class="description">쭈꾸미x1, 토마토x1, 양파x1, 페퍼 슬라이스x1, 스파게티소스x1</p>
-                                </div>
-                                <div class="prd_class">33,600</div>
-                                <div class="prd_etc"><button>삭제</button></div>
-
-                            </div>
-                        </div>
-                        <div class="cart_lst_item">
-                            <div>
-                                <div class="pic_wrap">
-                                    <div class="pic_circle">
-
-                                    </div>
-                                </div>
-                                <div class="prd_name">product</div>
-                                <div class="prd_class">11,000</div>
-                                <div class="prd_etc"><button>삭제</button></div>
-
-                            </div>
-                        </div>
+                    <div class="cart_list">
+                        
                     </div>
                 </section>
                 <section class="cart_section price_info">
