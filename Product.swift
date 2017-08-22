@@ -17,6 +17,7 @@ class Product {
     let weight: String
     let bundle: String
     let image: String
+    let materialName: String
 
     init() {
         self.pid = 0
@@ -26,9 +27,11 @@ class Product {
         self.weight = ""
         self.bundle = ""
         self.image = ""
+        self.materialName = ""
     }
 
-    init(pid: Int, mid: Int, name: String, price: Decimal, weight: String, bundle: String, image: String) {
+    init(pid: Int, mid: Int, name: String, price: Decimal,
+         weight: String, bundle: String, image: String, materialName: String) {
         self.pid = pid
         self.mid = mid
         self.name = name
@@ -36,6 +39,7 @@ class Product {
         self.weight = weight
         self.bundle = bundle
         self.image = image
+        self.materialName = materialName
     }
 
     init?(data: [String:Any]) {
@@ -44,16 +48,10 @@ class Product {
             let price = data["price"]! as? String,
             let weight = data["weight"]! as? String,
             let bundle = data["bundle"]! as? String,
-            let image = data["image"]! as? String else {
+            let image = data["image"]! as? String,
+            let materialName = data["material_name"] as? String,
+            let mid = data["material_id"] as? Int else {
                 return nil
-        }
-
-        var mid = 0
-        if data["material_id"] != nil {
-            guard let material_id = data["material_id"]! as? Int else {
-                return nil
-            }
-            mid = material_id
         }
 
         let decimalPrice = NSDecimalNumber.init(string: price.replacingOccurrences(of: ",", with: ""))
@@ -65,6 +63,7 @@ class Product {
         self.weight = weight
         self.bundle = bundle
         self.image = image
+        self.materialName = materialName
     }
 
     func getBundleTuple(input: String) -> (number: Int, unit: String) {

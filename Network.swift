@@ -69,7 +69,9 @@ class Network {
                 Alamofire.request(productUrl).responseJSON(completionHandler: { response in
                     if let products = response.result.value as? [[String: Any]] {
                         products.forEach({ object in
-                            recipe?.add(product: Product.init(data: object)!, number: 1)
+                            if let product = Product.init(data: object){
+                            recipe?.add(product: product, number: 1)
+                            }
                         })
                         NotificationCenter.default.post(name: self.flingRecipe,
                                                         object: self, userInfo: ["data": recipe ?? ""])
