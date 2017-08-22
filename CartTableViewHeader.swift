@@ -8,10 +8,19 @@
 
 import UIKit
 
-class CartTableViewHeader: UITableViewHeaderFooterView {
+class CartTableViewHeader: UITableViewCell {
 
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        recipeImage.frame = CGRect(x: 8, y: 0, width: 44, height: 44)
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
 
 //    override func draw(_ rect: CGRect) {
 //        titleLabel.textColor = UIColor.gray //temp

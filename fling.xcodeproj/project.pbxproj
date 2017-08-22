@@ -18,7 +18,6 @@
 		98227E551F4AAF0200DE96C5 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E541F4AAF0200DE96C5 /* CartViewController.swift */; };
 		98227E571F4AB3C500DE96C5 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */; };
 		98227E5C1F4ABC1F00DE96C5 /* CartTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E5B1F4ABC1F00DE96C5 /* CartTableViewHeader.swift */; };
-		98227E5E1F4ABF3200DE96C5 /* CartCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98227E5D1F4ABF3200DE96C5 /* CartCellHeader.xib */; };
 		984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843151F33F3AF007AD753 /* AppDelegate.swift */; };
 		9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984843191F33F3B0007AD753 /* Main.storyboard */; settings = {ASSET_TAGS = (Main, ); }; };
 		9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9848431C1F33F3B0007AD753 /* Assets.xcassets */; };
@@ -81,7 +80,6 @@
 		98227E541F4AAF0200DE96C5 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		98227E5B1F4ABC1F00DE96C5 /* CartTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewHeader.swift; sourceTree = "<group>"; };
-		98227E5D1F4ABF3200DE96C5 /* CartCellHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartCellHeader.xib; sourceTree = "<group>"; };
 		984843121F33F3AF007AD753 /* fling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984843151F33F3AF007AD753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9848431A1F33F3B0007AD753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 			children = (
 				984843151F33F3AF007AD753 /* AppDelegate.swift */,
 				984843191F33F3B0007AD753 /* Main.storyboard */,
-				98227E5D1F4ABF3200DE96C5 /* CartCellHeader.xib */,
 				9848431C1F33F3B0007AD753 /* Assets.xcassets */,
 				9848431E1F33F3B0007AD753 /* LaunchScreen.storyboard */,
 				984843211F33F3B0007AD753 /* Info.plist */,
@@ -399,7 +396,6 @@
 				98227E471F4675E300DE96C5 /* fling_logo_white.png in Resources */,
 				98F821F21F3D695A006B0288 /* main_image.png in Resources */,
 				984843201F33F3B0007AD753 /* LaunchScreen.storyboard in Resources */,
-				98227E5E1F4ABF3200DE96C5 /* CartCellHeader.xib in Resources */,
 				9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */,
 				98227E491F4677A400DE96C5 /* logo_rabbit.png in Resources */,
 				9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */,

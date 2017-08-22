@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class CartViewController: UIViewController {
 
     var cart = Cart()
-    let headerIdentifier = "CartCellHeader"
+//    let headerIdentifier = "CartCellHeader"
 
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -25,10 +26,10 @@ class CartViewController: UIViewController {
 
         cart = appDelegate.cart
 
-        let nib = UINib(nibName: headerIdentifier, bundle: nil)
-        cartTableView.register(nib, forHeaderFooterViewReuseIdentifier: headerIdentifier)
-        cartTableView.estimatedSectionHeaderHeight = 60
-        self.automaticallyAdjustsScrollViewInsets = false
+//        let nib = UINib(nibName: headerIdentifier, bundle: nil)
+//        cartTableView.register(nib, forHeaderFooterViewReuseIdentifier: headerIdentifier)
+//        cartTableView.estimatedSectionHeaderHeight = 60
+//        self.automaticallyAdjustsScrollViewInsets = false
 
         totalPriceLabel.text = "100,000 원"  //temp
     }
@@ -45,37 +46,46 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cart.recipes[section].products.count
+        return cart.recipes[section].products.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =
-            cartTableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath) as? CartTableViewCell else {
-                return CartTableViewCell()
+
+        var returnCell = UITableViewCell()
+
+        if indexPath.row != 0 {
+            //swiftlint:disable line_length
+            guard let cell =
+                cartTableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath) as? CartTableViewCell else {
+                    return CartTableViewCell()
+            }
+
+            cell.productLabel.text = cart.recipes[indexPath.section].products[indexPath.row - 1].product.getName()
+
+            returnCell = cell
+        } else {
+            //swiftlint:disable line_length
+            guard let cell =
+                cartTableView.dequeueReusableCell(withIdentifier: "cartHeader", for: indexPath) as? CartTableViewHeader else {
+                    return CartTableViewHeader()
+            }
+
+            cell.titleLabel.text = cart.recipes[indexPath.section].title
+            cell.recipeImage.af_setImage(withURL: URL.init(string: cart.recipes[indexPath.section].image)!)
+
+            returnCell = cell
         }
 
-        cell.textLabel?.text = cart.recipes[indexPath.section].products[indexPath.row].product.getName()
-
-        return cell
+        return returnCell
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        //swiftlint:disable line_length
-        guard let header =
-            cartTableView.dequeueReusableHeaderFooterView(withIdentifier: headerIdentifier) as? CartTableViewHeader else {
-                return CartTableViewHeader()
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height = 50
+
+        if indexPath.row != 0 {
+            height = 30
         }
 
-//        guard let header = cartTableView.tableHeaderView as? CartTableViewHeader else {
-//            return CartTableViewHeader()
-//        }
-
-        let title = cart.recipes[section].title
-        header.titleLabel.text = title
-
-        cartTableView.tableHeaderView = header
-//        cartTableView.tableHeaderView?.addSubview(header)
-
-        return header
+        return CGFloat(height)
     }
 }
