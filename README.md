@@ -60,11 +60,11 @@ database: sqlite (rails default)
 | ------ | -------------- | ------------ | ---------- |
 | POST   | /search_recipe | keyword="냉콩" | [id, name] |
 
-#### 9. 재료이름 by 재료 ID
+#### 9. 재료이름 by 재료 ID Array
 
-| method | api url               | response |
-| ------ | --------------------- | -------- |
-| GET    | /materials/:id[재료아이디] | [name]   |
+| method | apiurl         | request             | response   |
+| ------ | -------------- | ------------------- | ---------- |
+| POST   | /get_materials | materials=[1,2,3,4] | [id, name] |
 
 #### 10 . 상품 상세정보 (input [id])
 
