@@ -8,10 +8,15 @@ class MaterialsController < ApplicationController
     headers['Access-Control-Max-Age'] = "1728000"
   end
 
-  def show
-    @material = Material.find(params[:id])
-    puts @material
-    render json: @material.to_json(only: [:name])
+  def get_materials
+    materials = params[:materials]
+    @materials = []
+    materials_array = JSON.parse(materials)
+    materials_array.each do |id|
+      @materials << Material.find(id)
+    end
+
+    render json: @materials.to_json(only: [:name, :id])
   end
 
   def search
