@@ -228,16 +228,19 @@ function storeUserCartData() {
     //make api url
     cartListObj.productApiUrl = cartListObj.productApiUrl.substring(0, cartListObj.productApiUrl.length - 1);
     cartListObj.productApiUrl += "]";
-    console.log(cartListObj.productApiUrl);
     
-    
-
-    if(!window.localStorage.getItem("userCart")) {
-        const arr = [];
-        window.localStorage.setItem("userCart", JSON.stringify(arr));
-    }
-
     let userCart = window.localStorage.userCart;
+    try {
+        JSON.parse(userCart)
+    }
+    catch(e) {
+        userCart = "[]";
+        window.localStorage.setItem("userCart", "[]");
+    }
+    if (!Array.isArray(JSON.parse(userCart))) {
+        window.localStorage.setItem("userCart", "[]");
+        userCart = "[]";
+    }
     userCart = JSON.parse(userCart);
     userCart.push(cartListObj);
 
