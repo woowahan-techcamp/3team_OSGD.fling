@@ -385,7 +385,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="레시피 부제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grW-Ka-xZt">
-                                                    <rect key="frame" x="129" y="49" width="126" height="27"/>
+                                                    <rect key="frame" x="129" y="49" width="238" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.59993284940000002" green="0.60003870729999997" blue="0.59992617370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -741,9 +741,9 @@
         <image name="search_icon1x.png" width="42" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DT1-wf-wUI"/>
         <segue reference="Nxj-bu-BRj"/>
         <segue reference="3T6-s5-SBO"/>
+        <segue reference="3KA-uK-DyB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.5860016468" blue="0.1603889017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
