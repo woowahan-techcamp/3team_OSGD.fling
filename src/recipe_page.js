@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     target.addEventListener("keyup", searchHandler);
     Addproduct();
     document.querySelector(".btn_cart").addEventListener("click", () => {
-        sendToCartList();
+        storeUserCartData();
         window.location.href = "./cart_page.html";
     });
 });
@@ -190,15 +190,17 @@ function Addproduct() {
 }
 
 
-function sendToCartList() {
+function storeUserCartData() {
     let cartListObj = {};
     cartListObj.recipeId = document.querySelector(".recipe_detail").dataId;
     cartListObj.recipeTitle = document.querySelector(".description > .title").innerHTML;
     cartListObj.recipeImg = document.querySelector(".circle_img").style.backgroundImage;
     cartListObj.recipeSubtitle = document.querySelector(".description > .subtitle").innerHTML;
-    cartListObj.recipeUrl = document.querySelector('.detail_link a').href;
+    cartListObj.recipeUrl = document.querySelector(".detail_link a").href;
+    cartListObj.recipePrice = document.querySelector(".recipe_additional_info .total_price > span").innerHTML.replace(/,/g, "") * 1;
     cartListObj.productList = [];
     
+
     let productArr = document.getElementsByClassName("cart_list");
     productArr = Array.from(productArr);
 
