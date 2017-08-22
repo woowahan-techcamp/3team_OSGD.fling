@@ -37,6 +37,7 @@ class RecipeViewController: UIViewController {
 
     @IBOutlet weak var cartButton: UIButton!
     @IBAction func cartButtonTouched(_ sender: Any) {
+        //이미 카트에 담긴 상품인지 고려해야 함.
         cart.add(recipe: self.searchRecipe)
     }
 

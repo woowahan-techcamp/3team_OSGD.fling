@@ -12,7 +12,6 @@ import AlamofireImage
 class CartViewController: UIViewController {
 
     var cart = Cart()
-//    let headerIdentifier = "CartCellHeader"
 
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -26,16 +25,21 @@ class CartViewController: UIViewController {
 
         cart = appDelegate.cart
 
-//        let nib = UINib(nibName: headerIdentifier, bundle: nil)
-//        cartTableView.register(nib, forHeaderFooterViewReuseIdentifier: headerIdentifier)
-//        cartTableView.estimatedSectionHeaderHeight = 60
-//        self.automaticallyAdjustsScrollViewInsets = false
-
-        totalPriceLabel.text = "100,000 원"  //temp
+        updateTotalPrice()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    func updateTotalPrice() {
+        var total = Decimal()
+
+        cart.recipes.forEach { object in
+            total += object.totalPrice()
+        }
+
+        totalPriceLabel.text = total.addPriceTag()
     }
 }
 
