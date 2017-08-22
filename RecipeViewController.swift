@@ -47,6 +47,12 @@ class RecipeViewController: UIViewController {
 
         cart.add(recipe: self.searchRecipe)
         myStoragy.saveCart(cart: cart)
+
+        if self.navigationController!.viewControllers.count > 1 {
+            self.navigationController!.viewControllers[1].title = "홈"
+            self.performSegue(withIdentifier: "RecipeToCart", sender: nil)
+            self.navigationController!.viewControllers.remove(at: 1)
+        }
     }
 
     override func viewDidLoad() {

@@ -314,7 +314,6 @@
                                 <state key="normal" title="장바구니"/>
                                 <connections>
                                     <action selector="cartButtonTouched:" destination="nM8-7V-YSK" eventType="touchUpInside" id="O7i-gV-qwr"/>
-                                    <segue destination="CI6-wJ-KtW" kind="show" id="mGC-vg-vpT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -332,6 +331,7 @@
                         <outlet property="totalPriceLabel" destination="OC9-px-A8S" id="Pdx-A4-4Vv"/>
                         <segue destination="TrP-d4-eat" kind="show" identifier="RecipeToProduct" id="3T6-s5-SBO"/>
                         <segue destination="adW-DK-IUK" kind="show" identifier="RecipeToSearchProduct" id="4Il-4k-CGS"/>
+                        <segue destination="CI6-wJ-KtW" kind="show" identifier="RecipeToCart" id="Nxj-bu-BRj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMB-rM-w5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -738,8 +738,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DT1-wf-wUI"/>
+        <segue reference="Nxj-bu-BRj"/>
         <segue reference="3T6-s5-SBO"/>
-        <segue reference="mGC-vg-vpT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.5860016468" blue="0.1603889017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
