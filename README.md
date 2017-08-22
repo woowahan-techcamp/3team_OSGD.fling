@@ -54,6 +54,30 @@ database: sqlite (rails default)
 | ------ | ------------ | ---------------------------------------- |
 | GET    | /recipes/:id | id, subtitle, title, writer, image, missed_material, recipe_material, serving |
 
+#### 8. 레시피 키워드 검색
+
+| method | api url        | requset      | response   |
+| ------ | -------------- | ------------ | ---------- |
+| POST   | /search_recipe | keyword="냉콩" | [id, name] |
+
+#### 9. 재료이름 by 재료 ID
+
+| method | api url               | response |
+| ------ | --------------------- | -------- |
+| GET    | /materials/:id[재료아이디] | [name]   |
+
+#### 10 . 상품 상세정보 (input [id])
+
+| method | apiurl        | request            | response                                 |
+| ------ | ------------- | ------------------ | ---------------------------------------- |
+| POST   | /get_products | products=[1,2,3,4] | [bundle, id, image, name, price, weight] |
+
+#### 11. 재료 키워드 검색
+
+| method | api url          | requset     | response   |
+| ------ | ---------------- | ----------- | ---------- |
+| POST   | /search_material | keyword="콩" | [id, name] |
+
 
 
 ## 모델
@@ -90,4 +114,4 @@ id, unit_id, material_id
 
 **Material[744개]** https://github.com/woowahan-techcamp/3team_OSGD.fling/blob/backend/db/seeds/materials.rb 
 
-**Product[14개]** https://github.com/woowahan-techcamp/3team_OSGD.fling/blob/backend/db/seeds/product.rb
+**Product[718개]** https://github.com/woowahan-techcamp/3team_OSGD.fling/blob/backend/db/seeds/product.rb
