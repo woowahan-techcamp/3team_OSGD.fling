@@ -1,3 +1,5 @@
+require 'json'
+
 class ProductsController < ApplicationController
 
   after_action :cors_set_access_control_headers
@@ -18,6 +20,16 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     render json: @product.to_json(only: [:id, :name, :image, :weight, :bundle, :price])
+  end
+
+  def get_products
+    product_array = params[:products]
+    @products = []
+    result = JSON.parse(product_array)
+    result.each do |x|
+      @products << Product.find(x)
+    end
+    render json: @products.to_json(only: [:id, :name, :image, :weight, :bundle, :price])
   end
 
 end
