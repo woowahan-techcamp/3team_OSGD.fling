@@ -8,6 +8,25 @@
         <script src="./js/XHR.js"></script>
         <script src="./js/Utils.js"></script>
         <script src="./recipe_popup.js"></script>
+        <script type="Template" id="product_list_template">
+            {{#each this.productDetail}}
+                <div class="product_list">
+                    <div class="product_name">
+                        <div class="product_img" style="background-image: url({{image}})"></div>
+                        <div class="product_title">
+                            <span class="title">{{name}}</span>
+                            <p>국내산</p>                                
+                        </div>
+                    </div>
+                    <div class="product_bundle">
+                        <span>{{bundle}}</span>
+                    </div>
+                    <div class="product_price">
+                        <span>{{price}}<span class="won">원</span></span>
+                    </div>
+                </div>
+            {{/each}}
+        </script>
     </head>
     <body>
         <div class="containter">
@@ -36,186 +55,6 @@
                     <div>가격</div>
                 </div>
                 <div class="product_list_wrap">
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
-                    <div class="product_list">
-                        <div class="product_name">
-                            <div class="product_img" style="background-image: url(http://t2a.coupangcdn.com/thumbnails/remote/292x292ex/image/product/image/vendoritem/2016/04/15/3000145255/115c9c66-f261-4968-bd1b-7bc3c32f855b.jpg);"></div>
-                            <div class="product_title">
-                                <span class="title">디벨라 스파게티</span>
-                                <p>국내산</p>                                
-                            </div>
-                        </div>
-                        <div class="product_bundle">
-                            <span>999개</span>
-                        </div>
-                        <div class="product_price">
-                            <span>1,234,567<span class="won">원</span></span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
