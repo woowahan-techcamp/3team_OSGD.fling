@@ -23,7 +23,8 @@ class Storage {
                                                  "name": $0.product.name.description,
                                                  "price": $0.product.price.description,
                                                  "weight": $0.product.weight.description,
-                                                 "material_id": $0.product.mid]})
+                                                 "material_id": $0.product.mid,
+                                                 "material_name": $0.product.materialName.description]})
             let recipe = ["id": recipe.rid, "image": recipe.image.description, "missed": recipe.missed.description,
                           "original": recipe.original.description, "serving": recipe.serving.description,
                           "subtitle": recipe.subtitle.description, "title": recipe.title.description,

@@ -17,7 +17,6 @@
 		98227E511F4AA93900DE96C5 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E501F4AA93900DE96C5 /* Cart.swift */; };
 		98227E551F4AAF0200DE96C5 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E541F4AAF0200DE96C5 /* CartViewController.swift */; };
 		98227E571F4AB3C500DE96C5 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */; };
-		98227E5C1F4ABC1F00DE96C5 /* CartTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E5B1F4ABC1F00DE96C5 /* CartTableViewHeader.swift */; };
 		98227E631F4C054300DE96C5 /* Refrigerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E621F4C054300DE96C5 /* Refrigerator.swift */; };
 		98227E651F4C058A00DE96C5 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E641F4C058A00DE96C5 /* Material.swift */; };
 		98227E671F4C125100DE96C5 /* RefrigeratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E661F4C125100DE96C5 /* RefrigeratorViewController.swift */; };
@@ -86,7 +85,6 @@
 		98227E501F4AA93900DE96C5 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		98227E541F4AAF0200DE96C5 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
-		98227E5B1F4ABC1F00DE96C5 /* CartTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewHeader.swift; sourceTree = "<group>"; };
 		98227E621F4C054300DE96C5 /* Refrigerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refrigerator.swift; sourceTree = "<group>"; };
 		98227E641F4C058A00DE96C5 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		98227E661F4C125100DE96C5 /* RefrigeratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefrigeratorViewController.swift; sourceTree = "<group>"; };
@@ -582,7 +580,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98227E5C1F4ABC1F00DE96C5 /* CartTableViewHeader.swift in Sources */,
 				98B1EAD31F455D140016DEA9 /* ProductSearchTableViewCell.swift in Sources */,
 				98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */,
 				984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */,
