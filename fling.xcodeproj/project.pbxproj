@@ -17,7 +17,6 @@
 		98227E511F4AA93900DE96C5 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E501F4AA93900DE96C5 /* Cart.swift */; };
 		98227E551F4AAF0200DE96C5 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E541F4AAF0200DE96C5 /* CartViewController.swift */; };
 		98227E571F4AB3C500DE96C5 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */; };
-		98227E5C1F4ABC1F00DE96C5 /* CartTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E5B1F4ABC1F00DE96C5 /* CartTableViewHeader.swift */; };
 		984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843151F33F3AF007AD753 /* AppDelegate.swift */; };
 		9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984843191F33F3B0007AD753 /* Main.storyboard */; settings = {ASSET_TAGS = (Main, ); }; };
 		9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9848431C1F33F3B0007AD753 /* Assets.xcassets */; };
@@ -80,7 +79,6 @@
 		98227E501F4AA93900DE96C5 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		98227E541F4AAF0200DE96C5 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
-		98227E5B1F4ABC1F00DE96C5 /* CartTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewHeader.swift; sourceTree = "<group>"; };
 		984843121F33F3AF007AD753 /* fling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984843151F33F3AF007AD753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9848431A1F33F3B0007AD753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 				98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */,
 				98227E541F4AAF0200DE96C5 /* CartViewController.swift */,
 				98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */,
-				98227E5B1F4ABC1F00DE96C5 /* CartTableViewHeader.swift */,
 			);
 			name = "view controller";
 			sourceTree = "<group>";
@@ -564,7 +561,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98227E5C1F4ABC1F00DE96C5 /* CartTableViewHeader.swift in Sources */,
 				98B1EAD31F455D140016DEA9 /* ProductSearchTableViewCell.swift in Sources */,
 				98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */,
 				984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */,
