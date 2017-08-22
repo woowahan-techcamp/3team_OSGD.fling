@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
     end
     @products = products.map do |p|
       { :id => p.id, :name => p.name, :image => p.image, :weight => p.weight, :bundle => p.bundle,
-        :price => p.price, :material_name => p.material.name }
+        :price => p.price, :material_name => p.material.name, :material_id => p.material.id }
     end
 
     render json: @products
