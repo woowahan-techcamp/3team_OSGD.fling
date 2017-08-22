@@ -16,6 +16,7 @@ class Storage {
     func saveCart(cart: Cart) {
         var result = [[String: Any]]()
         cart.recipes.forEach { (recipe) in
+            recipe.setProducts(list: recipe.products.filter { $2 == true })
             let products = recipe.products.map({["number": $0.number, "id": $0.product.pid,
                                                  "bundle": $0.product.bundle.description,
                                                  "image": $0.product.image.description,

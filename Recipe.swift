@@ -83,6 +83,10 @@ class Recipe {
         self.products = []
     }
 
+    func setProducts(list: ListProduct) {
+        self.products = list
+    }
+
     func indexOf(product: Product) -> Int {
         var result = -1
         for (index, object) in products.enumerated() where object.product == product {

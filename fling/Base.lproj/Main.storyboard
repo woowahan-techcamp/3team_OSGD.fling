@@ -314,7 +314,6 @@
                                 <state key="normal" title="장바구니"/>
                                 <connections>
                                     <action selector="cartButtonTouched:" destination="nM8-7V-YSK" eventType="touchUpInside" id="O7i-gV-qwr"/>
-                                    <segue destination="CI6-wJ-KtW" kind="show" id="mGC-vg-vpT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -332,6 +331,7 @@
                         <outlet property="totalPriceLabel" destination="OC9-px-A8S" id="Pdx-A4-4Vv"/>
                         <segue destination="TrP-d4-eat" kind="show" identifier="RecipeToProduct" id="3T6-s5-SBO"/>
                         <segue destination="adW-DK-IUK" kind="show" identifier="RecipeToSearchProduct" id="4Il-4k-CGS"/>
+                        <segue destination="CI6-wJ-KtW" kind="show" identifier="RecipeToCart" id="Nxj-bu-BRj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMB-rM-w5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -341,7 +341,7 @@
         <!--장바구니-->
         <scene sceneID="9Pv-9Q-ldB">
             <objects>
-                <viewController id="CI6-wJ-KtW" sceneMemberID="viewController">
+                <viewController id="CI6-wJ-KtW" customClass="CartViewController" customModule="fling" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mWH-6w-hYE"/>
                         <viewControllerLayoutGuide type="bottom" id="0db-MY-szL"/>
@@ -365,30 +365,75 @@
                                     <segue destination="cdu-hR-3Cf" kind="show" id="3KA-uK-DyB"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sm6-qr-sMr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" sectionIndexMinimumDisplayRowCount="60" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sm6-qr-sMr">
                                 <rect key="frame" x="0.0" y="64" width="375" height="499"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="basketCell" id="yMg-AO-6db">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cartCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cartCell" id="cUz-so-GRg" customClass="CartTableViewCell" customModule="fling" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yMg-AO-6db" id="JaH-mb-koD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cUz-so-GRg" id="SZY-jI-Baj">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fa-Bx-Bgp">
+                                                    <rect key="frame" x="16" y="0.0" width="351" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="productLabel" destination="4Fa-Bx-Bgp" id="rwY-X2-6uu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cartHeader" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cartHeader" id="vnp-vs-y4M" customClass="CartTableViewHeader" customModule="fling" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vnp-vs-y4M" id="E5C-vv-xVE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hnd-zx-LGO">
+                                                    <rect key="frame" x="8" y="0.0" width="44" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eub-tn-6Bm">
+                                                    <rect key="frame" x="60" y="8" width="307" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="recipeImage" destination="Hnd-zx-LGO" id="sbU-Hl-wbJ"/>
+                                            <outlet property="titleLabel" destination="Eub-tn-6Bm" id="DzK-ug-d3w"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="CI6-wJ-KtW" id="efZ-2P-uFX"/>
+                                    <outlet property="delegate" destination="CI6-wJ-KtW" id="VI5-dm-cNw"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="장바구니" id="VlY-BO-Cu5"/>
+                    <connections>
+                        <outlet property="cartTableView" destination="sm6-qr-sMr" id="naO-Uh-sJt"/>
+                        <outlet property="totalPriceLabel" destination="wUm-iE-jYz" id="xiN-9I-kDe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mBD-fX-0aW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="428"/>
+            <point key="canvasLocation" x="765.60000000000002" y="427.73613193403304"/>
         </scene>
         <!--주문하기-->
         <scene sceneID="FEv-ad-ErN">
@@ -693,8 +738,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DT1-wf-wUI"/>
+        <segue reference="Nxj-bu-BRj"/>
         <segue reference="3T6-s5-SBO"/>
-        <segue reference="mGC-vg-vpT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.5860016468" blue="0.1603889017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
