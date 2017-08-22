@@ -19,6 +19,7 @@ function getUserCart() {
             for(i=0;i<el.productList.length;i++) {
                 el.productList[i].material_name = el.productDetail[i].material_name;
                 el.productDetail[i].volume = el.productList[i].volume;
+                el.productDetail[i].isChecked = el.productList[i].isChecked;
             }
             templateCount++;
 
