@@ -148,3 +148,16 @@
     font-weight: 300;
     font-size: 13pt;
 }
+
+.recipe_site_link {
+    position: absolute;
+    bottom: 5px;
+    right: 12px;
+    font-weight: 300;
+    font-size: 11pt;
+}
+
+.heamuk_link:after {
+    padding-left: 12px;
+    content: url(../assets/img/arrow_icon_black.png);
+}
