@@ -12,6 +12,7 @@ import AlamofireImage
 class CartViewController: UIViewController {
 
     var cart = Cart()
+    let storage = Storage()
 
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -24,7 +25,6 @@ class CartViewController: UIViewController {
         }
 
         cart = appDelegate.cart
-
         updateTotalPrice()
     }
 
@@ -38,7 +38,6 @@ class CartViewController: UIViewController {
         cart.recipes.forEach { object in
             total += object.totalPrice()
         }
-
         totalPriceLabel.text = total.addPriceTag()
     }
 }
@@ -86,5 +85,19 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.materialListLabel?.text = materialList
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+     {
+        if editingStyle == .delete {
+            cart.remove(recipeAt: indexPath.row)
+            storage.saveCart(cart: cart)
+            updateTotalPrice()
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        }
     }
 }
