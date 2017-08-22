@@ -196,7 +196,7 @@ function storeUserCartData() {
     cartListObj.recipeSubtitle = document.querySelector(".description > .subtitle").innerHTML;
     cartListObj.recipeUrl = document.querySelector(".detail_link a").href;
     cartListObj.recipePrice = document.querySelector(".recipe_additional_info .total_price > span").innerHTML;
-    cartListObj.productApiUrl = "http://52.79.119.41/get_products?products=["
+    cartListObj.productApiUrl = "http://52.79.119.41/get_products?products=[";
     cartListObj.productList = [];
 
     let productArr = document.getElementsByClassName("cart_list");

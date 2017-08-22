@@ -31,18 +31,19 @@ function getUserCart() {
                 //세션에 저장
                 sessionStorage.setItem("userCart", JSON.stringify(userCart));
 
-                addPopUpEvent();
+                addEvent();
+                setTotalPrice();
             }
         })
     })
 }
 
-function addPopUpEvent() {
-    document.querySelector(".cart_list").addEventListener("click", sendRecipeDataToPopUP);
+function addEvent() {
+    document.querySelector(".cart_list").addEventListener("click", Handler);
 }
 
 
-function sendRecipeDataToPopUP(e) {
+function Handler(e) {
     if (e.target.tagName == "A") {
         const recipeTitle = e.target.innerHTML;
         let index = 0;
@@ -56,13 +57,22 @@ function sendRecipeDataToPopUP(e) {
         divArr.forEach((el, index) => {
             if (el == target) {
                 
-                e.target.href = `./recipe_page.html?data=${encodeURIComponent(JSON.stringify(data[index]))}`;
+                e.target.href = `./recipe_popup.html?data=${encodeURIComponent(JSON.stringify(data[index]))}`;
 
-                /*
-                const popup = window.open("./recipe_popup.html", "recipeWindow", "width=700", "height=800");
-                popup.postMessage(data[index], window.location.origin);
-                */
             }
         });
     }
+}
+
+
+function setTotalPrice() {
+    const data = JSON.parse(window.localStorage.getItem("userCart"));
+    const target = document.querySelector(".section_body");
+    let totalPrice = 0;
+
+    data.forEach((e) => {
+        totalPrice += e.recipePrice;
+        console.log(totalPrice);
+    })
+
 }
