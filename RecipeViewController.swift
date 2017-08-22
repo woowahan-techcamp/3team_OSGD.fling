@@ -39,6 +39,12 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var cartButton: UIButton!
     @IBAction func cartButtonTouched(_ sender: Any) {
         //이미 카트에 담긴 상품인지 고려해야 함.
+
+        self.searchRecipe.setProducts(list: self.searchRecipe.products.filter { $2 == true })
+        if self.searchRecipe.products.count <= 0 {
+            //담긴 상품이 없는 경우
+        }
+
         cart.add(recipe: self.searchRecipe)
         myStoragy.saveCart(cart: cart)
     }

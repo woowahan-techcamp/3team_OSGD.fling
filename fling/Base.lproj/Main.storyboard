@@ -737,9 +737,9 @@
         <image name="search_icon1x.png" width="42" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3KA-uK-DyB"/>
-        <segue reference="mGC-vg-vpT"/>
+        <segue reference="DT1-wf-wUI"/>
         <segue reference="3T6-s5-SBO"/>
+        <segue reference="mGC-vg-vpT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.5860016468" blue="0.1603889017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -64,7 +64,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
                     return CartTableViewCell()
             }
 
-            cell.productLabel.text = cart.recipes[indexPath.section].products[indexPath.row - 1].product.getName()
+            cell.productLabel.text = cart.recipes[indexPath.section].products[indexPath.row - 1].product.name
 
             returnCell = cell
         } else {
