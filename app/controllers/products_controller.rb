@@ -13,8 +13,12 @@ class ProductsController < ApplicationController
 
   def search
     keyword = params[:keyword]
-    @products = Product.where("name LIKE ?", "%#{keyword}%")
-    render json: @products.to_json(only: [:id, :name])
+    if keyword.length == 0
+      render :nothing
+    else
+      @products = Product.where("name LIKE ?", "%#{keyword}%")
+      render json: @products.to_json(only: [:id, :name])
+    end
   end
 
   def show

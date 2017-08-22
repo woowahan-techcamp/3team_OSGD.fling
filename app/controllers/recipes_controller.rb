@@ -117,10 +117,14 @@ class RecipesController < ApplicationController
   end
 
 
-  def search_recipe
+  def search
     keyword = params[:keyword]
-    @recipes = Recipe.where("title LIKE ?", "%#{keyword}%" )
-    render json: @recipes.to_json(only: [:id, :title])
+    if keyword.length == 0
+      render :nothing
+    else
+      @recipes = Recipe.where("title LIKE ?", "%#{keyword}%" )
+      render json: @recipes.to_json(only: [:id, :title])
+    end
   end
 
   private
