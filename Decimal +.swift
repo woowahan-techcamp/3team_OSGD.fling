@@ -10,7 +10,14 @@ import Foundation
 
 extension Decimal {
     mutating func addPriceTag() -> String {
-        let price = self.description
-        return "총액 : ".appending(price.appending(" 원"))
+        let price = NSNumber.init(value: (self as NSDecimalNumber).doubleValue)
+        let result = NumberFormatter.localizedString(from: price, number: NumberFormatter.Style.decimal)
+        return "총액 : ".appending(result.appending(" 원"))
+    }
+
+    mutating func addUnitTag(unit: String) -> String {
+        let price = NSNumber.init(value: (self as NSDecimalNumber).doubleValue)
+        let result = NumberFormatter.localizedString(from: price, number: NumberFormatter.Style.decimal)
+        return result.appending(unit)
     }
 }

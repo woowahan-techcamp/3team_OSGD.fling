@@ -47,6 +47,12 @@ class RecipeViewController: UIViewController {
 
         cart.add(recipe: self.searchRecipe)
         myStoragy.saveCart(cart: cart)
+
+        if self.navigationController!.viewControllers.count > 1 {
+            self.navigationController!.viewControllers[1].title = "홈"
+            self.performSegue(withIdentifier: "RecipeToCart", sender: nil)
+            self.navigationController!.viewControllers.remove(at: 1)
+        }
     }
 
     override func viewDidLoad() {
@@ -146,8 +152,8 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.checkbox.on = productCell.on
             cell.productLabel.text = productCell.product.name
-            let price = productCell.product.price * Decimal.init(productCell.product.getBundleTuple(input: "").number)
-            cell.priceLabel.text = String(describing: price).appending(" 원")
+            var price = productCell.product.price * Decimal.init(productCell.product.getBundleTuple(input: "").number)
+            cell.priceLabel.text = price.addUnitTag(unit: " 원")
             let unit = " ".appending(productCell.product.getBundleTuple(input: "").unit)
             cell.eaLabel.text = productCell.number.description.appending(unit)
 

@@ -78,7 +78,8 @@ class ProductViewController: UIViewController {
         titleLabel.text = product.name
         descriptionLabel.text = ""
 
-        priceLabel.text = product.price.description.appending(" 원")
+        var price = product.price
+        priceLabel.text = price.addUnitTag(unit: " 원")
 
         bundleUnit = product.getBundleTuple(input: "").unit
         bundleLabel.text = product.getBundleString(input: "")
@@ -88,7 +89,7 @@ class ProductViewController: UIViewController {
     }
 
     func calcTotalPrice() {
-        let result = Decimal.init(bundleStepper.value) * data.product.price
-        totalPriceLabel.text = "총 ".appending(result.description).appending(" 원")
+        var result = Decimal.init(bundleStepper.value) * data.product.price
+        totalPriceLabel.text = result.addPriceTag()
     }
 }
