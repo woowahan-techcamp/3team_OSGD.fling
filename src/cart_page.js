@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', (e) => {
     getUserCart();
     
+    document.querySelector(".btn_fling").addEventListener("click", (e) => {
+        window.location.href = "./main.html";
+    })
 });
 
 let templateCount = 0;
