@@ -30,6 +30,7 @@ class RefrigeratorViewController: UIViewController {
         }
 
         fridge = appDelegate.fridge
+        self.tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
