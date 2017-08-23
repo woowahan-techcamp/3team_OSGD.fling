@@ -11,6 +11,7 @@ import UIKit
 class RefrigeratorViewController: UIViewController {
 
     var fridge = Refrigerator()
+    var storage = Storage()
     var data = Material()
 
     @IBOutlet weak var tableView: UITableView!
@@ -29,6 +30,7 @@ class RefrigeratorViewController: UIViewController {
         }
 
         fridge = appDelegate.fridge
+        self.tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,5 +57,17 @@ extension RefrigeratorViewController: UITableViewDelegate, UITableViewDataSource
         cell.materialLabel.text = fridge.materials[indexPath.row].name
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            fridge.remove(materialAt: indexPath.row)
+            storage.saveFridge(fridge: fridge)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        }
     }
 }
