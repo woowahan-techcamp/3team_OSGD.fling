@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var data = Utils.getParameterByName('data').replace(/ /g, '+');
     data = JSON.parse(Utils.decodeBase64(data));
     console.info(data);
+    modifyData(data);
     document.querySelector('.header_box .circle_img').style.backgroundImage = data.recipeImg;
     document.querySelector('.header_box .recipe_site_link a').href = data.recipeUrl;
     document.querySelector('.header_box .description').innerText = data.recipeSubtitle;
@@ -20,4 +21,18 @@ window.addEventListener("message", receiveMessage, false);
 function receiveMessage(event)
 {
     console.info(event);
+}
+
+function modifyData(data) {
+    const regex = /(\d+)/g;
+
+    data.productDetail.forEach((e) => {
+        e.bundle = e.bundle || "1개";
+        const number = e.bundle.match(regex); 
+        //debugger;
+        e.bundle =  ((number[0] * 1) * (e.volume * 1)) + e.bundle.replace(number, "");   
+    })
+
+  
+
 }

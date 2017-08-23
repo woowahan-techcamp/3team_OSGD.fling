@@ -9,7 +9,7 @@ function getUserCart() {
     const template = document.querySelector(".cart_list");
     let userCart = window.localStorage.userCart;
     userCart = JSON.parse(userCart);
-
+    
     userCart.forEach((el, index) => {
         
         XHR.post(el.productApiUrl, (e) => {
