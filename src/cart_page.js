@@ -84,6 +84,7 @@ function removeCartList(e) {
 
     let cart_item = Array.from(document.querySelectorAll('.cart_list_item'));
     let localStorageTemp = JSON.parse(localStorage.getItem("userCart"));
+    let sessionStorageTemp = JSON.parse(sessionStorage.getItem("userCart"));
 
     for (let i = 0; i < cart_item.length; i++) {
         if (cart_item[i].querySelector('.prd_del') === e.target) {
@@ -91,7 +92,9 @@ function removeCartList(e) {
             cart_item[i].style.transform = 'translateX(-100vw)'
 
             localStorageTemp.splice(i, 1);
+            sessionStorageTemp.splice(i,1);
             window.localStorage.setItem("userCart", JSON.stringify(localStorageTemp));
+            window.sessionStorage.setItem("userCart", JSON.stringify(sessionStorageTemp));
             setTotalPrice();
 
             cart_item[i].addEventListener('transitionend', (e) => {
