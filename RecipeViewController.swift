@@ -27,7 +27,6 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var recipeSubTitleLabel: UILabel!
     @IBOutlet weak var recipeServeLabel: UILabel!
     @IBOutlet weak var recipeMissed: UILabel!
-
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var productTable: UITableView!
 

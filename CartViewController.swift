@@ -11,9 +11,8 @@ import AlamofireImage
 
 class CartViewController: UIViewController {
 
-    var cart = Cart()
     let storage = Storage()
-
+    var cart = Cart()
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
 
@@ -26,6 +25,23 @@ class CartViewController: UIViewController {
 
         cart = appDelegate.cart
         updateTotalPrice()
+        cartTableView.allowsSelection = true
+    }
+
+    func popUp(cartIndex: Int) {
+        if let popUp = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cartPopUp") as? RecipePopUpViewController {
+            popUp.recipe = cart.recipes[cartIndex]
+            self.addChildViewController(popUp)
+            popUp.view.frame = self.view.frame
+            self.view.addSubview(popUp.view)
+            popUp.didMove(toParentViewController: self)
+            popUp.view.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            popUp.view.alpha = 0
+            UIView.animate(withDuration: 0.4) {
+                popUp.view.alpha = 1
+                popUp.view.transform = CGAffineTransform.identity
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,5 +114,9 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
             updateTotalPrice()
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.popUp(cartIndex: indexPath.row)
     }
 }

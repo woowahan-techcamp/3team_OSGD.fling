@@ -32,6 +32,8 @@
 		9848432B1F33F3B0007AD753 /* flingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9848432A1F33F3B0007AD753 /* flingTests.swift */; };
 		984843361F33F3B0007AD753 /* flingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843351F33F3B0007AD753 /* flingUITests.swift */; };
 		984843441F3C324D007AD753 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843431F3C324D007AD753 /* RecipeViewController.swift */; };
+		9865818C1F4D3C8900735847 /* RecipePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865818B1F4D3C8900735847 /* RecipePopUpViewController.swift */; };
+		9865818E1F4D44E600735847 /* RPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865818D1F4D44E600735847 /* RPTableViewCell.swift */; };
 		98AD7C9C1F3ACA0000500BD9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */; };
 		98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */; };
 		98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C71F3A98B100E4EA96 /* Network.swift */; };
@@ -108,6 +110,8 @@
 		984843351F33F3B0007AD753 /* flingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flingUITests.swift; sourceTree = "<group>"; };
 		984843371F33F3B0007AD753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		984843431F3C324D007AD753 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		9865818B1F4D3C8900735847 /* RecipePopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipePopUpViewController.swift; sourceTree = "<group>"; };
+		9865818D1F4D44E600735847 /* RPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPTableViewCell.swift; sourceTree = "<group>"; };
 		98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = fling/HomeViewController.swift; sourceTree = "<group>"; };
 		98AD7CA71F3AEB0D00500BD9 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../logo.png; sourceTree = "<group>"; };
@@ -270,6 +274,8 @@
 				98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */,
 				98227E681F4C1AD900DE96C5 /* MaterialSearchViewController.swift */,
 				98227E6A1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift */,
+				9865818B1F4D3C8900735847 /* RecipePopUpViewController.swift */,
+				9865818D1F4D44E600735847 /* RPTableViewCell.swift */,
 			);
 			name = "view controller";
 			sourceTree = "<group>";
@@ -610,7 +616,9 @@
 				98227E6B1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift in Sources */,
 				98B1EAD51F4AB8380016DEA9 /* Storage.swift in Sources */,
 				98E6F3851F3C64A3007E3441 /* RecipeTableViewCell.swift in Sources */,
+				9865818E1F4D44E600735847 /* RPTableViewCell.swift in Sources */,
 				98227E511F4AA93900DE96C5 /* Cart.swift in Sources */,
+				9865818C1F4D3C8900735847 /* RecipePopUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
