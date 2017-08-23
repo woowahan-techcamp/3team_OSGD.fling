@@ -105,6 +105,10 @@ class Recipe {
         }
     }
 
+    func remove(productAt: Int) {
+        self.products.remove(at: productAt)
+    }
+
     func totalPrice() -> Decimal {
         var total = Decimal()
         products.forEach { object in
