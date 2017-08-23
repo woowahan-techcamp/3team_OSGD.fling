@@ -128,11 +128,6 @@ function setTotalPrice() {
         totalPrice +=  e.recipePrice.replace(/,/g, "") * 1;
     })
 
-    target.innerHTML = numberWithCommas(totalPrice) + "원";
+    target.innerHTML = Utils.numberWithComma(totalPrice) + "원";
 
-}
-
-
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

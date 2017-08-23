@@ -31,10 +31,6 @@ function modifyData(data) {
         const number = e.bundle.match(regex); 
         //debugger;
         e.bundle =  ((number[0] * 1) * (e.volume * 1)) + e.bundle.replace(number, ""); 
-        e.price = numberWithCommas((e.price.replace(/,/g, "") * 1) * (e.volume * 1));
+        e.price = Utils.numberWithComma((e.price.replace(/,/g, "") * 1) * (e.volume * 1));
     })
-}
-
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
