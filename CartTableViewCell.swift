@@ -17,7 +17,8 @@ class CartTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
 
     override func awakeFromNib() {
-        super.awakeFromNib()
+        recipeImage.layer.cornerRadius = CGFloat(roundf(Float(recipeImage.frame.size.width/2.0)));
+        recipeImage.layer.masksToBounds = true;        super.awakeFromNib()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
