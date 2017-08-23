@@ -89,14 +89,17 @@ function removeCartList(e) {
         if (cart_item[i].querySelector('.prd_del') === e.target) {
             cart_item[i].style.transition = '1s';
             cart_item[i].style.transform = 'translateX(-100vw)'
+
+            localStorageTemp.splice(i, 1);
+            window.localStorage.setItem("userCart", JSON.stringify(localStorageTemp));
+            setTotalPrice();
+
             cart_item[i].addEventListener('transitionend', (e) => {
                 document.querySelector('.cart_list').removeChild(e.target);
                 document.querySelector('.cart_list').removeAttribute('animate');
             })
 
             bAfter = true;
-            localStorageTemp.splice(i, 1);
-            window.localStorage.setItem("userCart", JSON.stringify(localStorageTemp));
         }
         else if (bAfter === true) {
             cart_item[i].style.transition = '.5s';
