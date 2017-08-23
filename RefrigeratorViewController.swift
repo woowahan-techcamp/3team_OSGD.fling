@@ -11,18 +11,25 @@ import UIKit
 class RefrigeratorViewController: UIViewController {
 
     var fridge = Refrigerator()
+    let storage = Storage()
     var data = Material()
 
     @IBOutlet weak var tableView: UITableView!
 
     @IBAction func unwindToRefrigerator(segue: UIStoryboardSegue) {
-        fridge.add(material: data)
+        if !self.fridge.materials.contains { $0.mid == data.mid } {
+            fridge.add(material: data)
+        }
         self.tableView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fridge = storage.loadFridge()
+    }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        storage.saveFridge(fridge: fridge)
     }
 
     override func didReceiveMemoryWarning() {

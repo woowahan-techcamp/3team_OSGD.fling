@@ -17,6 +17,16 @@ class Material {
         self.name = ""
     }
 
+    init?(data: [String: Any]) {
+        guard let mid = data["id"]! as? Int,
+            let name = data["name"]! as? String else {
+            return nil
+        }
+
+        self.mid = mid
+        self.name = name
+    }
+
     init(mid: Int, name: String) {
         self.mid = mid
         self.name = name

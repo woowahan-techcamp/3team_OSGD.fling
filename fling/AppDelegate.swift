@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UINavigationBar.appearance().tintColor = UIColor.init(red: 1, green: 148/255, blue: 41/255, alpha: 100)
 
         // for reset userDefault
-        let appDomain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: appDomain)
+//        let appDomain = Bundle.main.bundleIdentifier!
+//        UserDefaults.standard.removePersistentDomain(forName: appDomain)
 
         self.cart = myStoragy.loadCart()
         return true

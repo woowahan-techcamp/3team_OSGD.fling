@@ -91,8 +91,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         return true
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
-     {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             cart.remove(recipeAt: indexPath.row)
             storage.saveCart(cart: cart)
