@@ -84,7 +84,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.recipeSubtitleLabel?.text = recipe.subtitle
 
         var price = recipe.totalPrice()
-        cell.priceLabel?.text = price.addPriceTag()
+        cell.priceLabel?.text = price.addPriceTagWithoutTotal()
 
         let count = 4
         var materialList = String()

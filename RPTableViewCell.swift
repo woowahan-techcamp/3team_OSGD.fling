@@ -10,9 +10,9 @@ import UIKit
 
 class RPTableViewCell: UITableViewCell {
     
-    let productLabel = UILabel.init(frame: CGRect(x: 20, y: 5, width: 250, height: 24))
+    let productLabel = UILabel.init(frame: CGRect(x: 20, y: 5, width: 200, height: 24))
     let priceLabel = UILabel.init(frame: CGRect(x: 20, y: 25, width: 100, height: 24))
-    let eaLabel = UILabel.init(frame: CGRect(x: 200, y: 25, width: 60, height: 24))
+    let eaLabel = UILabel.init(frame: CGRect(x: 197, y: 25, width: 60, height: 24))
 
     override func awakeFromNib() {
         super.awakeFromNib()

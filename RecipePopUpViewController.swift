@@ -16,7 +16,6 @@ class RecipePopUpViewController: UIViewController {
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeSubtitleLabel: UILabel!
     @IBOutlet weak var recipeImage: UIImageView!
-    @IBOutlet weak var recipeMissedLabel: UILabel!
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var popUpView: UIView!
@@ -35,6 +34,8 @@ class RecipePopUpViewController: UIViewController {
         self.view.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
         self.popUpView.layer.cornerRadius = 5
         self.draw()
+        self.productTableView.allowsSelection = false
+        self.productTableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {
@@ -59,7 +60,6 @@ class RecipePopUpViewController: UIViewController {
             recipeImage.af_setImage(withURL: URL(string: recipe.image)!)
             var price = recipe.totalPrice()
             totalPriceLabel.text = price.addPriceTag()
-            recipeMissedLabel.text = recipe.missed
         }
     }
 
@@ -84,7 +84,8 @@ extension RecipePopUpViewController: UITableViewDelegate, UITableViewDataSource 
         var price = selectedProduct.product.price
         cell.priceLabel.text = price.addPriceTag()
         cell.productLabel.text = selectedProduct.product.name
-        cell.eaLabel.text = selectedProduct.number.description
+        let unit = " ".appending(selectedProduct.product.getBundleTuple(input: "").unit)
+        cell.eaLabel.text = selectedProduct.number.description.appending(unit)
         return cell
     }
 }
