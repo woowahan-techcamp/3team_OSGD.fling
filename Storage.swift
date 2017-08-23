@@ -53,4 +53,27 @@ class Storage {
         }
         return cart
     }
+
+    func saveFridge(fridge: Refrigerator) {
+        var result = [[String: Any]]()
+        fridge.materials.forEach { object in
+            let material = [ "id": object.mid, "name": object.name] as [String: Any]
+            result.append(material)
+        }
+
+        UserDefaults.standard.set(result, forKey: "myFridge")
+    }
+
+    func loadFridge() -> Refrigerator {
+        let fridge = Refrigerator.init()
+        if let loadedFridge = UserDefaults.standard.array(forKey: "myFridge") as? [[String: Any]] {
+            for item in loadedFridge {
+                if let material = Material.init(data: item) {
+                    fridge.materials.append(material)
+                }
+            }
+        }
+
+        return fridge
+    }
 }

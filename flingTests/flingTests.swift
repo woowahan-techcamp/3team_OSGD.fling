@@ -38,4 +38,27 @@ class FlingTests: XCTestCase {
 
         XCTAssertTrue(controller.checkRecipeUrl(url: "http://haemukja.com/recipes/49"))
     }
+
+    func testStorageFridge() {
+        //save
+        var fridge = Refrigerator()
+
+        fridge.add(material: Material.init(mid: 2, name: "우유식빵"))
+        fridge.add(material: Material.init(mid: 5, name: "브로콜리"))
+        fridge.add(material: Material.init(mid: 3, name: "참치"))
+
+        let storage = Storage()
+
+        storage.saveFridge(fridge: fridge)
+
+        XCTAssertTrue((UserDefaults.standard.array(forKey: "myFridge")?.count)! > 0)
+
+        //load
+        fridge = Refrigerator()
+
+        fridge = storage.loadFridge()
+
+        XCTAssertTrue(fridge.materials[0].name == "우유식빵")
+
+    }
 }
