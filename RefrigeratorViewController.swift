@@ -11,7 +11,6 @@ import UIKit
 class RefrigeratorViewController: UIViewController {
 
     var fridge = Refrigerator()
-    let storage = Storage()
     var data = Material()
 
     @IBOutlet weak var tableView: UITableView!
@@ -25,11 +24,11 @@ class RefrigeratorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fridge = storage.loadFridge()
-    }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        storage.saveFridge(fridge: fridge)
+        fridge = appDelegate.fridge
     }
 
     override func didReceiveMemoryWarning() {

@@ -17,7 +17,6 @@ class HomeViewController: UIViewController {
     var recipes = [Recipe]()
     var searchRecipe = Recipe.init()
 
-    //notification name
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
     private let failFlingRecipe = Notification.Name.init(rawValue: "failFlingRecipe")
@@ -41,6 +40,14 @@ class HomeViewController: UIViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        let logo = UIImage(named: "fling_logo_white.png")
+        let imageView = UIImageView(image: logo)
+        imageView.frame.size = CGSize(width: 375, height: 30)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,7 +67,6 @@ class HomeViewController: UIViewController {
         network.getFlingRecipe()
 
         urlWarningLabel.layer.cornerRadius = 5
-//        urlField.delegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {

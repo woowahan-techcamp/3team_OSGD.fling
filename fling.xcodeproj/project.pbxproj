@@ -23,6 +23,8 @@
 		98227E691F4C1AD900DE96C5 /* MaterialSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E681F4C1AD900DE96C5 /* MaterialSearchViewController.swift */; };
 		98227E6B1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E6A1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift */; };
 		98227E6D1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */; };
+		98227E701F4D477800DE96C5 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E6E1F4D477800DE96C5 /* cart.png */; };
+		98227E711F4D477800DE96C5 /* fridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E6F1F4D477800DE96C5 /* fridge.png */; };
 		984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843151F33F3AF007AD753 /* AppDelegate.swift */; };
 		9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984843191F33F3B0007AD753 /* Main.storyboard */; settings = {ASSET_TAGS = (Main, ); }; };
 		9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9848431C1F33F3B0007AD753 /* Assets.xcassets */; };
@@ -91,6 +93,8 @@
 		98227E681F4C1AD900DE96C5 /* MaterialSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialSearchViewController.swift; sourceTree = "<group>"; };
 		98227E6A1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialSearchTableViewCell.swift; sourceTree = "<group>"; };
 		98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefrigeratorTableViewCell.swift; sourceTree = "<group>"; };
+		98227E6E1F4D477800DE96C5 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart.png; sourceTree = "<group>"; };
+		98227E6F1F4D477800DE96C5 /* fridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fridge.png; sourceTree = "<group>"; };
 		984843121F33F3AF007AD753 /* fling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984843151F33F3AF007AD753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9848431A1F33F3B0007AD753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				98F821F11F3D695A006B0288 /* main_image.png */,
 				98F821F31F3D6BB3006B0288 /* search_icon1x.png */,
 				98AD7CA71F3AEB0D00500BD9 /* logo.png */,
+				98227E6E1F4D477800DE96C5 /* cart.png */,
+				98227E6F1F4D477800DE96C5 /* fridge.png */,
 			);
 			name = images;
 			path = flingTests;
@@ -260,7 +266,6 @@
 				98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */,
 				98227E541F4AAF0200DE96C5 /* CartViewController.swift */,
 				98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */,
-				98227E5B1F4ABC1F00DE96C5 /* CartTableViewHeader.swift */,
 				98227E661F4C125100DE96C5 /* RefrigeratorViewController.swift */,
 				98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */,
 				98227E681F4C1AD900DE96C5 /* MaterialSearchViewController.swift */,
@@ -410,8 +415,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98227E711F4D477800DE96C5 /* fridge.png in Resources */,
 				98AD7CA81F3AEB0D00500BD9 /* logo.png in Resources */,
 				98F821F41F3D6BB3006B0288 /* search_icon1x.png in Resources */,
+				98227E701F4D477800DE96C5 /* cart.png in Resources */,
 				98227E471F4675E300DE96C5 /* fling_logo_white.png in Resources */,
 				98F821F21F3D695A006B0288 /* main_image.png in Resources */,
 				984843201F33F3B0007AD753 /* LaunchScreen.storyboard in Resources */,
@@ -764,6 +771,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -778,6 +786,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

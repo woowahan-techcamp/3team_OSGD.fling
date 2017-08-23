@@ -25,10 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UserDefaults.standard.removePersistentDomain(forName: appDomain)
 
         self.cart = myStoragy.loadCart()
+        self.fridge = myStoragy.loadFridge()
+
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
+        myStoragy.saveCart(cart: cart)
+        myStoragy.saveFridge(fridge: fridge)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -41,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        myStoragy.saveCart(cart: cart)
     }
 
 }

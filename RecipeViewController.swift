@@ -13,6 +13,7 @@ import AlamofireImage
 class RecipeViewController: UIViewController {
 
     var cart = Cart()
+    var fridge = Refrigerator()
     let network = Network.init()
     let myStoragy = Storage()
     var searchUrl = ""

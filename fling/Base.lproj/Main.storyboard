@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--홈-->
+        <!--Home View Controller-->
         <scene sceneID="7jI-9w-HHX">
             <objects>
                 <viewController id="ef4-uR-PkL" customClass="HomeViewController" customModule="fling" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,15 +21,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="sGI-xy-CDR">
-                                <rect key="frame" x="208" y="106" width="151" height="163"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="main_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="jMM-ou-mhq">
                                 <rect key="frame" x="0.0" y="64" width="375" height="228"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-fd-Wjm" userLabel="filter">
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-fd-Wjm" userLabel="Main Image Filter">
                                 <rect key="frame" x="0.0" y="64" width="375" height="228"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,22 +41,6 @@
                                     <action selector="searchButton:" destination="ef4-uR-PkL" eventType="touchUpInside" id="IHl-48-E0V"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlT-l8-DWw">
-                                <rect key="frame" x="65" y="617" width="52" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="장바구니"/>
-                                <connections>
-                                    <segue destination="CI6-wJ-KtW" kind="show" id="ZXJ-sD-cUC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFW-7y-EIM">
-                                <rect key="frame" x="258" y="617" width="56" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="내 냉장고"/>
-                                <connections>
-                                    <segue destination="5dN-lk-vWg" kind="show" id="0en-wh-k7n"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="레시피를 장바구니에 담아드립니다." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5vE-Cc-2dM">
                                 <rect key="frame" x="34" y="176" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -74,7 +54,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KF1-hO-qbW">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="지원하지 않는 사이트입니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kb-Hj-O1h">
+                                <rect key="frame" x="34" y="214" width="107" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.60392156860000001" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KF1-hO-qbW" userLabel="Search Bar Line">
                                 <rect key="frame" x="22" y="208" width="337" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,14 +72,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="지원하지 않는 사이트입니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kb-Hj-O1h">
-                                <rect key="frame" x="34" y="214" width="107" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WYK-4L-NE7">
@@ -140,16 +120,59 @@
                                     <outlet property="delegate" destination="ef4-uR-PkL" id="Aby-8m-69H"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fKm-UW-2su" userLabel="Bottom Button">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="xFW-7y-EIM">
+                                        <rect key="frame" x="187" y="0.0" width="188" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal">
+                                            <string key="title">
+
+나의 냉장고</string>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="5dN-lk-vWg" kind="show" id="0en-wh-k7n"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZlT-l8-DWw">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal">
+                                            <string key="title">
+
+장바구니</string>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="CI6-wJ-KtW" kind="show" id="ZXJ-sD-cUC"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cart.png" translatesAutoresizingMaskIntoConstraints="NO" id="aMf-54-ErX">
+                                        <rect key="frame" x="85" y="8" width="16" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fridge.png" translatesAutoresizingMaskIntoConstraints="NO" id="1U2-F5-M6l">
+                                        <rect key="frame" x="273" y="8" width="16" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.71764705880000002" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="홈" id="xfr-E6-hgu"/>
+                    <navigationItem key="navigationItem" id="xfr-E6-hgu"/>
                     <connections>
                         <outlet property="homeView" destination="bx7-rk-2iM" id="HzI-yw-HpH"/>
                         <outlet property="sampleRecipeCollection" destination="WYK-4L-NE7" id="y1Z-33-MLU"/>
                         <outlet property="urlField" destination="5vE-Cc-2dM" id="kCC-iX-rdG"/>
                         <outlet property="urlWarningLabel" destination="3kb-Hj-O1h" id="kZh-Xf-uBd"/>
-                        <segue destination="nM8-7V-YSK" kind="show" identifier="HomeToRecipe" animates="NO" id="Cg7-yO-T2W"/>
+                        <segue destination="nM8-7V-YSK" kind="show" identifier="HomeToRecipe" id="Cg7-yO-T2W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmZ-4g-OyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -742,6 +765,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6b7-f7-Soi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="0.6542959175857842" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -754,14 +783,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo.png" width="640" height="716"/>
+        <image name="cart.png" width="16" height="19"/>
+        <image name="fridge.png" width="16" height="18"/>
         <image name="main_image.png" width="1024" height="503"/>
         <image name="search_icon1x.png" width="42" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ZXJ-sD-cUC"/>
         <segue reference="3T6-s5-SBO"/>
         <segue reference="DT1-wf-wUI"/>
-        <segue reference="Nxj-bu-BRj"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="1" green="0.5860016468" blue="0.1603889017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" red="1" green="0.71764705882352942" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
