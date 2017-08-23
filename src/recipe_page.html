@@ -11,8 +11,8 @@
         <script src="./recipe_page.js"></script>
         <script type="Template" id="cart_list_template">
             {{#each this}}
-                <div class="cart_list">
-                    <div class="cart_list left">
+                <div class="cart_list" data-id="{{id}}">
+                    <div class="left">
                         <input type="checkbox" class="recipe_checkbox" id="check1" checked>
                         <label for="check1"></label>
                         <div class="product_img" style="background-image: url({{image}})"></div>
@@ -21,7 +21,7 @@
                             <div class="origin">국내산</div>
                         </div>    
                     </div>
-                    <div class="cart_list right">
+                    <div class="right">
                         <div class="volume_box">
                             <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
                             <div class="button">
@@ -39,8 +39,8 @@
             {{/each}}
         </script>
         <script type="Template" id="cart_list_template_solo">               
-            <div class="cart_list">
-                <div class="cart_list left">
+            <div class="cart_list added" data-id="{{id}}">
+                <div class="left">
                     <input type="checkbox" class="recipe_checkbox" id="check1" checked>
                     <label for="check1"></label>
                     <div class="product_img" style="background-image: url({{image}})"></div>
@@ -49,7 +49,7 @@
                         <div class="origin">국내산</div>
                     </div>    
                 </div>
-                <div class="cart_list right">
+                <div class="right">
                     <div class="volume_box">
                         <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
                         <div class="button">
@@ -80,44 +80,7 @@
         </script>
     </head>
     <body>
-        <!--modal start-->
-        <div class="recipe_modal display_none">
-            <div class="modal_top">
-                <div class="material_img"></div>
-                <div class="material_title">
-                    <div class="material_name">돼지고기 안심</div>
-                    <div class="material_price">
-                        <span>판매가</span>
-                        <span>130,000원</span>
-                    </div>
-                </div>
-                <button class="modal_close"></button>
-            </div>
-            <div class="modal_bottom">
-                <ul class="material_subtitle">
-                    <li>
-                        <div>100g 당 판매가</div>
-                        <div>13,000원</div>
-                    </li>
-                    <li>
-                        <div>판매단위</div>
-                        <div>100g</div>
-                    </li>
-                    <li>
-                        <div>원산지</div>
-                        <div>국내산</div>
-                    </li>
-                    <li>
-                        <div>배송구분</div>
-                        <div>슈퍼배송</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!--modal end-->    
         <div class="wrap">
-            <div class="dimmed">
-            <div class="dimmed_black"></div>
             <header class="recipe_header">
                 <nav class="head_menu content">
                     <a href="./main.html" class="logo_link">Main Page</a>

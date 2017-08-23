@@ -12,21 +12,23 @@ document.addEventListener('DOMContentLoaded', (e) => {
         catch (e) {
             // exception
         }
-
+        
+        document.querySelector('.recipe_detail').dataId = jsonData.id;
         document.querySelector('.recipe_detail .title').innerText = jsonData.title;
         document.querySelector('.recipe_detail .subtitle').innerText = jsonData.subtitle;
         document.querySelector('.recipe_detail .circle_img').style.cssText = `background-image: url("${jsonData.image}")`;
         document.querySelector('.detail_link a').href = jsonData.url;
         document.querySelector('.missed_material .subtitle').innerText = jsonData.missed_material;
         document.querySelector('.recipe_cart .title_main').innerText = jsonData.title;
+         
     });
-
-    console.info(Utils.getParameterByName('query_url'));
-
 
     const target = document.querySelector(".search_text");
     target.addEventListener("keyup", searchHandler);
     Addproduct();
+    document.querySelector(".btn_cart").addEventListener("click", () => {
+        storeUserCartData();
+    });
 });
 
 
@@ -182,4 +184,68 @@ function Addproduct() {
             })
         }
     })
+}
+
+
+function storeUserCartData() {
+    let cartListObj = {};
+    
+    cartListObj.recipeId = document.querySelector(".recipe_detail").dataId;
+    cartListObj.recipeTitle = document.querySelector(".description > .title").innerHTML;
+    cartListObj.recipeImg = document.querySelector(".circle_img").style.backgroundImage;
+    cartListObj.recipeSubtitle = document.querySelector(".description > .subtitle").innerHTML;
+    cartListObj.recipeUrl = document.querySelector(".detail_link a").href;
+    cartListObj.recipePrice = document.querySelector(".recipe_additional_info .total_price > span").innerHTML;
+    cartListObj.productApiUrl = "http://52.79.119.41/get_products?products=[";
+    cartListObj.productList = [];
+
+    let productArr = document.getElementsByClassName("cart_list");
+    productArr = Array.from(productArr);
+
+    productArr.forEach((e) => {
+        let productList = {};
+        productList.id = e.dataset.id * 1;
+        productList.volume = e.children[1].children[0].children[0].value;
+        
+        if (e.className.includes("unchecked")) {
+            productList.isChecked = false;
+        }
+        else {
+            productList.isChecked = true;
+        }
+
+        if (e.className.includes("added")) {
+            productList.isAdded = true;
+        }
+        else {
+            productList.isAdded = false;
+        }
+
+        cartListObj.productApiUrl += productList.id + ",";
+            
+        cartListObj.productList.push(productList);
+    })
+    //make api url
+    cartListObj.productApiUrl = cartListObj.productApiUrl.substring(0, cartListObj.productApiUrl.length - 1);
+    cartListObj.productApiUrl += "]";
+    
+    let userCart = window.localStorage.userCart;
+    try {
+        JSON.parse(userCart)
+    }
+    catch(e) {
+        userCart = "[]";
+        window.localStorage.setItem("userCart", "[]");
+    }
+    if (!Array.isArray(JSON.parse(userCart))) {
+        window.localStorage.setItem("userCart", "[]");
+        userCart = "[]";
+    }
+    userCart = JSON.parse(userCart);
+    userCart.push(cartListObj);
+
+    window.localStorage.setItem("userCart", JSON.stringify(userCart));
+
+    //to the next page.
+    window.location.href = "./cart_page.html";
 }

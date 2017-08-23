@@ -333,3 +333,7 @@ footer.main_footer {
 .list_wrap li {
     display: inline-block;
 }
+
+.w300 {
+    font-weight: 300;
+}

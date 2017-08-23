@@ -1,0 +1,163 @@
+.containter {
+    margin: 0 auto;
+}
+
+.header_wrap {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.header_box {
+    height: 300px;
+    background: #eee;
+    position: relative;
+    background-size: auto;
+    background-image: url(../assets/img/cook_pattern.jpg);
+    background-blend-mode: overlay;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.circle_wrap {
+    position: absolute;
+    width: 100%;
+}
+
+.circle_img {
+    width: 160px;
+    height: 160px;
+    border-radius: 100px;
+    margin: 25px auto;
+    background: white;
+    background-image: url(http://cloudfront.haemukja.com/vh.php?url=http://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/1152/pad_thumb_m.png&convert=jpgmin&rt=600);
+    background-size: cover;
+}
+
+.text_wrap {
+    bottom: 26px;
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 24pt;
+    font-weight: 500;
+}
+
+.text_wrap .description {
+    font-size: 18px;
+    font-weight: 300;
+    color: #773900;
+}
+
+.text_wrap .title {
+    color: #753800;
+    padding: 5px 20px;
+}
+
+.content_box {
+    max-width: 800px;
+    min-width: 445px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px 0 20px;
+}
+
+.footer_box {
+    background: #ccc;
+    height: 300px;
+}
+
+.product_list_head {
+    border-top: 2px solid #ffb742;
+    border-bottom: 1px solid #ffb742;
+    background: #faf3dd;
+    padding: 5px 0 5px 0;
+    white-space: nowrap;
+}
+
+.product_list_head > div {
+    display: inline-block;
+}
+
+.product_list_head > div:nth-child(1) {
+    width: calc(100% - 280px);
+}
+
+.product_list_head > div:nth-child(2) {
+    width: 100px
+}
+
+.product_list_head > div:nth-child(3) {
+    width: 140px;
+}
+
+.product_list_wrap {
+    border-bottom: 2px solid #ffb472;
+    margin-bottom: 50px;
+}
+
+.product_list {
+    padding: 20px;
+    white-space: nowrap;
+    height: 50px;
+    border-bottom: 1px solid #ffb742;
+}
+
+.product_name {
+    text-align: left;
+    width: calc(100% - 240px);
+}
+
+.product_name .product_img {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    float: left;
+    margin-right: 20px;
+}
+
+.product_name .title {
+    font-size: 14pt;
+    font-weight: 500;
+    
+}
+
+.product_name * {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product_name, .product_bundle, .product_price {
+    float: left;
+}
+
+.product_bundle {
+    width: 100px;
+    font-size: 16pt;
+    font-weight: 300;
+}
+
+.product_price {
+    width: 140px;
+    font-size: 16pt;
+    font-weight: 500;
+    text-align: right;
+}
+
+.product_price .won {
+    font-weight: 300;
+    font-size: 13pt;
+}
+
+.recipe_site_link {
+    position: absolute;
+    bottom: 5px;
+    right: 12px;
+    font-weight: 300;
+    font-size: 11pt;
+}
+
+.heamuk_link:after {
+    padding-left: 12px;
+    content: url(../assets/img/arrow_icon_black.png);
+}

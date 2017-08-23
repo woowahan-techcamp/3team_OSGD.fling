@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>플링 :: 레시피 상세정보</title>
+        <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/recipe_popup.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+        <script src="./js/XHR.js"></script>
+        <script src="./js/Utils.js"></script>
+        <script src="./recipe_popup.js"></script>
+        <script type="Template" id="product_list_template">
+            {{#each this.productDetail}}
+                {{#if isChecked}}
+                <div class="product_list">
+                    <div class="product_name">
+                        <div class="product_img" style="background-image: url({{image}})"></div>
+                        <div class="product_title">
+                            <span class="title">{{name}}</span>
+                            <p>국내산</p>                                
+                        </div>
+                    </div>
+                    <div class="product_bundle">
+                        <span>{{bundle}}</span>
+                    </div>
+                    <div class="product_price">
+                        <span>{{price}}<span class="won">원</span></span>
+                    </div>
+                </div>
+                {{/if}}
+            {{/each}}
+        </script>
+    </head>
+    <body>
+        <div class="containter">
+            <div class="header_wrap">
+                <div class="header_box">
+                    <div class="circle_wrap">
+                        <div class="circle_img"></div>
+                    </div>
+                    <div class="text_wrap">
+                        <p class="description">토마토 소스 김치 스파게티 안 만들면 손해!!</p>
+                        <span class="title"><a href="javascript:window.close()">토마토 소스 김치 스파게티</a></span>
+                    </div>
+                    <div class="recipe_site_link">
+                        <a href="http://haemukja.com/" target="_blank">
+                            <div class="heamuk_link">
+                                레시피 바로가기
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="product_list_head">
+                    <div>상품</div>
+                    <div>수량</div>
+                    <div>가격</div>
+                </div>
+                <div class="product_list_wrap">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
