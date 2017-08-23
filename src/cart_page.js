@@ -68,40 +68,47 @@ function sendDataToPopUp(e) {
             
             e.target.href = 'javascript:void(0)';
             
-            const popup = window.open(`./recipe_popup.html?data=${Utils.encodeBase64(JSON.stringify(data[index]))}`, "recipeWindow", "width=700, height=800");
+            const popup = window.open(`./recipe_popup.html?data=${Utils.encodeBase64(JSON.stringify(data[index]))}`, "recipeWindow", "width=700,height=800,toolbar=no,menubar=no");
 
         }
     });
 }
 
 function removeCartList(e) {
-    const entireTarget = document.querySelector(".cart_list");
-    const target = e.target.parentNode.parentNode.parentNode;
-    let next = target.nextElementSibling;
-    
-    //옆으로 밀고
-    //지우고
-    //밑노드 올리고
-    //그 div데이터를 로컬스토리지에서 삭제
-    target.style.transition = "1s";
-    target.style.transform = "translateX(-1400px)";
-    
-    entireTarget.style.transform = "translateY(-136px)";
-    debugger;
-    while(true) {
-        if (next != null) {
-            //제거
-            //위로 올리기
-            next = next.nextElementSibling;
+    let bAfter = false;
+    let cart_list = document.querySelector('.cart_list');
+    if (cart_list.getAttribute('animate') !== null)
+        return false;
+    else
+        cart_list.setAttribute('animate', '');
+
+    let cart_item = Array.from(document.querySelectorAll('.cart_list_item'));
+    let localStorageTemp = JSON.parse(localStorage.getItem("userCart"));
+
+    for (let i = 0; i < cart_item.length; i++) {
+        if (cart_item[i].querySelector('.prd_del') === e.target) {
+            cart_item[i].style.transition = '1s';
+            cart_item[i].style.transform = 'translateX(-100vw)'
+            cart_item[i].addEventListener('transitionend', (e) => {
+                document.querySelector('.cart_list').removeChild(e.target);
+                document.querySelector('.cart_list').removeAttribute('animate');
+            })
+
+            bAfter = true;
+            localStorageTemp.splice(i, 1);
+            window.localStorage.setItem("userCart", JSON.stringify(localStorageTemp));
         }
-        else{
-            //제거
-            //위로 올리기
-            break;
+        else if (bAfter === true) {
+            cart_item[i].style.transition = '.5s';
+            cart_item[i].style.transitionDelay = '.5s';
+            cart_item[i].style.transform = "translateY(-166px)";
+            cart_item[i].addEventListener('transitionend', (e) => {
+                e.target.style = '';
+            })
         }
     }
-
 }
+
 
 function setTotalPrice() {
     const data = JSON.parse(window.localStorage.getItem("userCart"));
