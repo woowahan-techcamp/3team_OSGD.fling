@@ -23,8 +23,8 @@
 
 .search_text {
     width: 550px;
-    height: 50px;
-    font-size: 23pt;
+    height: 40px;
+    font-size: 20pt;
     background: transparent;
     color: mintcream;
     font-weight: 300;
@@ -42,21 +42,48 @@
     background-size: cover;
     background-color: Transparent;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
-/*
+
 .search_bar {
-    width: 694px;
+    width: 600px;
     height: 400px;
     background-color: white;
-    border: 3px solid #ffb847;
+    border: 3px solid #25d4ce;
     margin: -3px auto;
     display: none;
     overflow-y: scroll;
     position: relative;
 }
-*/
+
+.search_item {
+    height: 50px;
+    padding: 5px 40px 0px 40px;
+    border-bottom: 1px solid #25d4ce;
+}
+
+
+.add_material_btn, .remove_material_btn {
+    float: right;
+    width: 132px;
+    background: transparent;
+    border: 0px;
+    color: white;
+    height: 30px;
+    margin-top: 7px;
+    font-size: 14pt;
+}
+
+.add_material_btn {
+    background-color: #25D4CE;
+}
+
+.remove_material_btn {
+    background-color: #DC143C;
+}
+
+
 .refrige_content {
     max-width: 1080px;
     margin: 0 auto;
@@ -101,6 +128,7 @@
 
 .material_remove_btn {
     float: right;
+    margin-top: 5px;
     width: 40px;
     height: 40px;
     background: transparent;
