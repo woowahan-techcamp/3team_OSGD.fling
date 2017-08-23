@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
     _.ajaxFunc("http://52.79.119.41/recipes", fillContentRecommendSection, ".recommend_content_list");
     _.ajaxFunc("http://52.79.119.41/season", fillContentRecommendSection, ".main_section.season_event .recommend_content_list");
     const interval = window.setInterval(fadeInOutMain.bind(this,".main_header_fade_in", ".main_header_fade_out", ".main_header_fade_middle"),6000);
+
+    setTimeout(() => {
+        document.querySelector('.search_body').style="transition: 1s;transform:translateY(10px);";
+        document.querySelector('.search_desc').style="transition: 2s;transition-delay: .5s;transform:translateY(20px);";
+    }, 500);
 })
 
 
