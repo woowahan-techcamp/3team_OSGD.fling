@@ -15,6 +15,11 @@ class RefrigeratorViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    @IBAction func unwindToRefrigerator(segue: UIStoryboardSegue) {
+        fridge.add(material: data)
+        self.tableView.reloadData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +46,7 @@ extension RefrigeratorViewController: UITableViewDelegate, UITableViewDataSource
             return RefrigeratorTableViewCell()
         }
 
-        cell.textLabel?.text = fridge.materials[indexPath.row].name
+        cell.materialLabel.text = fridge.materials[indexPath.row].name
 
         return cell
     }

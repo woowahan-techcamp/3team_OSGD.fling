@@ -40,6 +40,18 @@ class MaterialSearchViewController: UIViewController, UISearchBarDelegate {
             self.network.searchMaterialsWith(keyword: searchText)
         }
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == "unwindToRefrigerator" {
+            guard let secondViewController = segue.destination as? RefrigeratorViewController else {
+                return
+            }
+            guard let material = sender as? Material else {
+                return
+            }
+            secondViewController.data = material
+        }
+    }
 }
 
 extension MaterialSearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -63,5 +75,9 @@ extension MaterialSearchViewController: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.navigationController?.popViewController(animated: true)
+        let selected = self.searchList.result[indexPath.row]
+        let material = Material.init(mid: selected.id, name: selected.name)
+        self.performSegue(withIdentifier: "unwindToRefrigerator", sender: material)
     }
 }

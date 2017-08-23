@@ -10,6 +10,8 @@ import UIKit
 
 class RefrigeratorTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var materialLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
