@@ -12,7 +12,10 @@ class Refrigerator {
     var materials = [Material]()
 
     func add(material: Material) {
-        materials.append(material)
+        self.materials.append(material)
     }
 
+    func remove(materialAt: Int) {
+        self.materials.remove(at: materialAt)
+    }
 }
