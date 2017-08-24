@@ -29,6 +29,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
     document.querySelector(".btn_cart").addEventListener("click", () => {
         storeUserCartData();
     });
+
+    document.querySelector(".refrige_popup").addEventListener("click", (e) => {
+        e.target.href = 'javascript:void(0)';
+        const popup = window.open("./refrige_popup.html", "refrigeWindow", "width=700,height=800,toolbar=no,menubar=no");
+    })
 });
 
 
@@ -40,6 +45,7 @@ function template(data) {
     const theCompiledHtml = theTemplate(data);
     
     document.querySelector(".cart_template").innerHTML = theCompiledHtml;
+    uncheckMyRefrigeItem();
     calcTotalPrice();
 
     document.querySelector(".cart_template").addEventListener('click', (e) => {
@@ -64,7 +70,6 @@ function template(data) {
         let item_unit_price = e.target.parentElement.parentElement.parentElement.querySelector('#per_price').value.replace(/,/g, '');
 
         item_tp.innerText = numberWithCommas(item_volume * item_unit_price) + '원';
-
         calcTotalPrice();
     });
 
@@ -91,6 +96,23 @@ function template(data) {
 
         calcTotalPrice();
     });
+}
+
+function uncheckMyRefrigeItem() {
+    const cartList = Array.from(document.querySelectorAll(".cart_list"));
+    const myRefrige = JSON.parse(window.localStorage.getItem("myRefrige"));
+
+    cartList.forEach((e) => {
+        const materialId = e.getAttribute("value") * 1;
+        
+        for (let i = 0; i < myRefrige.length; i++) {
+            if (materialId == myRefrige[i].id) {
+                e.classList.add("unchecked");
+                e.querySelector(".recipe_checkbox").checked = false;
+                break;
+            }
+        }
+    })
 }
 
 

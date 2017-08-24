@@ -3,7 +3,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
     
     document.querySelector(".btn_fling").addEventListener("click", (e) => {
         window.location.href = "./main.html";
-    })
+    });
+
+    document.querySelector(".refrige_popup").addEventListener("click", (e) => {
+        e.target.href = 'javascript:void(0)';
+        const popup = window.open("./refrige_popup.html", "refrigeWindow", "width=700,height=800,toolbar=no,menubar=no");
+    });
 });
 
 let templateCount = 0;

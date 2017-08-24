@@ -11,7 +11,7 @@
         <script src="./recipe_page.js"></script>
         <script type="Template" id="cart_list_template">
             {{#each this}}
-                <div class="cart_list" data-id="{{id}}">
+                <div class="cart_list" data-id="{{id}}" value="{{material_id}}">
                     <div class="left">
                         <input type="checkbox" class="recipe_checkbox" id="check1" checked>
                         <label for="check1"></label>
@@ -91,9 +91,8 @@
                     <div class="head_item">
                         <ul>
                             <li><a>플링이란?</a></li>
-                            <li><a>장바구니</a></li>
-                            <li><a>회원가입</a></li>
-                            <li><a>로그인</a></li>
+                            <li><a href="./cart_page.html">장바구니</a></li>
+                            <li><a class="refrige_popup">냉장고</a></li>
                         </ul>
                     </div>
                 </nav>
