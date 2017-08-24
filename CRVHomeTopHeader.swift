@@ -14,6 +14,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
     var keywordInput: UITextField
     var searchButton: UIButton
     var line: UIView
+    var flingHotLabel: UILabel
     
     let screenWidth = UIScreen.main.bounds.width
     
@@ -24,6 +25,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
         headerFilter = UIImageView()
         searchButton = UIButton(type: .custom)
         line = UIView()
+        flingHotLabel = UILabel()
         
         super.init(frame: frame)
         
@@ -48,16 +50,27 @@ class CRVHomeTopHeader: UICollectionReusableView {
         let xForSearchButton = xPadding + widthForInput
         let yForSearchButton = yPadding
         searchButton.setImage(UIImage(named: "search_icon1x.png" ), for: .normal)
-        searchButton.frame = CGRect.init(x: xForSearchButton - 10, y: yForSearchButton - 5, width: 22, height: 22)
-        
+        searchButton.frame = CGRect.init(x: xForSearchButton - 14, y: yForSearchButton - 8, width: 22, height: 22)
+
+        let xForLine = xPadding/2
+        let yForLine = yPadding + keywordInput.frame.height + 8
+        let widthForLine = headerImage.frame.width - 2 * xForLine
         line.backgroundColor = UIColor.white
+        line.frame = CGRect.init(x: xForLine, y: yForLine, width: widthForLine, height: 1)
         
+        let yForFlingHot = headerImage.frame.height + 60
+        let widthForFlingHot = headerImage.frame.width
+        flingHotLabel.text = "플링 인기 차트"
+        flingHotLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightUltraLight)
+        flingHotLabel.textAlignment = NSTextAlignment.center
+        flingHotLabel.frame = CGRect.init(x:0, y: yForFlingHot, width: widthForFlingHot, height: 18)
         
         self.addSubview(headerImage)
         self.addSubview(headerFilter)
         self.addSubview(keywordInput)
         self.addSubview(searchButton)
-
+        self.addSubview(line)
+        self.addSubview(flingHotLabel)
 
         self.backgroundColor = .white
         
