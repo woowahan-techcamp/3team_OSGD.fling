@@ -129,7 +129,7 @@ class RecipesController < ApplicationController
       render :nothing
     else
       @recipes = Recipe.where("title LIKE ?", "%#{keyword}%" )
-      render json: @recipes.to_json(only: [:id, :title, :subtitle, :image, :writer])
+      render json: @recipes.to_json(only: [:id, :title, :subtitle, :image, :writer, :url])
     end
   end
 
