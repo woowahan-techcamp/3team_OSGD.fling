@@ -210,6 +210,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.sampleRecipeImage.frame.origin = CGPoint(x: padding, y: 0)
             
             cell.sampleRecipeLabel.text = recipes[indexPath.row].title
+            cell.sampleRecipeSubtitleLabel.text = recipes[indexPath.row].subtitle
             cell.clickHandler = { () -> Void in
                 self.network.getRecipeWith(recipeId: self.recipes[indexPath.row].rid)
             }
