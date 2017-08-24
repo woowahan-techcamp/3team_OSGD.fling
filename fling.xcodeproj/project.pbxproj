@@ -54,6 +54,12 @@
 		98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F821F61F3D7347006B0288 /* CheckboxButton.swift */; };
 		98FDCEC91F4EB3F500F193E4 /* KeywordHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */; };
 		98FDCECB1F4EC67900F193E4 /* String +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCECA1F4EC67900F193E4 /* String +.swift */; };
+		98FDCEE81F4EDF5900F193E4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEE71F4EDF5900F193E4 /* ShareViewController.swift */; };
+		98FDCEEB1F4EDF5900F193E4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCEE91F4EDF5900F193E4 /* MainInterface.storyboard */; };
+		98FDCEEF1F4EDF5900F193E4 /* RecipeUrlShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 98FDCEE51F4EDF5900F193E4 /* RecipeUrlShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		98FDCEF51F4EDF8400F193E4 /* GetUrl.js in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCEF41F4EDF8400F193E4 /* GetUrl.js */; };
+		98FDCEF71F4EE90F00F193E4 /* ExtensionRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEF61F4EE90F00F193E4 /* ExtensionRecipeViewController.swift */; };
+		98FDCEF91F4EE9F500F193E4 /* RecipeUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEF81F4EE9F500F193E4 /* RecipeUrl.swift */; };
 		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
 		BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */; };
 /* End PBXBuildFile section */
@@ -73,7 +79,28 @@
 			remoteGlobalIDString = 984843111F33F3AF007AD753;
 			remoteInfo = fling;
 		};
+		98FDCEED1F4EDF5900F193E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9848430A1F33F3AF007AD753 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98FDCEE41F4EDF5900F193E4;
+			remoteInfo = RecipeUrlShareExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		98FDCEF31F4EDF5900F193E4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				98FDCEEF1F4EDF5900F193E4 /* RecipeUrlShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4AEB35D54FD3269A577CAA02 /* Pods-flingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-flingTests/Pods-flingTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +160,13 @@
 		98F821F61F3D7347006B0288 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordHighlight.swift; sourceTree = "<group>"; };
 		98FDCECA1F4EC67900F193E4 /* String +.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String +.swift"; sourceTree = "<group>"; };
+		98FDCEE51F4EDF5900F193E4 /* RecipeUrlShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RecipeUrlShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		98FDCEE71F4EDF5900F193E4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		98FDCEEA1F4EDF5900F193E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		98FDCEEC1F4EDF5900F193E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98FDCEF41F4EDF8400F193E4 /* GetUrl.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetUrl.js; sourceTree = "<group>"; };
+		98FDCEF61F4EE90F00F193E4 /* ExtensionRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionRecipeViewController.swift; sourceTree = "<group>"; };
+		98FDCEF81F4EE9F500F193E4 /* RecipeUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeUrl.swift; sourceTree = "<group>"; };
 		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -161,6 +195,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B3EF89ACE4C5B6CE8EF347B /* Pods_flingUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98FDCEE21F4EDF5900F193E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +262,7 @@
 				980749C21F3A986700E4EA96 /* model */,
 				98AD7C9F1F3ACB6700500BD9 /* view controller */,
 				984843141F33F3AF007AD753 /* fling */,
+				98FDCEE61F4EDF5900F193E4 /* RecipeUrlShareExtension */,
 				984843291F33F3B0007AD753 /* flingTests */,
 				980749C11F398AF700E4EA96 /* images */,
 				984843341F33F3B0007AD753 /* flingUITests */,
@@ -236,6 +278,7 @@
 				984843121F33F3AF007AD753 /* fling.app */,
 				984843261F33F3B0007AD753 /* flingTests.xctest */,
 				984843311F33F3B0007AD753 /* flingUITests.xctest */,
+				98FDCEE51F4EDF5900F193E4 /* RecipeUrlShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,6 +343,19 @@
 			name = "view component";
 			sourceTree = "<group>";
 		};
+		98FDCEE61F4EDF5900F193E4 /* RecipeUrlShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				98FDCEE71F4EDF5900F193E4 /* ShareViewController.swift */,
+				98FDCEE91F4EDF5900F193E4 /* MainInterface.storyboard */,
+				98FDCEEC1F4EDF5900F193E4 /* Info.plist */,
+				98FDCEF41F4EDF8400F193E4 /* GetUrl.js */,
+				98FDCEF61F4EE90F00F193E4 /* ExtensionRecipeViewController.swift */,
+				98FDCEF81F4EE9F500F193E4 /* RecipeUrl.swift */,
+			);
+			path = RecipeUrlShareExtension;
+			sourceTree = "<group>";
+		};
 		B764C48263162E37533C0D90 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,10 +382,12 @@
 				984843101F33F3AF007AD753 /* Resources */,
 				D4D0BE6E3982E5A03BBE0E93 /* [CP] Embed Pods Frameworks */,
 				BC53AC68E9BC618C5B12C3BD /* [CP] Copy Pods Resources */,
+				98FDCEF31F4EDF5900F193E4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				98FDCEEE1F4EDF5900F193E4 /* PBXTargetDependency */,
 			);
 			name = fling;
 			productName = fling;
@@ -378,6 +436,23 @@
 			productReference = 984843311F33F3B0007AD753 /* flingUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		98FDCEE41F4EDF5900F193E4 /* RecipeUrlShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98FDCEF21F4EDF5900F193E4 /* Build configuration list for PBXNativeTarget "RecipeUrlShareExtension" */;
+			buildPhases = (
+				98FDCEE11F4EDF5900F193E4 /* Sources */,
+				98FDCEE21F4EDF5900F193E4 /* Frameworks */,
+				98FDCEE31F4EDF5900F193E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RecipeUrlShareExtension;
+			productName = RecipeUrlShareExtension;
+			productReference = 98FDCEE51F4EDF5900F193E4 /* RecipeUrlShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -406,6 +481,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 984843111F33F3AF007AD753;
 					};
+					98FDCEE41F4EDF5900F193E4 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = B3PWYBKFUK;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 9848430D1F33F3AF007AD753 /* Build configuration list for PBXProject "fling" */;
@@ -424,6 +504,7 @@
 				984843111F33F3AF007AD753 /* fling */,
 				984843251F33F3B0007AD753 /* flingTests */,
 				984843301F33F3B0007AD753 /* flingUITests */,
+				98FDCEE41F4EDF5900F193E4 /* RecipeUrlShareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -457,6 +538,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98FDCEE31F4EDF5900F193E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98FDCEEB1F4EDF5900F193E4 /* MainInterface.storyboard in Resources */,
+				98FDCEF51F4EDF8400F193E4 /* GetUrl.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +746,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		98FDCEE11F4EDF5900F193E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98FDCEF71F4EE90F00F193E4 /* ExtensionRecipeViewController.swift in Sources */,
+				98FDCEF91F4EE9F500F193E4 /* RecipeUrl.swift in Sources */,
+				98FDCEE81F4EDF5900F193E4 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -668,6 +768,11 @@
 			isa = PBXTargetDependency;
 			target = 984843111F33F3AF007AD753 /* fling */;
 			targetProxy = 984843321F33F3B0007AD753 /* PBXContainerItemProxy */;
+		};
+		98FDCEEE1F4EDF5900F193E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98FDCEE41F4EDF5900F193E4 /* RecipeUrlShareExtension */;
+			targetProxy = 98FDCEED1F4EDF5900F193E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -686,6 +791,14 @@
 				9848431F1F33F3B0007AD753 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		98FDCEE91F4EDF5900F193E4 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98FDCEEA1F4EDF5900F193E4 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -788,6 +901,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7F47268F3BA38F7DF133EF43 /* Pods-fling.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = fling/Info.plist;
@@ -803,6 +917,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 545486631460994A9253BD43 /* Pods-fling.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = fling/Info.plist;
@@ -872,6 +987,32 @@
 			};
 			name = Release;
 		};
+		98FDCEF01F4EDF5900F193E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = RecipeUrlShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling.RecipeUrlShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		98FDCEF11F4EDF5900F193E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = RecipeUrlShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling.RecipeUrlShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -910,6 +1051,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		98FDCEF21F4EDF5900F193E4 /* Build configuration list for PBXNativeTarget "RecipeUrlShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98FDCEF01F4EDF5900F193E4 /* Debug */,
+				98FDCEF11F4EDF5900F193E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
