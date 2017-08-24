@@ -6,8 +6,6 @@ Fling.data = {
 Fling.template = {
     'tileView': '<div class...>'
 }
-var view = new Fling.View()
-view.data = '1'
 Fling.View = class {
     constructor() {
         this.dataObject = null;
