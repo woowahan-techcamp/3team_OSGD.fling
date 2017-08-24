@@ -13,9 +13,18 @@ class MaterialSearchViewController: UIViewController, UISearchBarDelegate {
     let searchMaterial = Notification.Name.init("searchMaterial")
     var searchList = SearchList.init()
     let network = Network.init()
+    var keyword = ""
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTable: UITableView!
+    @IBAction func doneButton(_ sender: Any) {
+        if searchTable.indexPathForSelectedRow != nil {
+            let index = searchTable.indexPathForSelectedRow!.row
+            let selected = self.searchList.result[index]
+            let material = Material.init(mid: selected.id, name: selected.name)
+            self.performSegue(withIdentifier: "unwindToRefrigerator", sender: material)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +46,13 @@ class MaterialSearchViewController: UIViewController, UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count != 0 {
+            keyword = searchText
             self.network.searchMaterialsWith(keyword: searchText)
         }
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
@@ -70,14 +84,13 @@ extension MaterialSearchViewController: UITableViewDelegate, UITableViewDataSour
         else {
             return MaterialSearchTableViewCell()
         }
+
         cell.materialLabel.text = self.searchList.result[indexPath.row].name
+
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.navigationController?.popViewController(animated: true)
-        let selected = self.searchList.result[indexPath.row]
-        let material = Material.init(mid: selected.id, name: selected.name)
-        self.performSegue(withIdentifier: "unwindToRefrigerator", sender: material)
+        self.view.endEditing(true)
     }
 }
