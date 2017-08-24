@@ -14,6 +14,7 @@ class MaterialSearchViewController: UIViewController, UISearchBarDelegate {
     var searchList = SearchList.init()
     let network = Network.init()
     var keyword = ""
+    let keywordHighlight = KeywordHighlight()
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTable: UITableView!
@@ -85,7 +86,8 @@ extension MaterialSearchViewController: UITableViewDelegate, UITableViewDataSour
             return MaterialSearchTableViewCell()
         }
 
-        cell.materialLabel.text = self.searchList.result[indexPath.row].name
+        let result = self.searchList.result[indexPath.row].name
+        cell.materialLabel.attributedText = keywordHighlight.addBold(keyword: keyword, text: result)
 
         return cell
     }

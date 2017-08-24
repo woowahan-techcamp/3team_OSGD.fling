@@ -14,6 +14,8 @@ class ProductSearchViewController: UIViewController, UISearchBarDelegate {
     let getProduct = Notification.Name.init("getProduct")
     var searchList = SearchList.init()
     let network = Network.init()
+    let keywordHighlight = KeywordHighlight()
+    var keyword = ""
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTable: UITableView!
@@ -52,6 +54,7 @@ class ProductSearchViewController: UIViewController, UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count != 0 {
+            keyword = searchText
             self.network.searchProductsWith(keyword: searchText)
         }
     }
@@ -92,7 +95,10 @@ extension ProductSearchViewController: UITableViewDelegate, UITableViewDataSourc
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductSearchTableViewCell else {
                 return ProductSearchTableViewCell()
         }
-        cell.productLabel.text = self.searchList.result[indexPath.row].name
+
+        let result = self.searchList.result[indexPath.row].name
+        cell.productLabel.attributedText = keywordHighlight.addBold(keyword: keyword, text: result)
+        
         return cell
     }
 
