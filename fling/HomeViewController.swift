@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     let network = Network()
     let alertController = UIAlertController(title: nil, message: "Please wait\n\n", preferredStyle: .alert)
     var recipes = [Recipe]()
+    var fridge = Refrigerator()
     var searchRecipe = Recipe.init()
 
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
@@ -50,6 +51,12 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+
+        self.fridge = appDelegate.fridge
 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                                  action: #selector(HomeViewController.dismissKeyboard))
@@ -108,6 +115,8 @@ class HomeViewController: UIViewController {
             guard let recipe = notification.userInfo?["data"] as? Recipe else {
                 return
             }
+            let filter = ProductFilter()
+            filter.filterProduct(recipe: recipe, fridge: fridge)
             self.searchRecipe = recipe
             self.performSegue(withIdentifier: "HomeToRecipe", sender: self.searchRecipe)
 
@@ -134,7 +143,6 @@ class HomeViewController: UIViewController {
         }
         return true
     }
-
 }
 
 //return으로 검색하게

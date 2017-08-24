@@ -20,6 +20,7 @@ class RefrigeratorViewController: UIViewController {
         if !self.fridge.materials.contains { $0.mid == data.mid } {
             fridge.add(material: data)
         }
+        storage.saveFridge(fridge: fridge)
         self.tableView.reloadData()
     }
 
