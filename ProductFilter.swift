@@ -19,7 +19,7 @@ class ProductFilter {
         }
 
         for index in indexs.sorted().reversed() {
-            recipe.remove(productAt: index)
+            recipe.toggleCheck(product: recipe.products[index].product)
         }
     }
 }
