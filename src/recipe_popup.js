@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // getParameterByName 함수가 공백을 +로 바꿈
     var data = Utils.getParameterByName('data').replace(/ /g, '+');
     data = JSON.parse(Utils.decodeBase64(data));
-    console.info(data);
     modifyData(data);
     document.querySelector('.header_box .circle_img').style.backgroundImage = data.recipeImg;
     document.querySelector('.header_box .recipe_site_link a').href = data.recipeUrl;

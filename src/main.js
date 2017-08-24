@@ -1,10 +1,38 @@
 var Fling = {};
 Fling.data = {
-    apiBaseURL: 'http://52.79.119.41'
+    apiBaseURL: 'http://52.79.119.41/',
+    get apiRecipes() {
+        return Fling.data.apiBaseURL + 'recipes'
+    },
+    get apiSeason() {
+        return Fling.data.apiBaseURL + 'season'
+    }
+}
+
+Fling.API = {
+    request: function(method, url, callback) {
+        XHR.request(method, url, (e) => {
+            let data = null;
+            try {
+                data = JSON.parse(e.target.responseText);
+            }
+            catch(e) {
+                throw 'FLING_API_NOT_SEEMS_JSON';
+            }
+            callback(data);
+        });
+    },
+    get: function(url, callback) {
+        return this.request('get', url, callback);
+    },
+    post: function(url, callback) {
+        return this.request('post', url, callback);
+    }
 }
 
 Fling.template = {
-    'tileView': '<div class...>'
+    'tileViewSource': '<div class="recommend_content_wrap"><ul class="recommend_content_list"> {{#each this}}<li> <a href="./recipe_page.html?query_url={{url}}"><div class="recommend_content_list_node" style="background-image: url({{image}})"><div class="recommend_number"><p>{{inc @index}}</p></div></div> </a><dt><a href="./recipe_page.html?query_url={{url}}">{{subtitle}}</a></dt><dd>{{title}} | {{writer}}</dd></li> {{/each}}</ul></div>',
+    'sectionSource': '<section class="main_section content {{id}}" id="{{id}}"><div class="section_title">{{title}}</div>{{{view.render}}}</section>'
 }
 Fling.View = class {
     constructor() {
@@ -18,38 +46,7 @@ Fling.View = class {
         return;
     }
     get render() {
-        return `
-        <div class="recommend_content_wrap">
-            <ul class="recommend_content_list">
-                <li>
-                    <a href="">
-                        <div class="recommend_content_list_node">
-                            <div class="recommend_number"><p>1</p></div>
-                        </div>
-                    </a>
-                    <dt><a href="">&nbsp;</a></dt>
-                    <dd>&nbsp;</dd>    
-                </li>
-                <li>
-                    <a href="">
-                        <div class="recommend_content_list_node">
-                            <div class="recommend_number"><p>2</p></div>
-                        </div>
-                    </a>
-                    <dt><a href="">&nbsp;</a></dt>
-                    <dd>&nbsp;</dd>    
-                </li>
-                <li>
-                    <a href="">
-                        <div class="recommend_content_list_node">
-                            <div class="recommend_number"><p>3</p></div>
-                        </div>
-                    </a>
-                    <dt><a href="">&nbsp;</a></dt>
-                    <dd>&nbsp;</dd>    
-                </li>
-            </ul>
-        </div>`;
+        return '';
     }
 }
 Fling.TileView = class extends Fling.View {
@@ -57,6 +54,14 @@ Fling.TileView = class extends Fling.View {
         super();
         this.data = params;
         console.info(this.data);
+    }
+    get render() {
+        let data = this.data.slice(0, 3);
+        Handlebars.registerHelper("inc", (value, options) => {
+            return parseInt(value) + 1;
+        });
+        let template = Handlebars.compile(Fling.template.tileViewSource);
+        return template(data);
     }
 }
 Fling.SlideView = class extends Fling.View {
@@ -69,37 +74,25 @@ Fling.Section = class {
         this.title = params.title;
         this.id = params.id;
         this.view = viewObject;
-        console.info(this.view);
     }
 
     get render() {
-        let data = {
-            id: this.id,
-            title: this.title
-        }
-        let source = `
-        <section class="main_section content {{id}}" id="{{id}}">
-            <div class="section_title">{{title}}</div>
-            ${this.view.render}
-        </section>`
-
-        let template = Handlebars.compile(source);
-        return template(data);
+        let template = Handlebars.compile(Fling.template.sectionSource);
+        return template(this);
     }
 }
 
-document.addEventListener("DOMContentLoaded", (e) => {
-    XHR.get('http://52.79.119.41/recipes', (e) => {
-        const data = JSON.parse(e.target.responseText);
-        fillContentRecommendSection(data, ".recommend_content_list");
+document.addEventListener("DOMContentLoaded", e => {
+    Fling.API.get(Fling.data.apiRecipes, data => {
         var rankSection = new Fling.Section({
-            title: '플링 인기 차트',
+            title: '플링 인기 차트1234',
             id: 'recommended'
         }, new Fling.TileView(data));
-        document.querySelector('.container').insertAdjacentHTML('beforeend', rankSection.render);
-        console.info(rankSection.render);
+
+        document.querySelector('fling-main-recipe').innerHTML = rankSection.render;
     });
-    XHR.get('http://52.79.119.41/season', (e) => {
+
+    XHR.get(Fling.data.apiSeason, (e) => {
         const data = JSON.parse(e.target.responseText);
         fillContentRecommendSection(data, ".main_section.season_event .recommend_content_list");
     });
