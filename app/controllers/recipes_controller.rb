@@ -89,7 +89,9 @@ class RecipesController < ApplicationController
             name = li.css('span').text.delete(' ')
             un_unit = li.css('em').text.delete(' ')
             name = name.split("(").first
-            recipe_materials << name + " " +  un_unit
+            unless name.include?("<") || name.include?(">")
+              recipe_materials << name + " " +  un_unit
+            end
           end
           searched_products = search_products(recipe_materials)
           puts missed_materials = searched_products["missed_materials"].join(", ")
