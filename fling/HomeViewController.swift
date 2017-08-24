@@ -29,13 +29,6 @@ class HomeViewController: UIViewController {
     @IBAction func searchButton(_ sender: Any) {
         if checkRecipeUrl(url: self.urlField.text ?? "") {
             network.getRecipeWith(url: self.urlField.text ?? "")
-            // 팝업 켜기
-//            let spinnerIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-//            spinnerIndicator.center = CGPoint(x: 135.0, y: 65.5)
-//            spinnerIndicator.color = UIColor.black
-//            spinnerIndicator.startAnimating()
-//            alertController.view.addSubview(spinnerIndicator)
-//            self.present(alertController, animated: false, completion: nil)
         } else {
             urlWarningLabel.isHidden = false
         }
@@ -73,7 +66,11 @@ class HomeViewController: UIViewController {
 
         network.getFlingRecipe()
 
-        urlWarningLabel.layer.cornerRadius = 5
+        sampleRecipeCollection.register(CRVHomeTopHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader")
+        sampleRecipeCollection.register(CRVHomeMidHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader")
+
+        
+        //urlWarningLabel.layer.cornerRadius = 5
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -155,30 +152,73 @@ class HomeViewController: UIViewController {
 //
 //}
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        if section == 0 {
+            return 6
+        } else {
+            return 6
+        }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if indexPath.section == 0 {
+            let header = sampleRecipeCollection.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader", for: indexPath) as! CRVHomeTopHeader
+            return header
 
+        } else {
+            let header = sampleRecipeCollection.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader", for: indexPath) as! CRVHomeMidHeader
+            return header
+        }
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView,
+                                 layout collectionViewLayout: UICollectionViewLayout,
+                                 referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let collectionViewSize = sampleRecipeCollection.frame.size.width
+
+        if section == 0 {
+            let size = CGSize.init(width: collectionViewSize, height: 300)
+            return size
+        } else {
+            let size = CGSize.init(width: collectionViewSize, height: 100)
+            return size
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell =
             sampleRecipeCollection.dequeueReusableCell(withReuseIdentifier: "mainRecipeCell", for: indexPath)
                 as? HomeRecipeCollectionViewCell else {
                     return HomeRecipeCollectionViewCell()
         }
+    
+        // for collection view image position padding!
+        var padding = CGFloat.init(0)
+        if indexPath.row%2 == 0 {
+            padding =  CGFloat.init(10)
+        }
+        
+        let collectionViewSize = sampleRecipeCollection.frame.size.width
+        let cgSize = CGSize.init(width: collectionViewSize/2, height: collectionViewSize/2 + 10)
+        cell.frame.size = cgSize
 
         if recipes.count > 0 {
             if recipes[indexPath.row].image != "" {
                 cell.sampleRecipeImage?.af_setImage(withURL: URL(string: recipes[indexPath.row].image)!)
             }
-            cell.sampleRecipeImage.frame.size = CGSize(width: 180, height: 180)
-//            cell.sampleRecipeImage.bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
-
+            cell.sampleRecipeImage.frame.size = CGSize(width: collectionViewSize/2 - 20, height: collectionViewSize/2 - 20)
+          
+            cell.sampleRecipeImage.frame.origin = CGPoint(x: padding, y: 0)
+            
             cell.sampleRecipeLabel.text = recipes[indexPath.row].title
+            cell.sampleRecipeSubtitleLabel.text = recipes[indexPath.row].subtitle
             cell.clickHandler = { () -> Void in
                 self.network.getRecipeWith(recipeId: self.recipes[indexPath.row].rid)
             }

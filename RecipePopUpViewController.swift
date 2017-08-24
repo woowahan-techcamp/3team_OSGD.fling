@@ -85,7 +85,7 @@ extension RecipePopUpViewController: UITableViewDelegate, UITableViewDataSource 
         }
         let selectedProduct = self.recipe.products[indexPath.row]
         var price = selectedProduct.product.price
-        cell.priceLabel.text = price.addPriceTag()
+        cell.priceLabel.text = price.addPriceTagWithoutTotal()
         cell.productLabel.text = selectedProduct.product.name
         let unit = " ".appending(selectedProduct.product.getBundleTuple(input: "").unit)
         cell.eaLabel.text = selectedProduct.number.description.appending(unit)

@@ -36,6 +36,8 @@
 		984843441F3C324D007AD753 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843431F3C324D007AD753 /* RecipeViewController.swift */; };
 		9865818C1F4D3C8900735847 /* RecipePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865818B1F4D3C8900735847 /* RecipePopUpViewController.swift */; };
 		9865818E1F4D44E600735847 /* RPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865818D1F4D44E600735847 /* RPTableViewCell.swift */; };
+		986581921F4E6B5C00735847 /* CRVHomeTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986581911F4E6B5C00735847 /* CRVHomeTopHeader.swift */; };
+		986581941F4E9DCB00735847 /* CRVHomeMidHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986581931F4E9DCB00735847 /* CRVHomeMidHeader.swift */; };
 		98AD7C9C1F3ACA0000500BD9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */; };
 		98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */; };
 		98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C71F3A98B100E4EA96 /* Network.swift */; };
@@ -118,6 +120,8 @@
 		984843431F3C324D007AD753 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		9865818B1F4D3C8900735847 /* RecipePopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipePopUpViewController.swift; sourceTree = "<group>"; };
 		9865818D1F4D44E600735847 /* RPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPTableViewCell.swift; sourceTree = "<group>"; };
+		986581911F4E6B5C00735847 /* CRVHomeTopHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRVHomeTopHeader.swift; sourceTree = "<group>"; };
+		986581931F4E9DCB00735847 /* CRVHomeMidHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRVHomeMidHeader.swift; sourceTree = "<group>"; };
 		98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = fling/HomeViewController.swift; sourceTree = "<group>"; };
 		98AD7CA71F3AEB0D00500BD9 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../logo.png; sourceTree = "<group>"; };
@@ -274,11 +278,13 @@
 			isa = PBXGroup;
 			children = (
 				98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */,
+				98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */,
+				986581911F4E6B5C00735847 /* CRVHomeTopHeader.swift */,
+				986581931F4E9DCB00735847 /* CRVHomeMidHeader.swift */,
 				984843431F3C324D007AD753 /* RecipeViewController.swift */,
 				98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */,
 				98227E411F44366900DE96C5 /* ProductSearchViewController.swift */,
 				98B1EAD21F455D140016DEA9 /* ProductSearchTableViewCell.swift */,
-				98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */,
 				98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */,
 				98227E541F4AAF0200DE96C5 /* CartViewController.swift */,
 				98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */,
@@ -565,7 +571,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D4D0BE6E3982E5A03BBE0E93 /* [CP] Embed Pods Frameworks */ = {
@@ -605,6 +611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				986581941F4E9DCB00735847 /* CRVHomeMidHeader.swift in Sources */,
 				98B1EAD31F455D140016DEA9 /* ProductSearchTableViewCell.swift in Sources */,
 				98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */,
 				984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */,
@@ -618,12 +625,12 @@
 				98227E651F4C058A00DE96C5 /* Material.swift in Sources */,
 				98FDCECB1F4EC67900F193E4 /* String +.swift in Sources */,
 				98AD7CA21F3ACCBD00500BD9 /* Product.swift in Sources */,
-				98227E731F4D5F3D00DE96C5 /* ProductFilter.swift in Sources */,
 				98B1EAD11F45527A0016DEA9 /* SearchList.swift in Sources */,
 				98227E421F44366900DE96C5 /* ProductSearchViewController.swift in Sources */,
 				98227E571F4AB3C500DE96C5 /* CartTableViewCell.swift in Sources */,
 				98AD7CAC1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift in Sources */,
 				98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */,
+				986581921F4E6B5C00735847 /* CRVHomeTopHeader.swift in Sources */,
 				98227E4F1F4AA1AF00DE96C5 /* Decimal +.swift in Sources */,
 				98227E691F4C1AD900DE96C5 /* MaterialSearchViewController.swift in Sources */,
 				98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */,

@@ -64,6 +64,9 @@ class RecipeViewController: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
+        self.recipeImage.layer.cornerRadius = CGFloat(roundf(Float(recipeImage.frame.size.width/2.0)));
+        self.recipeImage.layer.masksToBounds = true;
+        
         cart = appDelegate.cart
 
         productTable.tableFooterView = UIView()
