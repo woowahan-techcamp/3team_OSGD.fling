@@ -14,7 +14,7 @@ extension Decimal {
         let result = NumberFormatter.localizedString(from: price, number: NumberFormatter.Style.decimal)
         return "총액 : ".appending(result.appending(" 원"))
     }
-    
+
     mutating func addPriceTagWithoutTotal() -> String {
         let price = NSNumber.init(value: (self as NSDecimalNumber).doubleValue)
         let result = NumberFormatter.localizedString(from: price, number: NumberFormatter.Style.decimal)

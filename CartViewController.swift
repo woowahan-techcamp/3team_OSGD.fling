@@ -29,6 +29,7 @@ class CartViewController: UIViewController {
     }
 
     func popUp(cartIndex: Int) {
+        //swiftlint:disable line_length
         if let popUp = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cartPopUp") as? RecipePopUpViewController {
             popUp.recipe = cart.recipes[cartIndex]
             self.addChildViewController(popUp)
