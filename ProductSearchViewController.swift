@@ -14,13 +14,22 @@ class ProductSearchViewController: UIViewController, UISearchBarDelegate {
     let getProduct = Notification.Name.init("getProduct")
     var searchList = SearchList.init()
     let network = Network.init()
+    let keywordHighlight = KeywordHighlight()
+    var keyword = ""
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTable: UITableView!
+    @IBAction func doneButton(_ sender: Any) {
+        if searchTable.indexPathForSelectedRow != nil {
+            let index = searchTable.indexPathForSelectedRow!.row
+            self.network.getProductWith(productId: self.searchList.result[index].id)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+
         NotificationCenter.default.addObserver(self, selector: #selector(drawSearchList),
                                                name: searchProduct, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(searchToProduct),
@@ -42,14 +51,20 @@ class ProductSearchViewController: UIViewController, UISearchBarDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count != 0 {
+            keyword = searchText
             self.network.searchProductsWith(keyword: searchText)
         }
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchText \(String(describing: searchBar.text))")
+//        let searchText = searchBar.text
+//        if searchText != nil && searchText?.characters.count != 0 {
+//            self.network.searchProductsWith(keyword: searchText!)
+//        }
+        self.view.endEditing(true)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
@@ -80,11 +95,14 @@ extension ProductSearchViewController: UITableViewDelegate, UITableViewDataSourc
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductSearchTableViewCell else {
                 return ProductSearchTableViewCell()
         }
-        cell.productLabel.text = self.searchList.result[indexPath.row].name
+
+        let result = self.searchList.result[indexPath.row].name
+        cell.productLabel.attributedText = keywordHighlight.addBold(keyword: keyword, text: result)
+
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.network.getProductWith(productId: self.searchList.result[indexPath.row].id)
+        self.view.endEditing(true)
     }
 }

@@ -25,6 +25,8 @@
 		98227E6D1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */; };
 		98227E701F4D477800DE96C5 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E6E1F4D477800DE96C5 /* cart.png */; };
 		98227E711F4D477800DE96C5 /* fridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E6F1F4D477800DE96C5 /* fridge.png */; };
+		98227E731F4D5F3D00DE96C5 /* ProductFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */; };
+		98227E881F4E63C600DE96C5 /* NSAttributedString +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E871F4E63C600DE96C5 /* NSAttributedString +.swift */; };
 		984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843151F33F3AF007AD753 /* AppDelegate.swift */; };
 		9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984843191F33F3B0007AD753 /* Main.storyboard */; settings = {ASSET_TAGS = (Main, ); }; };
 		9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9848431C1F33F3B0007AD753 /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		98F821F21F3D695A006B0288 /* main_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F821F11F3D695A006B0288 /* main_image.png */; };
 		98F821F41F3D6BB3006B0288 /* search_icon1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F821F31F3D6BB3006B0288 /* search_icon1x.png */; };
 		98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F821F61F3D7347006B0288 /* CheckboxButton.swift */; };
+		98FDCEC91F4EB3F500F193E4 /* KeywordHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */; };
+		98FDCECB1F4EC67900F193E4 /* String +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCECA1F4EC67900F193E4 /* String +.swift */; };
 		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
 		BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */; };
 /* End PBXBuildFile section */
@@ -99,6 +103,8 @@
 		98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefrigeratorTableViewCell.swift; sourceTree = "<group>"; };
 		98227E6E1F4D477800DE96C5 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart.png; sourceTree = "<group>"; };
 		98227E6F1F4D477800DE96C5 /* fridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fridge.png; sourceTree = "<group>"; };
+		98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductFilter.swift; sourceTree = "<group>"; };
+		98227E871F4E63C600DE96C5 /* NSAttributedString +.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString +.swift"; sourceTree = "<group>"; };
 		984843121F33F3AF007AD753 /* fling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984843151F33F3AF007AD753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9848431A1F33F3B0007AD753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +135,8 @@
 		98F821F11F3D695A006B0288 /* main_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_image.png; sourceTree = "<group>"; };
 		98F821F31F3D6BB3006B0288 /* search_icon1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_icon1x.png; sourceTree = "<group>"; };
 		98F821F61F3D7347006B0288 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordHighlight.swift; sourceTree = "<group>"; };
+		98FDCECA1F4EC67900F193E4 /* String +.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String +.swift"; sourceTree = "<group>"; };
 		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -198,10 +206,14 @@
 				980749C71F3A98B100E4EA96 /* Network.swift */,
 				98B1EAD01F45527A0016DEA9 /* SearchList.swift */,
 				98227E501F4AA93900DE96C5 /* Cart.swift */,
+				98FDCECA1F4EC67900F193E4 /* String +.swift */,
 				98227E4E1F4AA1AF00DE96C5 /* Decimal +.swift */,
 				98B1EAD41F4AB8380016DEA9 /* Storage.swift */,
 				98227E621F4C054300DE96C5 /* Refrigerator.swift */,
 				98227E641F4C058A00DE96C5 /* Material.swift */,
+				98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */,
+				98227E871F4E63C600DE96C5 /* NSAttributedString +.swift */,
+				98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -603,12 +615,15 @@
 				98B1EAD31F455D140016DEA9 /* ProductSearchTableViewCell.swift in Sources */,
 				98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */,
 				984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */,
+				98FDCEC91F4EB3F500F193E4 /* KeywordHighlight.swift in Sources */,
+				98227E881F4E63C600DE96C5 /* NSAttributedString +.swift in Sources */,
 				98227E671F4C125100DE96C5 /* RefrigeratorViewController.swift in Sources */,
 				98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */,
 				98227E631F4C054300DE96C5 /* Refrigerator.swift in Sources */,
 				98227E6D1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift in Sources */,
 				984843441F3C324D007AD753 /* RecipeViewController.swift in Sources */,
 				98227E651F4C058A00DE96C5 /* Material.swift in Sources */,
+				98FDCECB1F4EC67900F193E4 /* String +.swift in Sources */,
 				98AD7CA21F3ACCBD00500BD9 /* Product.swift in Sources */,
 				98B1EAD11F45527A0016DEA9 /* SearchList.swift in Sources */,
 				98227E421F44366900DE96C5 /* ProductSearchViewController.swift in Sources */,
