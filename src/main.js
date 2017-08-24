@@ -127,7 +127,10 @@ Fling.Main = function() {
     });
 
     let elementArray = document.querySelectorAll('.main_header_img');
-    new Fling.Main.FadeInOutManager(elementArray, 6000); 
+    new Fling.Main.FadeInOutManager(elementArray, 6000);
+    
+    const target = document.querySelector(".search_text");
+    target.addEventListener("keyup", searchHandler);
 }
 
 Fling.Main.FadeInOutManager = class FadeInOutManager {
@@ -150,5 +153,31 @@ Fling.Main.FadeInOutManager = class FadeInOutManager {
         elementArray[nextSequence].style.opacity = '1';
     }
 }
+
+function searchHandler(e) {
+    const searchQuery = e.target.value;
+    const searchBar = document.querySelector(".search_bar");
+    
+    
+    
+    if(searchQuery == "" || e.code == "Escape") {
+        document.querySelector(".search_bar").style.display = "none";
+        searchBar.innerHTML = "";
+        return;
+    }
+
+    XHR.post(`http://52.79.119.41/search_recipe?keyword=${searchQuery}`, (e) => {
+        let searchData = JSON.parse(e.target.responseText);
+        document.querySelector(".search_bar").style.display = "block";  
+
+        const theTemplateScript = document.querySelector("#search_item_template").innerHTML;
+        const theTemplate = Handlebars.compile(theTemplateScript);
+        const theCompiledHtml = theTemplate(searchData);
+        searchBar.innerHTML = theCompiledHtml;
+               
+    });
+} 
+
+
 
 document.addEventListener("DOMContentLoaded", Fling.Main);

@@ -8,6 +8,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
         <script src="js/XHR.js"></script>
         <script src="main.js"></script>
+        <script type="search_item_template" id="search_item_template">
+            {{#each this}}
+            <div class="search_bar_list">
+                <div class="search_bar_img" style="background-image: url({{image}})"></div>
+                <div class="product_info">
+                    <div>{{subtitle}}</div>
+                    <span>{{title}}</span>
+                </div>
+                <button class="search_bar_button" onclick="location.href='recipe_page.html?query_url={{url}}'">장보기</button>
+            </div>
+            {{/each}}
+        </script>
     </head>
     <body>
         <div class="wrap">
@@ -41,6 +53,9 @@
                         <div class="search_bar">
 
                         </div>
+                    </div>
+                    <div class="search_bar">
+
                     </div>
                 </div>
             
