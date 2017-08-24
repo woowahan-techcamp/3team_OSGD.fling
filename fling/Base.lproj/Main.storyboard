@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nId-NT-Pi0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nId-NT-Pi0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -231,7 +231,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="재료 검색" id="rZ1-ic-6TI"/>
+                    <navigationItem key="navigationItem" title="재료 검색" id="rZ1-ic-6TI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="iz7-CD-2Ke">
+                            <connections>
+                                <action selector="doneButton:" destination="DiZ-Ta-1KF" id="8Y2-9d-rGR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="UMf-Qg-nKo" id="1lu-60-x80"/>
                         <outlet property="searchTable" destination="Gny-Zs-w1V" id="Gwh-eg-mct"/>
@@ -729,7 +735,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="상품 검색" id="gfz-x7-tzh"/>
+                    <navigationItem key="navigationItem" title="상품 검색" id="gfz-x7-tzh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="QCE-Wx-6ib">
+                            <connections>
+                                <action selector="doneButton:" destination="adW-DK-IUK" id="VAG-Iu-Khw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="3Zc-Xi-DUz" id="UPT-5c-ADy"/>
                         <outlet property="searchTable" destination="2MW-Lz-gXR" id="GrU-tg-OWp"/>
@@ -894,9 +906,9 @@
         <image name="search_icon1x.png" width="42" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3KA-uK-DyB"/>
         <segue reference="Nxj-bu-BRj"/>
-        <segue reference="3T6-s5-SBO"/>
+        <segue reference="4cY-xg-jc0"/>
+        <segue reference="3KA-uK-DyB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.71764705882352942" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

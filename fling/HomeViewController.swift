@@ -58,8 +58,8 @@ class HomeViewController: UIViewController {
 
         self.fridge = appDelegate.fridge
 
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                 action: #selector(HomeViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer =
+            UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
         homeView.addGestureRecognizer(tap)
 
         //swiftlint:disable line_length
