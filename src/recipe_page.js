@@ -165,6 +165,7 @@ function searchHandler(e) {
     
     if(searchQuery == "" || e.code == "Escape") {
         document.querySelector(".search_bar").style.display = "none";
+        searchBar.innerHTML = "";
         return;
     }
 
