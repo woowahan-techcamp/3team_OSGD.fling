@@ -1,4 +1,4 @@
-var Fling = {};
+const Fling = {};
 Fling.data = {
     apiBaseURL: 'http://52.79.119.41/',
     get apiRecipes() {
@@ -31,10 +31,11 @@ Fling.API = {
 }
 
 Fling.template = {
-    'tileViewSource': '<div class="recommend_content_wrap"><ul class="recommend_content_list"> {{#each this}}<li> <a href="./recipe_page.html?query_url={{url}}"><div class="recommend_content_list_node" style="background-image: url({{image}})"><div class="recommend_number"><p>{{inc @index}}</p></div></div> </a><dt><a href="./recipe_page.html?query_url={{url}}">{{subtitle}}</a></dt><dd>{{title}} | {{writer}}</dd></li> {{/each}}</ul></div>',
-    'sectionSource': '<section class="main_section content {{id}}" id="{{id}}"><div class="section_title">{{title}}</div>{{{view.render}}}</section>'
+    tileViewSource: '<div class="recommend_content_wrap"><ul class="recommend_content_list"> {{#each this}}<li> <a href="./recipe_page.html?query_url={{url}}"><div class="recommend_content_list_node" style="background-image: url({{image}})"><div class="recommend_number"><p>{{inc @index}}</p></div></div> </a><dt><a href="./recipe_page.html?query_url={{url}}">{{subtitle}}</a></dt><dd>{{title}} | {{writer}}</dd></li> {{/each}}</ul></div>',
+    slideViewSource: '<div class="recommend_content_wrap"><div class="slide_arrow prev"></div><div class="slide_arrow next"></div><div class="list_wrap"><ul class="recommend_content_list" style="--slide-number: 1"> {{#each this}}<li> <a href="./recipe_page.html?query_url={{url}}"><div class="recommend_content_list_node" style="background-image: url({{image}})"></div> </a><dt><a href="./recipe_page.html?query_url={{url}}">{{subtitle}}</a></dt><dd>{{title}} | {{writer}}</dd></li>{{/each}}</ul></div>',
+    sectionSource: '<section class="main_section content {{id}}" id="{{id}}"><div class="section_title">{{{title}}}<div class="separate"></div></div>{{{view.render}}}</section>',
 }
-Fling.View = class {
+Fling.View = class View {
     constructor() {
         this.dataObject = null;
     }
@@ -49,11 +50,10 @@ Fling.View = class {
         return '';
     }
 }
-Fling.TileView = class extends Fling.View {
+Fling.View.TileView = class TileView extends Fling.View {
     constructor(params) {
         super();
         this.data = params;
-        console.info(this.data);
     }
     get render() {
         let data = this.data.slice(0, 3);
@@ -64,12 +64,18 @@ Fling.TileView = class extends Fling.View {
         return template(data);
     }
 }
-Fling.SlideView = class extends Fling.View {
-    constructor() {
-        super(params);
+Fling.View.SlideView = class SlideView extends Fling.View {
+    constructor(params) {
+        super();
+        this.data = params;
+    }
+    get render() {
+        let data = this.data;
+        let template = Handlebars.compile(Fling.template.slideViewSource);
+        return template(data);
     }
 }
-Fling.Section = class {
+Fling.Section = class Section {
     constructor(params, viewObject) {
         this.title = params.title;
         this.id = params.id;
@@ -82,98 +88,67 @@ Fling.Section = class {
     }
 }
 
-document.addEventListener("DOMContentLoaded", e => {
+Fling.Main = function() {
     Fling.API.get(Fling.data.apiRecipes, data => {
-        var rankSection = new Fling.Section({
-            title: '플링 인기 차트1234',
+        let rankSection = new Fling.Section({
+            title: '플링 <em>인기 차트</em>',
             id: 'recommended'
-        }, new Fling.TileView(data));
+        }, new Fling.View.TileView(data));
 
         document.querySelector('fling-main-recipe').innerHTML = rankSection.render;
     });
 
-    XHR.get(Fling.data.apiSeason, (e) => {
-        const data = JSON.parse(e.target.responseText);
-        fillContentRecommendSection(data, ".main_section.season_event .recommend_content_list");
+    Fling.API.get(Fling.data.apiSeason, data => {
+        let seasonSection = new Fling.Section({
+            title: '여름엔 <em>플링</em>',
+            id: 'season_event'
+        }, new Fling.View.SlideView(data));
+
+        let targetSource = document.querySelector('fling-season-recipe');
+        targetSource.innerHTML = seasonSection.render;
+        targetSource.addEventListener('click', evt => {
+            const firstElementChild = targetSource.querySelector(".list_wrap").firstElementChild;
+            let slide_num = firstElementChild.style.getPropertyValue('--slide-number') * 1;
+            firstElementChild.style.setProperty('transition', '1s');
+
+            switch(evt.target.className) {
+                case 'slide_arrow prev': {
+                    if (slide_num !== 0)
+                        firstElementChild.style.setProperty('--slide-number', --slide_num);
+                    break;
+                }
+                case 'slide_arrow next': {
+                    if (slide_num + 1 < ((window.innerWidth > 1100) ? 3 : 9))
+                        firstElementChild.style.setProperty('--slide-number', ++slide_num);
+                    break;
+                }
+            }
+        });
     });
-    
-    const interval = window.setInterval(fadeInOutMain.bind(this,".main_header_fade_in", ".main_header_fade_out", ".main_header_fade_middle"),6000);
 
-    document.querySelector(".slide_arrow.prev").addEventListener("click", (e) => {
-        const a = document.querySelector(".list_wrap").firstElementChild;
-        let slide_num = a.style.getPropertyValue('--slide-number') * 1;
-        a.style.setProperty('transition', '1s');
-        if (slide_num !== 0)
-            a.style.setProperty('--slide-number', --slide_num);
-        
-    })
-    
-    
-    document.querySelector(".slide_arrow.next").addEventListener("click", (e) => {
-        const a = document.querySelector(".list_wrap").firstElementChild;
-        let slide_num = a.style.getPropertyValue('--slide-number') * 1;
-        a.style.setProperty('transition', '1s');
-        let slide_count;
-        if (window.innerWidth > 1100) {
-            slide_count = 3;
-        }
-        else {
-            slide_count = 9;
-        }
-        if (slide_num + 1 < slide_count)
-            a.style.setProperty('--slide-number', ++slide_num);
-       
-    
-    })
-    
-    
-})
+    let elementArray = document.querySelectorAll('.main_header_img');
+    new Fling.Main.FadeInOutManager(elementArray, 6000); 
+}
 
+Fling.Main.FadeInOutManager = class FadeInOutManager {
+    constructor(elementArray, delayTime) {
+        this.sequence = 0;
+        this.elementArray = elementArray;
+        this.delayTime = delayTime;
 
-//////////////////////////////////////////////////
-function fadeInOutMain(selector1, selector2, selector3) {
-    const fadeIn = document.querySelector(selector1);
-    const fadeOut = document.querySelector(selector2);
-    const fadeMid = document.querySelector(selector3);
-    
-    if (fadeIn.style.opacity == "1") {
-        fadeIn.style.opacity = "0";
-        fadeOut.style.opacity = "1";
-        fadeMid.style.opacity = "0";
+        setInterval(() => {
+            this.fade(this.elementArray, ++this.sequence % elementArray.length);
+        }, this.delayTime);
     }
-    else if (fadeOut.style.opacity == "1") {
-        fadeIn.style.opacity = "0";
-        fadeOut.style.opacity = "0";
-        fadeMid.style.opacity = "1";
-    }
-    else {
-        fadeIn.style.opacity = "1";
-        fadeOut.style.opacity = "0";
-        fadeMid.style.opacity = "0";
+
+    fade(elementArray, sequence) {
+        elementArray.forEach((el, i) => {
+            el.style.opacity = 0;
+        });
+
+        let nextSequence = (sequence + 1) % elementArray.length;
+        elementArray[nextSequence].style.opacity = '1';
     }
 }
 
-
-
-////////////////////////////////////////////////////////////////////////////////////////
-function fillContentRecommendSection(data, selector) {
-    const li =document.querySelector(selector).children;
-
-    const liArr = Array.from(li);
-    let i = 0;
-    
-    liArr.forEach((e) => {
-        e.children[0].href = `./recipe_page.html?query_url=${data[i].url}`;
-        e.children[0].children[0].style.backgroundImage = "url('" + data[i].image  + "')";
-
-        e.children[1].children[0].href = `./recipe_page.html?query_url=${data[i].url}`;
-        e.children[1].children[0].innerHTML = data[i].subtitle;
-        e.children[2].innerHTML = data[i].title + "  |  " + data[i].writer;
-        
-        i++;
-    })
-}
-
-
-/////////////////////////////////////////////////////////////////////////////화살표//////////
-
+document.addEventListener("DOMContentLoaded", Fling.Main);

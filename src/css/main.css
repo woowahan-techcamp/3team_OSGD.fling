@@ -146,6 +146,19 @@
 }
 
 .main_section .section_title {
-    margin-top: 50px;
-    margin-bottom: 20px;
+    font-size: 30pt;
+    font-weight: 300;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.section_title em {
+    font-style: normal;
+    font-weight: 500;
+}
+
+.section_title .separate {
+    width: 40px;
+    margin: 20px auto;
+    border-top: 1px solid #aaa;
 }
