@@ -41,6 +41,11 @@ function mainEventHandler() {
     
     const target = document.querySelector(".search_text");
     target.addEventListener("keyup", searchHandler);
+
+    document.querySelector(".refrige_popup").addEventListener("click", (e) => {
+        e.target.href = 'javascript:void(0)';
+        const popup = window.open("./refrige_popup.html", "refrigeWindow", "width=700,height=800,toolbar=no,menubar=no");
+    })
 }
 
 
