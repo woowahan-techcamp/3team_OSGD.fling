@@ -1,95 +1,5 @@
-const Fling = {};
-Fling.data = {
-    apiBaseURL: 'http://52.79.119.41/',
-    get apiRecipes() {
-        return Fling.data.apiBaseURL + 'recipes'
-    },
-    get apiSeason() {
-        return Fling.data.apiBaseURL + 'season'
-    }
-}
-
-Fling.API = {
-    request: function(method, url, callback) {
-        XHR.request(method, url, (e) => {
-            let data = null;
-            try {
-                data = JSON.parse(e.target.responseText);
-            }
-            catch(e) {
-                throw 'FLING_API_NOT_SEEMS_JSON';
-            }
-            callback(data);
-        });
-    },
-    get: function(url, callback) {
-        return this.request('get', url, callback);
-    },
-    post: function(url, callback) {
-        return this.request('post', url, callback);
-    }
-}
-
-Fling.template = {
-    tileViewSource: '<div class="recommend_content_wrap"><ul class="recommend_content_list"> {{#each this}}<li> <a href="./recipe_page.html?query_url={{url}}"><div class="recommend_content_list_node" style="background-image: url({{image}})"><div class="recommend_number"><p>{{inc @index}}</p></div></div> </a><dt><a href="./recipe_page.html?query_url={{url}}">{{subtitle}}</a></dt><dd>{{title}} | {{writer}}</dd></li> {{/each}}</ul></div>',
-    slideViewSource: '<div class="recommend_content_wrap"><div class="slide_arrow prev"></div><div class="slide_arrow next"></div><div class="list_wrap"><ul class="recommend_content_list" style="--slide-number: 1"> {{#each this}}<li> <a href="./recipe_page.html?query_url={{url}}"><div class="recommend_content_list_node" style="background-image: url({{image}})"></div> </a><dt><a href="./recipe_page.html?query_url={{url}}">{{subtitle}}</a></dt><dd>{{title}} | {{writer}}</dd></li>{{/each}}</ul></div>',
-    sectionSource: '<section class="main_section content {{id}}" id="{{id}}"><div class="section_title">{{{title}}}<div class="separate"></div></div>{{{view.render}}}</section>',
-}
-Fling.View = class View {
-    constructor() {
-        this.dataObject = null;
-    }
-    get data() {
-        return this.dataObject;
-    }
-    set data(obj) {
-        this.dataObject = obj;
-        return;
-    }
-    get render() {
-        return '';
-    }
-}
-Fling.View.TileView = class TileView extends Fling.View {
-    constructor(params) {
-        super();
-        this.data = params;
-    }
-    get render() {
-        let data = this.data.slice(0, 3);
-        Handlebars.registerHelper("inc", (value, options) => {
-            return parseInt(value) + 1;
-        });
-        let template = Handlebars.compile(Fling.template.tileViewSource);
-        return template(data);
-    }
-}
-Fling.View.SlideView = class SlideView extends Fling.View {
-    constructor(params) {
-        super();
-        this.data = params;
-    }
-    get render() {
-        let data = this.data;
-        let template = Handlebars.compile(Fling.template.slideViewSource);
-        return template(data);
-    }
-}
-Fling.Section = class Section {
-    constructor(params, viewObject) {
-        this.title = params.title;
-        this.id = params.id;
-        this.view = viewObject;
-    }
-
-    get render() {
-        let template = Handlebars.compile(Fling.template.sectionSource);
-        return template(this);
-    }
-}
-
-Fling.Main = function() {
-    Fling.API.get(Fling.data.apiRecipes, data => {
+function mainEventHandler() {
+    Fling.API.get(Fling.Data.apiRecipes, data => {
         let rankSection = new Fling.Section({
             title: '플링 <em>인기 차트</em>',
             id: 'recommended'
@@ -98,7 +8,7 @@ Fling.Main = function() {
         document.querySelector('fling-main-recipe').innerHTML = rankSection.render;
     });
 
-    Fling.API.get(Fling.data.apiSeason, data => {
+    Fling.API.get(Fling.Data.apiSeason, data => {
         let seasonSection = new Fling.Section({
             title: '여름엔 <em>플링</em>',
             id: 'season_event'
@@ -127,13 +37,13 @@ Fling.Main = function() {
     });
 
     let elementArray = document.querySelectorAll('.main_header_img');
-    new Fling.Main.FadeInOutManager(elementArray, 6000);
+    new FadeInOutManager(elementArray, 6000);
     
     const target = document.querySelector(".search_text");
     target.addEventListener("keyup", searchHandler);
 }
 
-Fling.Main.FadeInOutManager = class FadeInOutManager {
+class FadeInOutManager {
     constructor(elementArray, delayTime) {
         this.sequence = 0;
         this.elementArray = elementArray;
@@ -178,6 +88,4 @@ function searchHandler(e) {
     });
 } 
 
-
-
-document.addEventListener("DOMContentLoaded", Fling.Main);
+document.addEventListener("DOMContentLoaded", mainEventHandler);
