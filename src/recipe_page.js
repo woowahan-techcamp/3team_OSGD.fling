@@ -69,7 +69,8 @@ function template(data) {
         let item_volume = e.target.parentElement.parentElement.parentElement.querySelector('#volume').value;
         let item_unit_price = e.target.parentElement.parentElement.parentElement.querySelector('#per_price').value.replace(/,/g, '');
 
-        item_tp.innerText = numberWithCommas(item_volume * item_unit_price) + '원';
+        item_tp.innerText = Utils.numberWithComma(item_volume * item_unit_price) + '원';
+
         calcTotalPrice();
     });
 
@@ -92,7 +93,7 @@ function template(data) {
         console.info(item_volume);
         let item_unit_price = e.target.parentElement.parentElement.parentElement.querySelector('#per_price').value.replace(/,/g, '');
 
-        item_tp.innerText = numberWithCommas(item_volume * item_unit_price) + '원';
+        item_tp.innerText = Utils.numberWithComma(item_volume * item_unit_price) + '원';
 
         calcTotalPrice();
     });
@@ -137,19 +138,14 @@ function calcTotalPrice() {
     }
     
     sumNum = sum;
-    sum = numberWithCommas(sum);
+    sum = Utils.numberWithComma(sum);
     cartListsArr[len-1].children[0].innerHTML = sum;
 
     const subPrice = document.querySelector(".pi_prd");
     subPrice.innerHTML = sum;
 
     const flingCash = document.querySelector(".pi_point");
-    flingCash.innerHTML = numberWithCommas(parseInt(sumNum * 0.01));
-}
-
-
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    flingCash.innerHTML = Utils.numberWithComma(parseInt(sumNum * 0.01));
 }
 
 function isAvaliableItem(el) {

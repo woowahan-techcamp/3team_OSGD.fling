@@ -1,155 +1,90 @@
-document.addEventListener("DOMContentLoaded", (e) => {
-    _.ajaxFunc("http://52.79.119.41/recipes", fillContentRecommendSection, ".recommend_content_list");
-    _.ajaxFunc("http://52.79.119.41/season", fillContentRecommendSection, ".main_section.season_event .recommend_content_list");
-    const interval = window.setInterval(fadeInOutMain.bind(this,".main_header_fade_in", ".main_header_fade_out", ".main_header_fade_middle"),6000);
+function mainEventHandler() {
+    Fling.API.get(Fling.Data.apiRecipes, data => {
+        let rankSection = new Fling.Section({
+            title: '플링 <em>인기 차트</em>',
+            id: 'recommended'
+        }, new Fling.View.TileView(data));
 
-    document.querySelector(".refrige_popup").addEventListener("click", (e) => {
-        e.target.href = 'javascript:void(0)';
-        const popup = window.open("./refrige_popup.html", "refrigeWindow", "width=700,height=800,toolbar=no,menubar=no");
-    })
-})
+        document.querySelector('fling-main-recipe').innerHTML = rankSection.render;
+    });
 
+    Fling.API.get(Fling.Data.apiSeason, data => {
+        let seasonSection = new Fling.Section({
+            title: '여름엔 <em>플링</em>',
+            id: 'season_event'
+        }, new Fling.View.SlideView(data));
 
+        let targetSource = document.querySelector('fling-season-recipe');
+        targetSource.innerHTML = seasonSection.render;
+        targetSource.addEventListener('click', evt => {
+            const firstElementChild = targetSource.querySelector(".list_wrap").firstElementChild;
+            let slide_num = firstElementChild.style.getPropertyValue('--slide-number') * 1;
+            firstElementChild.style.setProperty('transition', '1s');
 
+            switch(evt.target.className) {
+                case 'slide_arrow prev': {
+                    if (slide_num !== 0)
+                        firstElementChild.style.setProperty('--slide-number', --slide_num);
+                    break;
+                }
+                case 'slide_arrow next': {
+                    if (slide_num + 1 < ((window.innerWidth > 1100) ? 3 : 9))
+                        firstElementChild.style.setProperty('--slide-number', ++slide_num);
+                    break;
+                }
+            }
+        });
+    });
 
-///////////////////////////////////////////// util
-const _ = {
-    ajaxFunc : function ajax(url, exeFunc, selector) {
-    const oReq = new XMLHttpRequest(); 
-        oReq.addEventListener("load", (e) => {
-            const data = JSON.parse(oReq.responseText);
-            exeFunc(data, selector);
-        }); 
-        oReq.open("GET", url); 
-        oReq.send();
-    }
+    let elementArray = document.querySelectorAll('.main_header_img');
+    new FadeInOutManager(elementArray, 6000);
+    
+    const target = document.querySelector(".search_text");
+    target.addEventListener("keyup", searchHandler);
 }
 
 
-//////////////////////////////////////////////////
-function fadeInOutMain(selector1, selector2, selector3) {
-    const fadeIn = document.querySelector(selector1);
-    const fadeOut = document.querySelector(selector2);
-    const fadeMid = document.querySelector(selector3);
-    
-    if (fadeIn.style.opacity == "1") {
-        fadeIn.style.opacity = "0";
-        fadeOut.style.opacity = "1";
-        fadeMid.style.opacity = "0";
+class FadeInOutManager {
+    constructor(elementArray, delayTime) {
+        this.sequence = 0;
+        this.elementArray = elementArray;
+        this.delayTime = delayTime;
+
+        setInterval(() => {
+            this.fade(this.elementArray, ++this.sequence % elementArray.length);
+        }, this.delayTime);
     }
-    else if (fadeOut.style.opacity == "1") {
-        fadeIn.style.opacity = "0";
-        fadeOut.style.opacity = "0";
-        fadeMid.style.opacity = "1";
-    }
-    else {
-        fadeIn.style.opacity = "1";
-        fadeOut.style.opacity = "0";
-        fadeMid.style.opacity = "0";
+
+    fade(elementArray, sequence) {
+        elementArray.forEach((el, i) => {
+            el.style.opacity = 0;
+        });
+
+        let nextSequence = (sequence + 1) % elementArray.length;
+        elementArray[nextSequence].style.opacity = '1';
     }
 }
 
-
-
-////////////////////////////////////////////////////////////////////////////////////////
-function fillContentRecommendSection(data, selector) {
-    const li =document.querySelector(selector).children;
-
-    const liArr = Array.from(li);
-    let i = 0;
+function searchHandler(e) {
+    const searchQuery = e.target.value;
+    const searchBar = document.querySelector(".search_bar");
     
-    liArr.forEach((e) => {
-        e.children[0].href = `./recipe_page.html?query_url=${data[i].url}`;
-        e.children[0].children[0].style.backgroundImage = "url('" + data[i].image  + "')";
-
-        e.children[1].children[0].href = `./recipe_page.html?query_url=${data[i].url}`;
-        e.children[1].children[0].innerHTML = data[i].subtitle;
-        e.children[2].innerHTML = data[i].title + "  |  " + data[i].writer;
-        
-        i++;
-    })
-}
-
-
-/////////////////////////////////////////////////////////////////////////////화살표//////////
-
-document.querySelector(".slide_arrow.prev").addEventListener("click", (e) => {
-    const a = document.querySelector(".list_wrap").firstElementChild;
-    let slide_num = a.style.getPropertyValue('--slide-number') * 1;
-    a.style.setProperty('transition', '1s');
-    if (slide_num !== 0)
-        a.style.setProperty('--slide-number', --slide_num);
-    
-    // //맨 뒤 떼서 앞에 붙이고 제자리
-    // a.addEventListener("transitionend", avs, false);
-
-    // function avs() {
-    //     a.removeEventListener("transitionend", avs);
-    //     console.log(a);
-    //     //const lastNode = a.children[2].cloneNode(true);
-    //     //a.removeChild(a.children[2]);
-    //     //a.insertBefore(lastNode, a.children[0]);
-
-    //     a.removeEventListener("transitionend", avs);
-    //     if (slide_num == 0) {
-    //         a.style.setProperty('transition', 'none');
-    //         let li_arr = Array.from(a.querySelectorAll('li'));
-    //         let sli_lst = li_arr.slice(0, 3);
-            
-    //         for (let i = 2; i >= 0; i--) {
-    //             a.removeChild(sli_lst[i]);
-    //             a.appendChild(sli_lst[i]);
-    //         }
-
-    //         a.style.setProperty('--slide-number', ++slide_num);
-    //     }
-        
-    // }
-    
-})
-
-
-document.querySelector(".slide_arrow.next").addEventListener("click", (e) => {
-    const a = document.querySelector(".list_wrap").firstElementChild;
-    let slide_num = a.style.getPropertyValue('--slide-number') * 1;
-    a.style.setProperty('transition', '1s');
-    let slide_count;
-    if (window.innerWidth > 1100) {
-        slide_count = 3;
+    if(searchQuery == "" || e.code == "Escape") {
+        document.querySelector(".search_bar").style.display = "none";
+        searchBar.innerHTML = "";
+        return;
     }
-    else {
-        slide_count = 9;
-    }
-    if (slide_num + 1 < slide_count)
-        a.style.setProperty('--slide-number', ++slide_num);
-    // a.addEventListener("transitionend", avs, false);
 
-    // function avs() {
-    //     a.style.removeProperty('transition');
-    //     a.removeEventListener("transitionend", avs);
-    //     if (slide_num == 2) {
-    //         a.style.setProperty('transition', 'none');
-    //         let li_arr = Array.from(a.querySelectorAll('li'));
-    //         let firstNode = li_arr[0].cloneNode(true);
-    //         let sli_lst = li_arr.slice(0,3);
-            
-    //         for (let item of sli_lst) {
-    //             a.removeChild(item);
-    //             console.info(li_arr[0]);
-    //             a.insertBefore(item, a.querySelectorAll('li').lastNode);
-    //         }
-    //         a.style.setProperty('--slide-number', --slide_num);
-    //     }
-        
+    XHR.post(`http://52.79.119.41/search_recipe?keyword=${searchQuery}`, (e) => {
+        let searchData = JSON.parse(e.target.responseText);
+        document.querySelector(".search_bar").style.display = "block";  
 
-    //     return;
-    //     //const firstNode = a.children[0].cloneNode(true);
-    //     a.removeChild(a.children[0]);
-    //     a.insertBefore(firstNode, a.children[2]);
-    //     a.style.transition = "none";
-    //     a.style.transform = "translateX(0px)";
-    //     a.removeEventListener("transitionend", avs);
-    // }
+        const theTemplateScript = document.querySelector("#search_item_template").innerHTML;
+        const theTemplate = Handlebars.compile(theTemplateScript);
+        const theCompiledHtml = theTemplate(searchData);
+        searchBar.innerHTML = theCompiledHtml;
+               
+    });
+} 
 
-})
-
+document.addEventListener("DOMContentLoaded", mainEventHandler);
