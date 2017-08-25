@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
     private let failFlingRecipe = Notification.Name.init(rawValue: "failFlingRecipe")
     private let moveToRecipe = Notification.Name.init("moveToRecipe")
 
+    @IBOutlet var searchPopUp: UIView!
     @IBOutlet var homeView: UIView!
     @IBOutlet weak var sampleRecipeCollection: UICollectionView!
 
@@ -75,7 +76,7 @@ class HomeViewController: UIViewController {
     func keyboardWillShow() {
         //urlWarningLabel.isHidden = true
     }
-
+ 
     func dismissKeyboard() {
         homeView.endEditing(true)
     }
@@ -122,6 +123,17 @@ class HomeViewController: UIViewController {
         }
         return true
     }
+    
+    func popUpOpen() {
+        let frame = CGRect(x: 15, y: 180, width: 345, height: 200)
+        searchPopUp.frame = frame
+        self.view.addSubview(self.searchPopUp)
+    }
+    
+    func popUpClose() {
+        self.searchPopUp.removeFromSuperview()
+    }
+    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -141,6 +153,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if indexPath.section == 0 {
             let header = sampleRecipeCollection.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader", for: indexPath) as! CRVHomeTopHeader
+            header.popupOpen = self.popUpOpen
+            header.popupClose = self.popUpClose
             return header
 
         } else {
@@ -198,4 +212,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         return cell
     }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.searchRecipe.products.count+1   //add row
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeSearchListCell")!
+        
+        return cell
+    }
+    
 }
