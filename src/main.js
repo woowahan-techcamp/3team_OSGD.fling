@@ -43,6 +43,7 @@ function mainEventHandler() {
     target.addEventListener("keyup", searchHandler);
 }
 
+
 class FadeInOutManager {
     constructor(elementArray, delayTime) {
         this.sequence = 0;
@@ -67,8 +68,6 @@ class FadeInOutManager {
 function searchHandler(e) {
     const searchQuery = e.target.value;
     const searchBar = document.querySelector(".search_bar");
-    
-    
     
     if(searchQuery == "" || e.code == "Escape") {
         document.querySelector(".search_bar").style.display = "none";
