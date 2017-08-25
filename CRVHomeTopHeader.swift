@@ -15,6 +15,9 @@ class CRVHomeTopHeader: UICollectionReusableView {
     var searchButton: UIButton
     var line: UIView
     var flingHotLabel: UILabel
+    var popupOpen:(() -> Void)!
+    var popupClose:(() -> Void)!
+    var editingKeyword:((String) -> Void)!
     
     let screenWidth = UIScreen.main.bounds.width
     
@@ -46,6 +49,9 @@ class CRVHomeTopHeader: UICollectionReusableView {
         keywordInput.placeholder = "레시피를 장바구니에 담아드립니다."
         keywordInput.setValue(UIColor.white, forKeyPath: "_placeholderLabel.textColor")
         keywordInput.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightUltraLight)
+        keywordInput.addTarget(self, action: #selector(TextBoxOn(_:)),for: .editingDidBegin)
+        keywordInput.addTarget(self, action: #selector(TextBoxOff(_:)),for: .editingDidEnd)
+        keywordInput.addTarget(self, action: #selector(TextChange(_:)), for: .editingChanged)
         
         let xForSearchButton = xPadding + widthForInput
         let yForSearchButton = yPadding
@@ -73,7 +79,18 @@ class CRVHomeTopHeader: UICollectionReusableView {
         self.addSubview(flingHotLabel)
 
         self.backgroundColor = .white
-        
+    }
+    
+    func TextBoxOff(_ textField: UITextField) {
+        popupClose()
+    }
+    
+    func TextBoxOn(_ textField: UITextField) {
+        popupOpen()
+    }
+    
+    func TextChange(_ textField: UITextField) {
+        //editingKeyword(self.keywordInput.text!)
     }
     
     required init?(coder aDecoder: NSCoder) {

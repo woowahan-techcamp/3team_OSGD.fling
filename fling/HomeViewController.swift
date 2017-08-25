@@ -21,18 +21,11 @@ class HomeViewController: UIViewController {
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
     private let failFlingRecipe = Notification.Name.init(rawValue: "failFlingRecipe")
+    private let moveToRecipe = Notification.Name.init("moveToRecipe")
 
+    @IBOutlet var searchPopUp: UIView!
     @IBOutlet var homeView: UIView!
     @IBOutlet weak var sampleRecipeCollection: UICollectionView!
-    @IBOutlet weak var urlField: UITextField!
-    @IBOutlet weak var urlWarningLabel: UILabel!
-    @IBAction func searchButton(_ sender: Any) {
-        if checkRecipeUrl(url: self.urlField.text ?? "") {
-            network.getRecipeWith(url: self.urlField.text ?? "")
-        } else {
-            urlWarningLabel.isHidden = false
-        }
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         let logo = UIImage(named: "fling_logo_white.png")
@@ -69,8 +62,6 @@ class HomeViewController: UIViewController {
         sampleRecipeCollection.register(CRVHomeTopHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader")
         sampleRecipeCollection.register(CRVHomeMidHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader")
 
-        
-        //urlWarningLabel.layer.cornerRadius = 5
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,20 +73,11 @@ class HomeViewController: UIViewController {
     }
 
     func keyboardWillShow() {
-//        urlWarningLabel.isHidden = true
+        //urlWarningLabel.isHidden = true
     }
 
     func dismissKeyboard() {
         homeView.endEditing(true)
-    }
-
-    func reciveNotification(moveNoti: Notification) {
-        if moveNoti.name == Notification.Name.init("moveToRecipe") {
-            self.performSegue(withIdentifier: "HomeToRecipe", sender: self.urlField.text!)
-                   } else {
-            // 올바르지 않은 url??
-        }
-        // 팝업 끄기
     }
 
     func recieveNotification(notification: Notification) {
@@ -108,7 +90,6 @@ class HomeViewController: UIViewController {
         } else if notification.name == Notification.Name.init(rawValue: "UIKeyboardWillShowNotification") {
             keyboardWillShow()
         } else if notification.name == flingRecipe {
-//            alertController.dismiss(animated: true, completion: nil)
             guard let recipe = notification.userInfo?["data"] as? Recipe else {
                 return
             }
@@ -118,7 +99,8 @@ class HomeViewController: UIViewController {
             self.performSegue(withIdentifier: "HomeToRecipe", sender: self.searchRecipe)
 
         } else if notification.name == failFlingRecipe {
-//            alertController.dismiss(animated: true, completion: nil)
+        } else if notification.name == moveToRecipe{
+            self.performSegue(withIdentifier: "HomeToRecipe", sender: nil)
         }
     }
 
@@ -140,17 +122,18 @@ class HomeViewController: UIViewController {
         }
         return true
     }
+    
+    func popUpOpen() {
+        let frame = CGRect(x: 15, y: 180, width: 345, height: 200)
+        searchPopUp.frame = frame
+        self.view.addSubview(self.searchPopUp)
+    }
+    
+    func popUpClose() {
+        self.searchPopUp.removeFromSuperview()
+    }
+    
 }
-
-//return으로 검색하게
-//extension HomeViewController: UITextFieldDelegate {
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-//
-//}
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -159,7 +142,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 6
+            return 4
         } else {
             return 6
         }
@@ -169,6 +152,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if indexPath.section == 0 {
             let header = sampleRecipeCollection.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader", for: indexPath) as! CRVHomeTopHeader
+            header.popupOpen = self.popUpOpen
+            header.popupClose = self.popUpClose
             return header
 
         } else {
@@ -226,4 +211,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         return cell
     }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.searchRecipe.products.count+1   //add row
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeSearchListCell")!
+        
+        return cell
+    }
+    
 }
