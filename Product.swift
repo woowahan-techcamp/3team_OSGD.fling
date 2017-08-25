@@ -10,13 +10,14 @@ import Foundation
 
 class Product {
 
-    private let pid: Int //상품 아이디
-    private let mid: Int //재료 아이디(참조)
-    private let name: String
-    private let price: Decimal
-    private let weight: String
-    private var bundle: String
-    private let image: String
+    let pid: Int //상품 아이디
+    let mid: Int //재료 아이디(참조)
+    let name: String
+    let price: Decimal
+    let weight: String
+    let bundle: String
+    let image: String
+    let materialName: String
 
     init() {
         self.pid = 0
@@ -26,9 +27,11 @@ class Product {
         self.weight = ""
         self.bundle = ""
         self.image = ""
+        self.materialName = ""
     }
 
-    init(pid: Int, mid: Int, name: String, price: Decimal, weight: String, bundle: String, image: String) {
+    init(pid: Int, mid: Int, name: String, price: Decimal,
+         weight: String, bundle: String, image: String, materialName: String) {
         self.pid = pid
         self.mid = mid
         self.name = name
@@ -36,6 +39,7 @@ class Product {
         self.weight = weight
         self.bundle = bundle
         self.image = image
+        self.materialName = materialName
     }
 
     init?(data: [String:Any]) {
@@ -44,16 +48,10 @@ class Product {
             let price = data["price"]! as? String,
             let weight = data["weight"]! as? String,
             let bundle = data["bundle"]! as? String,
-            let image = data["image"]! as? String else {
+            let image = data["image"]! as? String,
+            let materialName = data["material_name"] as? String,
+            let mid = data["material_id"] as? Int else {
                 return nil
-        }
-
-        var mid = 0
-        if data["material_id"] != nil {
-            guard let material_id = data["material_id"]! as? Int else {
-                return nil
-            }
-            mid = material_id
         }
 
         let decimalPrice = NSDecimalNumber.init(string: price.replacingOccurrences(of: ",", with: ""))
@@ -65,36 +63,7 @@ class Product {
         self.weight = weight
         self.bundle = bundle
         self.image = image
-    }
-
-    func setBundle(input: String) {
-        self.bundle = input
-    }
-
-    func getId() -> Int {
-        return self.pid
-    }
-    func getMaterialId() -> Int {
-        return self.mid
-    }
-    func getName() -> String {
-        return self.name
-    }
-    func getPrice() -> Decimal {
-        return self.price
-    }
-    func getWeight() -> String {
-        return self.weight
-    }
-    func getBundle() -> String {
-        return self.bundle
-    }
-    func getImage() -> String {
-        if self.image.contains("http://") {
-            return self.image
-        } else {
-            return "http://" + self.image
-        }
+        self.materialName = materialName
     }
 
     func getBundleTuple(input: String) -> (number: Int, unit: String) {
@@ -160,6 +129,6 @@ class Product {
 
 extension Product: Equatable {
     static func == (lhs: Product, rhs: Product) -> Bool {
-        return lhs.getId() == rhs.getId()
+        return lhs.pid == rhs.pid
     }
 }

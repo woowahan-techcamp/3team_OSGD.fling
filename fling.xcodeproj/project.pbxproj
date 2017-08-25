@@ -13,6 +13,19 @@
 		98227E421F44366900DE96C5 /* ProductSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E411F44366900DE96C5 /* ProductSearchViewController.swift */; };
 		98227E471F4675E300DE96C5 /* fling_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E461F4675E300DE96C5 /* fling_logo_white.png */; };
 		98227E491F4677A400DE96C5 /* logo_rabbit.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E481F4677A400DE96C5 /* logo_rabbit.png */; };
+		98227E4F1F4AA1AF00DE96C5 /* Decimal +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E4E1F4AA1AF00DE96C5 /* Decimal +.swift */; };
+		98227E511F4AA93900DE96C5 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E501F4AA93900DE96C5 /* Cart.swift */; };
+		98227E551F4AAF0200DE96C5 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E541F4AAF0200DE96C5 /* CartViewController.swift */; };
+		98227E571F4AB3C500DE96C5 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */; };
+		98227E631F4C054300DE96C5 /* Refrigerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E621F4C054300DE96C5 /* Refrigerator.swift */; };
+		98227E651F4C058A00DE96C5 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E641F4C058A00DE96C5 /* Material.swift */; };
+		98227E671F4C125100DE96C5 /* RefrigeratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E661F4C125100DE96C5 /* RefrigeratorViewController.swift */; };
+		98227E691F4C1AD900DE96C5 /* MaterialSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E681F4C1AD900DE96C5 /* MaterialSearchViewController.swift */; };
+		98227E6B1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E6A1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift */; };
+		98227E6D1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */; };
+		98227E701F4D477800DE96C5 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E6E1F4D477800DE96C5 /* cart.png */; };
+		98227E711F4D477800DE96C5 /* fridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E6F1F4D477800DE96C5 /* fridge.png */; };
+		98227E881F4E63C600DE96C5 /* NSAttributedString +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E871F4E63C600DE96C5 /* NSAttributedString +.swift */; };
 		984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843151F33F3AF007AD753 /* AppDelegate.swift */; };
 		9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984843191F33F3B0007AD753 /* Main.storyboard */; settings = {ASSET_TAGS = (Main, ); }; };
 		9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9848431C1F33F3B0007AD753 /* Assets.xcassets */; };
@@ -20,6 +33,11 @@
 		9848432B1F33F3B0007AD753 /* flingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9848432A1F33F3B0007AD753 /* flingTests.swift */; };
 		984843361F33F3B0007AD753 /* flingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843351F33F3B0007AD753 /* flingUITests.swift */; };
 		984843441F3C324D007AD753 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843431F3C324D007AD753 /* RecipeViewController.swift */; };
+		9865818C1F4D3C8900735847 /* RecipePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865818B1F4D3C8900735847 /* RecipePopUpViewController.swift */; };
+		9865818E1F4D44E600735847 /* RPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865818D1F4D44E600735847 /* RPTableViewCell.swift */; };
+		986581921F4E6B5C00735847 /* CRVHomeTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986581911F4E6B5C00735847 /* CRVHomeTopHeader.swift */; };
+		986581941F4E9DCB00735847 /* CRVHomeMidHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986581931F4E9DCB00735847 /* CRVHomeMidHeader.swift */; };
+		986581991F4F9F9B00735847 /* ProductFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */; };
 		98AD7C9C1F3ACA0000500BD9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */; };
 		98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */; };
 		98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C71F3A98B100E4EA96 /* Network.swift */; };
@@ -30,11 +48,16 @@
 		98AD7CAC1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */; };
 		98B1EAD11F45527A0016DEA9 /* SearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1EAD01F45527A0016DEA9 /* SearchList.swift */; };
 		98B1EAD31F455D140016DEA9 /* ProductSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1EAD21F455D140016DEA9 /* ProductSearchTableViewCell.swift */; };
+		98B1EAD51F4AB8380016DEA9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1EAD41F4AB8380016DEA9 /* Storage.swift */; };
 		98E6F3851F3C64A3007E3441 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */; };
 		98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */; };
 		98F821F21F3D695A006B0288 /* main_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F821F11F3D695A006B0288 /* main_image.png */; };
 		98F821F41F3D6BB3006B0288 /* search_icon1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F821F31F3D6BB3006B0288 /* search_icon1x.png */; };
 		98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F821F61F3D7347006B0288 /* CheckboxButton.swift */; };
+		98FDCEC91F4EB3F500F193E4 /* KeywordHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */; };
+		98FDCECB1F4EC67900F193E4 /* String +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCECA1F4EC67900F193E4 /* String +.swift */; };
+		98FDCEFA1F4FA91E00F193E4 /* ProductFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */; };
+		98FDCEFE1F4FB4D800F193E4 /* addbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCEFD1F4FB4D800F193E4 /* addbutton.png */; };
 		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
 		BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +93,20 @@
 		98227E411F44366900DE96C5 /* ProductSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchViewController.swift; sourceTree = "<group>"; };
 		98227E461F4675E300DE96C5 /* fling_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fling_logo_white.png; sourceTree = "<group>"; };
 		98227E481F4677A400DE96C5 /* logo_rabbit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_rabbit.png; sourceTree = "<group>"; };
+		98227E4E1F4AA1AF00DE96C5 /* Decimal +.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decimal +.swift"; sourceTree = "<group>"; };
+		98227E501F4AA93900DE96C5 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		98227E541F4AAF0200DE96C5 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		98227E621F4C054300DE96C5 /* Refrigerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refrigerator.swift; sourceTree = "<group>"; };
+		98227E641F4C058A00DE96C5 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		98227E661F4C125100DE96C5 /* RefrigeratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefrigeratorViewController.swift; sourceTree = "<group>"; };
+		98227E681F4C1AD900DE96C5 /* MaterialSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialSearchViewController.swift; sourceTree = "<group>"; };
+		98227E6A1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialSearchTableViewCell.swift; sourceTree = "<group>"; };
+		98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefrigeratorTableViewCell.swift; sourceTree = "<group>"; };
+		98227E6E1F4D477800DE96C5 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart.png; sourceTree = "<group>"; };
+		98227E6F1F4D477800DE96C5 /* fridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fridge.png; sourceTree = "<group>"; };
+		98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductFilter.swift; sourceTree = "<group>"; };
+		98227E871F4E63C600DE96C5 /* NSAttributedString +.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString +.swift"; sourceTree = "<group>"; };
 		984843121F33F3AF007AD753 /* fling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984843151F33F3AF007AD753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9848431A1F33F3B0007AD753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +120,10 @@
 		984843351F33F3B0007AD753 /* flingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flingUITests.swift; sourceTree = "<group>"; };
 		984843371F33F3B0007AD753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		984843431F3C324D007AD753 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		9865818B1F4D3C8900735847 /* RecipePopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipePopUpViewController.swift; sourceTree = "<group>"; };
+		9865818D1F4D44E600735847 /* RPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPTableViewCell.swift; sourceTree = "<group>"; };
+		986581911F4E6B5C00735847 /* CRVHomeTopHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRVHomeTopHeader.swift; sourceTree = "<group>"; };
+		986581931F4E9DCB00735847 /* CRVHomeMidHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRVHomeMidHeader.swift; sourceTree = "<group>"; };
 		98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = fling/HomeViewController.swift; sourceTree = "<group>"; };
 		98AD7CA71F3AEB0D00500BD9 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../logo.png; sourceTree = "<group>"; };
@@ -90,11 +131,15 @@
 		98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		98B1EAD01F45527A0016DEA9 /* SearchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchList.swift; sourceTree = "<group>"; };
 		98B1EAD21F455D140016DEA9 /* ProductSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchTableViewCell.swift; sourceTree = "<group>"; };
+		98B1EAD41F4AB8380016DEA9 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		98F821F11F3D695A006B0288 /* main_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_image.png; sourceTree = "<group>"; };
 		98F821F31F3D6BB3006B0288 /* search_icon1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_icon1x.png; sourceTree = "<group>"; };
 		98F821F61F3D7347006B0288 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordHighlight.swift; sourceTree = "<group>"; };
+		98FDCECA1F4EC67900F193E4 /* String +.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String +.swift"; sourceTree = "<group>"; };
+		98FDCEFD1F4FB4D800F193E4 /* addbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addbutton.png; sourceTree = "<group>"; };
 		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -144,11 +189,14 @@
 		980749C11F398AF700E4EA96 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				98FDCEFD1F4FB4D800F193E4 /* addbutton.png */,
 				98227E481F4677A400DE96C5 /* logo_rabbit.png */,
 				98227E461F4675E300DE96C5 /* fling_logo_white.png */,
 				98F821F11F3D695A006B0288 /* main_image.png */,
 				98F821F31F3D6BB3006B0288 /* search_icon1x.png */,
 				98AD7CA71F3AEB0D00500BD9 /* logo.png */,
+				98227E6E1F4D477800DE96C5 /* cart.png */,
+				98227E6F1F4D477800DE96C5 /* fridge.png */,
 			);
 			name = images;
 			path = flingTests;
@@ -161,6 +209,15 @@
 				980749C51F3A98A200E4EA96 /* Product.swift */,
 				980749C71F3A98B100E4EA96 /* Network.swift */,
 				98B1EAD01F45527A0016DEA9 /* SearchList.swift */,
+				98227E501F4AA93900DE96C5 /* Cart.swift */,
+				98FDCECA1F4EC67900F193E4 /* String +.swift */,
+				98227E4E1F4AA1AF00DE96C5 /* Decimal +.swift */,
+				98B1EAD41F4AB8380016DEA9 /* Storage.swift */,
+				98227E621F4C054300DE96C5 /* Refrigerator.swift */,
+				98227E641F4C058A00DE96C5 /* Material.swift */,
+				98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */,
+				98227E871F4E63C600DE96C5 /* NSAttributedString +.swift */,
+				98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -225,12 +282,22 @@
 			isa = PBXGroup;
 			children = (
 				98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */,
+				98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */,
+				986581911F4E6B5C00735847 /* CRVHomeTopHeader.swift */,
+				986581931F4E9DCB00735847 /* CRVHomeMidHeader.swift */,
 				984843431F3C324D007AD753 /* RecipeViewController.swift */,
 				98E6F38C1F3D4C65007E3441 /* ProductViewController.swift */,
 				98227E411F44366900DE96C5 /* ProductSearchViewController.swift */,
 				98B1EAD21F455D140016DEA9 /* ProductSearchTableViewCell.swift */,
-				98AD7CAB1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift */,
 				98E6F3841F3C64A3007E3441 /* RecipeTableViewCell.swift */,
+				98227E541F4AAF0200DE96C5 /* CartViewController.swift */,
+				98227E561F4AB3C500DE96C5 /* CartTableViewCell.swift */,
+				98227E661F4C125100DE96C5 /* RefrigeratorViewController.swift */,
+				98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */,
+				98227E681F4C1AD900DE96C5 /* MaterialSearchViewController.swift */,
+				98227E6A1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift */,
+				9865818B1F4D3C8900735847 /* RecipePopUpViewController.swift */,
+				9865818D1F4D44E600735847 /* RPTableViewCell.swift */,
 			);
 			name = "view controller";
 			sourceTree = "<group>";
@@ -376,9 +443,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98227E711F4D477800DE96C5 /* fridge.png in Resources */,
 				98AD7CA81F3AEB0D00500BD9 /* logo.png in Resources */,
 				98F821F41F3D6BB3006B0288 /* search_icon1x.png in Resources */,
+				98227E701F4D477800DE96C5 /* cart.png in Resources */,
 				98227E471F4675E300DE96C5 /* fling_logo_white.png in Resources */,
+				98FDCEFE1F4FB4D800F193E4 /* addbutton.png in Resources */,
 				98F821F21F3D695A006B0288 /* main_image.png in Resources */,
 				984843201F33F3B0007AD753 /* LaunchScreen.storyboard in Resources */,
 				9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */,
@@ -506,7 +576,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D4D0BE6E3982E5A03BBE0E93 /* [CP] Embed Pods Frameworks */ = {
@@ -546,19 +616,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				986581941F4E9DCB00735847 /* CRVHomeMidHeader.swift in Sources */,
 				98B1EAD31F455D140016DEA9 /* ProductSearchTableViewCell.swift in Sources */,
 				98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */,
 				984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */,
+				98FDCEC91F4EB3F500F193E4 /* KeywordHighlight.swift in Sources */,
+				98227E881F4E63C600DE96C5 /* NSAttributedString +.swift in Sources */,
+				98227E671F4C125100DE96C5 /* RefrigeratorViewController.swift in Sources */,
 				98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */,
+				98227E631F4C054300DE96C5 /* Refrigerator.swift in Sources */,
+				98227E6D1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift in Sources */,
 				984843441F3C324D007AD753 /* RecipeViewController.swift in Sources */,
+				98227E651F4C058A00DE96C5 /* Material.swift in Sources */,
+				98FDCECB1F4EC67900F193E4 /* String +.swift in Sources */,
 				98AD7CA21F3ACCBD00500BD9 /* Product.swift in Sources */,
 				98B1EAD11F45527A0016DEA9 /* SearchList.swift in Sources */,
 				98227E421F44366900DE96C5 /* ProductSearchViewController.swift in Sources */,
+				98227E571F4AB3C500DE96C5 /* CartTableViewCell.swift in Sources */,
 				98AD7CAC1F3AF3F000500BD9 /* HomeRecipeCollectionViewCell.swift in Sources */,
 				98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */,
+				986581921F4E6B5C00735847 /* CRVHomeTopHeader.swift in Sources */,
+				98227E4F1F4AA1AF00DE96C5 /* Decimal +.swift in Sources */,
+				98FDCEFA1F4FA91E00F193E4 /* ProductFilter.swift in Sources */,
+				98227E691F4C1AD900DE96C5 /* MaterialSearchViewController.swift in Sources */,
 				98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */,
+				98227E551F4AAF0200DE96C5 /* CartViewController.swift in Sources */,
 				98AD7CA11F3ACCBA00500BD9 /* Recipe.swift in Sources */,
+				98227E6B1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift in Sources */,
+				98B1EAD51F4AB8380016DEA9 /* Storage.swift in Sources */,
 				98E6F3851F3C64A3007E3441 /* RecipeTableViewCell.swift in Sources */,
+				9865818E1F4D44E600735847 /* RPTableViewCell.swift in Sources */,
+				98227E511F4AA93900DE96C5 /* Cart.swift in Sources */,
+				9865818C1F4D3C8900735847 /* RecipePopUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +808,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -733,6 +823,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

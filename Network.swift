@@ -15,11 +15,13 @@ class Network {
     private let mainUrl = "http://52.79.119.41/recipes/"
     private let productUrl = "http://52.79.119.41/get_products/"
     private let searchProductUrl = "http://52.79.119.41/search_product/"
+    private let searchMaterialUrl = "http://52.79.119.41/search_material/"
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
     private let failNetwork = Notification.Name.init(rawValue: "failNetwork")
     private let searchProduct = Notification.Name.init("searchProduct")
     private let getProduct = Notification.Name.init("getProduct")
+    private let searchMaterial = Notification.Name.init("searchMaterial")
 
     func getFlingRecipe() {
         Alamofire.request(mainUrl).responseJSON { response in
@@ -69,7 +71,9 @@ class Network {
                 Alamofire.request(productUrl).responseJSON(completionHandler: { response in
                     if let products = response.result.value as? [[String: Any]] {
                         products.forEach({ object in
-                            recipe?.add(product: Product.init(data: object)!, number: 1)
+                            if let product = Product.init(data: object) {
+                            recipe?.add(product: product, number: 1)
+                            }
                         })
                         NotificationCenter.default.post(name: self.flingRecipe,
                                                         object: self, userInfo: ["data": recipe ?? ""])
@@ -102,6 +106,17 @@ class Network {
             } else {
                 NotificationCenter.default.post(name: self.failNetwork,
                                                 object: self, userInfo: [:])
+            }
+        }
+    }
+
+    func searchMaterialsWith(keyword: String) {
+        let parameters: Parameters = ["keyword": keyword]
+        Alamofire.request(searchMaterialUrl, method: .post, parameters: parameters).responseJSON { response in
+            if let data = response.result.value as? [[String: Any]] {
+                let searchList = SearchList.init(data: data)
+                NotificationCenter.default.post(name: self.searchMaterial, object: self, userInfo: ["data": searchList])
+            } else {
             }
         }
     }

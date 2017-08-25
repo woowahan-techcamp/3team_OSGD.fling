@@ -1,50 +1,43 @@
 //
-//  ProductSearchViewController.swift
+//  MaterialSearchViewController.swift
 //  fling
 //
-//  Created by woowabrothers on 2017. 8. 16..
+//  Created by woowabrothers on 2017. 8. 22..
 //  Copyright © 2017년 osgd. All rights reserved.
 //
 
 import UIKit
 
-class ProductSearchViewController: UIViewController, UISearchBarDelegate {
+class MaterialSearchViewController: UIViewController, UISearchBarDelegate {
 
-    let searchProduct = Notification.Name.init("searchProduct")
-    let getProduct = Notification.Name.init("getProduct")
+    let searchMaterial = Notification.Name.init("searchMaterial")
     var searchList = SearchList.init()
     let network = Network.init()
-    let keywordHighlight = KeywordHighlight()
     var keyword = ""
+    let keywordHighlight = KeywordHighlight()
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTable: UITableView!
     @IBAction func doneButton(_ sender: Any) {
         if searchTable.indexPathForSelectedRow != nil {
             let index = searchTable.indexPathForSelectedRow!.row
-            self.network.getProductWith(productId: self.searchList.result[index].id)
+            let selected = self.searchList.result[index]
+            let material = Material.init(mid: selected.id, name: selected.name)
+            self.performSegue(withIdentifier: "unwindToRefrigerator", sender: material)
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-
         NotificationCenter.default.addObserver(self, selector: #selector(drawSearchList),
-                                               name: searchProduct, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(searchToProduct),
-                                               name: getProduct, object: nil)
+                                               name: searchMaterial, object: nil)
     }
 
     func drawSearchList(noti: Notification) {
         if let data = noti.userInfo?["data"] as? SearchList {
             self.searchList = data
-            self.searchTable.reloadData()}
-    }
-
-    func searchToProduct(noti: Notification) {
-        if let data = noti.userInfo?["data"] as? Product {
-            self.performSegue(withIdentifier: "ProductSearchToProduct", sender: data)
+            self.searchTable.reloadData()
         }
     }
 
@@ -55,32 +48,28 @@ class ProductSearchViewController: UIViewController, UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count != 0 {
             keyword = searchText
-            self.network.searchProductsWith(keyword: searchText)
+            self.network.searchMaterialsWith(keyword: searchText)
         }
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        let searchText = searchBar.text
-//        if searchText != nil && searchText?.characters.count != 0 {
-//            self.network.searchProductsWith(keyword: searchText!)
-//        }
         self.view.endEditing(true)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-        if segue.identifier == "ProductSearchToProduct" {
-            guard let secondViewController = segue.destination as? ProductViewController else {
+        if segue.identifier == "unwindToRefrigerator" {
+            guard let secondViewController = segue.destination as? RefrigeratorViewController else {
                 return
             }
-            guard let product = sender as? Product else {
+            guard let material = sender as? Material else {
                 return
             }
-            secondViewController.data = (product: product, number: 1, on: true)
+            secondViewController.data = material
         }
     }
 }
 
-extension ProductSearchViewController: UITableViewDelegate, UITableViewDataSource {
+extension MaterialSearchViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -92,12 +81,13 @@ extension ProductSearchViewController: UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //swiftlint:disable line_length
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductSearchTableViewCell else {
-                return ProductSearchTableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "materialCell", for: indexPath) as? MaterialSearchTableViewCell
+        else {
+            return MaterialSearchTableViewCell()
         }
 
         let result = self.searchList.result[indexPath.row].name
-        cell.productLabel.attributedText = keywordHighlight.addBold(keyword: keyword, text: result)
+        cell.materialLabel.attributedText = keywordHighlight.addBold(keyword: keyword, text: result)
 
         return cell
     }

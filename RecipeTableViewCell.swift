@@ -27,6 +27,9 @@ class RecipeTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         //checkbox
+        self.checkbox.circular = true
+        self.checkbox.containerColor = UIColor(red:1.00, green:0.72, blue:0.26, alpha:1.0)
+        self.checkbox.checkColor = UIColor(red:1.00, green:0.72, blue:0.26, alpha:1.0)
         self.contentView.addSubview(checkbox)
         self.checkbox.addTarget(self, action: #selector(didToggleCheckboxButton), for: .touchUpInside)
 
@@ -47,7 +50,6 @@ class RecipeTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         if selected {
             self.disclosureHandler()
         }
