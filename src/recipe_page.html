@@ -66,19 +66,6 @@
                 </div>
             </div>
         </script>
-        <script type="Template" id="search_bar_template">
-            {{#each this}}
-                <div class="search_bar_list">
-                    <div class="search_bar_img" style="background-image: url({{image}})"></div>
-                    <div class="product_info">
-                        <div>{{name}}</div>
-                        {{#if weight}}<span>{{weight}}당</span>{{/if}}
-                        <span>{{price}}원</span>
-                    </div>
-                    <button class="search_bar_button" value="{{id}}">물품추가</button>
-                </div>
-            {{/each}}
-        </script>
     </head>
     <body>
         <div class="wrap">

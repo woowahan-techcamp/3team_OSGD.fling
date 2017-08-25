@@ -4,8 +4,20 @@ Fling.Data = {
     get apiRecipes() {
         return Fling.Data.apiBaseURL + 'recipes';
     },
+    get apiSearchRecipes() {
+        return Fling.Data.apiBaseURL + 'search_recipe';
+    },
     get apiSeason() {
         return Fling.Data.apiBaseURL + 'season';
+    },
+    get apiProducts() {
+        return Fling.Data.apiBaseURL + 'products';
+    },
+    get apiGetProducts() {
+        return Fling.Data.apiBaseURL + 'get_products';
+    },
+    get apiSearchProducts() {
+        return Fling.Data.apiBaseURL + 'search_product';
     }
 }
 Fling.Storage = {
@@ -56,8 +68,16 @@ Fling.Storage = {
 
 
 Fling.API = {
-    request: function(method, url, callback) {
-        XHR.request(method, url, (e) => {
+    request: function(method, url, params, callback) {
+        // params를 생략 가능하게 함
+        if (typeof params === 'function' && typeof callback === 'undefined') {
+            callback = params;
+            params = '';
+        }
+
+
+        const xhrObj = new XMLHttpRequest();
+        xhrObj.addEventListener('load', (e) => {
             let data = null;
             try {
                 data = JSON.parse(e.target.responseText);
@@ -67,12 +87,17 @@ Fling.API = {
             }
             callback(data);
         });
+        if (params.length > 0) {
+            url = url + ((params[0] !== '/') ? '?' : '') + params;
+        }
+        xhrObj.open(method, url);
+        xhrObj.send();
     },
-    get: function(url, callback) {
-        return this.request('get', url, callback);
+    get: function(url, params, callback) {
+        return this.request('get', url, params, callback);
     },
-    post: function(url, callback) {
-        return this.request('post', url, callback);
+    post: function(url, params, callback) {
+        return this.request('post', url, params, callback);
     }
 }
 
@@ -82,7 +107,8 @@ Fling.Template = {
     sectionSource: '<section class="main_section content {{id}}" id="{{id}}"><div class="section_title">{{{title}}}<div class="separate"></div></div>{{{view.render}}}</section>',
     cartListSource: '{{#each this}}<div class="cart_list" data-id="{{id}}" value="{{material_id}}"><div class="left"> <input type="checkbox" class="recipe_checkbox" id="check1" checked> <label for="check1"></label><div class="product_img" style="background-image: url({{image}})"></div><div class="product_info"><div class="name">{{name}}</div><div class="origin">국내산</div></div></div><div class="right"><div class="volume_box"> <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g,"");"><div class="button"> <button class="up_button"></button> <button class="down_button"></button></div></div><div class="price_info"><div class="total_price">{{price}}원</div> {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}} <input type="hidden" id="per_price" value="{{price}}"></div></div></div> {{/each}}',
     cartListSoloSource: '<div class="cart_list added" data-id="{{id}}"><div class="left"> <input type="checkbox" class="recipe_checkbox" id="check1" checked> <label for="check1"></label><div class="product_img" style="background-image: url({{image}})"></div><div class="product_info"><div class="name">{{name}}</div><div class="origin">국내산</div></div></div><div class="right"><div class="volume_box"> <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g,"");"><div class="button"> <button class="up_button"></button> <button class="down_button"></button></div></div><div class="price_info"><div class="total_price">{{price}}원</div> {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}} <input type="hidden" id="per_price" value="{{price}}"></div></div></div>',
-    productSearchListSource: '{{#each this}}<div class="search_bar_list"><div class="search_bar_img" style="background-image: url({{image}})"></div><div class="product_info"><div>{{name}}</div> {{#if weight}}<span>{{weight}}당</span>{{/if}} <span>{{price}}원</span></div> <button class="search_bar_button" value="{{id}}">물품추가</button></div> {{/each}}'
+    mainSearchBarSource: '{{#each this}}<div class="search_bar_list"><div class="search_bar_img" style="background-image: url({{image}})"></div><div class="product_info"><div>{{{subtitle}}}</div> <span>{{{title}}}</span></div> <button class="search_bar_button" onclick="location.href=\'recipe_page.html?query_url={{url}}\'">장보기</button></div> {{/each}}',
+    recipePageSearchBarSource: '{{#each this}}<div class="search_bar_list"><div class="search_bar_img" style="background-image: url({{image}})"></div><div class="product_info"><div>{{{name}}}</div> {{#if weight}}<span>{{weight}}당</span>{{/if}} <span>{{price}}원</span></div> <button class="search_bar_button" value="{{id}}">물품추가</button></div> {{/each}}'
 }
 Fling.View = class View {
     constructor() {
