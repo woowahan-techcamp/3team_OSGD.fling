@@ -166,7 +166,6 @@ function searchHandler(e) {
                 if (productInfo.length < 50) {
                     productInfo.push(data);
                     const theTemplate = Handlebars.compile(Fling.Template.recipePageSearchBarSource);
-                    console.info(productInfo);
                     productInfo.forEach(item => {
                         item._name = item.name.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
                     });
