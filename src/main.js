@@ -75,15 +75,16 @@ function searchHandler(e) {
         return;
     }
 
-    XHR.post(`http://52.79.119.41/search_recipe?keyword=${searchQuery}`, (e) => {
-        let searchData = JSON.parse(e.target.responseText);
+    Fling.API.post(Fling.Data.apiSearchRecipes, `keyword=${searchQuery}`, (searchData) => {
         document.querySelector(".search_bar").style.display = "block";  
 
-        const theTemplateScript = document.querySelector("#search_item_template").innerHTML;
-        const theTemplate = Handlebars.compile(theTemplateScript);
+        const theTemplate = Handlebars.compile(Fling.Template.mainSearchBarSource);
+        searchData.forEach(item => {
+            item.title = item.title.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
+            item.subtitle = item.subtitle.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
+        });
         const theCompiledHtml = theTemplate(searchData);
         searchBar.innerHTML = theCompiledHtml;
-               
     });
 } 
 

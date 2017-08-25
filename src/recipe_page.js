@@ -1,17 +1,9 @@
 document.addEventListener('DOMContentLoaded', (e) => {
     let url = Utils.getParameterByName('query_url');
-    XHR.post(`http://52.79.119.41/recipes?url=${url}`, (e) => {
-        let jsonData;
-        try {
-            jsonData = JSON.parse(e.target.responseText);
-            XHR.get(`http://52.79.119.41/get_products/${jsonData.id}`, (e) => {
-                let data = JSON.parse(e.target.responseText);
-                template(data);
-            })
-        }
-        catch (e) {
-            // exception
-        }
+    Fling.API.post(Fling.Data.apiRecipes, `url=${url}`, (jsonData) => {
+        Fling.API.get(Fling.Data.apiGetProducts, `/${jsonData.id}`, (data) => {
+            template(data);
+        })
         
         document.querySelector('.recipe_detail').dataId = jsonData.id;
         document.querySelector('.recipe_detail .title').innerText = jsonData.title;
@@ -165,19 +157,19 @@ function searchHandler(e) {
         return;
     }
 
-    XHR.post(`http://52.79.119.41/search_product?keyword=${searchQuery}`, (e) => {
-        let searchData = JSON.parse(e.target.responseText);
+    Fling.API.post(Fling.Data.apiSearchProducts, `keyword=${searchQuery}`, (searchData) => {
         document.querySelector(".search_bar").style.display = "block";  
 
         searchData.forEach((e) => {
-            XHR.get(`http://52.79.119.41/products/${e.id}`, (e) => {
-                let data = JSON.parse(e.target.responseText);
-                
+            Fling.API.get(Fling.Data.apiProducts, `/${e.id}`, (data) => {
                 // productInfo 갯수 제한. 50개까지만 상품을 찾는다
                 if (productInfo.length < 50) {
                     productInfo.push(data);
-                    const theTemplateScript = document.querySelector("#search_bar_template").innerHTML;
-                    const theTemplate = Handlebars.compile(theTemplateScript);
+                    const theTemplate = Handlebars.compile(Fling.Template.recipePageSearchBarSource);
+                    console.info(productInfo);
+                    productInfo.forEach(item => {
+                        item.name = item.name.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
+                    });
                     const theCompiledHtml = theTemplate(productInfo);
                     searchBar.innerHTML = theCompiledHtml;
                 }
@@ -189,9 +181,7 @@ function searchHandler(e) {
 function Addproduct() {
     document.querySelector(".search_bar").addEventListener("click", (e) => {
         if(e.target.className == "search_bar_button") {
-            XHR.get(`http://52.79.119.41/products/${e.target.value}`, (e) => {
-                let product = JSON.parse(e.target.responseText);
-                
+            Fling.API.get(Fling.Data.apiProducts, `/${e.target.value}`, (product) => {
                 const theTemplateScript = document.querySelector("#cart_list_template_solo").innerHTML;
                 const theTemplate = Handlebars.compile(theTemplateScript);
                 const theCompiledHtml = theTemplate(product);

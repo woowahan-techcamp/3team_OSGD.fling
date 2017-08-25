@@ -337,3 +337,7 @@ footer.main_footer {
 .w300 {
     font-weight: 300;
 }
+
+.search_word {
+    color: red;
+}
