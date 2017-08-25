@@ -98,6 +98,9 @@ function uncheckMyRefrigeItem() {
     cartList.forEach((e) => {
         const materialId = e.getAttribute("value") * 1;
         
+        if (myRefrige === null)
+            return;
+            
         for (let i = 0; i < myRefrige.length; i++) {
             if (materialId == myRefrige[i].id) {
                 e.classList.add("unchecked");
