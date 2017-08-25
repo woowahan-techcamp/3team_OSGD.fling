@@ -25,7 +25,6 @@
 		98227E6D1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */; };
 		98227E701F4D477800DE96C5 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E6E1F4D477800DE96C5 /* cart.png */; };
 		98227E711F4D477800DE96C5 /* fridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E6F1F4D477800DE96C5 /* fridge.png */; };
-		98227E731F4D5F3D00DE96C5 /* ProductFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */; };
 		98227E881F4E63C600DE96C5 /* NSAttributedString +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E871F4E63C600DE96C5 /* NSAttributedString +.swift */; };
 		984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843151F33F3AF007AD753 /* AppDelegate.swift */; };
 		9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984843191F33F3B0007AD753 /* Main.storyboard */; settings = {ASSET_TAGS = (Main, ); }; };
@@ -56,6 +55,8 @@
 		98F821F71F3D7347006B0288 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F821F61F3D7347006B0288 /* CheckboxButton.swift */; };
 		98FDCEC91F4EB3F500F193E4 /* KeywordHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */; };
 		98FDCECB1F4EC67900F193E4 /* String +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCECA1F4EC67900F193E4 /* String +.swift */; };
+		98FDCEFA1F4FA91E00F193E4 /* ProductFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */; };
+		98FDCEFE1F4FB4D800F193E4 /* addbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCEFD1F4FB4D800F193E4 /* addbutton.png */; };
 		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
 		BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */; };
 /* End PBXBuildFile section */
@@ -137,6 +138,7 @@
 		98F821F61F3D7347006B0288 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordHighlight.swift; sourceTree = "<group>"; };
 		98FDCECA1F4EC67900F193E4 /* String +.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String +.swift"; sourceTree = "<group>"; };
+		98FDCEFD1F4FB4D800F193E4 /* addbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addbutton.png; sourceTree = "<group>"; };
 		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -186,6 +188,7 @@
 		980749C11F398AF700E4EA96 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				98FDCEFD1F4FB4D800F193E4 /* addbutton.png */,
 				98227E481F4677A400DE96C5 /* logo_rabbit.png */,
 				98227E461F4675E300DE96C5 /* fling_logo_white.png */,
 				98F821F11F3D695A006B0288 /* main_image.png */,
@@ -444,6 +447,7 @@
 				98F821F41F3D6BB3006B0288 /* search_icon1x.png in Resources */,
 				98227E701F4D477800DE96C5 /* cart.png in Resources */,
 				98227E471F4675E300DE96C5 /* fling_logo_white.png in Resources */,
+				98FDCEFE1F4FB4D800F193E4 /* addbutton.png in Resources */,
 				98F821F21F3D695A006B0288 /* main_image.png in Resources */,
 				984843201F33F3B0007AD753 /* LaunchScreen.storyboard in Resources */,
 				9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */,
@@ -632,6 +636,7 @@
 				98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */,
 				986581921F4E6B5C00735847 /* CRVHomeTopHeader.swift in Sources */,
 				98227E4F1F4AA1AF00DE96C5 /* Decimal +.swift in Sources */,
+				98FDCEFA1F4FA91E00F193E4 /* ProductFilter.swift in Sources */,
 				98227E691F4C1AD900DE96C5 /* MaterialSearchViewController.swift in Sources */,
 				98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */,
 				98227E551F4AAF0200DE96C5 /* CartViewController.swift in Sources */,

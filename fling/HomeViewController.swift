@@ -82,7 +82,7 @@ class HomeViewController: UIViewController {
     }
 
     func keyboardWillShow() {
-        urlWarningLabel.isHidden = true
+//        urlWarningLabel.isHidden = true
     }
 
     func dismissKeyboard() {
