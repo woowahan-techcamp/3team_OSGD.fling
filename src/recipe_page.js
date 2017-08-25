@@ -191,7 +191,7 @@ function Addproduct() {
         if(e.target.className == "search_bar_button") {
             XHR.get(`http://52.79.119.41/products/${e.target.value}`, (e) => {
                 let product = JSON.parse(e.target.responseText);
-                
+                ㄴ
                 const theTemplateScript = document.querySelector("#cart_list_template_solo").innerHTML;
                 const theTemplate = Handlebars.compile(theTemplateScript);
                 const theCompiledHtml = theTemplate(product);
