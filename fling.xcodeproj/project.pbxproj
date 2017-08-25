@@ -25,7 +25,6 @@
 		98227E6D1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E6C1F4C1EAB00DE96C5 /* RefrigeratorTableViewCell.swift */; };
 		98227E701F4D477800DE96C5 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E6E1F4D477800DE96C5 /* cart.png */; };
 		98227E711F4D477800DE96C5 /* fridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 98227E6F1F4D477800DE96C5 /* fridge.png */; };
-		98227E731F4D5F3D00DE96C5 /* ProductFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */; };
 		98227E881F4E63C600DE96C5 /* NSAttributedString +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E871F4E63C600DE96C5 /* NSAttributedString +.swift */; };
 		984843161F33F3AF007AD753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984843151F33F3AF007AD753 /* AppDelegate.swift */; };
 		9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984843191F33F3B0007AD753 /* Main.storyboard */; settings = {ASSET_TAGS = (Main, ); }; };
@@ -38,6 +37,7 @@
 		9865818E1F4D44E600735847 /* RPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865818D1F4D44E600735847 /* RPTableViewCell.swift */; };
 		986581921F4E6B5C00735847 /* CRVHomeTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986581911F4E6B5C00735847 /* CRVHomeTopHeader.swift */; };
 		986581941F4E9DCB00735847 /* CRVHomeMidHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986581931F4E9DCB00735847 /* CRVHomeMidHeader.swift */; };
+		986581991F4F9F9B00735847 /* ProductFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */; };
 		98AD7C9C1F3ACA0000500BD9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */; };
 		98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */; };
 		98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C71F3A98B100E4EA96 /* Network.swift */; };
@@ -632,6 +632,7 @@
 				98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */,
 				986581921F4E6B5C00735847 /* CRVHomeTopHeader.swift in Sources */,
 				98227E4F1F4AA1AF00DE96C5 /* Decimal +.swift in Sources */,
+				986581991F4F9F9B00735847 /* ProductFilter.swift in Sources */,
 				98227E691F4C1AD900DE96C5 /* MaterialSearchViewController.swift in Sources */,
 				98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */,
 				98227E551F4AAF0200DE96C5 /* CartViewController.swift in Sources */,
