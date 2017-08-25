@@ -80,8 +80,8 @@ function searchHandler(e) {
 
         const theTemplate = Handlebars.compile(Fling.Template.mainSearchBarSource);
         searchData.forEach(item => {
-            item.title = item.title.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
-            item.subtitle = item.subtitle.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
+            item._title = item.title.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
+            item._subtitle = item.subtitle.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
         });
         const theCompiledHtml = theTemplate(searchData);
         searchBar.innerHTML = theCompiledHtml;

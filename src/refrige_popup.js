@@ -59,7 +59,7 @@ function refrigeSearchHandler(e) {
         const theTemplate = Handlebars.compile(theTemplateScript);
 
         searchData.forEach(item => {
-            item.name = item.name.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
+            item._name = item.name.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
         });
 
         const theCompiledHtml = theTemplate(searchData);

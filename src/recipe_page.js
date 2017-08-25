@@ -168,7 +168,7 @@ function searchHandler(e) {
                     const theTemplate = Handlebars.compile(Fling.Template.recipePageSearchBarSource);
                     console.info(productInfo);
                     productInfo.forEach(item => {
-                        item.name = item.name.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
+                        item._name = item.name.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
                     });
                     const theCompiledHtml = theTemplate(productInfo);
                     searchBar.innerHTML = theCompiledHtml;
