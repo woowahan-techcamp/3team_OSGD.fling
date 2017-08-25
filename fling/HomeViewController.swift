@@ -62,7 +62,6 @@ class HomeViewController: UIViewController {
         sampleRecipeCollection.register(CRVHomeTopHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader")
         sampleRecipeCollection.register(CRVHomeMidHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader")
 
-        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,7 +75,7 @@ class HomeViewController: UIViewController {
     func keyboardWillShow() {
         //urlWarningLabel.isHidden = true
     }
- 
+
     func dismissKeyboard() {
         homeView.endEditing(true)
     }

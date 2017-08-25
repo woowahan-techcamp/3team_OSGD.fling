@@ -150,6 +150,9 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
             let productCell = searchRecipe.products[indexPath.row]
 
             cell.checkboxHandler = { () -> Void in
+                cell.productLabel.textColor = (cell.checkbox.on) ? UIColor.black : UIColor.gray
+                cell.priceLabel.textColor = (cell.checkbox.on) ? UIColor.gray : UIColor.lightGray
+                cell.eaLabel.textColor = (cell.checkbox.on) ? UIColor.gray : UIColor.lightGray
                 self.searchRecipe.toggleCheck(product: productCell.product)
             }
 
@@ -169,7 +172,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.checkbox.isHidden = true
 
             let addButton = UIImageView.init(frame: CGRect(x: 10, y: 15, width: 20, height: 20))
-            addButton.image = UIImage.init(named: "logo.png")
+            addButton.image = UIImage.init(named: "addbutton.png")
             cell.addSubview(addButton)
 
             cell.productLabel.text = "추가하기"
@@ -180,5 +183,4 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-
 }

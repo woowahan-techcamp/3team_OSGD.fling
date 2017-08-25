@@ -322,35 +322,58 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iwe-hP-XIW" userLabel="Bottom Button">
+                                <rect key="frame" x="0.0" y="617" width="375.1223878778236" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="M15-eU-sOh">
+                                        <rect key="frame" x="187" y="0.0" width="188" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal">
+                                            <string key="title">
+
+장바구니</string>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cartButtonTouched:" destination="nM8-7V-YSK" eventType="touchUpInside" id="Jba-mn-k74"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-TH-Qj3">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal">
+                                            <string key="title">
+
+바로 주문하기</string>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="cdu-hR-3Cf" kind="show" id="Yah-lE-g0L"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cart.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nbr-iu-tmO">
+                                        <rect key="frame" x="273" y="8" width="16" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.71764705880000002" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="총액" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OC9-px-A8S">
-                                <rect key="frame" x="0.0" y="581" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="577" width="375" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYb-HU-UD6">
-                                <rect key="frame" x="44" y="617" width="82" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="바로 주문하기"/>
-                                <connections>
-                                    <segue destination="cdu-hR-3Cf" kind="show" id="DT1-wf-wUI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="poc-1A-jUU">
-                                <rect key="frame" x="254" y="617" width="56" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="장바구니"/>
-                                <connections>
-                                    <action selector="cartButtonTouched:" destination="nM8-7V-YSK" eventType="touchUpInside" id="O7i-gV-qwr"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="레시피" id="97o-yX-gUa"/>
                     <connections>
-                        <outlet property="cartButton" destination="poc-1A-jUU" id="Poi-di-nYU"/>
+                        <outlet property="cartButton" destination="M15-eU-sOh" id="dnG-JV-B6C"/>
                         <outlet property="productTable" destination="6aA-aY-yFw" id="DWe-DQ-D5q"/>
                         <outlet property="recipeImage" destination="s6l-DD-ncZ" id="T0N-g9-iCC"/>
                         <outlet property="recipeMissed" destination="Dai-XD-q1w" id="SBC-5t-hfL"/>
@@ -882,9 +905,9 @@
         <image name="fridge.png" width="16" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZXJ-sD-cUC"/>
-        <segue reference="3KA-uK-DyB"/>
-        <segue reference="4cY-xg-jc0"/>
+        <segue reference="Nxj-bu-BRj"/>
+        <segue reference="3T6-s5-SBO"/>
+        <segue reference="Yah-lE-g0L"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.71764705882352942" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
