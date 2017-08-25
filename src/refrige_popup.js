@@ -72,7 +72,7 @@ function refrigeSearchHandler(e) {
 function addRemoveHandler(e) {   
     let myRefrige = JSON.parse(window.localStorage.getItem("myRefrige"));
     const id = e.target.parentElement.getAttribute("value") * 1;
-    const name = e.target.previousElementSibling.innerHTML;
+    const name = e.target.previousElementSibling.dataset.name;
 
     if (e.target.className == "add_material_btn") {
         let obj = {};
