@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // getParameterByName 함수가 공백을 +로 바꿈
     var data = Utils.getParameterByName('data').replace(/ /g, '+');
     data = JSON.parse(Utils.decodeBase64(data));
-    console.info(data);
     modifyData(data);
     document.querySelector('.header_box .circle_img').style.backgroundImage = data.recipeImg;
     document.querySelector('.header_box .recipe_site_link a').href = data.recipeUrl;
@@ -31,10 +30,6 @@ function modifyData(data) {
         const number = e.bundle.match(regex); 
         //debugger;
         e.bundle =  ((number[0] * 1) * (e.volume * 1)) + e.bundle.replace(number, ""); 
-        e.price = numberWithCommas((e.price.replace(/,/g, "") * 1) * (e.volume * 1));
+        e.price = Utils.numberWithComma((e.price.replace(/,/g, "") * 1) * (e.volume * 1));
     })
-}
-
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

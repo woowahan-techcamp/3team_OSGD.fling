@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>플링 :: 나의 냉장고</title>
+        <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/refrige_popup.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+        <script src="./js/XHR.js"></script>
+        <script src="./js/Utils.js"></script>
+        <script src="./refrige_popup.js"></script>
+        <script type="refrige_template" id="refrige_template">
+            {{#each this}}
+                <div class="refrige_list_item">
+                    <div class="material_name">{{name}}</div>
+                    <button class="material_remove_btn"></button>
+                </div>
+            {{/each}}
+        </script>
+        <script type="refrige_template_solo" id="refrige_template_solo">
+            <div class="refrige_list_item">
+                <div class="material_name">{{name}}</div>
+                <button class="material_remove_btn"></button>
+            </div>
+        </script>
+        <script type="search_item_template" id="search_item_template">
+            {{#each this}}
+                <div class="search_item" value="{{id}}">
+                    <div class="material_name">{{name}}</div>
+                        {{#if this.isHavingMaterial}}
+                            <button class="remove_material_btn">냉장고에서 제거</button>
+                        {{else}}
+                            <button class="add_material_btn">냉장고에 추가</button>
+                        {{/if}}
+                </div>
+            {{/each}}
+        </script>
+    </head>
+    <body>
+        <div class="containter">
+            <section class="recipe_section recipe_product_search">
+                <div class="search_body">
+                    <div class="search_window">
+                        <input id="query_url" name="query_url" class="search_text" placeholder="냉장고에 추가하거나 삭제할 재료를 입력해주세요" autocomplete="off" type="text">
+                        <div class="search_icon_wrap">
+                            <button class="search_icon"></button>
+                        </div>
+                    </div>
+                    <div class="search_bar">
+                        
+                    </div>
+                </div>
+            </section>
+            <div class="refrige_content">
+                <div class="title"><span class="w300">나의&nbsp;</span>냉장고</div>
+                <div class="seperate"></div>
+                <div class="content_box">
+                    <div class="product_list_head">나의 냉장고 재료</div>
+                    <div class="refrige_list">
+                        
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

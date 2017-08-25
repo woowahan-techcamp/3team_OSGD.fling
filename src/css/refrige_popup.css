@@ -1,0 +1,151 @@
+.recipe_product_search {
+    height: 100px;
+    background: #25d4ce;
+}
+
+.recipe_section .section_title {
+    margin-top: 26px;
+    margin-bottom: 20px;
+    color: mintcream;
+    font-weight: 500;
+}
+
+.search_window {
+    border-bottom: 3px solid mintcream;
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.search_window ::-webkit-input-placeholder { 
+    color: mintcream;
+}
+
+.search_text {
+    width: 550px;
+    height: 40px;
+    font-size: 20pt;
+    background: transparent;
+    color: mintcream;
+    font-weight: 300;
+    border: 0;
+    outline: 0;
+}
+
+.search_icon_wrap {
+    float: right;
+}
+
+.search_icon {
+    background-image: url(../assets/img/refrige_white.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: Transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+.search_bar {
+    width: 600px;
+    height: 400px;
+    background-color: white;
+    border: 3px solid #25d4ce;
+    margin: -3px auto;
+    display: none;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.search_item {
+    height: 50px;
+    padding: 5px 40px 0px 40px;
+    border-bottom: 1px solid #25d4ce;
+}
+
+
+.add_material_btn, .remove_material_btn {
+    float: right;
+    width: 132px;
+    background: transparent;
+    border: 0px;
+    color: white;
+    height: 30px;
+    margin-top: 7px;
+    font-size: 14pt;
+}
+
+.add_material_btn {
+    background-color: #25D4CE;
+}
+
+.remove_material_btn {
+    background-color: #DC143C;
+}
+
+
+.refrige_content {
+    max-width: 1080px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    font-size: 30pt;
+    font-weight: 500;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.seperate {
+    height: 25px;
+    border-top: 1px solid #aaa;
+    font-size: 13pt;
+    width: 40px;
+    display: inline-block;
+    
+}
+
+.content_box {
+    max-width: 800px;
+    min-width: 445px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px 0 20px;
+}
+
+.product_list_head {
+    border-top: 2px solid #25d4ce;
+    border-bottom: 1px solid #25d4ce;
+    background: #EDFFFE;
+    padding: 5px 0 5px 0;
+    white-space: nowrap;
+    font-size: 13pt;
+    font-weight: 500;
+}
+
+
+
+.material_remove_btn {
+    float: right;
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 0px;
+    background-image: url("../assets/img/minus_btn.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.refrige_list_item {
+    height: 50px;
+    padding: 20px 60px 20px 150px;
+    border-bottom: 1px solid #25d4ce;
+}
+
+.material_name {
+    float: left;
+    font-size: 21pt;
+    font-weight: 300;
+}
