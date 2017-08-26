@@ -64,6 +64,9 @@ class RecipeViewController: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
+        self.recipeImage.layer.cornerRadius = CGFloat(roundf(Float(recipeImage.frame.size.width/2.0)));
+        self.recipeImage.layer.masksToBounds = true;
+        
         cart = appDelegate.cart
 
         productTable.tableFooterView = UIView()
@@ -147,15 +150,21 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
             let productCell = searchRecipe.products[indexPath.row]
 
             cell.checkboxHandler = { () -> Void in
+                cell.productLabel.textColor = (cell.checkbox.on) ? UIColor.black : UIColor.gray
+                cell.priceLabel.textColor = (cell.checkbox.on) ? UIColor.gray : UIColor.lightGray
+                cell.eaLabel.textColor = (cell.checkbox.on) ? UIColor.gray : UIColor.lightGray
                 self.searchRecipe.toggleCheck(product: productCell.product)
             }
 
             cell.checkbox.on = productCell.on
             cell.productLabel.text = productCell.product.name
+            cell.productLabel.textColor = (cell.checkbox.on) ? UIColor.black : UIColor.gray
             var price = productCell.product.price * Decimal.init(productCell.product.getBundleTuple(input: "").number)
             cell.priceLabel.text = price.addUnitTag(unit: " 원")
+            cell.priceLabel.textColor = (cell.checkbox.on) ? UIColor.gray : UIColor.lightGray
             let unit = " ".appending(productCell.product.getBundleTuple(input: "").unit)
             cell.eaLabel.text = productCell.number.description.appending(unit)
+            cell.eaLabel.textColor = (cell.checkbox.on) ? UIColor.gray : UIColor.lightGray
 
             cell.disclosureHandler = { () -> Void in
                 if self.searchRecipe.products[indexPath.row].on {
@@ -166,7 +175,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.checkbox.isHidden = true
 
             let addButton = UIImageView.init(frame: CGRect(x: 10, y: 15, width: 20, height: 20))
-            addButton.image = UIImage.init(named: "logo.png")
+            addButton.image = UIImage.init(named: "addbutton.png")
             cell.addSubview(addButton)
 
             cell.productLabel.text = "추가하기"
@@ -177,5 +186,4 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-
 }

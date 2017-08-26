@@ -13,7 +13,6 @@ class ProductViewController: UIViewController {
 
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
 
     @IBOutlet weak var priceLabel: UILabel!
 
@@ -76,7 +75,6 @@ class ProductViewController: UIViewController {
         productImage.af_setImage(withURL: URL(string: product.image)!)
 
         titleLabel.text = product.name
-        descriptionLabel.text = ""
 
         var price = product.price
         priceLabel.text = price.addUnitTag(unit: " 원")

@@ -24,8 +24,10 @@ class RecipePopUpViewController: UIViewController {
         UIView.animate(withDuration: 0.3, animations: {
             self.view.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
             self.view.alpha = 0
-        }) { (success:Bool) in
-            self.view.removeFromSuperview()
+        }) { (success: Bool) in
+            if success {
+                self.view.removeFromSuperview()
+            }
         }
     }
 
@@ -38,6 +40,7 @@ class RecipePopUpViewController: UIViewController {
         self.productTableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,7 +55,7 @@ class RecipePopUpViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
+
     func draw() {
         if self.recipe.title != "" {
             recipeTitleLabel.text = recipe.title
@@ -82,7 +85,7 @@ extension RecipePopUpViewController: UITableViewDelegate, UITableViewDataSource 
         }
         let selectedProduct = self.recipe.products[indexPath.row]
         var price = selectedProduct.product.price
-        cell.priceLabel.text = price.addPriceTag()
+        cell.priceLabel.text = price.addPriceTagWithoutTotal()
         cell.productLabel.text = selectedProduct.product.name
         let unit = " ".appending(selectedProduct.product.getBundleTuple(input: "").unit)
         cell.eaLabel.text = selectedProduct.number.description.appending(unit)

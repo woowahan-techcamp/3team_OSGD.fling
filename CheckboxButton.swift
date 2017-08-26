@@ -26,6 +26,12 @@ open class CheckboxButton: UIControl {
         }
     }
 
+    @IBInspectable open var uncheckColor: UIColor = UIColor.gray {
+        didSet {
+            colorLayers()
+        }
+    }
+    
     /// Line width for the bounding container of the check mark.
     /// Default value is 2.
     @IBInspectable open var containerLineWidth: CGFloat = 2.0 {
@@ -196,6 +202,7 @@ open class CheckboxButton: UIControl {
         } else {
             containerLayer.fillColor = UIColor.clear.cgColor
             checkLayer.strokeColor = UIColor.clear.cgColor
+            containerLayer.strokeColor = uncheckColor.cgColor
         }
     }
 

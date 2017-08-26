@@ -98,7 +98,7 @@ extension ProductSearchViewController: UITableViewDelegate, UITableViewDataSourc
 
         let result = self.searchList.result[indexPath.row].name
         cell.productLabel.attributedText = keywordHighlight.addBold(keyword: keyword, text: result)
-        
+
         return cell
     }
 
