@@ -1,0 +1,6 @@
+framework module Pods_RecipeUrlShareExtension {
+  umbrella header "Pods-RecipeUrlShareExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}

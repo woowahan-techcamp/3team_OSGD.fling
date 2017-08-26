@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F94A59BCFBF569DA4A7916D /* Pods_RecipeUrlShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2142393451F3858AB32640F7 /* Pods_RecipeUrlShareExtension.framework */; };
 		8B3EF89ACE4C5B6CE8EF347B /* Pods_flingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */; };
 		980749C41F3A989800E4EA96 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C31F3A989800E4EA96 /* Recipe.swift */; };
 		980749C61F3A98A200E4EA96 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C51F3A98A200E4EA96 /* Product.swift */; };
@@ -58,14 +59,15 @@
 		98FDCEE81F4EDF5900F193E4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEE71F4EDF5900F193E4 /* ShareViewController.swift */; };
 		98FDCEEB1F4EDF5900F193E4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCEE91F4EDF5900F193E4 /* MainInterface.storyboard */; };
 		98FDCEEF1F4EDF5900F193E4 /* RecipeUrlShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 98FDCEE51F4EDF5900F193E4 /* RecipeUrlShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		98FDCEF51F4EDF8400F193E4 /* GetUrl.js in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCEF41F4EDF8400F193E4 /* GetUrl.js */; };
+		98FDCEF51F4EDF8400F193E4 /* GetRecipeInfo.js in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCEF41F4EDF8400F193E4 /* GetRecipeInfo.js */; };
 		98FDCEF71F4EE90F00F193E4 /* ExtensionRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEF61F4EE90F00F193E4 /* ExtensionRecipeViewController.swift */; };
-		98FDCEF91F4EE9F500F193E4 /* RecipeUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEF81F4EE9F500F193E4 /* RecipeUrl.swift */; };
+		98FDCEF91F4EE9F500F193E4 /* ShareRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCEF81F4EE9F500F193E4 /* ShareRecipe.swift */; };
 		98FDCEFA1F4FA91E00F193E4 /* ProductFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */; };
 		98FDCEFE1F4FB4D800F193E4 /* addbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCEFD1F4FB4D800F193E4 /* addbutton.png */; };
 		98FDCF081F512B4700F193E4 /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCF051F512B4700F193E4 /* card.png */; };
 		98FDCF091F512B4700F193E4 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCF061F512B4700F193E4 /* home.png */; };
 		98FDCF0A1F512B4700F193E4 /* order.png in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCF071F512B4700F193E4 /* order.png */; };
+		98FDCF0E1F5157EE00F193E4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98FDCF0C1F51468500F193E4 /* Alamofire.framework */; };
 		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
 		BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */; };
 /* End PBXBuildFile section */
@@ -109,6 +111,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2142393451F3858AB32640F7 /* Pods_RecipeUrlShareExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeUrlShareExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E6197288C62AE20E8919323 /* Pods-RecipeUrlShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeUrlShareExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeUrlShareExtension/Pods-RecipeUrlShareExtension.release.xcconfig"; sourceTree = "<group>"; };
+		42B8AEC76350E6B06837F4E2 /* Pods-RecipeUrlShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeUrlShareExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeUrlShareExtension/Pods-RecipeUrlShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		4AEB35D54FD3269A577CAA02 /* Pods-flingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-flingTests/Pods-flingTests.release.xcconfig"; sourceTree = "<group>"; };
 		545486631460994A9253BD43 /* Pods-fling.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fling.release.xcconfig"; path = "Pods/Target Support Files/Pods-fling/Pods-fling.release.xcconfig"; sourceTree = "<group>"; };
 		64475B6E4C95440D347A3803 /* Pods-flingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flingUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-flingUITests/Pods-flingUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,13 +177,14 @@
 		98FDCEE71F4EDF5900F193E4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		98FDCEEA1F4EDF5900F193E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		98FDCEEC1F4EDF5900F193E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98FDCEF41F4EDF8400F193E4 /* GetUrl.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetUrl.js; sourceTree = "<group>"; };
+		98FDCEF41F4EDF8400F193E4 /* GetRecipeInfo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetRecipeInfo.js; sourceTree = "<group>"; };
 		98FDCEF61F4EE90F00F193E4 /* ExtensionRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionRecipeViewController.swift; sourceTree = "<group>"; };
-		98FDCEF81F4EE9F500F193E4 /* RecipeUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeUrl.swift; sourceTree = "<group>"; };
+		98FDCEF81F4EE9F500F193E4 /* ShareRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareRecipe.swift; sourceTree = "<group>"; };
 		98FDCEFD1F4FB4D800F193E4 /* addbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addbutton.png; sourceTree = "<group>"; };
 		98FDCF051F512B4700F193E4 /* card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card.png; sourceTree = "<group>"; };
 		98FDCF061F512B4700F193E4 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		98FDCF071F512B4700F193E4 /* order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order.png; sourceTree = "<group>"; };
+		98FDCF0C1F51468500F193E4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -214,6 +220,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98FDCF0E1F5157EE00F193E4 /* Alamofire.framework in Frameworks */,
+				5F94A59BCFBF569DA4A7916D /* Pods_RecipeUrlShareExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,11 +231,13 @@
 		46116A025867F2B72F6F7F0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98FDCF0C1F51468500F193E4 /* Alamofire.framework */,
 				98AD7CA91F3AEF0200500BD9 /* AlamofireImage.framework */,
 				98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */,
 				7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */,
 				C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */,
 				DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */,
+				2142393451F3858AB32640F7 /* Pods_RecipeUrlShareExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -367,9 +377,9 @@
 				98FDCEE71F4EDF5900F193E4 /* ShareViewController.swift */,
 				98FDCEE91F4EDF5900F193E4 /* MainInterface.storyboard */,
 				98FDCEEC1F4EDF5900F193E4 /* Info.plist */,
-				98FDCEF41F4EDF8400F193E4 /* GetUrl.js */,
+				98FDCEF41F4EDF8400F193E4 /* GetRecipeInfo.js */,
 				98FDCEF61F4EE90F00F193E4 /* ExtensionRecipeViewController.swift */,
-				98FDCEF81F4EE9F500F193E4 /* RecipeUrl.swift */,
+				98FDCEF81F4EE9F500F193E4 /* ShareRecipe.swift */,
 			);
 			path = RecipeUrlShareExtension;
 			sourceTree = "<group>";
@@ -383,6 +393,8 @@
 				4AEB35D54FD3269A577CAA02 /* Pods-flingTests.release.xcconfig */,
 				8895CC03629EAB39B7B5A222 /* Pods-flingUITests.debug.xcconfig */,
 				64475B6E4C95440D347A3803 /* Pods-flingUITests.release.xcconfig */,
+				42B8AEC76350E6B06837F4E2 /* Pods-RecipeUrlShareExtension.debug.xcconfig */,
+				2E6197288C62AE20E8919323 /* Pods-RecipeUrlShareExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -458,9 +470,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98FDCEF21F4EDF5900F193E4 /* Build configuration list for PBXNativeTarget "RecipeUrlShareExtension" */;
 			buildPhases = (
+				5B0A7B0BC2AEABEB4D50704B /* [CP] Check Pods Manifest.lock */,
 				98FDCEE11F4EDF5900F193E4 /* Sources */,
 				98FDCEE21F4EDF5900F193E4 /* Frameworks */,
 				98FDCEE31F4EDF5900F193E4 /* Resources */,
+				C994BFFD92F1CF3AC2E1F8AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -568,7 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98FDCEEB1F4EDF5900F193E4 /* MainInterface.storyboard in Resources */,
-				98FDCEF51F4EDF8400F193E4 /* GetUrl.js in Resources */,
+				98FDCEF51F4EDF8400F193E4 /* GetRecipeInfo.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +617,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-flingTests/Pods-flingTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B0A7B0BC2AEABEB4D50704B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7A6CFE69EBC16A4E4F7EB4BA /* [CP] Embed Pods Frameworks */ = {
@@ -678,6 +707,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C994BFFD92F1CF3AC2E1F8AA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeUrlShareExtension/Pods-RecipeUrlShareExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D4D0BE6E3982E5A03BBE0E93 /* [CP] Embed Pods Frameworks */ = {
@@ -775,7 +819,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98FDCEF71F4EE90F00F193E4 /* ExtensionRecipeViewController.swift in Sources */,
-				98FDCEF91F4EE9F500F193E4 /* RecipeUrl.swift in Sources */,
+				98FDCEF91F4EE9F500F193E4 /* ShareRecipe.swift in Sources */,
 				98FDCEE81F4EDF5900F193E4 /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1013,6 +1057,7 @@
 		};
 		98FDCEF01F4EDF5900F193E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42B8AEC76350E6B06837F4E2 /* Pods-RecipeUrlShareExtension.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = RecipeUrlShareExtension/Info.plist;
@@ -1026,6 +1071,7 @@
 		};
 		98FDCEF11F4EDF5900F193E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E6197288C62AE20E8919323 /* Pods-RecipeUrlShareExtension.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = RecipeUrlShareExtension/Info.plist;
@@ -1083,6 +1129,7 @@
 				98FDCEF11F4EDF5900F193E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

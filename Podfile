@@ -10,6 +10,10 @@ target 'fling' do
 
   # Pods for fling
 
+  target 'RecipeUrlShareExtension' do
+    inherit! :search_paths
+  end
+
   target 'flingTests' do
     inherit! :search_paths
     # Pods for testing

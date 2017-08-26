@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ExtensionRecipeViewControllerDelegate: class {
-    func selected(deck: Deck)
+    func selected(products: ShareProduct)
 }
 
 class ExtensionRecipeViewController: UIViewController {
@@ -24,7 +24,7 @@ class ExtensionRecipeViewController: UIViewController {
         return tableView
     }()
 
-    var userDecks = [Deck]()
+    var userShareProducts = [ShareProduct]()
     weak var delegate: ExtensionRecipeViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -41,12 +41,12 @@ class ExtensionRecipeViewController: UIViewController {
 
 extension ExtensionRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userDecks.count
+        return userShareProducts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "simpleProductCell", for: indexPath)
-        cell.textLabel?.text = userDecks[indexPath.row].title
+        cell.textLabel?.text = userShareProducts[indexPath.row].name
         cell.backgroundColor = .clear
         cell.editingAccessoryType = .checkmark
         return cell
@@ -54,6 +54,6 @@ extension ExtensionRecipeViewController: UITableViewDelegate, UITableViewDataSou
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("row clicked", indexPath.row)
-        delegate?.selected(deck: userDecks[indexPath.row])
+        delegate?.selected(products: userShareProducts[indexPath.row])
     }
 }
