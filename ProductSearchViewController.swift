@@ -28,6 +28,8 @@ class ProductSearchViewController: UIViewController, UISearchBarDelegate {
                                                name: searchProduct, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(searchToProduct),
                                                name: getProduct, object: nil)
+
+        self.searchTable.separatorInset.right = 15
     }
 
     func drawSearchList(noti: Notification) {

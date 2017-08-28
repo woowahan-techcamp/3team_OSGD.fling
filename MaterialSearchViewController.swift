@@ -24,6 +24,8 @@ class MaterialSearchViewController: UIViewController, UISearchBarDelegate {
         searchBar.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(drawSearchList),
                                                name: searchMaterial, object: nil)
+
+        self.searchTable.separatorInset.right = 15
     }
 
     func drawSearchList(noti: Notification) {

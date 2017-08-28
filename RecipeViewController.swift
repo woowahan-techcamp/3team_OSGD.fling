@@ -69,7 +69,8 @@ class RecipeViewController: UIViewController {
         
         cart = appDelegate.cart
 
-        productTable.tableFooterView = UIView()
+        self.productTable.tableFooterView = UIView()
+        self.productTable.separatorInset.right = 15
 
         drawRecipeDetail()
     }
