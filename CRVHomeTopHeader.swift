@@ -19,7 +19,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
     var popupClose:(() -> Void)!
     var editingKeyword:((String) -> Void)!
     var scrollToHeader:(() -> Void)!
-
+    var editingKeyword: ((String) -> Void)!
     let screenWidth = UIScreen.main.bounds.width
     
     override init(frame: CGRect) {

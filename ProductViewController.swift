@@ -13,7 +13,6 @@ class ProductViewController: UIViewController {
 
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
 
     @IBOutlet weak var priceLabel: UILabel!
 
@@ -67,7 +66,7 @@ class ProductViewController: UIViewController {
         bundleStepper.maximumValue = 30
         bundleStepper.stepValue = 1
         bundleStepper.autorepeat = true
-        bundleStepper.value = Double.init(data.product.getBundleTuple(input: "").number)
+        bundleStepper.value = Double.init(data.number)
     }
 
     func productInfo() {
@@ -76,14 +75,13 @@ class ProductViewController: UIViewController {
         productImage.af_setImage(withURL: URL(string: product.image)!)
 
         titleLabel.text = product.name
-        descriptionLabel.text = ""
 
         var price = product.price
         priceLabel.text = price.addUnitTag(unit: " 원")
 
         bundleUnit = product.getBundleTuple(input: "").unit
-        bundleLabel.text = product.getBundleString(input: "")
-        bundleStepper.value = Double(product.getBundleTuple(input: "").number)
+        bundleLabel.text = data.number.description.appending(bundleUnit)
+        bundleStepper.value = Double(data.number)
 
         calcTotalPrice()
     }

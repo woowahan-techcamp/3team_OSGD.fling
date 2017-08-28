@@ -18,20 +18,14 @@ class MaterialSearchViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTable: UITableView!
-    @IBAction func doneButton(_ sender: Any) {
-        if searchTable.indexPathForSelectedRow != nil {
-            let index = searchTable.indexPathForSelectedRow!.row
-            let selected = self.searchList.result[index]
-            let material = Material.init(mid: selected.id, name: selected.name)
-            self.performSegue(withIdentifier: "unwindToRefrigerator", sender: material)
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(drawSearchList),
                                                name: searchMaterial, object: nil)
+
+        self.searchTable.separatorInset.right = 15
     }
 
     func drawSearchList(noti: Notification) {
@@ -93,6 +87,13 @@ extension MaterialSearchViewController: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selected = self.searchList.result[indexPath.row]
+        let material = Material.init(mid: selected.id, name: selected.name)
+        self.performSegue(withIdentifier: "unwindToRefrigerator", sender: material)
+        self.view.endEditing(true)
+    }
+
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         self.view.endEditing(true)
     }
 }

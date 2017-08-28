@@ -32,6 +32,7 @@ class RefrigeratorViewController: UIViewController {
 
         fridge = appDelegate.fridge
         self.tableView.tableFooterView = UIView()
+        self.tableView.separatorInset.right = 15
     }
 
     override func didReceiveMemoryWarning() {
