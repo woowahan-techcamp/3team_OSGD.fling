@@ -66,7 +66,7 @@ class ProductViewController: UIViewController {
         bundleStepper.maximumValue = 30
         bundleStepper.stepValue = 1
         bundleStepper.autorepeat = true
-        bundleStepper.value = Double.init(data.product.getBundleTuple(input: "").number)
+        bundleStepper.value = Double.init(data.number)
     }
 
     func productInfo() {
@@ -80,8 +80,8 @@ class ProductViewController: UIViewController {
         priceLabel.text = price.addUnitTag(unit: " 원")
 
         bundleUnit = product.getBundleTuple(input: "").unit
-        bundleLabel.text = product.getBundleString(input: "")
-        bundleStepper.value = Double(product.getBundleTuple(input: "").number)
+        bundleLabel.text = data.number.description.appending(bundleUnit)
+        bundleStepper.value = Double(data.number)
 
         calcTotalPrice()
     }
