@@ -49,6 +49,8 @@ class HomeViewController: UIViewController {
         let tap: UITapGestureRecognizer =
             UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
         homeView.addGestureRecognizer(tap)
+        
+        tap.cancelsTouchesInView = false
 
         //swiftlint:disable line_length
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: sampleRecipe, object: nil)
@@ -236,11 +238,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeSearchListCell") as? RecipeSearchTableViewCell else { return RecipeSearchTableViewCell.init() }
         
         cell.resultLabel?.text = recipeSearchList.result[indexPath.row].name
+        cell.selectionStyle = UITableViewCellSelectionStyle.default
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return true
     }
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

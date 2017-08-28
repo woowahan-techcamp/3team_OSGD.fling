@@ -88,6 +88,9 @@ class CRVHomeTopHeader: UICollectionReusableView {
     
     func TextBoxOn(_ textField: UITextField) {
         popupOpen()
+        if self.keywordInput.text != "" {
+            network.searchRecipeWith(keyword: self.keywordInput.text!)
+        }
     }
     
     func TextChange(_ textField: UITextField) {
