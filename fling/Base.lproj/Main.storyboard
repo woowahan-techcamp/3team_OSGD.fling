@@ -132,6 +132,7 @@
                     <navigationItem key="navigationItem" id="xfr-E6-hgu"/>
                     <connections>
                         <outlet property="homeView" destination="bx7-rk-2iM" id="HzI-yw-HpH"/>
+                        <outlet property="recipeTableView" destination="K30-BA-sh8" id="8jq-Vr-TiY"/>
                         <outlet property="sampleRecipeCollection" destination="WYK-4L-NE7" id="y1Z-33-MLU"/>
                         <outlet property="searchPopUp" destination="T1l-Jd-7Zy" id="e6C-gg-CR6"/>
                         <segue destination="nM8-7V-YSK" kind="show" identifier="HomeToRecipe" id="Cg7-yO-T2W"/>
@@ -149,18 +150,30 @@
                             <color key="textColor" red="0.99487429857254028" green="0.70127731561660767" blue="0.28382501006126404" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K30-BA-sh8">
+                        <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K30-BA-sh8">
                             <rect key="frame" x="0.0" y="0.0" width="345" height="200"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <prototypes>
-                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeSearchListCell" id="rEs-bs-Jj5">
+                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeSearchListCell" id="rEs-bs-Jj5" customClass="RecipeSearchTableViewCell" customModule="fling" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="28" width="345" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rEs-bs-Jj5" id="yVZ-hp-bbB">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T73-xi-dxu">
+                                                <rect key="frame" x="24" y="8" width="299" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                     </tableViewCellContentView>
+                                    <connections>
+                                        <outlet property="resultLabel" destination="T73-xi-dxu" id="e7c-fO-h4v"/>
+                                    </connections>
                                 </tableViewCell>
                             </prototypes>
                             <connections>
@@ -905,8 +918,8 @@
         <image name="fridge.png" width="16" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nxj-bu-BRj"/>
         <segue reference="3T6-s5-SBO"/>
+        <segue reference="ZXJ-sD-cUC"/>
         <segue reference="Yah-lE-g0L"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.71764705882352942" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

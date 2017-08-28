@@ -16,13 +16,15 @@ class HomeViewController: UIViewController {
     let alertController = UIAlertController(title: nil, message: "Please wait\n\n", preferredStyle: .alert)
     var recipes = [Recipe]()
     var fridge = Refrigerator()
-    var searchRecipe = Recipe.init()
-
+    var recipe = Recipe.init()
+    var recipeSearchList = SearchList.init()
+    
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
     private let failFlingRecipe = Notification.Name.init(rawValue: "failFlingRecipe")
-    private let moveToRecipe = Notification.Name.init("moveToRecipe")
-
+    private let searchRecipe = Notification.Name.init("searchRecipe")
+    
+    @IBOutlet weak var recipeTableView: UITableView!
     @IBOutlet var searchPopUp: UIView!
     @IBOutlet var homeView: UIView!
     @IBOutlet weak var sampleRecipeCollection: UICollectionView!
@@ -52,6 +54,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: sampleRecipe, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: flingRecipe, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: failFlingRecipe, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: searchRecipe, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
                                                name: Notification.Name.init(rawValue: "UIKeyboardWillShowNotification"),
@@ -62,6 +65,7 @@ class HomeViewController: UIViewController {
         sampleRecipeCollection.register(CRVHomeTopHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader")
         sampleRecipeCollection.register(CRVHomeMidHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader")
 
+        recipeTableView.tableFooterView = UIView()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -95,12 +99,16 @@ class HomeViewController: UIViewController {
             }
             let filter = ProductFilter()
             filter.filterProduct(recipe: recipe, fridge: fridge)
-            self.searchRecipe = recipe
-            self.performSegue(withIdentifier: "HomeToRecipe", sender: self.searchRecipe)
+            self.recipe = recipe
+            self.performSegue(withIdentifier: "HomeToRecipe", sender: self.recipe)
 
         } else if notification.name == failFlingRecipe {
-        } else if notification.name == moveToRecipe{
-            self.performSegue(withIdentifier: "HomeToRecipe", sender: nil)
+            // 예외 처리!
+        } else if notification.name == searchRecipe {
+            guard let recipeList = notification.userInfo?["data"] as? SearchList else { return }
+            self.recipeSearchList = recipeList
+            recipeTableView.isHidden = false
+            recipeTableView.reloadData()
         }
     }
 
@@ -109,10 +117,10 @@ class HomeViewController: UIViewController {
             guard let secondViewController = segue.destination as? RecipeViewController else {
                 return
             }
-            guard let searchRecipe = sender as? Recipe else {
+            guard let recipe = sender as? Recipe else {
                 return
             }
-            secondViewController.searchRecipe = searchRecipe
+            secondViewController.searchRecipe = recipe
         }
     }
 
@@ -127,12 +135,13 @@ class HomeViewController: UIViewController {
         let frame = CGRect(x: 15, y: 180, width: 345, height: 200)
         searchPopUp.frame = frame
         self.view.addSubview(self.searchPopUp)
+        recipeTableView.allowsSelection = true
     }
     
     func popUpClose() {
         self.searchPopUp.removeFromSuperview()
+        recipeTableView.isHidden = true
     }
-    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -183,7 +192,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 as? HomeRecipeCollectionViewCell else {
                     return HomeRecipeCollectionViewCell()
         }
-    
+
         // for collection view image position padding!
         var padding = CGFloat.init(0)
         if indexPath.row%2 == 0 {
@@ -220,13 +229,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.searchRecipe.products.count+1   //add row
+        return self.recipeSearchList.result.count  //add row
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeSearchListCell")!
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeSearchListCell") as? RecipeSearchTableViewCell else { return RecipeSearchTableViewCell.init() }
         
+        cell.resultLabel?.text = recipeSearchList.result[indexPath.row].name
         return cell
     }
     
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.network.getRecipeWith(recipeId: self.recipeSearchList.result[indexPath.row].id)
+    }
 }

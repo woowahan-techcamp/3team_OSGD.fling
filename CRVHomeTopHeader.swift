@@ -19,6 +19,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
     var popupClose:(() -> Void)!
     var editingKeyword:((String) -> Void)!
     
+    let network = Network.init()
     let screenWidth = UIScreen.main.bounds.width
     
     override init(frame: CGRect) {
@@ -90,6 +91,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
     }
     
     func TextChange(_ textField: UITextField) {
+        network.searchRecipeWith(keyword: self.keywordInput.text!)
         //editingKeyword(self.keywordInput.text!)
     }
     
