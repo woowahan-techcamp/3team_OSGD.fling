@@ -18,7 +18,8 @@ class CRVHomeTopHeader: UICollectionReusableView {
     var popupOpen:(() -> Void)!
     var popupClose:(() -> Void)!
     var editingKeyword:((String) -> Void)!
-    
+    var scrollToHeader:(() -> Void)!
+
     let screenWidth = UIScreen.main.bounds.width
     
     override init(frame: CGRect) {
@@ -80,12 +81,13 @@ class CRVHomeTopHeader: UICollectionReusableView {
 
         self.backgroundColor = .white
     }
-    
+
     func TextBoxOff(_ textField: UITextField) {
         popupClose()
     }
     
     func TextBoxOn(_ textField: UITextField) {
+        scrollToHeader()
         popupOpen()
     }
     
