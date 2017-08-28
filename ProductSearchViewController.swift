@@ -19,12 +19,6 @@ class ProductSearchViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTable: UITableView!
-    @IBAction func doneButton(_ sender: Any) {
-        if searchTable.indexPathForSelectedRow != nil {
-            let index = searchTable.indexPathForSelectedRow!.row
-            self.network.getProductWith(productId: self.searchList.result[index].id)
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +97,11 @@ extension ProductSearchViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.network.getProductWith(productId: self.searchList.result[indexPath.row].id)
+        self.view.endEditing(true)
+    }
+
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         self.view.endEditing(true)
     }
 }
