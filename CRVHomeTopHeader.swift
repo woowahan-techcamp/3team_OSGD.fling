@@ -20,10 +20,10 @@ class CRVHomeTopHeader: UICollectionReusableView {
     var editingKeyword:((String) -> Void)!
     var scrollToHeader:(() -> Void)!
     var editingKeyword: ((String) -> Void)!
+    let network = Network.init()
     let screenWidth = UIScreen.main.bounds.width
-    
+
     override init(frame: CGRect) {
-        
         keywordInput = UITextField()
         headerImage = UIImageView()
         headerFilter = UIImageView()
@@ -89,9 +89,13 @@ class CRVHomeTopHeader: UICollectionReusableView {
     func TextBoxOn(_ textField: UITextField) {
         scrollToHeader()
         popupOpen()
+        if self.keywordInput.text != "" {
+            network.searchRecipeWith(keyword: self.keywordInput.text!)
+        }
     }
     
     func TextChange(_ textField: UITextField) {
+        network.searchRecipeWith(keyword: self.keywordInput.text!)
         //editingKeyword(self.keywordInput.text!)
     }
     
