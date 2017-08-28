@@ -17,13 +17,13 @@ class CRVHomeTopHeader: UICollectionReusableView {
     var flingHotLabel: UILabel
     var popupOpen:(() -> Void)!
     var popupClose:(() -> Void)!
+    var editingKeyword:((String) -> Void)!
+    var scrollToHeader:(() -> Void)!
     var editingKeyword: ((String) -> Void)!
-    
     let network = Network.init()
     let screenWidth = UIScreen.main.bounds.width
-    
+
     override init(frame: CGRect) {
-        
         keywordInput = UITextField()
         headerImage = UIImageView()
         headerFilter = UIImageView()
@@ -81,12 +81,13 @@ class CRVHomeTopHeader: UICollectionReusableView {
 
         self.backgroundColor = .white
     }
-    
+
     func TextBoxOff(_ textField: UITextField) {
         popupClose()
     }
     
     func TextBoxOn(_ textField: UITextField) {
+        scrollToHeader()
         popupOpen()
         if self.keywordInput.text != "" {
             network.searchRecipeWith(keyword: self.keywordInput.text!)

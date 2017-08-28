@@ -66,7 +66,6 @@ class HomeViewController: UIViewController {
 
         sampleRecipeCollection.register(CRVHomeTopHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader")
         sampleRecipeCollection.register(CRVHomeMidHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader")
-
         recipeTableView.tableFooterView = UIView()
     }
 
@@ -165,14 +164,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let header = sampleRecipeCollection.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader", for: indexPath) as! CRVHomeTopHeader
             header.popupOpen = self.popUpOpen
             header.popupClose = self.popUpClose
+            header.scrollToHeader = { () -> Void in
+                self.sampleRecipeCollection.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
+            }
             return header
-
         } else {
             let header = sampleRecipeCollection.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader", for: indexPath) as! CRVHomeMidHeader
             return header
         }
     }
-    
     
     func collectionView(_ collectionView: UICollectionView,
                                  layout collectionViewLayout: UICollectionViewLayout,
@@ -221,6 +221,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
 
         return cell
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.popUpClose()
     }
 }
 
