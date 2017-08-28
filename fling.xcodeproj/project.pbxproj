@@ -58,6 +58,9 @@
 		98FDCECB1F4EC67900F193E4 /* String +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDCECA1F4EC67900F193E4 /* String +.swift */; };
 		98FDCEFA1F4FA91E00F193E4 /* ProductFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98227E721F4D5F3D00DE96C5 /* ProductFilter.swift */; };
 		98FDCEFE1F4FB4D800F193E4 /* addbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCEFD1F4FB4D800F193E4 /* addbutton.png */; };
+		98FDCF081F512B4700F193E4 /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCF051F512B4700F193E4 /* card.png */; };
+		98FDCF091F512B4700F193E4 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCF061F512B4700F193E4 /* home.png */; };
+		98FDCF0A1F512B4700F193E4 /* order.png in Resources */ = {isa = PBXBuildFile; fileRef = 98FDCF071F512B4700F193E4 /* order.png */; };
 		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
 		BF46D2A915B75CA025F41663 /* Pods_flingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */; };
 /* End PBXBuildFile section */
@@ -141,6 +144,9 @@
 		98FDCEC81F4EB3F500F193E4 /* KeywordHighlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordHighlight.swift; sourceTree = "<group>"; };
 		98FDCECA1F4EC67900F193E4 /* String +.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String +.swift"; sourceTree = "<group>"; };
 		98FDCEFD1F4FB4D800F193E4 /* addbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addbutton.png; sourceTree = "<group>"; };
+		98FDCF051F512B4700F193E4 /* card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card.png; sourceTree = "<group>"; };
+		98FDCF061F512B4700F193E4 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		98FDCF071F512B4700F193E4 /* order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order.png; sourceTree = "<group>"; };
 		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFDF5B09090EAA58F45BFBF /* Pods_flingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -196,6 +202,9 @@
 				98F821F11F3D695A006B0288 /* main_image.png */,
 				98F821F31F3D6BB3006B0288 /* search_icon1x.png */,
 				98AD7CA71F3AEB0D00500BD9 /* logo.png */,
+				98FDCF051F512B4700F193E4 /* card.png */,
+				98FDCF061F512B4700F193E4 /* home.png */,
+				98FDCF071F512B4700F193E4 /* order.png */,
 				98227E6E1F4D477800DE96C5 /* cart.png */,
 				98227E6F1F4D477800DE96C5 /* fridge.png */,
 			);
@@ -450,10 +459,13 @@
 				98F821F41F3D6BB3006B0288 /* search_icon1x.png in Resources */,
 				98227E701F4D477800DE96C5 /* cart.png in Resources */,
 				98227E471F4675E300DE96C5 /* fling_logo_white.png in Resources */,
+				98FDCF081F512B4700F193E4 /* card.png in Resources */,
+				98FDCF0A1F512B4700F193E4 /* order.png in Resources */,
 				98FDCEFE1F4FB4D800F193E4 /* addbutton.png in Resources */,
 				98F821F21F3D695A006B0288 /* main_image.png in Resources */,
 				984843201F33F3B0007AD753 /* LaunchScreen.storyboard in Resources */,
 				9848431D1F33F3B0007AD753 /* Assets.xcassets in Resources */,
+				98FDCF091F512B4700F193E4 /* home.png in Resources */,
 				98227E491F4677A400DE96C5 /* logo_rabbit.png in Resources */,
 				9848431B1F33F3B0007AD753 /* Main.storyboard in Resources */,
 			);
@@ -593,7 +605,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fling/Pods-fling-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fling/Pods-fling-frameworks.sh\"\n\n#if which swiftlint >/dev/null; then\n#swiftlint\n#else\n#echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
 			showEnvVarsInLog = 0;
 		};
 		D677320498FC1AB34FFD9024 /* [CP] Check Pods Manifest.lock */ = {

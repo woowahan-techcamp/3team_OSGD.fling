@@ -69,7 +69,8 @@ class RecipeViewController: UIViewController {
         
         cart = appDelegate.cart
 
-        productTable.tableFooterView = UIView()
+        self.productTable.tableFooterView = UIView()
+        self.productTable.separatorInset.right = 15
 
         drawRecipeDetail()
     }
@@ -158,10 +159,13 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.checkbox.on = productCell.on
             cell.productLabel.text = productCell.product.name
+            cell.productLabel.textColor = (cell.checkbox.on) ? UIColor.black : UIColor.gray
             var price = productCell.product.price * Decimal.init(productCell.product.getBundleTuple(input: "").number)
             cell.priceLabel.text = price.addUnitTag(unit: " 원")
+            cell.priceLabel.textColor = (cell.checkbox.on) ? UIColor.gray : UIColor.lightGray
             let unit = " ".appending(productCell.product.getBundleTuple(input: "").unit)
             cell.eaLabel.text = productCell.number.description.appending(unit)
+            cell.eaLabel.textColor = (cell.checkbox.on) ? UIColor.gray : UIColor.lightGray
 
             cell.disclosureHandler = { () -> Void in
                 if self.searchRecipe.products[indexPath.row].on {

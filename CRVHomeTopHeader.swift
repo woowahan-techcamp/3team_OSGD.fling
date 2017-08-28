@@ -17,7 +17,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
     var flingHotLabel: UILabel
     var popupOpen:(() -> Void)!
     var popupClose:(() -> Void)!
-    var editingKeyword:((String) -> Void)!
+    var editingKeyword: ((String) -> Void)!
     
     let network = Network.init()
     let screenWidth = UIScreen.main.bounds.width
