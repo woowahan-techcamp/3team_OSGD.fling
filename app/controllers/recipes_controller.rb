@@ -128,8 +128,8 @@ class RecipesController < ApplicationController
     if keyword.length == 0
       render :nothing
     else
-      @recipes = Recipe.where("title LIKE ?", "%#{keyword}%" )
-      render json: @recipes.to_json(only: [:id, :title, :subtitle, :image, :writer, :url])
+      @recipes = Recipe.where("title LIKE ?", "%#{keyword}%" ).map do |d| d.makeJson end
+      render json: @recipes
     end
   end
 
