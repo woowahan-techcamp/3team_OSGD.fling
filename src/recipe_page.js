@@ -6,16 +6,19 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 data: data,
                 title: jsonData.title
             }, Fling.$('.recipe_cart'));
+            uncheckMyRefrigeItem();
+            calcTotalPrice();
         })
         
-        document.querySelector('.recipe_detail').dataId = jsonData.id;
-        document.querySelector('.recipe_detail .title').innerText = jsonData.title;
-        document.querySelector('.recipe_detail .subtitle').innerText = jsonData.subtitle;
-        document.querySelector('.recipe_detail .circle_img').style.cssText = `background-image: url("${jsonData.image}")`;
-        document.querySelector('.detail_link a').href = jsonData.url;
-        document.querySelector('.missed_material .subtitle').innerText = jsonData.missed_material;
-        document.querySelector('.recipe_cart .title_main').innerText = jsonData.title;
-         
+        let recipeDesc = new Fling.View.CardView({
+            data: jsonData,
+            template: Fling.Template.recipePageRecipeDetailSource
+        }, Fling.$('fling-recipe-desc'));
+
+        let missedMaterial = new Fling.View.CardView({
+            data: jsonData,
+            template: Fling.Template.missedMaterialSource
+        }, Fling.$('fling-missed-material'));
     });
 
     const target = document.querySelector(".search_text");
