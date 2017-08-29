@@ -229,11 +229,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell.sampleRecipeImage?.af_setImage(withURL: URL(string: recipeCell.image)!)
             }
             cell.sampleRecipeImage.frame.size = CGSize(width: collectionViewSize/2 - 20, height: collectionViewSize/2 - 20)
-          
             cell.sampleRecipeImage.frame.origin = CGPoint(x: padding, y: 0)
-            
             cell.sampleRecipeLabel.text = recipeCell.title
             cell.sampleRecipeSubtitleLabel.text = recipeCell.subtitle
+            cell.sampleRecipeLabel.center.x = cell.sampleRecipeImage.center.x
+            cell.sampleRecipeSubtitleLabel.center.x = cell.sampleRecipeImage.center.x
             cell.clickHandler = { () -> Void in
                 self.network.getRecipeWith(recipeId: recipeCell.rid)
             }
