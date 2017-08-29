@@ -270,10 +270,10 @@
 		9872B2281F552224007256E0 /* functional class */ = {
 			isa = PBXGroup;
 			children = (
-				9872B2291F552224007256E0 /* KeywordHighlight.swift */,
 				9872B22A1F552224007256E0 /* Network.swift */,
-				9872B22B1F552224007256E0 /* ProductFilter.swift */,
 				9872B22C1F552224007256E0 /* Storage.swift */,
+				9872B22B1F552224007256E0 /* ProductFilter.swift */,
+				9872B2291F552224007256E0 /* KeywordHighlight.swift */,
 			);
 			path = "functional class";
 			sourceTree = "<group>";
