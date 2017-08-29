@@ -30,11 +30,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var sampleRecipeCollection: UICollectionView!
 
     override func viewWillAppear(_ animated: Bool) {
-        let logo = UIImage(named: "fling_logo_white.png")
-        let imageView = UIImageView(image: logo)
-        imageView.frame.size = CGSize(width: 375, height: 30)
-        imageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = imageView
+//        let logo = UIImage(named: "fling_logo_white.png")
+//        let imageView = UIImageView(image: logo)
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.frame.size = CGSize(width: 375, height: 30)
+//        self.navigationItem.titleView = imageView
     }
 
     override func viewDidLoad() {
