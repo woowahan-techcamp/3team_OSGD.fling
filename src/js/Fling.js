@@ -127,21 +127,32 @@ Fling.API = {
         }
         xhrObj.open(method, url);
         xhrObj.send();
+        console.error('Will be DEPRECATE Fling.API.request method');
     },
-    request2: function(method, url, data) {
+    request2: function(method, url, data = {}) {
         var myHeaders = new Headers();
         var myInit = {
             method: method,
             headers: myHeaders,
             mode: 'cors',
             cache: 'default',
-            body: data
         };
+        if (method == 'post')
+            myInit.body = data;
+        
         if (data.length > 0) {
             url = url + ((data[0] !== '/') ? '?' : '') + data;
         }
         var myRequest = new Request(url, myInit);
-        return fetch(myRequest).then(response => response.json());
+        return fetch(myRequest).then(response => response.text()).then(data => {
+            try {
+                data = JSON.parse(data);
+            }
+            catch(e) {
+                throw 'FLING_API_NOT_SEEMS_JSON';
+            }
+            return data;
+        });
     },
     get: function(url, params, callback) {
         return this.request('get', url, params, callback);
