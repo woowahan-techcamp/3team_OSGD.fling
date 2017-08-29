@@ -17,13 +17,16 @@ class Network {
     private let searchProductUrl = "http://52.79.119.41/search_product/"
     private let searchMaterialUrl = "http://52.79.119.41/search_material/"
     private let searchRecipeUrl = "http://52.79.119.41/search_recipe/"
-    private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
-    private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
-    private let failNetwork = Notification.Name.init(rawValue: "failNetwork")
-    private let searchProduct = Notification.Name.init("searchProduct")
-    private let getProduct = Notification.Name.init("getProduct")
-    private let searchMaterial = Notification.Name.init("searchMaterial")
-    private let searchRecipe = Notification.Name.init("searchRecipe")
+    private let season = "http://52.79.119.41/season/"
+    
+    let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
+    let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
+    let failNetwork = Notification.Name.init(rawValue: "failNetwork")
+    let searchProduct = Notification.Name.init("searchProduct")
+    let getProduct = Notification.Name.init("getProduct")
+    let searchMaterial = Notification.Name.init("searchMaterial")
+    let searchRecipe = Notification.Name.init("searchRecipe")
+    let seasonMenu = Notification.Name.init("seasonMenu")
 
     func getFlingRecipe() {
         Alamofire.request(mainUrl).responseJSON { response in
@@ -131,6 +134,22 @@ class Network {
                 NotificationCenter.default.post(name: self.searchRecipe, object: self, userInfo: ["data": searchList])
             } else {
             }
+        }
+    }
+    
+    func getSeason() {
+        Alamofire.request(season).responseJSON { response in
+            var recipes = [Recipe]()
+            if let savedData = response.result.value as? [[String: Any]] {
+                savedData.forEach({ object in
+                    guard let recipe = Recipe.init(data: object) else {
+                        return
+                    }
+                    recipes.append(recipe)
+                })
+            }
+            NotificationCenter.default.post(name: self.seasonMenu,
+                                            object: self, userInfo: ["data": recipes])
         }
     }
 }
