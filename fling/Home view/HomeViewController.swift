@@ -18,6 +18,8 @@ class HomeViewController: UIViewController {
     var fridge = Refrigerator()
     var recipe = Recipe.init()
     var recipeSearchList = SearchList.init()
+    var keyword = ""
+    let keywordHighlight = KeywordHighlight()
     
     private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
@@ -35,6 +37,7 @@ class HomeViewController: UIViewController {
         self.popUpClose()
     }
 
+    
     override func viewWillAppear(_ animated: Bool) {
         let logo = UIImage(named: "fling_logo_white.png")
         let imageView = UIImageView(image: logo)
@@ -131,7 +134,7 @@ class HomeViewController: UIViewController {
         }
         return true
     }
-    
+
     func popUpOpen() {
         let frame = CGRect(x: 15, y: 180, width: 345, height: 200)
         searchPopUp.frame = frame
@@ -175,6 +178,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let header = sampleRecipeCollection.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader", for: indexPath) as! CRVHomeTopHeader
             header.popupOpen = self.popUpOpen
             header.popupClose = self.popUpClose
+            header.editingKeyword = { keyword -> Void in
+                self.keyword = keyword
+            }
             header.scrollToHeader = { () -> Void in
                 self.sampleRecipeCollection.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
             }
@@ -245,7 +251,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -257,7 +263,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeSearchListCell") as? RecipeSearchTableViewCell else { return RecipeSearchTableViewCell.init() }
         
-        cell.resultLabel?.text = recipeSearchList.result[indexPath.row].name
+        let result = recipeSearchList.result[indexPath.row].name
+        cell.resultLabel.attributedText = keywordHighlight.addBold(keyword: keyword, text: result)
+        cell.resultLabel.font = UIFont.systemFont(ofSize: 12)
         cell.selectionStyle = UITableViewCellSelectionStyle.default
         return cell
     }
