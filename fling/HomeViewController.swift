@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     var fridge = Refrigerator()
     var recipe = Recipe.init()
     var recipeSearchList = SearchList.init()
+    let KeyboardWillShowNotification = Notification.Name.init(rawValue: "UIKeyboardWillShowNotification")
     
     @IBOutlet weak var recipeTableView: UITableView!
     @IBOutlet var searchPopUp: UIView!
@@ -59,7 +60,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.seasonMenu, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
-                                               name: Notification.Name.init(rawValue: "UIKeyboardWillShowNotification"),
+                                               name: KeyboardWillShowNotification,
                                                object: nil)
 
         network.getFlingRecipe()
@@ -90,7 +91,7 @@ class HomeViewController: UIViewController {
             }
             self.recipes = recipes
             sampleRecipeCollection.reloadData()
-        } else if notification.name == Notification.Name.init(rawValue: "UIKeyboardWillShowNotification") {
+        } else if notification.name == KeyboardWillShowNotification {
             keyboardWillShow()
         } else if notification.name == network.flingRecipe {
             guard let recipe = notification.userInfo?["data"] as? Recipe else {
@@ -127,13 +128,6 @@ class HomeViewController: UIViewController {
             }
             secondViewController.searchRecipe = recipe
         }
-    }
-
-    func checkRecipeUrl(url: String) -> Bool {
-        if !url.contains("haemukja.com/recipes/") {
-            return false
-        }
-        return true
     }
     
     func popUpOpen() {

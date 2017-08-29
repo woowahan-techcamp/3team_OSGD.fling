@@ -326,6 +326,17 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KNa-iO-Mjj">
+                                        <rect key="frame" x="79" y="92" width="29" height="28"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="search_icon1x.png" translatesAutoresizingMaskIntoConstraints="NO" id="XGM-1n-Y4f">
+                                                <rect key="frame" x="5" y="4" width="20" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.70943138780000004" blue="0.28997674280000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -385,6 +396,7 @@
                     <navigationItem key="navigationItem" title="레시피" id="97o-yX-gUa"/>
                     <connections>
                         <outlet property="cartButton" destination="M15-eU-sOh" id="dnG-JV-B6C"/>
+                        <outlet property="enlargementIcon" destination="KNa-iO-Mjj" id="n4F-4Q-wMD"/>
                         <outlet property="productTable" destination="6aA-aY-yFw" id="DWe-DQ-D5q"/>
                         <outlet property="recipeImage" destination="s6l-DD-ncZ" id="T0N-g9-iCC"/>
                         <outlet property="recipeMissed" destination="Dai-XD-q1w" id="SBC-5t-hfL"/>
@@ -920,11 +932,12 @@
         <image name="fridge.png" width="16" height="18"/>
         <image name="home.png" width="17" height="15"/>
         <image name="order.png" width="18" height="15"/>
+        <image name="search_icon1x.png" width="42" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZXJ-sD-cUC"/>
+        <segue reference="Nxj-bu-BRj"/>
+        <segue reference="xAb-bf-sXv"/>
         <segue reference="3T6-s5-SBO"/>
-        <segue reference="jvY-y7-SNV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.71764705882352942" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -29,6 +29,28 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var recipeMissed: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var productTable: UITableView!
+    @IBOutlet weak var enlargementIcon: UIView!
+    
+    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+        let imageView = recipeImage
+        let newImageView = UIImageView(image: imageView?.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
+    
 
     @IBAction func unwindToRecipe(segue: UIStoryboardSegue) {
         searchRecipe.add(product: editedProduct.product, number: editedProduct.number)
@@ -71,7 +93,18 @@ class RecipeViewController: UIViewController {
 
         self.productTable.tableFooterView = UIView()
         self.productTable.separatorInset.right = 15
-
+        
+        let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        recipeImage.addGestureRecognizer(pictureTap)
+        recipeImage.isUserInteractionEnabled = true
+        
+        let enlargementIconTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        enlargementIcon.addGestureRecognizer(enlargementIconTap)
+        enlargementIcon.isUserInteractionEnabled = true
+        
+        enlargementIcon.layer.cornerRadius = enlargementIcon.frame.size.width/2
+        enlargementIcon.clipsToBounds = true
+        
         drawRecipeDetail()
     }
 
