@@ -38,6 +38,7 @@ class RecipePopUpViewController: UIViewController {
         self.draw()
         self.productTableView.allowsSelection = false
         self.productTableView.tableFooterView = UIView()
+        self.productTableView.separatorInset.right = 5
         // Do any additional setup after loading the view.
     }
 

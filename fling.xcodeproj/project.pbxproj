@@ -38,6 +38,9 @@
 		986581921F4E6B5C00735847 /* CRVHomeTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986581911F4E6B5C00735847 /* CRVHomeTopHeader.swift */; };
 		986581941F4E9DCB00735847 /* CRVHomeMidHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986581931F4E9DCB00735847 /* CRVHomeMidHeader.swift */; };
 		9865819B1F53E4E900735847 /* RecipeSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865819A1F53E4E900735847 /* RecipeSearchTableViewCell.swift */; };
+		9872B12D1F54F495007256E0 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 9872B12C1F54F495007256E0 /* close.png */; };
+		9872B12F1F54F7A9007256E0 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 9872B12E1F54F7A9007256E0 /* close.png */; };
+		9872B1331F54FDF1007256E0 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872B1321F54FDF1007256E0 /* OrderViewController.swift */; };
 		98AD7C9C1F3ACA0000500BD9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */; };
 		98AD7C9E1F3ACB6000500BD9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */; };
 		98AD7CA01F3ACCB000500BD9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980749C71F3A98B100E4EA96 /* Network.swift */; };
@@ -128,6 +131,9 @@
 		986581911F4E6B5C00735847 /* CRVHomeTopHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRVHomeTopHeader.swift; sourceTree = "<group>"; };
 		986581931F4E9DCB00735847 /* CRVHomeMidHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRVHomeMidHeader.swift; sourceTree = "<group>"; };
 		9865819A1F53E4E900735847 /* RecipeSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewCell.swift; sourceTree = "<group>"; };
+		9872B12C1F54F495007256E0 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		9872B12E1F54F7A9007256E0 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		9872B1321F54FDF1007256E0 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		98AD7C9D1F3ACB6000500BD9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = fling/HomeViewController.swift; sourceTree = "<group>"; };
 		98AD7CA71F3AEB0D00500BD9 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../logo.png; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 		980749C11F398AF700E4EA96 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9872B12E1F54F7A9007256E0 /* close.png */,
 				98FDCEFD1F4FB4D800F193E4 /* addbutton.png */,
 				98227E481F4677A400DE96C5 /* logo_rabbit.png */,
 				98227E461F4675E300DE96C5 /* fling_logo_white.png */,
@@ -207,6 +214,7 @@
 				98FDCF071F512B4700F193E4 /* order.png */,
 				98227E6E1F4D477800DE96C5 /* cart.png */,
 				98227E6F1F4D477800DE96C5 /* fridge.png */,
+				9872B12C1F54F495007256E0 /* close.png */,
 			);
 			name = images;
 			path = flingTests;
@@ -309,6 +317,7 @@
 				98227E6A1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift */,
 				9865818B1F4D3C8900735847 /* RecipePopUpViewController.swift */,
 				9865818D1F4D44E600735847 /* RPTableViewCell.swift */,
+				9872B1321F54FDF1007256E0 /* OrderViewController.swift */,
 			);
 			name = "view controller";
 			sourceTree = "<group>";
@@ -456,7 +465,9 @@
 			files = (
 				98227E711F4D477800DE96C5 /* fridge.png in Resources */,
 				98AD7CA81F3AEB0D00500BD9 /* logo.png in Resources */,
+				9872B12F1F54F7A9007256E0 /* close.png in Resources */,
 				98F821F41F3D6BB3006B0288 /* search_icon1x.png in Resources */,
+				9872B12D1F54F495007256E0 /* close.png in Resources */,
 				98227E701F4D477800DE96C5 /* cart.png in Resources */,
 				98227E471F4675E300DE96C5 /* fling_logo_white.png in Resources */,
 				98FDCF081F512B4700F193E4 /* card.png in Resources */,
@@ -655,6 +666,7 @@
 				98FDCEFA1F4FA91E00F193E4 /* ProductFilter.swift in Sources */,
 				98227E691F4C1AD900DE96C5 /* MaterialSearchViewController.swift in Sources */,
 				98E6F38D1F3D4C65007E3441 /* ProductViewController.swift in Sources */,
+				9872B1331F54FDF1007256E0 /* OrderViewController.swift in Sources */,
 				98227E551F4AAF0200DE96C5 /* CartViewController.swift in Sources */,
 				98AD7CA11F3ACCBA00500BD9 /* Recipe.swift in Sources */,
 				98227E6B1F4C1E6B00DE96C5 /* MaterialSearchTableViewCell.swift in Sources */,

@@ -41,7 +41,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
         headerFilter.alpha = 0.6
         
         let xPadding = CGFloat(30)
-        let heightForInput = CGFloat(13)
+        let heightForInput = CGFloat(20)
         let widthForInput = headerImage.frame.width - 2 * xPadding
         let yPadding = headerImage.frame.height/2
         keywordInput.frame = CGRect.init(x: xPadding, y: yPadding, width: widthForInput, height: heightForInput)
@@ -50,7 +50,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
         keywordInput.setValue(UIColor.white, forKeyPath: "_placeholderLabel.textColor")
         keywordInput.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightUltraLight)
         keywordInput.addTarget(self, action: #selector(TextBoxOn(_:)),for: .editingDidBegin)
-        keywordInput.addTarget(self, action: #selector(TextBoxOff(_:)),for: .editingDidEnd)
+//        keywordInput.addTarget(self, action: #selector(TextBoxOff(_:)),for: .editingDidEnd)
         keywordInput.addTarget(self, action: #selector(TextChange(_:)), for: .editingChanged)
         
         let xForSearchButton = xPadding + widthForInput
@@ -79,10 +79,6 @@ class CRVHomeTopHeader: UICollectionReusableView {
         self.addSubview(flingHotLabel)
 
         self.backgroundColor = .white
-    }
-
-    func TextBoxOff(_ textField: UITextField) {
-        popupClose()
     }
     
     func TextBoxOn(_ textField: UITextField) {

@@ -29,12 +29,18 @@ class HomeViewController: UIViewController {
     @IBOutlet var homeView: UIView!
     @IBOutlet weak var sampleRecipeCollection: UICollectionView!
 
+    @IBOutlet weak var popupCloseButton: UIButton!
+    @IBAction func popupCloseButton(_ sender: Any) {
+        homeView.endEditing(true)
+        self.popUpClose()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
-//        let logo = UIImage(named: "fling_logo_white.png")
-//        let imageView = UIImageView(image: logo)
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.frame.size = CGSize(width: 375, height: 30)
-//        self.navigationItem.titleView = imageView
+        let logo = UIImage(named: "fling_logo_white.png")
+        let imageView = UIImageView(image: logo)
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame.size = CGSize(width: 375, height: 30)
+        self.navigationItem.titleView = imageView
     }
 
     override func viewDidLoad() {
@@ -48,8 +54,9 @@ class HomeViewController: UIViewController {
 
         let tap: UITapGestureRecognizer =
             UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
-        homeView.addGestureRecognizer(tap)
-        
+        sampleRecipeCollection.addGestureRecognizer(tap)
+//        self.navigationController?.navigationBar.addGestureRecognizer(tap)
+
         tap.cancelsTouchesInView = false
 
         //swiftlint:disable line_length
@@ -58,15 +65,13 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: failFlingRecipe, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: searchRecipe, object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
-                                               name: Notification.Name.init(rawValue: "UIKeyboardWillShowNotification"),
-                                               object: nil)
-
         network.getFlingRecipe()
 
         sampleRecipeCollection.register(CRVHomeTopHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader")
         sampleRecipeCollection.register(CRVHomeMidHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader")
+
         recipeTableView.tableFooterView = UIView()
+        recipeTableView.separatorInset.right = recipeTableView.separatorInset.left
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,12 +82,9 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func keyboardWillShow() {
-        //urlWarningLabel.isHidden = true
-    }
-
     func dismissKeyboard() {
         homeView.endEditing(true)
+        popUpClose()
     }
 
     func recieveNotification(notification: Notification) {
@@ -92,8 +94,6 @@ class HomeViewController: UIViewController {
             }
             self.recipes = recipes
             sampleRecipeCollection.reloadData()
-        } else if notification.name == Notification.Name.init(rawValue: "UIKeyboardWillShowNotification") {
-            keyboardWillShow()
         } else if notification.name == flingRecipe {
             guard let recipe = notification.userInfo?["data"] as? Recipe else {
                 return
@@ -142,6 +142,17 @@ class HomeViewController: UIViewController {
     func popUpClose() {
         self.searchPopUp.removeFromSuperview()
         recipeTableView.isHidden = true
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touch")
+        
+        let touch: UITouch? = touches.first
+
+        if touch?.view != searchPopUp {
+            self.popUpClose()
+            homeView.endEditing(true)
+        }
     }
 }
 
@@ -224,7 +235,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.popUpClose()
+
+        
+        if scrollView != recipeTableView {
+            self.popUpClose()
+            homeView.endEditing(true)
+        }
     }
 }
 
