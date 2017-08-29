@@ -128,25 +128,30 @@ Fling.API = {
         xhrObj.open(method, url);
         xhrObj.send();
     },
+    request2: function(method, url, data) {
+        var myHeaders = new Headers();
+        var myInit = {
+            method: method,
+            headers: myHeaders,
+            mode: 'cors',
+            cache: 'default',
+            body: data
+        };
+        var myRequest = new Request(url, myInit);
+        return fetch(myRequest).then(response => response.json());
+    },
     get: function(url, params, callback) {
         return this.request('get', url, params, callback);
     },
-    get2: function(url, params, callback) {
-        var myHeaders = new Headers();
-        var myInit = {
-            method: 'GET',
-            headers: myHeaders,
-            mode: 'cors',
-            cache: 'default'
-        };
-
-        var myRequest = new Request(url, myInit);
-
-        return fetch(myRequest).then(response => response.json());
-    },
     post: function(url, params, callback) {
         return this.request('post', url, params, callback);
-    }
+    },
+    get2: function(url, data) {
+        return this.request2('get', url, data);
+    },
+    post2: function(url, data) {
+        return this.request2('post', url, data);
+    },
 }
 
 Fling.Template = {
