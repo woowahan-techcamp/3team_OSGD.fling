@@ -2,28 +2,26 @@ document.addEventListener('DOMContentLoaded', recipePageEventHandler);
 
 async function recipePageEventHandler() {
     let url = Utils.getParameterByName('query_url');
-    Fling.API.post(Fling.Data.apiRecipes, `url=${url}`, async (jsonData) => {
         
+    let jsonData = await Fling.API.post2(Fling.Data.apiRecipes, `url=${url}`);
 
+    let recipeDesc = new Fling.View.CardView({
+        data: jsonData,
+        template: Fling.Template.recipePageRecipeDetailSource
+    }, Fling.$('fling-recipe-desc'));
 
-        let productListView = new Fling.View.ListView({
-            data: await Fling.API.get2(Fling.Data.apiGetProducts, `/${jsonData.id}`),
-            title: jsonData.title
-        }, Fling.$('.recipe_cart'));
-        uncheckMyRefrigeItem();
-        calcTotalPrice();
-        
-        
-        let recipeDesc = new Fling.View.CardView({
-            data: jsonData,
-            template: Fling.Template.recipePageRecipeDetailSource
-        }, Fling.$('fling-recipe-desc'));
+    let missedMaterial = new Fling.View.CardView({
+        data: jsonData,
+        template: Fling.Template.missedMaterialSource
+    }, Fling.$('fling-missed-material'));
 
-        let missedMaterial = new Fling.View.CardView({
-            data: jsonData,
-            template: Fling.Template.missedMaterialSource
-        }, Fling.$('fling-missed-material'));
-    });
+    let productListView = new Fling.View.ListView({
+        data: await Fling.API.get2(Fling.Data.apiGetProducts, `/${jsonData.id}`),
+        title: jsonData.title
+    }, Fling.$('.recipe_cart'));
+    uncheckMyRefrigeItem();
+    calcTotalPrice();
+
 
     const target = document.querySelector(".search_text");
     target.addEventListener("keyup", searchHandler);
