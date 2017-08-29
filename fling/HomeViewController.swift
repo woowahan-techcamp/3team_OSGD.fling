@@ -19,19 +19,24 @@ class HomeViewController: UIViewController {
     var fridge = Refrigerator()
     var recipe = Recipe.init()
     var recipeSearchList = SearchList.init()
-    let KeyboardWillShowNotification = Notification.Name.init(rawValue: "UIKeyboardWillShowNotification")
     
     @IBOutlet weak var recipeTableView: UITableView!
     @IBOutlet var searchPopUp: UIView!
     @IBOutlet var homeView: UIView!
     @IBOutlet weak var sampleRecipeCollection: UICollectionView!
 
+    @IBOutlet weak var popupCloseButton: UIButton!
+    @IBAction func popupCloseButton(_ sender: Any) {
+        homeView.endEditing(true)
+        self.popUpClose()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
-//        let logo = UIImage(named: "fling_logo_white.png")
-//        let imageView = UIImageView(image: logo)
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.frame.size = CGSize(width: 375, height: 30)
-//        self.navigationItem.titleView = imageView
+        let logo = UIImage(named: "fling_logo_white.png")
+        let imageView = UIImageView(image: logo)
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame.size = CGSize(width: 375, height: 30)
+        self.navigationItem.titleView = imageView
     }
 
     override func viewDidLoad() {
@@ -45,12 +50,15 @@ class HomeViewController: UIViewController {
 
         let tap: UITapGestureRecognizer =
             UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
-        homeView.addGestureRecognizer(tap)
+        sampleRecipeCollection.addGestureRecognizer(tap)
+//        self.navigationController?.navigationBar.addGestureRecognizer(tap)
+
         tap.cancelsTouchesInView = false
 
         sampleRecipeCollection.register(CRVHomeTopHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader")
         sampleRecipeCollection.register(CRVHomeMidHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader")
         recipeTableView.tableFooterView = UIView()
+        recipeTableView.separatorInset.right = recipeTableView.separatorInset.left
 
         //swiftlint:disable line_length
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.sampleRecipe, object: nil)
@@ -58,14 +66,9 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.failNetwork, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.searchRecipe, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.seasonMenu, object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification),
-                                               name: KeyboardWillShowNotification,
-                                               object: nil)
-
+        
         network.getFlingRecipe()
         network.getSeason()
-
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,12 +79,9 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func keyboardWillShow() {
-        //urlWarningLabel.isHidden = true
-    }
-
     func dismissKeyboard() {
         homeView.endEditing(true)
+        popUpClose()
     }
 
     func recieveNotification(notification: Notification) {
@@ -91,8 +91,6 @@ class HomeViewController: UIViewController {
             }
             self.recipes = recipes
             sampleRecipeCollection.reloadData()
-        } else if notification.name == KeyboardWillShowNotification {
-            keyboardWillShow()
         } else if notification.name == network.flingRecipe {
             guard let recipe = notification.userInfo?["data"] as? Recipe else {
                 return
@@ -101,7 +99,6 @@ class HomeViewController: UIViewController {
             filter.filterProduct(recipe: recipe, fridge: fridge)
             self.recipe = recipe
             self.performSegue(withIdentifier: "HomeToRecipe", sender: self.recipe)
-
         } else if notification.name == network.failNetwork {
             // 예외 처리!
         } else if notification.name == network.searchRecipe {
@@ -140,6 +137,17 @@ class HomeViewController: UIViewController {
     func popUpClose() {
         self.searchPopUp.removeFromSuperview()
         recipeTableView.isHidden = true
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touch")
+        
+        let touch: UITouch? = touches.first
+
+        if touch?.view != searchPopUp {
+            self.popUpClose()
+            homeView.endEditing(true)
+        }
     }
 }
 
@@ -237,7 +245,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.popUpClose()
+
+        
+        if scrollView != recipeTableView {
+            self.popUpClose()
+            homeView.endEditing(true)
+        }
     }
 }
 
