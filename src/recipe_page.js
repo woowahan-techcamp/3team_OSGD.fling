@@ -1,14 +1,15 @@
-document.addEventListener('DOMContentLoaded', (e) => {
+document.addEventListener('DOMContentLoaded', recipePageEventHandler);
+
+async function recipePageEventHandler() {
     let url = Utils.getParameterByName('query_url');
     Fling.API.post(Fling.Data.apiRecipes, `url=${url}`, (jsonData) => {
-        Fling.API.get(Fling.Data.apiGetProducts, `/${jsonData.id}`, (data) => {
-            let productListView = new Fling.View.ListView({
-                data: data,
-                title: jsonData.title
-            }, Fling.$('.recipe_cart'));
-            uncheckMyRefrigeItem();
-            calcTotalPrice();
-        })
+
+        let productListView = new Fling.View.ListView({
+            data: Fling.API.get2(Fling.Data.apiGetProducts, `/${jsonData.id}`),
+            title: jsonData.title
+        }, Fling.$('.recipe_cart'));
+        uncheckMyRefrigeItem();
+        calcTotalPrice();
         
         let recipeDesc = new Fling.View.CardView({
             data: jsonData,
@@ -32,9 +33,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         e.target.href = 'javascript:void(0)';
         const popup = window.open("./refrige_popup.html", "refrigeWindow", "width=700,height=800,toolbar=no,menubar=no");
     })
-});
-
-
+}
 
 
 function template(data) {
