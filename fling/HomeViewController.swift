@@ -15,14 +15,10 @@ class HomeViewController: UIViewController {
     let network = Network()
     let alertController = UIAlertController(title: nil, message: "Please wait\n\n", preferredStyle: .alert)
     var recipes = [Recipe]()
+    var seasonRecipes = [Recipe]()
     var fridge = Refrigerator()
     var recipe = Recipe.init()
     var recipeSearchList = SearchList.init()
-    
-    private let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
-    private let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
-    private let failFlingRecipe = Notification.Name.init(rawValue: "failFlingRecipe")
-    private let searchRecipe = Notification.Name.init("searchRecipe")
     
     @IBOutlet weak var recipeTableView: UITableView!
     @IBOutlet var searchPopUp: UIView!
@@ -59,19 +55,20 @@ class HomeViewController: UIViewController {
 
         tap.cancelsTouchesInView = false
 
-        //swiftlint:disable line_length
-        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: sampleRecipe, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: flingRecipe, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: failFlingRecipe, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: searchRecipe, object: nil)
-
-        network.getFlingRecipe()
-
         sampleRecipeCollection.register(CRVHomeTopHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader")
         sampleRecipeCollection.register(CRVHomeMidHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader")
-
         recipeTableView.tableFooterView = UIView()
         recipeTableView.separatorInset.right = recipeTableView.separatorInset.left
+
+        //swiftlint:disable line_length
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.sampleRecipe, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.flingRecipe, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.failNetwork, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.searchRecipe, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.seasonMenu, object: nil)
+        
+        network.getFlingRecipe()
+        network.getSeason()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,13 +85,13 @@ class HomeViewController: UIViewController {
     }
 
     func recieveNotification(notification: Notification) {
-        if notification.name == sampleRecipe {
+        if notification.name == network.sampleRecipe {
             guard let recipes = notification.userInfo?["data"] as? [Recipe] else {
                 return
             }
             self.recipes = recipes
             sampleRecipeCollection.reloadData()
-        } else if notification.name == flingRecipe {
+        } else if notification.name == network.flingRecipe {
             guard let recipe = notification.userInfo?["data"] as? Recipe else {
                 return
             }
@@ -102,14 +99,19 @@ class HomeViewController: UIViewController {
             filter.filterProduct(recipe: recipe, fridge: fridge)
             self.recipe = recipe
             self.performSegue(withIdentifier: "HomeToRecipe", sender: self.recipe)
-
-        } else if notification.name == failFlingRecipe {
+        } else if notification.name == network.failNetwork {
             // 예외 처리!
-        } else if notification.name == searchRecipe {
+        } else if notification.name == network.searchRecipe {
             guard let recipeList = notification.userInfo?["data"] as? SearchList else { return }
             self.recipeSearchList = recipeList
             recipeTableView.isHidden = false
             recipeTableView.reloadData()
+        } else if notification.name == network.seasonMenu {
+            guard let recipes = notification.userInfo?["data"] as? [Recipe] else {
+                return
+            }
+            self.seasonRecipes = recipes
+            sampleRecipeCollection.reloadData()
         }
     }
 
@@ -123,13 +125,6 @@ class HomeViewController: UIViewController {
             }
             secondViewController.searchRecipe = recipe
         }
-    }
-
-    func checkRecipeUrl(url: String) -> Bool {
-        if !url.contains("haemukja.com/recipes/") {
-            return false
-        }
-        return true
     }
     
     func popUpOpen() {
@@ -163,9 +158,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 4
+            if recipes.count != 0 {
+                return recipes.count - 2
+            } else {
+                return recipes.count
+            }
         } else {
-            return 6
+            if seasonRecipes.count != 0 {
+                return self.seasonRecipes.count - 1
+            } else {
+                return self.seasonRecipes.count
+            }
         }
     }
     
@@ -205,11 +208,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 as? HomeRecipeCollectionViewCell else {
                     return HomeRecipeCollectionViewCell()
         }
-
+        
         // for collection view image position padding!
         var padding = CGFloat.init(0)
         if indexPath.row%2 == 0 {
             padding =  CGFloat.init(10)
+        }
+        
+        var recipeCell = Recipe()
+        if indexPath.section == 0 {
+            recipeCell = self.recipes[indexPath.row]
+        } else {
+            recipeCell = self.seasonRecipes[indexPath.row]
         }
         
         let collectionViewSize = sampleRecipeCollection.frame.size.width
@@ -217,17 +227,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.frame.size = cgSize
 
         if recipes.count > 0 {
-            if recipes[indexPath.row].image != "" {
-                cell.sampleRecipeImage?.af_setImage(withURL: URL(string: recipes[indexPath.row].image)!)
+            if recipeCell.image != "" {
+                cell.sampleRecipeImage?.af_setImage(withURL: URL(string: recipeCell.image)!)
             }
             cell.sampleRecipeImage.frame.size = CGSize(width: collectionViewSize/2 - 20, height: collectionViewSize/2 - 20)
-          
             cell.sampleRecipeImage.frame.origin = CGPoint(x: padding, y: 0)
-            
-            cell.sampleRecipeLabel.text = recipes[indexPath.row].title
-            cell.sampleRecipeSubtitleLabel.text = recipes[indexPath.row].subtitle
+            cell.sampleRecipeLabel.text = recipeCell.title
+            cell.sampleRecipeSubtitleLabel.text = recipeCell.subtitle
+            cell.sampleRecipeLabel.center.x = cell.sampleRecipeImage.center.x
+            cell.sampleRecipeSubtitleLabel.center.x = cell.sampleRecipeImage.center.x
             cell.clickHandler = { () -> Void in
-                self.network.getRecipeWith(recipeId: self.recipes[indexPath.row].rid)
+                self.network.getRecipeWith(recipeId: recipeCell.rid)
             }
         }
 
