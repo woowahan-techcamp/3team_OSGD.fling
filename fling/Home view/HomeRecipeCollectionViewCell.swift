@@ -20,7 +20,7 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         self.sampleRecipeImage.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         sampleRecipeImage.addGestureRecognizer(tapRecognizer)
-        self.sampleRecipeImage.layer.masksToBounds = true;
+        self.sampleRecipeImage.layer.masksToBounds = true
     }
 
     @IBOutlet weak var sampleRecipeImage: UIImageView!

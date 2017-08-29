@@ -30,7 +30,7 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var productTable: UITableView!
     @IBOutlet weak var enlargementIcon: UIView!
-    
+
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = recipeImage
         let newImageView = UIImageView(image: imageView?.image)
@@ -44,13 +44,12 @@ class RecipeViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
     }
-    
+
     func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
     }
-    
 
     @IBAction func unwindToRecipe(segue: UIStoryboardSegue) {
         searchRecipe.add(product: editedProduct.product, number: editedProduct.number)
@@ -86,25 +85,25 @@ class RecipeViewController: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        self.recipeImage.layer.cornerRadius = CGFloat(roundf(Float(recipeImage.frame.size.width/2.0)));
-        self.recipeImage.layer.masksToBounds = true;
-        
+        self.recipeImage.layer.cornerRadius = CGFloat(roundf(Float(recipeImage.frame.size.width/2.0)))
+        self.recipeImage.layer.masksToBounds = true
+
         cart = appDelegate.cart
 
         self.productTable.tableFooterView = UIView()
         self.productTable.separatorInset.right = 15
-        
+
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         recipeImage.addGestureRecognizer(pictureTap)
         recipeImage.isUserInteractionEnabled = true
-        
+
         let enlargementIconTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         enlargementIcon.addGestureRecognizer(enlargementIconTap)
         enlargementIcon.isUserInteractionEnabled = true
-        
+
         enlargementIcon.layer.cornerRadius = enlargementIcon.frame.size.width/2
         enlargementIcon.clipsToBounds = true
-        
+
         drawRecipeDetail()
     }
 

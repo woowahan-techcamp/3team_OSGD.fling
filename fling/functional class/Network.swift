@@ -18,7 +18,7 @@ class Network {
     private let searchMaterialUrl = "http://52.79.119.41/search_material/"
     private let searchRecipeUrl = "http://52.79.119.41/search_recipe/"
     private let season = "http://52.79.119.41/season/"
-    
+
     let sampleRecipe = Notification.Name.init(rawValue: "sampleRecipe")
     let flingRecipe = Notification.Name.init(rawValue: "flingRecipe")
     let failNetwork = Notification.Name.init(rawValue: "failNetwork")
@@ -39,8 +39,7 @@ class Network {
                     recipes.append(recipe)
                 })
             }
-            NotificationCenter.default.post(name: self.sampleRecipe,
-                                            object: self, userInfo: ["data": recipes])
+            NotificationCenter.default.post(name: self.sampleRecipe, object: self, userInfo: ["data": recipes])
         }
     }
 
@@ -56,13 +55,12 @@ class Network {
                         products.forEach({ object in
                             recipe?.add(product: Product.init(data: object)!, number: 1)
                         })
-                        NotificationCenter.default.post(name: self.flingRecipe,
-                                                        object: self, userInfo: ["data": recipe ?? ""])
+                        NotificationCenter.default.post(name: self.flingRecipe, object: self,
+                                                        userInfo: ["data": recipe ?? ""])
                     }
                 })
             } else {
-                NotificationCenter.default.post(name: self.failNetwork,
-                                                object: self, userInfo: [:])
+                NotificationCenter.default.post(name: self.failNetwork, object: self, userInfo: [:])
             }
         }
     }
@@ -80,13 +78,12 @@ class Network {
                             recipe?.add(product: product, number: 1)
                             }
                         })
-                        NotificationCenter.default.post(name: self.flingRecipe,
-                                                        object: self, userInfo: ["data": recipe ?? ""])
+                        NotificationCenter.default.post(name: self.flingRecipe, object: self,
+                                                        userInfo: ["data": recipe ?? ""])
                     }
                 })
             } else {
-                NotificationCenter.default.post(name: self.failNetwork,
-                                                object: self, userInfo: [:])
+                NotificationCenter.default.post(name: self.failNetwork, object: self, userInfo: [:])
             }
         }
     }
@@ -109,8 +106,7 @@ class Network {
                 let product = Product.init(data: productData) {
                 NotificationCenter.default.post(name: self.getProduct, object: self, userInfo: ["data": product])
             } else {
-                NotificationCenter.default.post(name: self.failNetwork,
-                                                object: self, userInfo: [:])
+                NotificationCenter.default.post(name: self.failNetwork, object: self, userInfo: [:])
             }
         }
     }
@@ -125,7 +121,7 @@ class Network {
             }
         }
     }
-    
+
     func searchRecipeWith(keyword: String) {
         let parameters: Parameters = ["keyword": keyword]
         Alamofire.request(searchRecipeUrl, method: .post, parameters: parameters).responseJSON { response in
@@ -136,7 +132,7 @@ class Network {
             }
         }
     }
-    
+
     func getSeason() {
         Alamofire.request(season).responseJSON { response in
             var recipes = [Recipe]()
@@ -148,8 +144,7 @@ class Network {
                     recipes.append(recipe)
                 })
             }
-            NotificationCenter.default.post(name: self.seasonMenu,
-                                            object: self, userInfo: ["data": recipes])
+            NotificationCenter.default.post(name: self.seasonMenu, object: self, userInfo: ["data": recipes])
         }
     }
 }

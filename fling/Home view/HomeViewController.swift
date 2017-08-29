@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     var recipeSearchList = SearchList.init()
     var keyword = ""
     let keywordHighlight = KeywordHighlight()
-    
+
     @IBOutlet weak var recipeTableView: UITableView!
     @IBOutlet var searchPopUp: UIView!
     @IBOutlet var homeView: UIView!
@@ -33,7 +33,6 @@ class HomeViewController: UIViewController {
         self.popUpClose()
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         let logo = UIImage(named: "fling_logo_white.png")
         let imageView = UIImageView(image: logo)
@@ -58,8 +57,12 @@ class HomeViewController: UIViewController {
 
         tap.cancelsTouchesInView = false
 
-        sampleRecipeCollection.register(CRVHomeTopHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader")
-        sampleRecipeCollection.register(CRVHomeMidHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader")
+        sampleRecipeCollection.register(CRVHomeTopHeader.self,
+                                        forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                        withReuseIdentifier: "topHeader")
+        sampleRecipeCollection.register(CRVHomeMidHeader.self,
+                                        forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                        withReuseIdentifier: "midHeader")
         recipeTableView.tableFooterView = UIView()
         recipeTableView.separatorInset.right = recipeTableView.separatorInset.left
 
@@ -69,7 +72,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.failNetwork, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.searchRecipe, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recieveNotification), name: network.seasonMenu, object: nil)
-        
+
         network.getFlingRecipe()
         network.getSeason()
     }
@@ -136,15 +139,13 @@ class HomeViewController: UIViewController {
         self.view.addSubview(self.searchPopUp)
         recipeTableView.allowsSelection = true
     }
-    
+
     func popUpClose() {
         self.searchPopUp.removeFromSuperview()
         recipeTableView.isHidden = true
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touch")
-        
         let touch: UITouch? = touches.first
 
         if touch?.view != searchPopUp {
@@ -174,11 +175,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
+
         if indexPath.section == 0 {
-            let header = sampleRecipeCollection.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader", for: indexPath) as! CRVHomeTopHeader
+            guard let header = sampleRecipeCollection.dequeueReusableSupplementaryView(
+                ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "topHeader", for: indexPath
+                ) as? CRVHomeTopHeader else {
+                return CRVHomeTopHeader()
+            }
             header.popupOpen = self.popUpOpen
             header.popupClose = self.popUpClose
             header.editingKeyword = { keyword -> Void in
@@ -189,14 +194,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             return header
         } else {
-            let header = sampleRecipeCollection.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader", for: indexPath) as! CRVHomeMidHeader
+            guard let header = sampleRecipeCollection.dequeueReusableSupplementaryView(
+                ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "midHeader", for: indexPath
+                ) as? CRVHomeMidHeader else {
+                    return CRVHomeMidHeader()
+            }
             return header
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                                 layout collectionViewLayout: UICollectionViewLayout,
-                                 referenceSizeForHeaderInSection section: Int) -> CGSize {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let collectionViewSize = sampleRecipeCollection.frame.size.width
 
         if section == 0 {
@@ -207,27 +214,27 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return size
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell =
             sampleRecipeCollection.dequeueReusableCell(withReuseIdentifier: "mainRecipeCell", for: indexPath)
                 as? HomeRecipeCollectionViewCell else {
                     return HomeRecipeCollectionViewCell()
         }
-        
+
         // for collection view image position padding!
         var padding = CGFloat.init(0)
         if indexPath.row%2 == 0 {
             padding =  CGFloat.init(10)
         }
-        
+
         var recipeCell = Recipe()
         if indexPath.section == 0 {
             recipeCell = self.recipes[indexPath.row]
         } else {
             recipeCell = self.seasonRecipes[indexPath.row]
         }
-        
+
         let collectionViewSize = sampleRecipeCollection.frame.size.width
         let cgSize = CGSize.init(width: collectionViewSize/2, height: collectionViewSize/2 + 10)
         cell.frame.size = cgSize
@@ -249,10 +256,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         return cell
     }
-    
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
 
-        
         if scrollView != recipeTableView {
             self.popUpClose()
             homeView.endEditing(true)
@@ -265,21 +271,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.recipeSearchList.result.count  //add row
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeSearchListCell") as? RecipeSearchTableViewCell else { return RecipeSearchTableViewCell.init() }
-        
+
         let result = recipeSearchList.result[indexPath.row].name
         cell.resultLabel.attributedText = keywordHighlight.addBold(keyword: keyword, text: result)
         cell.resultLabel.font = UIFont.systemFont(ofSize: 12)
         cell.selectionStyle = UITableViewCellSelectionStyle.default
         return cell
     }
-   
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.network.getRecipeWith(recipeId: self.recipeSearchList.result[indexPath.row].id)
     }

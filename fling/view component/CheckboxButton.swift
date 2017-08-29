@@ -31,7 +31,7 @@ open class CheckboxButton: UIControl {
             colorLayers()
         }
     }
-    
+
     /// Line width for the bounding container of the check mark.
     /// Default value is 2.
     @IBInspectable open var containerLineWidth: CGFloat = 2.0 {
