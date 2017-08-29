@@ -21,6 +21,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
     var scrollToHeader:(() -> Void)!
     let network = Network.init()
     let screenWidth = UIScreen.main.bounds.width
+    let keywordHighlight = KeywordHighlight()
 
     override init(frame: CGRect) {
         keywordInput = UITextField()
@@ -66,8 +67,9 @@ class CRVHomeTopHeader: UICollectionReusableView {
         
         let yForFlingHot = headerImage.frame.height + 60
         let widthForFlingHot = headerImage.frame.width
-        flingHotLabel.text = "플링 인기 차트"
-        flingHotLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightUltraLight)
+        
+        flingHotLabel.attributedText = keywordHighlight.addBold(keyword: "인기 차트", text: "플링 인기 차트")
+        flingHotLabel.font = UIFont.systemFont(ofSize: 24, weight: UIFontWeightUltraLight)
         flingHotLabel.textAlignment = NSTextAlignment.center
         flingHotLabel.frame = CGRect.init(x:0, y: yForFlingHot, width: widthForFlingHot, height: 18)
         
