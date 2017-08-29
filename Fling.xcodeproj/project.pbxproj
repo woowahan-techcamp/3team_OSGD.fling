@@ -655,7 +655,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fling/Pods-fling-frameworks.sh\"\n\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fling/Pods-fling-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D677320498FC1AB34FFD9024 /* [CP] Check Pods Manifest.lock */ = {
