@@ -137,6 +137,9 @@ Fling.API = {
             cache: 'default',
             body: data
         };
+        if (data.length > 0) {
+            url = url + ((data[0] !== '/') ? '?' : '') + data;
+        }
         var myRequest = new Request(url, myInit);
         return fetch(myRequest).then(response => response.json());
     },
