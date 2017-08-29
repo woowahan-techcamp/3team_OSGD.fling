@@ -8,9 +8,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 
 function templateList() {
-    const myRefrige = JSON.parse(window.localStorage.getItem("myRefrige"));
-    if (myRefrige == null)
+    let myRefrige;
+    try {
+        myRefrige = Fling.Storage.myRefrige;
+    }
+    catch(e) {
         return;
+    }
     const target = document.querySelector(".refrige_list");
     const theTemplateScript = document.querySelector("#refrige_template").innerHTML;
     const theTemplate = Handlebars.compile(theTemplateScript);
@@ -33,11 +37,12 @@ function refrigeSearchHandler(e) {
     XHR.post(`http://52.79.119.41/search_material?keyword=${searchQuery}`, (e) => {
         let searchData = JSON.parse(e.target.responseText);
         const searchDataLength = searchData.length;
-        let myRefrige = JSON.parse(window.localStorage.getItem("myRefrige"));
         const searchBar = document.querySelector(".search_bar");
-        searchBar.style.display = "block";  
-        
-        if (myRefrige != null) {
+        searchBar.style.display = "block";
+        let myRefrige;  
+
+        try {
+            myRefrige = Fling.Storage.myRefrige;
             const myRefrigeLength = myRefrige.length;
             for(let i = 0; i < searchDataLength; i++) {
                 searchData[i].isHavingMaterial = false;
@@ -49,7 +54,7 @@ function refrigeSearchHandler(e) {
                 }
             }
         }
-        else {
+        catch(e) {
             for (let i = 0; i < searchDataLength; i++) {
                 searchData[i].isHavingMaterial = false;
             }
@@ -79,15 +84,7 @@ function addRemoveHandler(e) {
         obj.id = id;
         obj.name = name;
 
-        if (myRefrige == null) {
-            myRefrige = [];
-            myRefrige.push(obj);
-            window.localStorage.setItem("myRefrige", JSON.stringify(myRefrige));
-        }
-        else {
-            myRefrige.push(obj);
-            window.localStorage.setItem("myRefrige", JSON.stringify(myRefrige));
-        }
+        Fling.Storage.addMyRefrige(obj);
         document.querySelector(".search_bar").style.display = "none";
         document.querySelector(".search_text").value = "";
 
@@ -99,12 +96,9 @@ function addRemoveHandler(e) {
     else if (e.target.className == "remove_material_btn") {
         for (let i = 0; i < myRefrige.length; i++) {
             if (myRefrige[i].name == name) {
-                myRefrige.splice(i, 1);
-                window.localStorage.setItem("myRefrige", JSON.stringify(myRefrige));
-
+                Fling.Storage.removeMyRefrige(i);
                 //remove list
                 document.querySelector(".refrige_list").children[i].remove();
-
                 //reset searchbar
                 document.querySelector(".search_bar").style.display = "none";
                 document.querySelector(".search_text").value = "";
@@ -115,14 +109,13 @@ function addRemoveHandler(e) {
 }
 
 function removeBtnHanler(e) {
-    let myRefrige = JSON.parse(window.localStorage.getItem("myRefrige"));
     if (e.target.className == "material_remove_btn") {
         const refrigeListItem = Array.from(document.querySelectorAll(".refrige_list_item"));
+        let myRefrige = Fling.Storage.myRefrige;
 
         for (let i = 0; i < refrigeListItem.length; i++) {
             if (refrigeListItem[i].querySelector(".material_remove_btn") == e.target) {
-                myRefrige.splice(i, 1);
-                window.localStorage.setItem("myRefrige", JSON.stringify(myRefrige));
+                Fling.Storage.removeMyRefrige(i);
                 refrigeListItem[i].remove();
                 break;                
             }

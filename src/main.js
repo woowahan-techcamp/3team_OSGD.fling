@@ -1,21 +1,21 @@
 function mainEventHandler() {
     Fling.API.get(Fling.Data.apiRecipes, data => {
-        let rankSection = new Fling.Section({
+        let rankSection = new Fling.View.TileView({
+            data: data,
             title: '플링 <em>인기 차트</em>',
             id: 'recommended'
-        }, new Fling.View.TileView(data));
-
-        document.querySelector('fling-main-recipe').innerHTML = rankSection.render;
+        }, Fling.$('fling-main-recipe'));
     });
 
     Fling.API.get(Fling.Data.apiSeason, data => {
-        let seasonSection = new Fling.Section({
+        let seasonSection = new Fling.View.SlideView({
+            data: data,
             title: '여름엔 <em>플링</em>',
             id: 'season_event'
-        }, new Fling.View.SlideView(data));
+        }, Fling.$('fling-season-recipe'));
 
         let targetSource = document.querySelector('fling-season-recipe');
-        targetSource.innerHTML = seasonSection.render;
+        //targetSource.innerHTML = seasonSection.render;
         targetSource.addEventListener('click', evt => {
             const firstElementChild = targetSource.querySelector(".list_wrap").firstElementChild;
             let slide_num = firstElementChild.style.getPropertyValue('--slide-number') * 1;

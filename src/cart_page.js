@@ -15,11 +15,15 @@ let templateCount = 0;
 
 function getUserCart() {
     const template = document.querySelector(".cart_list");
-    let userCart = window.localStorage.userCart;
-    userCart = JSON.parse(userCart);
+    let userCart;
     
+    try {
+        userCart = Fling.Storage.userCart;
+    }
+    catch(e) {
+        return;
+    }
     userCart.forEach((el, index) => {
-        
         XHR.post(el.productApiUrl, (e) => {
             el.productDetail = JSON.parse(e.target.responseText);
             
@@ -73,11 +77,8 @@ function sendDataToPopUp(e) {
 
     divArr.forEach((el, index) => {
         if (el == target) {
-            
             e.target.href = 'javascript:void(0)';
-            
             const popup = window.open(`./recipe_popup.html?data=${Utils.encodeBase64(JSON.stringify(data[index]))}`, "recipeWindow", "width=700,height=800,toolbar=no,menubar=no");
-
         }
     });
 }
@@ -91,18 +92,16 @@ function removeCartList(e) {
         cart_list.setAttribute('animate', '');
 
     let cart_item = Array.from(document.querySelectorAll('.cart_list_item'));
-    let localStorageTemp = JSON.parse(localStorage.getItem("userCart"));
-    let sessionStorageTemp = JSON.parse(sessionStorage.getItem("userCart"));
+    let localStorageTemp = Fling.Storage.userCart;
+    let sessionStorageTemp = Fling.Storage.userCartSession
 
     for (let i = 0; i < cart_item.length; i++) {
         if (cart_item[i].querySelector('.prd_del') === e.target) {
             cart_item[i].style.transition = '1s';
             cart_item[i].style.transform = 'translateX(-100vw)'
 
-            localStorageTemp.splice(i, 1);
-            sessionStorageTemp.splice(i,1);
-            window.localStorage.setItem("userCart", JSON.stringify(localStorageTemp));
-            window.sessionStorage.setItem("userCart", JSON.stringify(sessionStorageTemp));
+            Fling.Storage.removeUserCart(i);
+            Fling.Storage.removeUserCartSession(i);
             setTotalPrice();
 
             cart_item[i].addEventListener('transitionend', (e) => {
@@ -125,7 +124,13 @@ function removeCartList(e) {
 
 
 function setTotalPrice() {
-    const data = JSON.parse(window.localStorage.getItem("userCart"));
+    let data;
+    try {
+        data = Fling.Storage.userCart;
+    }
+    catch(e) {
+        return;
+    } 
     const target = document.querySelector(".section_body");
     let totalPrice = 0;
 

@@ -10,34 +10,54 @@
         <script src="./js/XHR.js"></script>
         <script src="./js/Utils.js"></script>
         <script src="./recipe_page.js"></script>
-        <script type="Template" id="cart_list_template">
-            {{#each this}}
-                <div class="cart_list" data-id="{{id}}" value="{{material_id}}">
-                    <div class="left">
-                        <input type="checkbox" class="recipe_checkbox" id="check1" checked>
-                        <label for="check1"></label>
-                        <div class="product_img" style="background-image: url({{image}})"></div>
-                        <div class="product_info">
-                            <div class="name">{{name}}</div>
-                            <div class="origin">국내산</div>
-                        </div>    
-                    </div>
-                    <div class="right">
-                        <div class="volume_box">
-                            <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
-                            <div class="button">
-                                <button class="up_button"></button>
-                                <button class="down_button"></button>
-                            </div>
-                        </div>
-                        <div class="price_info">
-                            <div class="total_price">{{price}}원</div>
-                            {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
-                            <input type="hidden" id="per_price" value="{{price}}">
-                        </div>    
-                    </div>
+        <script type="Template" id="recipe_desc_template">
+            <div class="recipe_detail" data-id={{id}}>
+                <div class="circle_wrap">
+                    <div class="circle_img"style="background-image: url({{image}})"></div>
                 </div>
-            {{/each}}
+                <div class="description">
+                    <div class="title">{{title}}</div>
+                    <div class="subtitle">{{subtitle}}</div>
+                    <div class="detail_link"><a href="{{url}}" target="_blank">레시피 자세히 보기</a></div>
+                </div>
+            </div>
+        </script>
+        <script type="Template" id="cart_list_template">        
+            <div class="title">'<span class="title_main">{{title}}</span>' 레시피 재료 담기</div>
+            <div class="subtitle">
+                <div>상품</div>
+                <div>수량</div>
+                <div>가격</div>
+            </div>
+            <div class="cart_template">
+                {{#each this}}
+                    <div class="cart_list" data-id="{{id}}" value="{{material_id}}">
+                        <div class="left">
+                            <input type="checkbox" class="recipe_checkbox" id="check1" checked>
+                            <label for="check1"></label>
+                            <div class="product_img" style="background-image: url({{image}})"></div>
+                            <div class="product_info">
+                                <div class="name">{{name}}</div>
+                                <div class="origin">국내산</div>
+                            </div>    
+                        </div>
+                        <div class="right">
+                            <div class="volume_box">
+                                <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
+                                <div class="button">
+                                    <button class="up_button"></button>
+                                    <button class="down_button"></button>
+                                </div>
+                            </div>
+                            <div class="price_info">
+                                <div class="total_price">{{price}}원</div>
+                                {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
+                                <input type="hidden" id="per_price" value="{{price}}">
+                            </div>    
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
         </script>
         <script type="Template" id="cart_list_template_solo">               
             <div class="cart_list added" data-id="{{id}}">
@@ -112,13 +132,7 @@
                 </section>
 
                 <section class="recipe_section recipe_cart content">
-                    <div class="title">'<span class="title_main">양념불고기</span>' 레시피 재료 담기</div>
-                    <div class="subtitle">
-                        <div>상품</div>
-                        <div>수량</div>
-                        <div>가격</div>
-                    </div>
-                    <div class="cart_template"></div>
+                    
                 </section>
                 
                 <section class="recipe_section recipe_product_search">

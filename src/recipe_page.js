@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
     let url = Utils.getParameterByName('query_url');
     Fling.API.post(Fling.Data.apiRecipes, `url=${url}`, (jsonData) => {
         Fling.API.get(Fling.Data.apiGetProducts, `/${jsonData.id}`, (data) => {
-            template(data);
+            let productListView = new Fling.View.ListView({
+                data: data,
+                title: jsonData.title
+            }, Fling.$('.recipe_cart'));
         })
         
         document.querySelector('.recipe_detail').dataId = jsonData.id;
@@ -240,22 +243,8 @@ function storeUserCartData() {
     cartListObj.productApiUrl = cartListObj.productApiUrl.substring(0, cartListObj.productApiUrl.length - 1);
     cartListObj.productApiUrl += "]";
     
-    let userCart = window.localStorage.userCart;
-    try {
-        JSON.parse(userCart)
-    }
-    catch(e) {
-        userCart = "[]";
-        window.localStorage.setItem("userCart", "[]");
-    }
-    if (!Array.isArray(JSON.parse(userCart))) {
-        window.localStorage.setItem("userCart", "[]");
-        userCart = "[]";
-    }
-    userCart = JSON.parse(userCart);
-    userCart.push(cartListObj);
+    Fling.Storage.addUserCart(cartListObj);
 
-    window.localStorage.setItem("userCart", JSON.stringify(userCart));
 
     //to the next page.
     window.location.href = "./cart_page.html";

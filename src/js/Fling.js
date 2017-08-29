@@ -28,6 +28,13 @@ Fling.Storage = {
         else 
             return userCart;
     },
+    get userCartSession() {
+        const userCartS = JSON.parse(window.sessionStorage.getItem('userCart'));
+        if (userCartS == null)
+            throw 'Usercart sessionstorage is empty';
+        else 
+            return userCartS;
+    },
     get myRefrige() {
         const myRefrige = JSON.parse(window.localStorage.getItem('myRefrige'));
         if (myRefrige == null)
@@ -48,6 +55,29 @@ Fling.Storage = {
         }
         window.localStorage.setItem('userCart', JSON.stringify(userCart));
     },
+    removeUserCart: function(index) {
+        let userCart = JSON.parse(window.localStorage.getItem('userCart'));
+        userCart.splice(index, 1);
+        window.localStorage.setItem("userCart", JSON.stringify(userCart));
+    },
+    addUserCartSession: function(item) {
+        let userCartS =  JSON.parse(window.sessionStorage.getItem('userCart'));
+        if (typeof item != 'object')
+            throw 'Argument should be object.';
+        if (userCartS == null) {
+            userCartS =[];
+            userCartS.push(item);
+        }
+        else {
+            userCartS.push(item);
+        }
+        window.sessionStorage.setItem('userCart', JSON.stringify(userCartS));
+    },
+    removeUserCartSession: function(index) {
+        let userCartS = JSON.parse(window.sessionStorage.getItem('userCart'));
+        userCartS.splice(index, 1);
+        window.sessionStorage.setItem("userCart", JSON.stringify(userCartS));
+    },
     addMyRefrige: function(item) {
         let myRefrige =  JSON.parse(window.localStorage.getItem('myRefrige'));
         if (typeof item != 'object')
@@ -60,6 +90,11 @@ Fling.Storage = {
             myRefrige.push(item);
         }
         window.localStorage.setItem('myRefrige', JSON.stringify(myRefrige));
+    },
+    removeMyRefrige: function(index) {
+        let myRefrige = JSON.parse(window.localStorage.getItem('myRefrige'))
+        myRefrige.splice(index, 1);
+        window.localStorage.setItem("myRefrige", JSON.stringify(myRefrige));
     },
     get clear() {
         window.localStorage.clear();
@@ -102,17 +137,29 @@ Fling.API = {
 }
 
 Fling.Template = {
-    tileViewSource: '<div class="recommend_content_wrap"><ul class="recommend_content_list"> {{#each this}}<li> <a href="./recipe_page.html?query_url={{url}}"><div class="recommend_content_list_node" style="background-image: url({{image}})"><div class="recommend_number"><p>{{inc @index}}</p></div></div> </a><dt><a href="./recipe_page.html?query_url={{url}}">{{subtitle}}</a></dt><dd>{{title}} | {{writer}}</dd></li> {{/each}}</ul></div>',
-    slideViewSource: '<div class="recommend_content_wrap"><div class="slide_arrow prev"></div><div class="slide_arrow next"></div><div class="list_wrap"><ul class="recommend_content_list" style="--slide-number: 1"> {{#each this}}<li> <a href="./recipe_page.html?query_url={{url}}"><div class="recommend_content_list_node" style="background-image: url({{image}})"></div> </a><dt><a href="./recipe_page.html?query_url={{url}}">{{subtitle}}</a></dt><dd>{{title}} | {{writer}}</dd></li>{{/each}}</ul></div>',
+    tileViewSource: '<section class="main_section content {{id}}" id="{{id}}"><div class="section_title">{{{title}}}<div class="separate"></div></div><div class="recommend_content_wrap"><ul class="recommend_content_list"> {{#each this}}<li> <a href="./recipe_page.html?query_url={{url}}"><div class="recommend_content_list_node" style="background-image: url({{image}})"><div class="recommend_number"><p>{{inc @index}}</p></div></div> </a><dt><a href="./recipe_page.html?query_url={{url}}">{{subtitle}}</a></dt><dd>{{title}} | {{writer}}</dd></li> {{/each}}</ul></div></section>',
+    slideViewSource: '<section class="main_section content {{id}}" id="{{id}}"><div class="section_title">{{{title}}}<div class="separate"></div></div><div class="recommend_content_wrap"><div class="slide_arrow prev"></div><div class="slide_arrow next"></div><div class="list_wrap"><ul class="recommend_content_list" style="--slide-number: 1"> {{#each this}}<li> <a href="./recipe_page.html?query_url={{url}}"><div class="recommend_content_list_node" style="background-image: url({{image}})"></div> </a><dt><a href="./recipe_page.html?query_url={{url}}">{{subtitle}}</a></dt><dd>{{title}} | {{writer}}</dd></li>{{/each}}</ul></div></section>',
     sectionSource: '<section class="main_section content {{id}}" id="{{id}}"><div class="section_title">{{{title}}}<div class="separate"></div></div>{{{view.render}}}</section>',
-    cartListSource: '{{#each this}}<div class="cart_list" data-id="{{id}}" value="{{material_id}}"><div class="left"> <input type="checkbox" class="recipe_checkbox" id="check1" checked> <label for="check1"></label><div class="product_img" style="background-image: url({{image}})"></div><div class="product_info"><div class="name">{{name}}</div><div class="origin">국내산</div></div></div><div class="right"><div class="volume_box"> <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g,"");"><div class="button"> <button class="up_button"></button> <button class="down_button"></button></div></div><div class="price_info"><div class="total_price">{{price}}원</div> {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}} <input type="hidden" id="per_price" value="{{price}}"></div></div></div> {{/each}}',
+    cartListSource: '<div class="title">\'<span class="title_main">{{title}}</span>\' 레시피 재료 담기</div><div class="subtitle"> <div>상품</div><div>수량</div><div>가격</div></div><div class="cart_template">{{#each this}}<div class="cart_list" data-id="{{id}}" value="{{material_id}}"> <div class="left"> <input type="checkbox" class="recipe_checkbox" id="check1" checked> <label for="check1"></label> <div class="product_img" style="background-image: url({{image}})"></div><div class="product_info"> <div class="name">{{name}}</div><div class="origin">국내산</div></div></div><div class="right"> <div class="volume_box"> <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,"");"> <div class="button"> <button class="up_button"></button> <button class="down_button"></button> </div></div><div class="price_info"> <div class="total_price">{{price}}원</div>{{#if weight}}<div class="per_price">{{weight}}당{{price}}원</div>{{/if}}<input type="hidden" id="per_price" value="{{price}}"> </div></div></div>{{/each}}</div>',
     cartListSoloSource: '<div class="cart_list added" data-id="{{id}}"><div class="left"> <input type="checkbox" class="recipe_checkbox" id="check1" checked> <label for="check1"></label><div class="product_img" style="background-image: url({{image}})"></div><div class="product_info"><div class="name">{{name}}</div><div class="origin">국내산</div></div></div><div class="right"><div class="volume_box"> <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g,"");"><div class="button"> <button class="up_button"></button> <button class="down_button"></button></div></div><div class="price_info"><div class="total_price">{{price}}원</div> {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}} <input type="hidden" id="per_price" value="{{price}}"></div></div></div>',
     mainSearchBarSource: '{{#each this}}<div class="search_bar_list"><div class="search_bar_img" style="background-image: url({{image}})"></div><div class="product_info"><div>{{{_subtitle}}}</div> <span>{{{_title}}}</span></div> <button class="search_bar_button" onclick="location.href=\'recipe_page.html?query_url={{url}}\'">장보기</button></div> {{/each}}',
     recipePageSearchBarSource: '{{#each this}}<div class="search_bar_list"><div class="search_bar_img" style="background-image: url({{image}})"></div><div class="product_info"><div>{{{_name}}}</div> {{#if weight}}<span>{{weight}}당</span>{{/if}} <span>{{price}}원</span></div> <button class="search_bar_button" value="{{id}}">물품추가</button></div> {{/each}}'
 }
+
+Fling.$ = function(target) {
+    return document.querySelector(target);
+}
+
 Fling.View = class View {
     constructor() {
-        this.dataObject = null;
+        let params = arguments[0][0];
+        let target = arguments[0][1];
+        
+        this.target = target;
+        this.data = params.data || {};
+        this.data.title = params.title;
+        this.data.id = params.id;
+        this.target.innerHTML = this.render;
     }
     get data() {
         return this.dataObject;
@@ -126,12 +173,13 @@ Fling.View = class View {
     }
 }
 Fling.View.TileView = class TileView extends Fling.View {
-    constructor(params) {
-        super();
-        this.data = params;
+    constructor(params, target) {
+        super(arguments);
     }
     get render() {
         let data = this.data.slice(0, 3);
+        data.title = this.data.title;
+        data.id = this.data.id;
         Handlebars.registerHelper("inc", (value, options) => {
             return parseInt(value) + 1;
         });
@@ -140,9 +188,8 @@ Fling.View.TileView = class TileView extends Fling.View {
     }
 }
 Fling.View.SlideView = class SlideView extends Fling.View {
-    constructor(params) {
-        super();
-        this.data = params;
+    constructor(params, target) {
+        super(arguments);
     }
     get render() {
         let data = this.data;
@@ -150,18 +197,19 @@ Fling.View.SlideView = class SlideView extends Fling.View {
         return template(data);
     }
 }
-Fling.Section = class Section {
-    constructor(params, viewObject) {
-        this.title = params.title;
-        this.id = params.id;
-        this.view = viewObject;
-    }
 
+Fling.View.ListView = class ListView extends Fling.View {
+    constructor(params, target) {
+        super(arguments);
+    }
     get render() {
-        let template = Handlebars.compile(Fling.Template.sectionSource);
-        return template(this);
+        let data = this.data;
+        let template = Handlebars.compile(Fling.Template.cartListSource);
+        return template(data);
     }
 }
+
+
 Fling.EventHandler = {
     addEvent: function(target, eventType, callBack) {
         document.querySelector(target).addEventListener(eventType, callBack);
