@@ -2,14 +2,17 @@ document.addEventListener('DOMContentLoaded', recipePageEventHandler);
 
 async function recipePageEventHandler() {
     let url = Utils.getParameterByName('query_url');
-    Fling.API.post(Fling.Data.apiRecipes, `url=${url}`, (jsonData) => {
+    Fling.API.post(Fling.Data.apiRecipes, `url=${url}`, async (jsonData) => {
+        
+
 
         let productListView = new Fling.View.ListView({
-            data: Fling.API.get2(Fling.Data.apiGetProducts, `/${jsonData.id}`),
+            data: await Fling.API.get2(Fling.Data.apiGetProducts, `/${jsonData.id}`),
             title: jsonData.title
         }, Fling.$('.recipe_cart'));
         uncheckMyRefrigeItem();
         calcTotalPrice();
+        
         
         let recipeDesc = new Fling.View.CardView({
             data: jsonData,
