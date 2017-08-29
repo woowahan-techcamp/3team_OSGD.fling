@@ -131,6 +131,19 @@ Fling.API = {
     get: function(url, params, callback) {
         return this.request('get', url, params, callback);
     },
+    get2: function(url, params, callback) {
+        var myHeaders = new Headers();
+        var myInit = {
+            method: 'GET',
+            headers: myHeaders,
+            mode: 'cors',
+            cache: 'default'
+        };
+
+        var myRequest = new Request(url, myInit);
+
+        return fetch(myRequest).then(response => response.json());
+    },
     post: function(url, params, callback) {
         return this.request('post', url, params, callback);
     }
@@ -150,6 +163,10 @@ Fling.Template = {
 
 Fling.$ = function(target) {
     return document.querySelector(target);
+}
+
+Fling.$$ = function(target) {
+    return document.querySelectorAll(target);
 }
 
 Fling.View = class View {
@@ -193,6 +210,25 @@ Fling.View.TileView = class TileView extends Fling.View {
 Fling.View.SlideView = class SlideView extends Fling.View {
     constructor(params, target) {
         super(arguments);
+
+        this.target.addEventListener('click', evt => {
+            const firstElementChild = this.target.querySelector(".list_wrap").firstElementChild;
+            let slide_num = firstElementChild.style.getPropertyValue('--slide-number') * 1;
+            firstElementChild.style.setProperty('transition', '1s');
+    
+            switch(evt.target.className) {
+                case 'slide_arrow prev': {
+                    if (slide_num !== 0)
+                        firstElementChild.style.setProperty('--slide-number', --slide_num);
+                    break;
+                }
+                case 'slide_arrow next': {
+                    if (slide_num + 1 < ((window.innerWidth > 1100) ? 3 : 9))
+                        firstElementChild.style.setProperty('--slide-number', ++slide_num);
+                    break;
+                }
+            }
+        });
     }
     get render() {
         let data = this.data;
