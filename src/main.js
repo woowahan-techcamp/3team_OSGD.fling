@@ -1,5 +1,5 @@
-(function(){
-    async function mainEventHandler() {
+Fling.Main = {
+    async EventHandler() {
         let rankSection = new Fling.View.TileView({
             data: await Fling.API.get2(Fling.Data.apiRecipes),
             title: '플링 <em>인기 차트</em>',
@@ -12,51 +12,42 @@
             id: 'season_event'
         }, Fling.$('fling-season-recipe'));
     
-        mainHeaderFade(Fling.$$('.main_header_img'), 6000);
+        Fling.Main.mainHeaderFade(Fling.$$('.main_header_img'), 6000);
         
-        const target = document.querySelector(".search_text");
-        target.addEventListener("keyup", searchHandler);
+        const target = Fling.$(".search_text");
+        target.addEventListener("keyup", Fling.Main.searchHandler);
     
-        document.querySelector(".refrige_popup").addEventListener("click", (e) => {
+        Fling.$(".refrige_popup").addEventListener("click", (e) => {
             e.target.href = 'javascript:void(0)';
             const popup = window.open("./refrige_popup.html", "refrigeWindow", "width=700,height=800,toolbar=no,menubar=no");
         })
-    }
-    
-    function mainHeaderFade(elementArray, delayTime) {
+    },
+    mainHeaderFade(elementArray, delayTime) {
         let sequence = 0;
         return setInterval(() => {
-            elementArray.forEach((el, i) => {
-                el.style.opacity = 0;
-            });
-    
+            elementArray.forEach(el => (el.style.opacity = 0));
             sequence = (sequence + 1) % elementArray.length;
             elementArray[sequence].style.opacity = '1';
         }, delayTime);
-    }
-    
-    function searchHandler(e) {
+    },
+    async searchHandler(e) {
         const searchQuery = e.target.value;
-        const searchBar = document.querySelector(".search_bar");
+        const searchBar = Fling.$(".search_bar");
         
         if(searchQuery == "" || e.code == "Escape") {
-            document.querySelector(".search_bar").style.display = "none";
+            Fling.$(".search_bar").style.display = "none";
             searchBar.innerHTML = "";
             return;
         }
-    
-        Fling.API.post(Fling.Data.apiSearchRecipes, `keyword=${searchQuery}`, (searchData) => {
-            document.querySelector(".search_bar").style.display = "block";  
-    
-            const theTemplate = Handlebars.compile(Fling.Template.mainSearchBarSource);
-            searchData.forEach(item => {
-                item._title = item.title.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
-                item._subtitle = item.subtitle.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
-            });
-            const theCompiledHtml = theTemplate(searchData);
-            searchBar.innerHTML = theCompiledHtml;
+        Fling.$('.search_bar').style.display = 'block';
+        let searchData = await Fling.API.post2(Fling.Data.apiSearchRecipes, `keyword=${searchQuery}`);
+        const theTemplate = Handlebars.compile(Fling.Template.mainSearchBarSource);
+        searchData.forEach(item => {
+            item._title = item.title.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
+            item._subtitle = item.subtitle.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
         });
-    } 
-    
-    document.addEventListener("DOMContentLoaded", mainEventHandler);
-})();
+        const theCompiledHtml = theTemplate(searchData);
+        searchBar.innerHTML = theCompiledHtml;
+
+    }
+}

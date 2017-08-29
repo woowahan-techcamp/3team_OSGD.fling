@@ -105,11 +105,8 @@ Fling.Storage = {
 Fling.API = {
     request: function(method, url, params, callback) {
         // params를 생략 가능하게 함
-        if (typeof params === 'function' && typeof callback === 'undefined') {
-            callback = params;
-            params = '';
-        }
-
+        if (typeof params === 'function' && typeof callback === 'undefined')
+            callback = params, params = '';
 
         const xhrObj = new XMLHttpRequest();
         xhrObj.addEventListener('load', (e) => {
@@ -129,7 +126,7 @@ Fling.API = {
         xhrObj.send();
         console.error('Will be DEPRECATE Fling.API.request method');
     },
-    request2: function(method, url, data = {}) {
+    request2: async function(method, url, data = {}) {
         var myHeaders = new Headers();
         var myInit = {
             method: method,
@@ -144,15 +141,15 @@ Fling.API = {
             url = url + ((data[0] !== '/') ? '?' : '') + data;
         }
         var myRequest = new Request(url, myInit);
-        return fetch(myRequest).then(response => response.text()).then(data => {
-            try {
-                data = JSON.parse(data);
-            }
-            catch(e) {
-                throw 'FLING_API_NOT_SEEMS_JSON';
-            }
-            return data;
-        });
+        let response = await fetch(myRequest);
+        let resData = await response.text() || {};
+        try {
+            result = JSON.parse(resData);
+        }
+        catch(e) {
+            throw 'FLING_API_NOT_SEEMS_JSON';
+        }
+        return result;
     },
     get: function(url, params, callback) {
         return this.request('get', url, params, callback);
