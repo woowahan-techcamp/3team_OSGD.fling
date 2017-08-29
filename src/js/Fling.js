@@ -268,8 +268,6 @@ Fling.View.CardView = class CardView extends Fling.View {
 }
 
 
-Fling.EventHandler = {
-    addEvent: function(target, eventType, callBack) {
+Fling.OnEvent = function(target, eventType, callBack) {
         document.querySelector(target).addEventListener(eventType, callBack);
-    }
-};
+}

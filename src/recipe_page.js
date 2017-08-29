@@ -22,6 +22,7 @@ async function recipePageEventHandler() {
     uncheckMyRefrigeItem();
     calcTotalPrice();
 
+    Fling.OnEvent();
 
     const target = document.querySelector(".search_text");
     target.addEventListener("keyup", searchHandler);
