@@ -478,7 +478,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9848430D1F33F3AF007AD753 /* Build configuration list for PBXProject "fling" */;
+			buildConfigurationList = 9848430D1F33F3AF007AD753 /* Build configuration list for PBXProject "Fling" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -902,7 +902,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.flingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fling.app/fling";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fling.temp_caseinsensitive_rename.app/Fling.temp_caseinsensitive_rename";
 			};
 			name = Debug;
 		};
@@ -917,7 +917,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.flingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fling.app/fling";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fling.temp_caseinsensitive_rename.app/Fling.temp_caseinsensitive_rename";
 			};
 			name = Release;
 		};
@@ -952,7 +952,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9848430D1F33F3AF007AD753 /* Build configuration list for PBXProject "fling" */ = {
+		9848430D1F33F3AF007AD753 /* Build configuration list for PBXProject "Fling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				984843381F33F3B0007AD753 /* Debug */,
