@@ -421,6 +421,10 @@
     position: relative;
 }
 
+.selected {
+    background: #eee;
+}
+
 .search_bar_list {
     border-bottom: 1px solid #ddd;
     height: 73px;

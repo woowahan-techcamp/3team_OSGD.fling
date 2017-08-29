@@ -86,8 +86,14 @@ Fling.RecipePage = {
     },
 
     uncheckMyRefrigeItem() {
-        const cartList = Array.from(document.querySelectorAll(".cart_list"));
-        const myRefrige = JSON.parse(window.localStorage.getItem("myRefrige"));
+        const cartList = Array.from(Fling.$$(".cart_list"));
+        let myRefrige;
+        try {
+            myRefrige = Fling.Storage.myRefrige;
+        }
+        catch(e) {
+            return;
+        }
 
         cartList.forEach((e) => {
             const materialId = e.getAttribute("value") * 1;
@@ -129,10 +135,10 @@ Fling.RecipePage = {
         sum = Utils.numberWithComma(sum);
         cartListsArr[len-1].children[0].innerHTML = sum;
 
-        const subPrice = document.querySelector(".pi_prd");
+        const subPrice = Fling.$(".pi_prd");
         subPrice.innerHTML = sum;
 
-        const flingCash = document.querySelector(".pi_point");
+        const flingCash = Fling.$(".pi_point");
         flingCash.innerHTML = Utils.numberWithComma(parseInt(sumNum * 0.01));
     },
 
@@ -140,62 +146,109 @@ Fling.RecipePage = {
         return el.parentElement.parentElement.parentElement.querySelector('#check1').checked;
     },
 
-    searchHandler(e) {
+    async searchHandler(e) {
         const searchQuery = e.target.value;
-        const searchBar = document.querySelector(".search_bar");
+        const searchBar = Fling.$(".search_bar");
+        const selected = Fling.$('.selected');
         let productInfo = [];
-        
 
         if(searchQuery == "" || e.code == "Escape") {
-            document.querySelector(".search_bar").style.display = "none";
+            Fling.$(".search_bar").style.display = "none";
             searchBar.innerHTML = "";
             return;
         }
-
-        Fling.API.post(Fling.Data.apiSearchProducts, `keyword=${searchQuery}`, (searchData) => {
-            document.querySelector(".search_bar").style.display = "block";  
-
-            searchData.forEach((e) => {
-                Fling.API.get(Fling.Data.apiProducts, `/${e.id}`, (data) => {
-                    // productInfo 갯수 제한. 50개까지만 상품을 찾는다
-                    if (productInfo.length < 50) {
-                        productInfo.push(data);
-                        const theTemplate = Handlebars.compile(Fling.Template.recipePageSearchBarSource);
-                        productInfo.forEach(item => {
-                            item._name = item.name.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
-                        });
-                        const theCompiledHtml = theTemplate(productInfo);
-                        searchBar.innerHTML = theCompiledHtml;
+        else if (e.code == 'ArrowLeft' || e.code == 'ArrowRight') {
+            return;
+        }
+        else if(e.code == 'ArrowUp') {
+            let index = Fling.RecipePage.findSelectedTab();
+            if (index == 0)
+                return;
+            searchBar.children[index].classList.remove('selected');
+            searchBar.children[index - 1].classList.add('selected');
+            if (selected.offsetTop - selected.clientHeight < searchBar.scrollTop) {
+                searchBar.scrollTop = selected.offsetTop - selected.clientHeight;
+            } 
+        }
+        else if (e.code == 'ArrowDown') {
+            let index = Fling.RecipePage.findSelectedTab();
+            if (index == searchBar.children.length - 1) 
+                return;
+            searchBar.children[index].classList.remove('selected');
+            searchBar.children[index + 1].classList.add('selected');
+            /*if ((selected.clientHeight * 3) + selected.offsetTop > searchBar.clientHeight) {
+                searchBar.scrollTop = selected.offsetTop - (3 * selected.clientHeight);
+            }*/
+            if (selected.offsetTop + 2 * selected.clientHeight < searchBar.scrollTop) {
+                searchBar.scrollTop = selected.offsetTop + 3 * selected.clientHeight;
+            }
+        } 
+        else if (e.code == 'Enter') {
+            Fling.RecipePage.addProductHandler(e);
+        }
+        else {
+            let searchData = await Fling.API.post2(Fling.Data.apiSearchProducts, `keyword=${searchQuery}`);
+            Fling.$(".search_bar").style.display = "block";  
+            searchData.forEach(async (e) => {
+                let data = await Fling.API.get2(Fling.Data.apiProducts, `/${e.id}`);
+                // productInfo 갯수 제한. 50개까지만 상품을 찾는다
+                if (productInfo.length < 50) {
+                    productInfo.push(data);
+                    const theTemplate = Handlebars.compile(Fling.Template.recipePageSearchBarSource);
+                    productInfo.forEach(item => {
+                        item._name = item.name.replace(new RegExp(searchQuery, 'g'), `<span class="search_word">${searchQuery}</span>`);
+                    });
+                    const theCompiledHtml = theTemplate(productInfo);
+                    searchBar.innerHTML = theCompiledHtml;
+                    if (searchBar.children[0].classList.length == 1){
+                        searchBar.children[0].classList.add('selected');
                     }
-                })
+                }
             })
-        });
+        }
     },
 
-    addProductHandler(e) {
-        if(e.target.className == "search_bar_button") {
-            Fling.API.get(Fling.Data.apiProducts, `/${e.target.value}`, (product) => {
-                const theTemplateScript = document.querySelector("#cart_list_template_solo").innerHTML;
-                const theTemplate = Handlebars.compile(theTemplateScript);
-                const theCompiledHtml = theTemplate(product);
+    findSelectedTab() {
+        const selected = Fling.$('.selected');
+        const searchBarArr = Fling.$$('.search_bar_list');
+        let indexOfArr = -1;
+        searchBarArr.forEach((value, index) => {
+            if (value == selected)
+                indexOfArr = index;
+        })
+        return indexOfArr;
+    },
 
-                document.querySelector(".cart_template").insertAdjacentHTML("beforeend", theCompiledHtml);
-                document.querySelector(".search_bar").style.display = "none";
-                document.querySelector(".search_text").value = "";
-                Fling.RecipePage.calcTotalPrice();
-            })
-        }    
+    async addProductHandler(e) {
+        if(e.target.className == "search_bar_button") {
+            let product = await Fling.API.get2(Fling.Data.apiProducts, `/${e.target.value}`);
+            const theTemplate = Handlebars.compile(Fling.Template.cartListSoloSource);
+            const theCompiledHtml = theTemplate(product);
+            Fling.$(".cart_template").insertAdjacentHTML("beforeend", theCompiledHtml);
+            Fling.$(".search_bar").style.display = "none";
+            Fling.$(".search_text").value = "";
+            Fling.RecipePage.calcTotalPrice();
+        }
+        else if (e.code == 'Enter') {
+            let product = await Fling.API.get2(Fling.Data.apiProducts, `/${Fling.$('.selected').getAttribute('value')}`);
+            const theTemplate = Handlebars.compile(Fling.Template.cartListSoloSource);
+            const theCompiledHtml = theTemplate(product);
+            Fling.$(".cart_template").insertAdjacentHTML("beforeend", theCompiledHtml);
+            Fling.$(".search_bar").style.display = "none";
+            Fling.$(".search_text").value = "";
+            Fling.RecipePage.calcTotalPrice();
+        }
     },
 
     storeUserCartData() {
         let cartListObj = {};
         
-        cartListObj.recipeId = document.querySelector(".recipe_detail").dataId;
-        cartListObj.recipeTitle = document.querySelector(".description > .title").innerHTML;
-        cartListObj.recipeImg = document.querySelector(".circle_img").style.backgroundImage;
-        cartListObj.recipeSubtitle = document.querySelector(".description > .subtitle").innerHTML;
-        cartListObj.recipeUrl = document.querySelector(".detail_link a").href;
-        cartListObj.recipePrice = document.querySelector(".recipe_additional_info .total_price > span").innerHTML;
+        cartListObj.recipeId = Fling.$(".recipe_detail").dataId;
+        cartListObj.recipeTitle = Fling.$(".description > .title").innerHTML;
+        cartListObj.recipeImg = Fling.$(".circle_img").style.backgroundImage;
+        cartListObj.recipeSubtitle = Fling.$(".description > .subtitle").innerHTML;
+        cartListObj.recipeUrl = Fling.$(".detail_link a").href;
+        cartListObj.recipePrice = Fling.$(".recipe_additional_info .total_price > span").innerHTML;
         cartListObj.productApiUrl = "http://52.79.119.41/get_products?products=[";
         cartListObj.productList = [];
 
