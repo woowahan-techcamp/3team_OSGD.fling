@@ -281,10 +281,10 @@
 		9872B22D1F552224007256E0 /* Home view */ = {
 			isa = PBXGroup;
 			children = (
-				9872B22E1F552224007256E0 /* CRVHomeMidHeader.swift */,
-				9872B22F1F552224007256E0 /* CRVHomeTopHeader.swift */,
-				9872B2301F552224007256E0 /* HomeRecipeCollectionViewCell.swift */,
 				9872B2311F552224007256E0 /* HomeViewController.swift */,
+				9872B2301F552224007256E0 /* HomeRecipeCollectionViewCell.swift */,
+				9872B22F1F552224007256E0 /* CRVHomeTopHeader.swift */,
+				9872B22E1F552224007256E0 /* CRVHomeMidHeader.swift */,
 			);
 			path = "Home view";
 			sourceTree = "<group>";
@@ -872,7 +872,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -887,7 +887,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woowahan.fling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

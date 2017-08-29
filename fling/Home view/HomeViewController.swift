@@ -134,7 +134,8 @@ class HomeViewController: UIViewController {
     }
 
     func popUpOpen() {
-        let frame = CGRect(x: 15, y: 180, width: 345, height: 200)
+        let width = self.view.frame.width - 30
+        let frame = CGRect(x: 15, y: 190, width: width, height: 200)
         searchPopUp.frame = frame
         self.view.addSubview(self.searchPopUp)
         recipeTableView.allowsSelection = true
@@ -222,12 +223,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     return HomeRecipeCollectionViewCell()
         }
 
-        // for collection view image position padding!
-        var padding = CGFloat.init(0)
-        if indexPath.row%2 == 0 {
-            padding =  CGFloat.init(10)
-        }
-
         var recipeCell = Recipe()
         if indexPath.section == 0 {
             recipeCell = self.recipes[indexPath.row]
@@ -235,20 +230,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             recipeCell = self.seasonRecipes[indexPath.row]
         }
 
-        let collectionViewSize = sampleRecipeCollection.frame.size.width
-        let cgSize = CGSize.init(width: collectionViewSize/2, height: collectionViewSize/2 + 10)
-        cell.frame.size = cgSize
-
         if recipes.count > 0 {
             if recipeCell.image != "" {
                 cell.sampleRecipeImage?.af_setImage(withURL: URL(string: recipeCell.image)!)
             }
-            cell.sampleRecipeImage.frame.size = CGSize(width: collectionViewSize/2 - 20, height: collectionViewSize/2 - 20)
-            cell.sampleRecipeImage.frame.origin = CGPoint(x: padding, y: 0)
             cell.sampleRecipeLabel.text = recipeCell.title
             cell.sampleRecipeSubtitleLabel.text = recipeCell.subtitle
-            cell.sampleRecipeLabel.center.x = cell.sampleRecipeImage.center.x
-            cell.sampleRecipeSubtitleLabel.center.x = cell.sampleRecipeImage.center.x
             cell.clickHandler = { () -> Void in
                 self.network.getRecipeWith(recipeId: recipeCell.rid)
             }
