@@ -1,6 +1,7 @@
-Fling.RecipePage = {
+window.Fling = window.Fling || {};
+window.Fling.RecipePage = {
     async EventHandler() {
-        let url = Utils.getParameterByName('query_url');
+        let url = Fling.Utils.getParameterByName('query_url');
             
         let jsonData = await Fling.API.post2(Fling.Data.apiRecipes, `url=${url}`);
 
@@ -28,14 +29,9 @@ Fling.RecipePage = {
         Fling.onEvent('.search_text', 'keyup', Fling.RecipePage.searchHandler);
         Fling.onEvent('.search_bar', 'click', Fling.RecipePage.addProductHandler);
         Fling.onEvent('.btn_cart', 'click', Fling.RecipePage.storeUserCartData);
-        Fling.onEvent('.refrige_popup', 'click', Fling.RecipePage.refrigePopUpHandler);
+        Fling.onEvent('.refrige_popup', 'click', Fling.onRefrigePopupHandler);
     },
-
-    refrigePopUpHandler(e) {
-        e.target.href = 'javascript:void(0)';
-        const popup = window.open("./refrige_popup.html", "refrigeWindow", "width=700,height=800,toolbar=no,menubar=no");
-    },
-
+    
     cartListEventHandler(e) {
         if (e.target.className == "up_button") {
             if (e.target.parentElement.parentElement.children[0].value < 999)
@@ -57,7 +53,7 @@ Fling.RecipePage = {
         let item_volume = e.target.parentElement.parentElement.parentElement.querySelector('#volume').value;
         let item_unit_price = e.target.parentElement.parentElement.parentElement.querySelector('#per_price').value.replace(/,/g, '');
 
-        item_tp.innerText = Utils.numberWithComma(item_volume * item_unit_price) + '원';
+        item_tp.innerText = Fling.Utils.numberWithComma(item_volume * item_unit_price) + '원';
 
         Fling.RecipePage.calcTotalPrice();
     },
@@ -80,7 +76,7 @@ Fling.RecipePage = {
         console.info(item_volume);
         let item_unit_price = e.target.parentElement.parentElement.parentElement.querySelector('#per_price').value.replace(/,/g, '');
 
-        item_tp.innerText = Utils.numberWithComma(item_volume * item_unit_price) + '원';
+        item_tp.innerText = Fling.Utils.numberWithComma(item_volume * item_unit_price) + '원';
 
         Fling.RecipePage.calcTotalPrice();
     },
@@ -126,14 +122,14 @@ Fling.RecipePage = {
         }
         
         sumNum = sum;
-        sum = Utils.numberWithComma(sum);
+        sum = Fling.Utils.numberWithComma(sum);
         cartListsArr[len-1].children[0].innerHTML = sum;
 
         const subPrice = document.querySelector(".pi_prd");
         subPrice.innerHTML = sum;
 
         const flingCash = document.querySelector(".pi_point");
-        flingCash.innerHTML = Utils.numberWithComma(parseInt(sumNum * 0.01));
+        flingCash.innerHTML = Fling.Utils.numberWithComma(parseInt(sumNum * 0.01));
     },
 
     isAvaliableItem(el) {

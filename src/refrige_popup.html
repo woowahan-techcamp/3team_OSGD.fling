@@ -4,11 +4,10 @@
         <title>플링 :: 나의 냉장고</title>
         <link rel="stylesheet" href="./css/common.css">
         <link rel="stylesheet" href="./css/refrige_popup.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
-        <script src="./js/Fling.js"></script>
-        <script src="./js/XHR.js"></script>
-        <script src="./js/Utils.js"></script>
-        <script src="./refrige_popup.js"></script>
+        <script src="dist/bundle.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', Fling.RefrigePopup.EventHandler);
+        </script>
         <script type="refrige_template" id="refrige_template">
             {{#each this}}
                 <div class="refrige_list_item">

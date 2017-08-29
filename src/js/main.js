@@ -1,4 +1,5 @@
-Fling.Main = {
+window.Fling = window.Fling || {};
+window.Fling.Main = {
     async EventHandler() {
         let rankSection = new Fling.View.TileView({
             data: await Fling.API.get2(Fling.Data.apiRecipes),
@@ -11,24 +12,11 @@ Fling.Main = {
             title: '여름엔 <em>플링</em>',
             id: 'season_event'
         }, Fling.$('fling-season-recipe'));
-    
-        Fling.Main.mainHeaderFade(Fling.$$('.main_header_img'), 6000);
+
+        Fling.Main.fadeMainHeaderImage(Fling.$$('.main_header_img'), 6000);
         
-        const target = Fling.$(".search_text");
-        target.addEventListener("keyup", Fling.Main.searchHandler);
-    
-        Fling.$(".refrige_popup").addEventListener("click", (e) => {
-            e.target.href = 'javascript:void(0)';
-            const popup = window.open("./refrige_popup.html", "refrigeWindow", "width=700,height=800,toolbar=no,menubar=no");
-        })
-    },
-    mainHeaderFade(elementArray, delayTime) {
-        let sequence = 0;
-        return setInterval(() => {
-            elementArray.forEach(el => (el.style.opacity = 0));
-            sequence = (sequence + 1) % elementArray.length;
-            elementArray[sequence].style.opacity = '1';
-        }, delayTime);
+        Fling.$(".search_text").addEventListener("keyup", Fling.Main.searchHandler);    
+        Fling.$(".refrige_popup").addEventListener("click", Fling.onRefrigePopupHandler);
     },
     async searchHandler(e) {
         const searchQuery = e.target.value;
@@ -48,6 +36,15 @@ Fling.Main = {
         });
         const theCompiledHtml = theTemplate(searchData);
         searchBar.innerHTML = theCompiledHtml;
+    },
 
+    fadeMainHeaderImage(elementArray, delayTime) {
+        let sequence = 0;
+        return setInterval(() => {
+            elementArray.forEach(el => (el.style.opacity = 0));
+            sequence = (sequence + 1) % elementArray.length;
+            elementArray[sequence].style.opacity = '1';
+        }, delayTime);
     }
 }
+module.exports = window.Fling.Main;

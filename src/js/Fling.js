@@ -1,4 +1,15 @@
-const Fling = {};
+import './Utils';
+import './XHR';
+import './main';
+import './recipe_page';
+import './cart_page';
+import './recipe_popup';
+import './refrige_popup';
+
+import Handlebars from 'handlebars/dist/handlebars';
+window.Handlebars = Handlebars;
+
+window.Fling = window.Fling || {};
 Fling.Data = {
     apiBaseURL: 'http://52.79.119.41/',
     get apiRecipes() {
@@ -18,6 +29,9 @@ Fling.Data = {
     },
     get apiSearchProducts() {
         return Fling.Data.apiBaseURL + 'search_product';
+    },
+    get apiSearchMaterials() {
+        return Fling.Data.apiBaseURL + 'search_material';
     }
 }
 Fling.Storage = {
@@ -143,11 +157,12 @@ Fling.API = {
         var myRequest = new Request(url, myInit);
         let response = await fetch(myRequest);
         let resData = await response.text() || {};
+        let result = null;
         try {
             result = JSON.parse(resData);
         }
         catch(e) {
-            throw 'FLING_API_NOT_SEEMS_JSON';
+            throw 'FLING_API_NOT_SEEMS_JSON : ' + e.message;
         }
         return result;
     },
@@ -274,7 +289,11 @@ Fling.View.CardView = class CardView extends Fling.View {
         return template(data);
     }
 }
-
+   
+Fling.onRefrigePopupHandler = (e) => {
+    e.preventDefault();
+    Fling.Utils.PopupCenter('./refrige_popup.html', 'refrigeWindow', 700, 800);
+}
 
 Fling.onEvent = function(target, eventType, callBack) {
         document.querySelector(target).addEventListener(eventType, callBack);

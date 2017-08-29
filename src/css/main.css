@@ -36,6 +36,10 @@
     display: inline-block;
 }
 
+.main_header .head_item > ul > li > a {
+    cursor: pointer;
+}
+
 .main_header .head_item > ul > li:last-child {
     padding-right: 0;
 }
@@ -91,10 +95,14 @@
 }
 
 .search_window {
-    border-bottom: 3px solid white;
     width: 700px;
     margin: 0 auto;
     padding: 150px 10px 0 10px;
+}
+
+.search_form {
+    border-bottom: 3px solid white;
+    padding: 0px 6px 0 6px;
 }
 
 .search_text {
@@ -163,13 +171,12 @@
     border-top: 1px solid #aaa;
 }
 
-
 .search_bar {
     width: 694px;
     height: 400px;
     background-color: white;
-    border: 3px solid #ffb847;
-    margin: -3px auto;
+    border: 1px solid #e2e2e2;
+    margin: 15px auto;
     display: none;
     overflow-y: scroll;
     position: relative;
@@ -206,6 +213,7 @@
     color: black;
 }
 .search_bar_button {
+    cursor: pointer;
     float: right;
     width: 100px;
     height: 40px;

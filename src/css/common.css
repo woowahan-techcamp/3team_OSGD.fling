@@ -44,6 +44,10 @@ a:hover {
     padding: 0 20px 0 20px;
 }
 
+.head_item > ul > li > a {
+    cursor: pointer;    
+}
+
 section {
     text-align: center;
 }

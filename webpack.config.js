@@ -1,12 +1,13 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/main.js',
+    entry: ['babel-polyfill', './src/js/Fling.js'],
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'src', 'dist'),
         publicPath: '/dist'
     },
+    devtool: 'source-map',
     module: {
         rules: [
             {
