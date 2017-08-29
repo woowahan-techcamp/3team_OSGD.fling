@@ -5,11 +5,7 @@
         <title>플링</title>
         <link rel="stylesheet" href="./css/common.css">
         <link rel="stylesheet" href="./css/recipe_page.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
-        <script src="js/Fling.js"></script>
-        <script src="./js/XHR.js"></script>
-        <script src="./js/Utils.js"></script>
-        <script src="./recipe_page.js"></script>
+        <script src="dist/bundle.js"></script>
         <script>
         document.addEventListener("DOMContentLoaded", Fling.RecipePage.EventHandler);
         </script>
@@ -97,7 +93,7 @@
             </div>
         </script>
     </head>
-    <body>
+    <body style="display: none">
         <div class="wrap">
             <header class="recipe_header">
                 <nav class="head_menu content">
@@ -158,7 +154,7 @@
                         <dl>
                             <dt>· 상품가격</dt>
                             <dd>
-                                <span class="pi_prd">300,000</span>
+                                <span class="pi_prd">0</span>
                                 <span class="won">원</span>
                             </dd>
                         </dl>
@@ -172,12 +168,12 @@
                         <dl>
                             <dt>· 플링캐시</dt>
                             <dd>
-                                <span class="pi_point">370</span>
+                                <span class="pi_point">0</span>
                                 <span class="won">원 적립</span>
                             </dd>
                         </dl>
                         <div class="total_price">
-                            <span>337,000</span>
+                            <span>0</span>
                             <span>원</span>
                         </div>
                     </div>

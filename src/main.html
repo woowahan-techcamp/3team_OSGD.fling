@@ -5,12 +5,9 @@
         <title>플링</title>
         <link rel="stylesheet" href="./css/common.css">
         <link rel="stylesheet" href="./css/main.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
-        <script src="js/Fling.js"></script>
-        <script src="js/XHR.js"></script>
-        <script src="main.js"></script>
+        <script src="dist/bundle.js"></script>
         <script>
-        document.addEventListener("DOMContentLoaded", Fling.Main.EventHandler);
+            document.addEventListener("DOMContentLoaded", Fling.Main.EventHandler);
         </script>
     </head>
     <body>
@@ -36,9 +33,9 @@
                 <div class="search_body">
                     <div class="search_window">
                         <form class="search_form" action="./recipe_page.html" method="get">
-                            <input id="query_url" name="query_url" class="search_text" placeholder="레시피를 장바구니에 담아드립니다" autofocus="autofocus" autocomplete="off" type="text">
+                            <input id="query_url" spellcheck="false" name="query_url" class="search_text" placeholder="레시피를 장바구니에 담아드립니다" autofocus="autofocus" autocomplete="off" type="text">
                             <div class="search_icon_wrap">
-                                <button class="search_icon"  type="submit"></button>
+                                <button class="search_icon" type="submit"></button>
                             </div>
                         </form>
                         <div class="search_bar">

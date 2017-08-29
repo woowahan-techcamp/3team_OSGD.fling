@@ -1,4 +1,16 @@
-const Fling = {};
+import './Utils';
+import './XHR';
+import './main';
+import './recipe_page';
+import './cart_page';
+import './recipe_popup';
+import './refrige_popup';
+import './no_page';
+
+import Handlebars from 'handlebars/dist/handlebars';
+window.Handlebars = Handlebars;
+
+window.Fling = window.Fling || {};
 Fling.Data = {
     apiBaseURL: 'http://52.79.119.41/',
     get apiRecipes() {
@@ -18,6 +30,9 @@ Fling.Data = {
     },
     get apiSearchProducts() {
         return Fling.Data.apiBaseURL + 'search_product';
+    },
+    get apiSearchMaterials() {
+        return Fling.Data.apiBaseURL + 'search_material';
     }
 }
 Fling.Storage = {
@@ -143,11 +158,12 @@ Fling.API = {
         var myRequest = new Request(url, myInit);
         let response = await fetch(myRequest);
         let resData = await response.text() || {};
+        let result = null;
         try {
             result = JSON.parse(resData);
         }
         catch(e) {
-            throw 'FLING_API_NOT_SEEMS_JSON';
+            throw 'FLING_API_NOT_SEEMS_JSON : ' + e.message;
         }
         return result;
     },
@@ -171,7 +187,7 @@ Fling.Template = {
     sectionSource: '<section class="main_section content {{id}}" id="{{id}}"><div class="section_title">{{{title}}}<div class="separate"></div></div>{{{view.render}}}</section>',
     cartListSource: '<div class="title">\'<span class="title_main">{{title}}</span>\' 레시피 재료 담기</div><div class="subtitle"> <div>상품</div><div>수량</div><div>가격</div></div><div class="cart_template">{{#each this}}<div class="cart_list" data-id="{{id}}" value="{{material_id}}"> <div class="left"> <input type="checkbox" class="recipe_checkbox" id="check1" checked> <label for="check1"></label> <div class="product_img" style="background-image: url({{image}})"></div><div class="product_info"> <div class="name">{{name}}</div><div class="origin">국내산</div></div></div><div class="right"> <div class="volume_box"> <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,"");"> <div class="button"> <button class="up_button"></button> <button class="down_button"></button> </div></div><div class="price_info"> <div class="total_price">{{price}}원</div>{{#if weight}}<div class="per_price">{{weight}}당{{price}}원</div>{{/if}}<input type="hidden" id="per_price" value="{{price}}"> </div></div></div>{{/each}}</div>',
     cartListSoloSource: '<div class="cart_list added" data-id="{{id}}"><div class="left"> <input type="checkbox" class="recipe_checkbox" id="check1" checked> <label for="check1"></label><div class="product_img" style="background-image: url({{image}})"></div><div class="product_info"><div class="name">{{name}}</div><div class="origin">국내산</div></div></div><div class="right"><div class="volume_box"> <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g,"");"><div class="button"> <button class="up_button"></button> <button class="down_button"></button></div></div><div class="price_info"><div class="total_price">{{price}}원</div> {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}} <input type="hidden" id="per_price" value="{{price}}"></div></div></div>',
-    mainSearchBarSource: '{{#each this}}<div class="search_bar_list"><div class="search_bar_img" style="background-image: url({{image}})"></div><div class="product_info"><div>{{{_subtitle}}}</div> <span>{{{_title}}}</span></div> <button class="search_bar_button" onclick="location.href=\'recipe_page.html?query_url={{url}}\'">장보기</button></div> {{/each}}',
+    mainSearchBarSource: '{{#each this}}<div class="search_bar_list" value="{{url}}"><div class="search_bar_img" style="background-image: url({{image}})"></div><div class="product_info"><div>{{{_subtitle}}}</div> <span>{{{_title}}}</span></div> <button class="search_bar_button" onclick="location.href=\'recipe_page.html?query_url={{url}}\'">장보기</button></div> {{/each}}',
     recipePageSearchBarSource: '{{#each this}}<div class="search_bar_list" value="{{id}}"><div class="search_bar_img" style="background-image: url({{image}})"></div><div class="product_info"><div>{{{_name}}}</div> {{#if weight}}<span>{{weight}}당</span>{{/if}} <span>{{price}}원</span></div> <button class="search_bar_button" value="{{id}}">물품추가</button></div> {{/each}}',
     recipePageRecipeDetailSource : '<div class="recipe_detail" data-id={{id}}> <div class="circle_wrap"> <div class="circle_img"style="background-image: url({{image}})"></div></div><div class="description"> <div class="title">{{title}}</div><div class="subtitle">{{subtitle}}</div><div class="detail_link"><a href="{{url}}" target="_blank">레시피 자세히 보기</a></div></div></div>',
     missedMaterialSource : '<div class="missed_material"> <div class="title">이 재료는 플링에 없네요...</div><div class="notation">※ 아래 재료는 배송이 불가능합니다.</div><div class="subtitle">{{missed_material}}</div></div>'
@@ -274,7 +290,11 @@ Fling.View.CardView = class CardView extends Fling.View {
         return template(data);
     }
 }
-
+   
+Fling.onRefrigePopupHandler = (e) => {
+    e.preventDefault();
+    Fling.Utils.PopupCenter('./refrige_popup.html', 'refrigeWindow', 700, 800);
+}
 
 Fling.onEvent = function(target, eventType, callBack) {
         document.querySelector(target).addEventListener(eventType, callBack);

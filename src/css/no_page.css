@@ -1,0 +1,15 @@
+.error_img {
+    background-image: url("../assets/img/fling_logo_black.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 150px; 
+    margin-top: 100px;
+    margin-right: 500px;
+    display: inline-block;
+}
+
+.error_mes {
+    font-size: 30pt;
+    font-weight: 300;
+}
