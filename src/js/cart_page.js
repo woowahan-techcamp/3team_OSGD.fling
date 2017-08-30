@@ -66,7 +66,9 @@ window.Fling.CartPage = {
         divArr.forEach((el, index) => {
             if (el == target) {
                 e.target.href = 'javascript:void(0)';
-                Fling.Utils.PopupCenter(`./recipe_popup.html?data=${Fling.Utils.encodeBase64(JSON.stringify(data[index]))}`, 'recipeInfoWindow', 700, 800);
+                let blob = new Blob([JSON.stringify(data[index], null, 2)], {type: 'application: json'});
+                let blobUrl = URL.createObjectURL(blob);
+                Fling.Utils.PopupCenter(`./recipe_popup.html?data=${Fling.Utils.encodeBase64(blobUrl)}`, 'recipeInfoWindow', 700, 800);
             }
         });
     },

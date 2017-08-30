@@ -116,7 +116,6 @@ Fling.Storage = {
     }
 };
 
-
 Fling.API = {
     request: function(method, url, params, callback) {
         // params를 생략 가능하게 함

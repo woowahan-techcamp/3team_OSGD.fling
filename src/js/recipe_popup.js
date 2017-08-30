@@ -1,9 +1,12 @@
 window.Fling = window.Fling || {};
 window.Fling.RecipePopup = {
-    EventHandler(e) {
+    async EventHandler(e) {
         // getParameterByName 함수가 공백을 +로 바꿈
-        var data = Fling.Utils.getParameterByName('data').replace(/ /g, '+');
-        data = JSON.parse(Fling.Utils.decodeBase64(data));
+        var blobUrl_base64 = Fling.Utils.getParameterByName('data').replace(/ /g, '+');
+        var blobUrl = Fling.Utils.decodeBase64(blobUrl_base64);
+        //let data = await Fling.RecipePopup.getBlobData(blobUrl);
+        let data = await Fling.API.get2(blobUrl);
+
         Fling.RecipePopup.modifyData(data);
         Fling.$('.header_box .circle_img').style.backgroundImage = data.recipeImg;
         Fling.$('.header_box .recipe_site_link a').href = data.recipeUrl;
@@ -12,7 +15,7 @@ window.Fling.RecipePopup = {
         const theTemplateScript = Fling.$("#product_list_template").innerHTML;
         const theTemplate = Handlebars.compile(theTemplateScript);
         const theCompiledHtml = theTemplate(data);
-        Fling.$('.product_list_wrap').innerHTML = theCompiledHtml;
+        Fling.$('.product_list_wrap').innerHTML = theCompiledHtml;        
     },
 
     modifyData(data) {
