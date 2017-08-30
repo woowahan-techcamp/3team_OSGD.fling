@@ -5,39 +5,65 @@
         <title>플링</title>
         <link rel="stylesheet" href="./css/common.css">
         <link rel="stylesheet" href="./css/recipe_page.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
-        <script src="js/Fling.js"></script>
-        <script src="./js/XHR.js"></script>
-        <script src="./js/Utils.js"></script>
-        <script src="./recipe_page.js"></script>
-        <script type="Template" id="cart_list_template">
-            {{#each this}}
-                <div class="cart_list" data-id="{{id}}" value="{{material_id}}">
-                    <div class="left">
-                        <input type="checkbox" class="recipe_checkbox" id="check1" checked>
-                        <label for="check1"></label>
-                        <div class="product_img" style="background-image: url({{image}})"></div>
-                        <div class="product_info">
-                            <div class="name">{{name}}</div>
-                            <div class="origin">국내산</div>
-                        </div>    
-                    </div>
-                    <div class="right">
-                        <div class="volume_box">
-                            <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
-                            <div class="button">
-                                <button class="up_button"></button>
-                                <button class="down_button"></button>
-                            </div>
-                        </div>
-                        <div class="price_info">
-                            <div class="total_price">{{price}}원</div>
-                            {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
-                            <input type="hidden" id="per_price" value="{{price}}">
-                        </div>    
-                    </div>
+        <script src="dist/bundle.js"></script>
+        <script>
+        document.addEventListener("DOMContentLoaded", Fling.RecipePage.EventHandler);
+        </script>
+        <script type="Template" id="missed">
+            <div class="missed_material">
+                <div class="title">이 재료는 플링에 없네요...</div>
+                <div class="notation">※ 아래 재료는 배송이 불가능합니다.</div>
+                <div class="subtitle">고추, 무말랭이, 오리기름</div>
+            </div>
+        </script>
+        <script type="Template" id="recipe_desc_template">
+            <div class="recipe_detail" data-id={{id}}>
+                <div class="circle_wrap">
+                    <div class="circle_img"style="background-image: url({{image}})"></div>
                 </div>
-            {{/each}}
+                <div class="description">
+                    <div class="title">{{title}}</div>
+                    <div class="subtitle">{{subtitle}}</div>
+                    <div class="detail_link"><a href="{{url}}" target="_blank">레시피 자세히 보기</a></div>
+                </div>
+            </div>
+        </script>
+        <script type="Template" id="cart_list_template">        
+            <div class="title">'<span class="title_main">{{title}}</span>' 레시피 재료 담기</div>
+            <div class="subtitle">
+                <div>상품</div>
+                <div>수량</div>
+                <div>가격</div>
+            </div>
+            <div class="cart_template">
+                {{#each this}}
+                    <div class="cart_list" data-id="{{id}}" value="{{material_id}}">
+                        <div class="left">
+                            <input type="checkbox" class="recipe_checkbox" id="check1" checked>
+                            <label for="check1"></label>
+                            <div class="product_img" style="background-image: url({{image}})"></div>
+                            <div class="product_info">
+                                <div class="name">{{name}}</div>
+                                <div class="origin">국내산</div>
+                            </div>    
+                        </div>
+                        <div class="right">
+                            <div class="volume_box">
+                                <input id="volume" type="text" value="1" maxlength="3" onkeyup="this.value=this.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');">
+                                <div class="button">
+                                    <button class="up_button"></button>
+                                    <button class="down_button"></button>
+                                </div>
+                            </div>
+                            <div class="price_info">
+                                <div class="total_price">{{price}}원</div>
+                                {{#if weight}}<div class="per_price">{{weight}}당 {{price}}원</div>{{/if}}
+                                <input type="hidden" id="per_price" value="{{price}}">
+                            </div>    
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
         </script>
         <script type="Template" id="cart_list_template_solo">               
             <div class="cart_list added" data-id="{{id}}">
@@ -67,7 +93,7 @@
             </div>
         </script>
     </head>
-    <body>
+    <body style="display: none">
         <div class="wrap">
             <header class="recipe_header">
                 <nav class="head_menu content">
@@ -88,16 +114,7 @@
 
             <div class="container">
                 <section class="recipe_section content recipe_info">
-                    <div class="recipe_detail">
-                        <div class="circle_wrap">
-                            <div class="circle_img"></div>
-                        </div>
-                        <div class="description">
-                            <div class="title">양념불고기</div>
-                            <div class="subtitle">배가 고플 때 밥도둑! 밥과 함께라면 뭐든지 먹어치울 수 있는 한국인의 밥상에서 빠뜨릴 수 없는 그 음식! 궁중 양념 불고기. 드셔보시지 않을라우?</div>
-                            <div class="detail_link"><a href="" target="_blank">레시피 자세히 보기</a></div>
-                        </div>
-                    </div>
+                    <fling-recipe-desc></fling-recipe-desc>
                     <div class="super_delivery">
                         <div class="delivery_img"></div>
                         <div class="title">
@@ -112,13 +129,7 @@
                 </section>
 
                 <section class="recipe_section recipe_cart content">
-                    <div class="title">'<span class="title_main">양념불고기</span>' 레시피 재료 담기</div>
-                    <div class="subtitle">
-                        <div>상품</div>
-                        <div>수량</div>
-                        <div>가격</div>
-                    </div>
-                    <div class="cart_template"></div>
+                    
                 </section>
                 
                 <section class="recipe_section recipe_product_search">
@@ -137,17 +148,13 @@
                 </section>
                 
                 <section class="recipe_section recipe_additional_info content">
-                    <div class="missed_material">
-                        <div class="title">이 재료는 플링에 없네요...</div>
-                        <div class="notation">※ 아래 재료는 배송이 불가능합니다.</div>
-                        <div class="subtitle">고추, 무말랭이, 오리기름</div>
-                    </div>
+                    <fling-missed-material></fling-missed-material>
                     <div class="price_info">
                         <div class="price_title">결제 예정금액</div>
                         <dl>
                             <dt>· 상품가격</dt>
                             <dd>
-                                <span class="pi_prd">300,000</span>
+                                <span class="pi_prd">0</span>
                                 <span class="won">원</span>
                             </dd>
                         </dl>
@@ -161,12 +168,12 @@
                         <dl>
                             <dt>· 플링캐시</dt>
                             <dd>
-                                <span class="pi_point">370</span>
+                                <span class="pi_point">0</span>
                                 <span class="won">원 적립</span>
                             </dd>
                         </dl>
                         <div class="total_price">
-                            <span>337,000</span>
+                            <span>0</span>
                             <span>원</span>
                         </div>
                     </div>

@@ -5,11 +5,10 @@
         <title>플링</title>
         <link rel="stylesheet" href="./css/common.css">
         <link rel="stylesheet" href="./css/cart_page.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
-        <script src="js/Fling.js"></script>
-        <script src="./js/XHR.js"></script>
-        <script src="./js/Utils.js"></script>
-        <script src="./cart_page.js"></script>
+        <script src="dist/bundle.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', Fling.CartPage.EventHandler);
+        </script>
         <script type="user_cart_list_template" id="user_cart_list_template">           
             {{#each this}}
                 <div class="cart_list_item">

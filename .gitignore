@@ -88,5 +88,7 @@ typings/
 # dotenv environment variables file
 .env
 
+# Distribute Folder
+src/dist
 
 # End of https://www.gitignore.io/api/node,macos
