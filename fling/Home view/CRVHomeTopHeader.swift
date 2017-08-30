@@ -32,7 +32,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
         flingHotLabel = UILabel()
 
         super.init(frame: frame)
-        
+
         makeHeaderImage()
 
         let xPadding = CGFloat(30)
@@ -84,7 +84,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
         headerFilter.alpha = 0.6
         self.addSubview(headerImage)
     }
-    
+
     func searchRecipe() {
         let url = keywordInput.text!
         popupClose()

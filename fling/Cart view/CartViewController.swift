@@ -27,7 +27,7 @@ class CartViewController: UIViewController {
         if cart.recipes.count == 0 {
             drawEmpty()
         }
-        
+
         updateTotalPrice()
         cartTableView.allowsSelection = true
     }
@@ -72,7 +72,7 @@ class CartViewController: UIViewController {
         }
         totalPriceLabel.text = total.addPriceTag()
     }
-    
+
     func drawEmpty() {
         let none = UIImage.init(named: "none.png")
         let noneView = UIImageView()
@@ -81,7 +81,7 @@ class CartViewController: UIViewController {
         noneView.center.x = self.view.center.x
         noneView.center.y = self.view.center.y - 50
         self.view.addSubview(noneView)
-        
+
         let message = UILabel.init()
         message.font = UIFont.systemFont(ofSize: 14)
         message.text = "담긴 레시피가 없습니다."
@@ -148,7 +148,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
             storage.saveCart(cart: cart)
             updateTotalPrice()
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            
+
             if cart.recipes.count == 0 {
                 drawEmpty()
             }

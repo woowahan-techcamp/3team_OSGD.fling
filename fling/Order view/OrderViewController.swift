@@ -31,14 +31,14 @@ class OrderViewController: UIViewController {
         let animated = UIImage.animatedImage(with: images, duration: 1.0)!
 
         rabbitImage.image = animated
-        
+
         orderComplete()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func orderComplete() {
         if myRecipe != nil {    //바로 주문하기
             //

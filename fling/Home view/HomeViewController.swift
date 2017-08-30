@@ -81,7 +81,7 @@ class HomeViewController: UIViewController {
         network.getFlingRecipe()
         network.getSeason()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         self.flagForCollectionView = false
     }
@@ -260,13 +260,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             homeView.endEditing(true)
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if(self.flagForCollectionView == true){
-            return;
+        if self.flagForCollectionView == true {
+            return
         } else {
-            self.flagForCollectionView = false;
+            self.flagForCollectionView = false
             var recipeCell = Recipe()
             if indexPath.section == 0 {
                 recipeCell = self.recipes[indexPath.row]
@@ -275,7 +274,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             self.network.getRecipeWith(recipeId: recipeCell.rid)
         }
-   
     }
 }
 

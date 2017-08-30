@@ -35,7 +35,7 @@ class RefrigeratorViewController: UIViewController {
         fridge = appDelegate.fridge
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorInset.right = 15
-        
+
         if fridge.materials.count == 0 {
             drawEmpty()
         }
@@ -55,7 +55,7 @@ class RefrigeratorViewController: UIViewController {
         noneView.center.x = self.view.center.x
         noneView.center.y = self.view.center.y - 50
         self.view.addSubview(noneView)
-        
+
         message.font = UIFont.systemFont(ofSize: 14)
         message.text = "담긴 재료가 없습니다."
         message.textAlignment = .center
@@ -96,7 +96,7 @@ extension RefrigeratorViewController: UITableViewDelegate, UITableViewDataSource
             fridge.remove(materialAt: indexPath.row)
             storage.saveFridge(fridge: fridge)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            
+
             if fridge.materials.count == 0 {
                 drawEmpty()
             }
