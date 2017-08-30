@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     var recipe = Recipe.init()
     var recipeSearchList = SearchList.init()
     var keyword = ""
+    var flagForCollectionView = true
     let keywordHighlight = KeywordHighlight()
 
     let failedView = UIView()
@@ -79,6 +80,10 @@ class HomeViewController: UIViewController {
 
         network.getFlingRecipe()
         network.getSeason()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.flagForCollectionView = false
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -160,35 +165,6 @@ class HomeViewController: UIViewController {
 //            hideFailureView()
             homeView.endEditing(true)
         }
-    }
-
-    func drawFailureView() {
-        failedView.frame = CGRect.init(x: 0, y: 0, width: 250, height: 200)
-        failedView.center.x = self.view.center.x
-        failedView.center.y = self.view.center.y
-        failedView.backgroundColor = UIColor.white
-        self.view.addSubview(failedView)
-
-        let none = UIImage.init(named: "none.png")
-        noneView.image = none
-        noneView.frame = CGRect.init(x: 0, y: 0, width: 80, height: 140)
-        noneView.center.x = self.view.center.x
-        noneView.center.y = self.view.center.y - 10
-        self.view.addSubview(noneView)
-        
-        message.font = UIFont.systemFont(ofSize: 14)
-        message.text = "플링이 찾지 못한 레시피에요."
-        message.textAlignment = .center
-        message.frame = CGRect.init(x: 0, y: 0, width: 250, height: 30)
-        message.center.x = self.view.center.x
-        message.center.y = self.view.center.y + 80
-        self.view.addSubview(message)
-    }
-    
-    func hideFailureView() {
-        failedView.isHidden = true
-        noneView.isHidden = true
-        message.isHidden = true
     }
 }
 
@@ -272,9 +248,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             cell.sampleRecipeLabel.text = recipeCell.title
             cell.sampleRecipeSubtitleLabel.text = recipeCell.subtitle
-            cell.clickHandler = { () -> Void in
-                self.network.getRecipeWith(recipeId: recipeCell.rid)
-            }
         }
 
         return cell
@@ -286,6 +259,23 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             self.popUpClose()
             homeView.endEditing(true)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if(self.flagForCollectionView == true){
+            return;
+        } else {
+            self.flagForCollectionView = false;
+            var recipeCell = Recipe()
+            if indexPath.section == 0 {
+                recipeCell = self.recipes[indexPath.row]
+            } else {
+                recipeCell = self.seasonRecipes[indexPath.row]
+            }
+            self.network.getRecipeWith(recipeId: recipeCell.rid)
+        }
+   
     }
 }
 
