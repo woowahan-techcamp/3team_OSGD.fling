@@ -32,14 +32,8 @@ class CRVHomeTopHeader: UICollectionReusableView {
         flingHotLabel = UILabel()
 
         super.init(frame: frame)
-
-        headerImage.image = UIImage.init(named: "main_image.png")
-        headerImage.frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: 200)
-        headerImage.layer.masksToBounds = true
-
-        headerFilter.frame = CGRect.init(x:0, y:0, width: self.frame.width, height: headerImage.frame.height)
-        headerFilter.backgroundColor = UIColor.black
-        headerFilter.alpha = 0.6
+        
+        makeHeaderImage()
 
         let xPadding = CGFloat(30)
         let heightForInput = CGFloat(20)
@@ -57,6 +51,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
         let yForSearchButton = yPadding
         searchButton.setImage(UIImage(named: "search_icon1x.png" ), for: .normal)
         searchButton.frame = CGRect.init(x: xForSearchButton - 14, y: yForSearchButton - 8, width: 22, height: 22)
+        searchButton.addTarget(self, action: #selector(searchRecipe), for: .touchDown)
 
         let xForLine = xPadding/2
         let yForLine = yPadding + keywordInput.frame.height + 8
@@ -71,7 +66,6 @@ class CRVHomeTopHeader: UICollectionReusableView {
         flingHotLabel.textAlignment = NSTextAlignment.center
         flingHotLabel.frame = CGRect.init(x:0, y: yForFlingHot, width: widthForFlingHot, height: 18)
 
-        self.addSubview(headerImage)
         self.addSubview(headerFilter)
         self.addSubview(keywordInput)
         self.addSubview(searchButton)
@@ -79,6 +73,25 @@ class CRVHomeTopHeader: UICollectionReusableView {
         self.addSubview(flingHotLabel)
 
         self.backgroundColor = .white
+    }
+
+    func makeHeaderImage() {
+        headerImage.image = UIImage.init(named: "main_image.png")
+        headerImage.frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: 200)
+        headerImage.layer.masksToBounds = true
+        headerFilter.frame = CGRect.init(x:0, y:0, width: self.frame.width, height: headerImage.frame.height)
+        headerFilter.backgroundColor = UIColor.black
+        headerFilter.alpha = 0.6
+        self.addSubview(headerImage)
+    }
+    
+    func searchRecipe() {
+        let url = keywordInput.text!
+        if url.contains("haemukja.com/recipes/") {
+            network.getRecipeWith(url: url.modifyUrl())
+        } else {
+            NotificationCenter.default.post(name: network.failNetwork, object: nil)
+        }
     }
 
     func textBoxOn(_ textField: UITextField) {

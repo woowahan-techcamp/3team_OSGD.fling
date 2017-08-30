@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
             self.recipe = recipe
             self.performSegue(withIdentifier: "HomeToRecipe", sender: self.recipe)
         } else if notification.name == network.failNetwork {
-            // 예외 처리!
+            print("예외처링!")
         } else if notification.name == network.searchRecipe {
             guard let recipeList = notification.userInfo?["data"] as? SearchList else { return }
             self.recipeSearchList = recipeList

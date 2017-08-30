@@ -13,4 +13,7 @@ extension String {
         //swiftlint:disable line_length
         return self.replacingOccurrences(of: target, with: withString, options: NSString.CompareOptions.literal, range: nil)
     }
+    func modifyUrl() -> String {
+        return self.replace(target: "//m.", withString: "//").replace(target: "/#/", withString: "/")
+    }
 }
