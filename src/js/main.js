@@ -22,7 +22,7 @@ window.Fling.Main = {
     async searchHandler(e) {
         const text = Fling.$(".search_text").value;
         const searchQuery = e.target.value;
-        const searchBar = Fling.$(".search_bar");
+        let searchBar = Fling.$(".search_bar");
         if (text.includes("http"))
             return;
 
@@ -31,17 +31,20 @@ window.Fling.Main = {
             searchBar.innerHTML = "";
             return;
         }
-        else if (e.code == 'ArrowLeft' || e.code == 'ArrowRight') {
+        else if (e.code === 'ArrowLeft' || e.code === 'ArrowRight') {
             return;
         }
-        else if(e.code == 'ArrowUp') {
+        else if(e.code === 'ArrowUp') {
             return; 
         }
-        else if (e.code == 'ArrowDown') {
+        else if (e.code === 'ArrowDown') {
             return;
         }
+        else if (e.code === 'Enter') {
+            Fling.Main.sendUrl();
+        }
         else {
-            Fling.$('.search_bar').style.display = 'block';
+            searchBar.style.display = 'block';
             let searchData = await Fling.API.post2(Fling.Data.apiSearchRecipes, `keyword=${searchQuery}`);
             const theTemplate = Handlebars.compile(Fling.Template.mainSearchBarSource);
             searchData.forEach(item => {
@@ -53,16 +56,11 @@ window.Fling.Main = {
             if (searchBar.children[0].classList.length == 1){
                 searchBar.children[0].classList.add('selected');
             }
-            else if (e.code == 'Enter') {
-                Fling.Main.sendUrl();
-            }
         }
     },
 
     sendUrl() {
-        let url = "./recipe_page.html?query_url=";
-        url += Fling.$('.selected').getAttribute('value');
-        Fling.$('.selected .search_bar_button').click();
+        Fling.$('.selected.search_bar_button').click();
     },
 
     flag: true,
