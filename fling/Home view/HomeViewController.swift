@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     var recipe = Recipe.init()
     var recipeSearchList = SearchList.init()
     var keyword = ""
+    var flagForCollectionView = true
     let keywordHighlight = KeywordHighlight()
 
     @IBOutlet weak var recipeTableView: UITableView!
@@ -75,6 +76,10 @@ class HomeViewController: UIViewController {
 
         network.getFlingRecipe()
         network.getSeason()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.flagForCollectionView = false
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -154,6 +159,8 @@ class HomeViewController: UIViewController {
             homeView.endEditing(true)
         }
     }
+    
+    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -236,9 +243,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             cell.sampleRecipeLabel.text = recipeCell.title
             cell.sampleRecipeSubtitleLabel.text = recipeCell.subtitle
-            cell.clickHandler = { () -> Void in
-                self.network.getRecipeWith(recipeId: recipeCell.rid)
-            }
         }
 
         return cell
@@ -250,6 +254,23 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             self.popUpClose()
             homeView.endEditing(true)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if(self.flagForCollectionView == true){
+            return;
+        } else {
+            self.flagForCollectionView = false;
+            var recipeCell = Recipe()
+            if indexPath.section == 0 {
+                recipeCell = self.recipes[indexPath.row]
+            } else {
+                recipeCell = self.seasonRecipes[indexPath.row]
+            }
+            self.network.getRecipeWith(recipeId: recipeCell.rid)
+        }
+   
     }
 }
 

@@ -12,31 +12,11 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
 
     var clickHandler:(() -> Void)!
 
-    @IBAction func imageTapped(_ sender: UIImageView) {
-        self.clickHandler()
-    }
-
     override func awakeFromNib() {
         let cgSize = CGSize.init(width: 187.5, height: 227.5)
         self.frame.size = cgSize
-//        self.backgroundColor = UIColor.darkGray
-
         self.sampleRecipeImage.frame.size = CGSize(width: 167.5, height: 167.5)
-        self.sampleRecipeImage.isUserInteractionEnabled = true
-
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        sampleRecipeImage.addGestureRecognizer(tapRecognizer)
         sampleRecipeImage.layer.masksToBounds = true
-
-//        sampleRecipeSubtitleLabel.center.x = self.sampleRecipeImage.center.x
-//        //swiftlint:disable line_length
-//        sampleRecipeSubtitleLabel.topAnchor.constraint(equalTo: sampleRecipeImage.bottomAnchor, constant: 5).isActive = true
-//        sampleRecipeLabel.center.x = self.sampleRecipeImage.center.x
-//        //swiftlint:disable line_length
-//        sampleRecipeLabel.topAnchor.constraint(equalTo: sampleRecipeSubtitleLabel.bottomAnchor, constant: 5).isActive = true
-//
-//        sampleRecipeSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        sampleRecipeLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 
     @IBOutlet weak var sampleRecipeImage: UIImageView!
