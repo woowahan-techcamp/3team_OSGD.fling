@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:fling.xcodeproj">
+      location = "group:/Users/woowabrothers/Documents/fling/Fling.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Fling.xcodeproj">
    </FileRef>
 </Workspace>
