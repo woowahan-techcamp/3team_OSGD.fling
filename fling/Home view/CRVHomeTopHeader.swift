@@ -42,7 +42,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
         keywordInput.frame = CGRect.init(x: xPadding, y: yPadding, width: widthForInput, height: heightForInput)
         keywordInput.textColor = UIColor.white
         keywordInput.placeholder = "레시피를 장바구니에 담아드립니다."
-        keywordInput.setValue(UIColor.white, forKeyPath: "_placeholderLabel.textColor")
+        keywordInput.setValue(UIColor.lightGray, forKeyPath: "_placeholderLabel.textColor")
         keywordInput.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightUltraLight)
         keywordInput.addTarget(self, action: #selector(textBoxOn(_:)), for: .editingDidBegin)
         keywordInput.addTarget(self, action: #selector(textChange(_:)), for: .editingChanged)
@@ -87,6 +87,7 @@ class CRVHomeTopHeader: UICollectionReusableView {
     
     func searchRecipe() {
         let url = keywordInput.text!
+        popupClose()
         if url.contains("haemukja.com/recipes/") {
             network.getRecipeWith(url: url.modifyUrl())
         } else {

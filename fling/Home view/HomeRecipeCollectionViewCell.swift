@@ -27,16 +27,6 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         sampleRecipeImage.addGestureRecognizer(tapRecognizer)
         sampleRecipeImage.layer.masksToBounds = true
-
-//        sampleRecipeSubtitleLabel.center.x = self.sampleRecipeImage.center.x
-//        //swiftlint:disable line_length
-//        sampleRecipeSubtitleLabel.topAnchor.constraint(equalTo: sampleRecipeImage.bottomAnchor, constant: 5).isActive = true
-//        sampleRecipeLabel.center.x = self.sampleRecipeImage.center.x
-//        //swiftlint:disable line_length
-//        sampleRecipeLabel.topAnchor.constraint(equalTo: sampleRecipeSubtitleLabel.bottomAnchor, constant: 5).isActive = true
-//
-//        sampleRecipeSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        sampleRecipeLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 
     @IBOutlet weak var sampleRecipeImage: UIImageView!

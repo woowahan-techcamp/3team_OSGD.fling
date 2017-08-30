@@ -24,6 +24,10 @@ class CartViewController: UIViewController {
         }
 
         cart = appDelegate.cart
+        if cart.recipes.count == 0 {
+            drawEmpty()
+        }
+        
         updateTotalPrice()
         cartTableView.allowsSelection = true
     }
@@ -49,6 +53,17 @@ class CartViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CartToOrder" {
+            guard let secondViewController = segue.destination as? OrderViewController else {
+                return
+            }
+
+            secondViewController.myRecipe = nil
+            secondViewController.myCart = cart
+        }
+    }
+
     func updateTotalPrice() {
         var total = Decimal()
 
@@ -56,6 +71,25 @@ class CartViewController: UIViewController {
             total += object.totalPrice()
         }
         totalPriceLabel.text = total.addPriceTag()
+    }
+    
+    func drawEmpty() {
+        let none = UIImage.init(named: "none.png")
+        let noneView = UIImageView()
+        noneView.image = none
+        noneView.frame = CGRect.init(x: 0, y: 0, width: 80, height: 140)
+        noneView.center.x = self.view.center.x
+        noneView.center.y = self.view.center.y - 50
+        self.view.addSubview(noneView)
+        
+        let message = UILabel.init()
+        message.font = UIFont.systemFont(ofSize: 14)
+        message.text = "담긴 레시피가 없습니다."
+        message.textAlignment = .center
+        message.frame = CGRect.init(x: 0, y: 0, width: 300, height: 30)
+        message.center.x = self.view.center.x
+        message.center.y = self.view.center.y + 60
+        self.view.addSubview(message)
     }
 }
 
@@ -114,6 +148,10 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
             storage.saveCart(cart: cart)
             updateTotalPrice()
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            
+            if cart.recipes.count == 0 {
+                drawEmpty()
+            }
         }
     }
 

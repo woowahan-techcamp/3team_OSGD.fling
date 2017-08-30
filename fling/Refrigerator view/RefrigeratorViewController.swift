@@ -21,6 +21,8 @@ class RefrigeratorViewController: UIViewController {
             fridge.add(material: data)
         }
         storage.saveFridge(fridge: fridge)
+        self.noneView.isHidden = true
+        self.message.isHidden = true
         self.tableView.reloadData()
     }
 
@@ -33,10 +35,34 @@ class RefrigeratorViewController: UIViewController {
         fridge = appDelegate.fridge
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorInset.right = 15
+        
+        if fridge.materials.count == 0 {
+            drawEmpty()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    let noneView = UIImageView()
+    let message = UILabel.init()
+
+    func drawEmpty() {
+        let none = UIImage.init(named: "none.png")
+        noneView.image = none
+        noneView.frame = CGRect.init(x: 0, y: 0, width: 80, height: 140)
+        noneView.center.x = self.view.center.x
+        noneView.center.y = self.view.center.y - 50
+        self.view.addSubview(noneView)
+        
+        message.font = UIFont.systemFont(ofSize: 14)
+        message.text = "담긴 재료가 없습니다."
+        message.textAlignment = .center
+        message.frame = CGRect.init(x: 0, y: 0, width: 300, height: 30)
+        message.center.x = self.view.center.x
+        message.center.y = self.view.center.y + 60
+        self.view.addSubview(message)
     }
 }
 
@@ -70,6 +96,10 @@ extension RefrigeratorViewController: UITableViewDelegate, UITableViewDataSource
             fridge.remove(materialAt: indexPath.row)
             storage.saveFridge(fridge: fridge)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            
+            if fridge.materials.count == 0 {
+                drawEmpty()
+            }
         }
     }
 }

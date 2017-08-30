@@ -22,6 +22,10 @@ class HomeViewController: UIViewController {
     var keyword = ""
     let keywordHighlight = KeywordHighlight()
 
+    let failedView = UIView()
+    let noneView = UIImageView()
+    let message = UILabel.init()
+
     @IBOutlet weak var recipeTableView: UITableView!
     @IBOutlet var searchPopUp: UIView!
     @IBOutlet var homeView: UIView!
@@ -79,6 +83,7 @@ class HomeViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         homeView.endEditing(true)
+//        hideFailureView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,6 +92,7 @@ class HomeViewController: UIViewController {
 
     func dismissKeyboard() {
         homeView.endEditing(true)
+//        hideFailureView()
         popUpClose()
     }
 
@@ -106,7 +112,7 @@ class HomeViewController: UIViewController {
             self.recipe = recipe
             self.performSegue(withIdentifier: "HomeToRecipe", sender: self.recipe)
         } else if notification.name == network.failNetwork {
-            print("예외처링!")
+//            drawFailureView()
         } else if notification.name == network.searchRecipe {
             guard let recipeList = notification.userInfo?["data"] as? SearchList else { return }
             self.recipeSearchList = recipeList
@@ -151,8 +157,38 @@ class HomeViewController: UIViewController {
 
         if touch?.view != searchPopUp {
             self.popUpClose()
+//            hideFailureView()
             homeView.endEditing(true)
         }
+    }
+
+    func drawFailureView() {
+        failedView.frame = CGRect.init(x: 0, y: 0, width: 250, height: 200)
+        failedView.center.x = self.view.center.x
+        failedView.center.y = self.view.center.y
+        failedView.backgroundColor = UIColor.white
+        self.view.addSubview(failedView)
+
+        let none = UIImage.init(named: "none.png")
+        noneView.image = none
+        noneView.frame = CGRect.init(x: 0, y: 0, width: 80, height: 140)
+        noneView.center.x = self.view.center.x
+        noneView.center.y = self.view.center.y - 10
+        self.view.addSubview(noneView)
+        
+        message.font = UIFont.systemFont(ofSize: 14)
+        message.text = "플링이 찾지 못한 레시피에요."
+        message.textAlignment = .center
+        message.frame = CGRect.init(x: 0, y: 0, width: 250, height: 30)
+        message.center.x = self.view.center.x
+        message.center.y = self.view.center.y + 80
+        self.view.addSubview(message)
+    }
+    
+    func hideFailureView() {
+        failedView.isHidden = true
+        noneView.isHidden = true
+        message.isHidden = true
     }
 }
 
@@ -274,6 +310,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        popUpClose()
         self.network.getRecipeWith(recipeId: self.recipeSearchList.result[indexPath.row].id)
     }
 }

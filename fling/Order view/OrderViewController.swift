@@ -11,6 +11,14 @@ import UIKit
 class OrderViewController: UIViewController {
 
     @IBOutlet weak var rabbitImage: UIImageView!
+    var myCart = Cart()
+    var myRecipe: Recipe?
+    let storage = Storage()
+
+    @IBOutlet weak var homeButton: UIButton!
+    @IBAction func homeButtonTouch(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +31,20 @@ class OrderViewController: UIViewController {
         let animated = UIImage.animatedImage(with: images, duration: 1.0)!
 
         rabbitImage.image = animated
+        
+        orderComplete()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func orderComplete() {
+        if myRecipe != nil {    //바로 주문하기
+            //
+        } else {
+            myCart.removeAll()
+            storage.saveCart(cart: myCart)
+        }
     }
 }

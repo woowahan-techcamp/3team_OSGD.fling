@@ -59,6 +59,7 @@
 		9872B28A1F552224007256E0 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872B2581F552224007256E0 /* CheckboxButton.swift */; };
 		9872B28B1F552224007256E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872B2591F552224007256E0 /* ViewController.swift */; };
 		9872B28D1F5523B1007256E0 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 9872B28C1F5523B1007256E0 /* close.png */; };
+		9872B28F1F569568007256E0 /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 9872B28E1F569568007256E0 /* none.png */; };
 		98AD7C9C1F3ACA0000500BD9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */; };
 		98AD7CAA1F3AEF0200500BD9 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD7CA91F3AEF0200500BD9 /* AlamofireImage.framework */; };
 		9A711DDCB938A15B2B270952 /* Pods_fling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C5A9D07B925CF613F3A48 /* Pods_fling.framework */; };
@@ -146,6 +147,7 @@
 		9872B2581F552224007256E0 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		9872B2591F552224007256E0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9872B28C1F5523B1007256E0 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		9872B28E1F569568007256E0 /* none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = none.png; sourceTree = "<group>"; };
 		98AD7C9B1F3ACA0000500BD9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		98AD7CA91F3AEF0200500BD9 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../Library/Developer/Xcode/DerivedData/fling-fyglydscukynocetdnkmjuovdiuw/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		C830F3E0E119A6A13BAE4927 /* Pods_flingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,6 +304,7 @@
 				9872B2391F552224007256E0 /* logo.png */,
 				9872B23A1F552224007256E0 /* logo_rabbit.png */,
 				9872B23B1F552224007256E0 /* main_image.png */,
+				9872B28E1F569568007256E0 /* none.png */,
 				9872B23C1F552224007256E0 /* order.png */,
 				9872B23D1F552224007256E0 /* search_icon1x.png */,
 			);
@@ -514,6 +517,7 @@
 				9872B2721F552224007256E0 /* logo_rabbit.png in Resources */,
 				9872B25B1F552224007256E0 /* Assets.xcassets in Resources */,
 				9872B2711F552224007256E0 /* logo.png in Resources */,
+				9872B28F1F569568007256E0 /* none.png in Resources */,
 				9872B2741F552224007256E0 /* order.png in Resources */,
 				9872B25C1F552224007256E0 /* LaunchScreen.storyboard in Resources */,
 				9872B26F1F552224007256E0 /* fridge.png in Resources */,

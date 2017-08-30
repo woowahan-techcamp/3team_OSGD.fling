@@ -23,6 +23,10 @@ class Cart {
         self.recipes.remove(at: recipeAt)
     }
 
+    func removeAll() {
+        self.recipes.removeAll()
+    }
+
     func totalPrice() -> Decimal {
         var result = Decimal.init(0)
         self.recipes.forEach { object in

@@ -15,7 +15,7 @@ class RecipeViewController: UIViewController {
     var cart = Cart()
     var fridge = Refrigerator()
     let network = Network.init()
-    let myStoragy = Storage()
+    let myStorage = Storage()
     var searchUrl = ""
     var searchRecipe = Recipe.init()
     var editedProduct = (product: Product(), number: 0, on: true)
@@ -67,7 +67,7 @@ class RecipeViewController: UIViewController {
         }
 
         cart.add(recipe: self.searchRecipe)
-        myStoragy.saveCart(cart: cart)
+        myStorage.saveCart(cart: cart)
 
         if self.navigationController!.viewControllers.count > 1 {
             self.navigationController!.viewControllers[1].title = "홈"
@@ -140,6 +140,13 @@ class RecipeViewController: UIViewController {
                 return
             }
             secondViewController.data = product
+        } else if segue.identifier == "RecipeToOrder" {
+            guard let secondViewController = segue.destination as? OrderViewController else {
+                return
+            }
+
+            secondViewController.myRecipe = self.searchRecipe
+            secondViewController.myCart = self.cart
         }
     }
 
