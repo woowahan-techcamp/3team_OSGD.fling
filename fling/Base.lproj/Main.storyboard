@@ -119,8 +119,8 @@
                                                         <constraint firstAttribute="width" constant="179.5" id="ye9-By-TMa"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-ra-CqB">
-                                                    <rect key="frame" x="9" y="180" width="163" height="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-ra-CqB">
+                                                    <rect key="frame" x="9" y="197" width="163" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="Now-J1-Xw8"/>
                                                     </constraints>
@@ -131,7 +131,7 @@ subtitle</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h81-9v-g7X">
-                                                    <rect key="frame" x="77" y="208" width="27" height="20"/>
+                                                    <rect key="frame" x="77" y="181" width="27" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="gA4-wc-ghR"/>
                                                     </constraints>
@@ -142,12 +142,12 @@ subtitle</string>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="h81-9v-g7X" firstAttribute="top" secondItem="M6V-FM-RPv" secondAttribute="bottom" constant="28" id="AqB-Dk-vO3"/>
+                                            <constraint firstItem="h81-9v-g7X" firstAttribute="top" secondItem="M6V-FM-RPv" secondAttribute="bottom" constant="1" id="AqB-Dk-vO3"/>
                                             <constraint firstItem="AaR-ra-CqB" firstAttribute="trailing" secondItem="5Kf-cg-taS" secondAttribute="trailingMargin" id="CgX-bt-9YU"/>
                                             <constraint firstItem="AaR-ra-CqB" firstAttribute="centerX" secondItem="h81-9v-g7X" secondAttribute="centerX" id="SJ5-xM-mx4"/>
                                             <constraint firstItem="M6V-FM-RPv" firstAttribute="centerX" secondItem="5Kf-cg-taS" secondAttribute="centerX" id="a5e-Dl-VXI"/>
                                             <constraint firstItem="M6V-FM-RPv" firstAttribute="top" secondItem="5Kf-cg-taS" secondAttribute="top" id="d67-ZG-ECS"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="AaR-ra-CqB" secondAttribute="bottom" constant="23" id="seZ-qG-pfp"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="AaR-ra-CqB" secondAttribute="bottom" constant="6" id="seZ-qG-pfp"/>
                                             <constraint firstItem="AaR-ra-CqB" firstAttribute="centerX" secondItem="M6V-FM-RPv" secondAttribute="centerX" id="wXG-Yt-ZNs"/>
                                         </constraints>
                                         <size key="customSize" width="180" height="236"/>
