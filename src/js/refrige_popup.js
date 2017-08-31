@@ -73,6 +73,7 @@ window.Fling.RefrigePopup = {
         let myRefrige = JSON.parse(window.localStorage.getItem("myRefrige"));
         const id = e.target.parentElement.getAttribute("value") * 1;
         const name = e.target.previousElementSibling.dataset.name;
+        const refrigeListItem = Array.from(Fling.$$(".refrige_list_item"));
     
         if (e.target.className == "add_material_btn") {
             let obj = {};
@@ -93,7 +94,7 @@ window.Fling.RefrigePopup = {
                 if (myRefrige[i].name == name) {
                     Fling.Storage.removeMyRefrige(i);
                     //remove list
-                    Fling.$(".refrige_list").children[i].remove();
+                    Fling.$(".refrige_list").children[refrigeListItem.length - i - 1].remove();
                     //reset searchbar
                     Fling.$(".search_bar").style.display = "none";
                     Fling.$(".search_text").value = "";
