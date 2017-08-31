@@ -3,7 +3,7 @@ window.Fling.CartPage = {
     EventHandler() {
         Fling.CartPage.getUserCart();
         Fling.$('.refrige_popup').addEventListener('click', Fling.onRefrigePopupHandler);
-        Fling.$('.btn_fling').addEventListener('click', e => (window.location.href = './main.html'));
+        Fling.$('.btn_fling').addEventListener('click', e => (window.location.href = './index.html'));
     },
 
     getUserCart() {
